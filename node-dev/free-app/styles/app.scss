@@ -1,0 +1,243 @@
+#sahcfwc_stripe_after_shpping_address_text {
+    resize: none;
+}
+
+#sahcfwc_stripe_after_submit_text {
+    resize: none;
+}
+
+#sahcfwc_stripe_befour_text {
+    resize: none;
+}
+
+#sahcfwc_stripe_customize_terms_service_text {
+    resize: none;
+}
+
+#wpcontent {
+    padding-left: 0;
+    #sahcfwc-app {
+        height: 90.6vh;
+        .sahcfwc-app-container {
+            padding: 10px
+        }
+        .sahcfwc-app-main-container {
+            padding: 10px;
+            margin-bottom: 50px;
+        }
+        .sahcfwc-app-tab-content-container {
+            padding: 20px;
+            background-color: #f0f0f1;
+        }
+        .sahcfwc-app-content-wrapper {
+            background-color: #fff;
+            padding: 10px;
+        }
+        .sahcfwc-app-promotion-wrapper {
+            margin-left: 10px;
+            background-color: #fff;
+            padding: 20px;
+        }
+    }
+}
+
+#wpfooter {
+    position: fixed;
+}
+
+.hover-effect {
+    transition: all 0.3s ease-in-out;
+}
+
+.hover-effect:hover {
+    box-shadow: -2px 10px 26px -14px rgba(64, 224, 208, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.sahcfwc-tabs-tab-btn .anticon {
+    margin-right: 10px;
+}
+
+.sahcfwc-info-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1;
+    font-style: normal;
+}
+
+.sahcfwc-upg-pre-btn {
+    font-weight: 500;
+    border-color: #E49B0F;
+    background: #E49B0F;
+    color: #fff;
+
+    &:hover {
+    background: #fff !important;
+    color: #E49B0F !important;
+    border-color: #E49B0F !important;
+}
+}
+
+.anticon-question-circle {
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+.sahcfwc-stripe-session-vissible-div {
+    text-align: center;
+    margin-top: 16px;
+
+    p {
+        font-size: 16px;
+        font-weight: 500;
+        padding-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #adminmenuwrap {
+        position: relative;
+        float: left;
+        z-index: 444;
+    }
+}
+
+@media only screen and (max-width: 991.5px) {
+    .sahcfwc-app-promotion-wrapper {
+        margin: 20px 0 0 0 !important;
+    }
+}
+
+// .sahcfwc-table-tbody {
+//     background-color: #f0f0f1;
+// }
+ :where(.css-7nz3ip).sahcfwc-tabs .sahcfwc-tabs-tab-btn .sahcfwc-tabs-tab-icon:not(:last-child) {
+    font-size: 17px;
+}
+
+.sahcfwc-tabs-nav-wrap {
+    padding-left: 20px;
+}
+
+@media only screen and (max-width: 1366.5px) {
+    .ant-message-top {
+        top: 200px !important;
+    }
+}
+
+@media only screen and (max-width: 767.5px) {
+    #wpcontent #sahcfwc-app .sahcfwc-app-tab-content-container {
+        padding: 10px;
+        background-color: #f0f0f1;
+    }
+}
+
+@media only screen and (max-width: 575.5px) {
+     :where(.sahcfwc-checkout-settings-form) .sahcfwc-short-code-para {
+        flex-direction: column;
+    }
+    .sahcfwc-short-code-cop {
+        margin-top: 1em;
+    }
+}
+
+.sahcfwc-card-header-btn {
+    .sahcfwc-form-item {
+        margin-bottom: 0px;
+    }
+}
+
+// Premium Disabled
+.disabled-prem {
+    filter: blur(0.5px);
+    color: #c1c0c0 !important;
+    font-weight: 300;
+    .sahcfwc-segmented-item-selected {
+        background-color: #e6e3e3 !important;
+    }
+    input[type="radio"]:checked::before {
+        background-color: #e6e3e3 !important;
+    }
+    .sahcfwc-tabs-tab-icon {
+        svg {
+            color: #e6e3e3 !important;
+        }
+    }
+    input {
+        display: none;
+    }
+}
+
+.disabled-prem-table {
+    filter: blur(1.4px);
+    cursor: not-allowed;
+    position: relative;
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 0.5;
+    }
+}
+
+.glitter {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    /* Adjust as needed */
+    color: #E49B0F;
+    /* Text color */
+    font-weight: 600;
+    /* Optional: for better visibility */
+}
+
+.glitter::before {
+    content: '';
+    position: absolute;
+    top: -13px;
+    left: -10px;
+    /* Adjusted for better alignment */
+    width: 30px;
+    /* Slightly larger for better effect */
+    height: 30px;
+    /* Slightly larger for better effect */
+    background: radial-gradient(circle, rgba(228, 155, 15, 0.5), rgba(228, 155, 15, 0));
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkle 1.5s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.glitter:hover::before {
+    animation: sparkle 0.8s infinite ease-in-out;
+}
+
+:where(.css-dev-only-do-not-override-q7hk36).sahcfwc-tabs .sahcfwc-tabs-tab-btn .sahcfwc-tabs-tab-icon:not(:last-child) {
+    margin: 0 !important;
+}

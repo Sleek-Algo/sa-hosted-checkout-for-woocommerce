@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="30" fill="none" viewBox="0 0 150 30" class="PaymentMethodLogo ">
+  <path fill="var(--paymentMethodLogoColor, #000)" d="M78.828 21.46h-.393v-1.052c-.204.124-.413.24-.633.325a1.304 1.304 0 00-.273-.328c.348-.1.68-.285.88-.424.136-.094.457-.359.675-.633l.32.25c.014.01.017.016.017.031 0 .023-.018.033-.042.033-.01 0-.02 0-.047-.006-.16.195-.49.465-.504.475v1.33zM80.51 19.364c.18.057.41.162.572.268-.074.098-.15.2-.212.307a2.305 2.305 0 00-.557-.291l.196-.283zM81.506 19.455c.07.051.21.167.262.222a9.312 9.312 0 01-.174.167c-.083-.082-.166-.163-.259-.235l.17-.154h.001zM81.76 19.192c.07.05.21.166.263.221a12.98 12.98 0 01-.17.167c-.085-.081-.17-.164-.26-.232l.168-.156h-.001zM80.289 19.873c.173.082.389.21.535.32-.066.078-.093.117-.224.301a2.46 2.46 0 00-.521-.315l.209-.306zM80.218 21.12a3.198 3.198 0 001.104-.67c.276-.258.423-.478.484-.563.09.179.16.251.232.304a3.127 3.127 0 01-.438.51 3.92 3.92 0 01-1.11.735c-.006.023-.013.053-.037.053-.017 0-.034-.029-.037-.03l-.196-.339h-.002zM84.65 20.259h-1.985v.39h1.985v-.39zM74.683 20.46c.117-.087.164-.12.278-.257.329-.371.425-.482.499-.526a.312.312 0 01.164-.054c.148 0 .229.094.415.335.135.17.367.44.63.69.103.095.18.16.225.196-.088.11-.2.273-.242.338-.314-.33-.613-.668-.888-1.027-.08-.1-.115-.12-.151-.12-.056 0-.12.081-.174.14a6.993 6.993 0 00-.415.553c.004.005.006.015.006.03 0 .023-.016.023-.021.023a.04.04 0 01-.03-.013l-.295-.31v.002zM76.524 20.01a.361.361 0 010-.723c.198 0 .355.162.355.362 0 .201-.16.361-.355.361zm0-.531c-.091 0-.17.08-.17.171 0 .093.079.17.17.17a.17.17 0 00.166-.17.173.173 0 00-.166-.171z"></path>
+  <path fill="var(--paymentMethodLogoColor, #0F298F)" d="M77.874 25.592c.222.195.547.301.93.301.504 0 .885-.148 1.462-.566v.773c-.709.529-1.446.529-1.763.529-.362 0-.698-.058-.996-.166a2.04 2.04 0 01-.742-.47c-.355-.364-.546-.854-.546-1.427 0-.298.05-.58.15-.837.1-.249.243-.47.428-.659a1.83 1.83 0 01.658-.434c.259-.105.542-.156.843-.156.585 0 1.11.21 1.48.604.39.411.582.986.556 1.668H77.49l.002.008c.022.35.153.639.379.833m1.375-1.494c-.024-.272-.118-.494-.272-.652a.813.813 0 00-.594-.233.824.824 0 00-.598.233c-.148.15-.239.375-.265.652l-.002.004h1.73V24.1h.001zM87.534 26.36c-.288.23-.698.35-1.226.35-.638 0-1.259-.198-1.452-.305v-.902c.442.193.843.347 1.312.347.26 0 .458-.052.555-.152a.202.202 0 00.068-.157c0-.245-.33-.374-.716-.522-.583-.23-1.307-.515-1.307-1.32 0-.305.111-.58.321-.793.304-.307.784-.475 1.36-.475.506 0 .886.09 1.312.3v.91c-.573-.354-1.123-.453-1.356-.453-.212 0-.466.06-.466.331 0 .17.273.28.619.418.591.238 1.407.564 1.407 1.434 0 .426-.148.76-.432.99M72.234 28h-1.31l.946-2.092V25.9l-1.54-3.34h1.315l.832 2.05.004.014.01-.011.885-2.054h1.291L72.234 28zM89.898 28h-1.307l.944-2.092V25.9l-1.541-3.34h1.315l.831 2.05.008.014.004-.011.89-2.054h1.291L89.898 28zM83.212 26.523c-.109-.07-.18-.18-.223-.344l-.002-.008-.008.003c-.46.317-.85.455-1.303.455-.317 0-.61-.119-.82-.337a.909.909 0 01-.28-.643c0-.921.65-1.125 2.212-1.616l.137-.044h.006v-.004c.011-.21-.034-.371-.137-.485-.12-.126-.305-.191-.556-.191-.25 0-.512.062-.772.182a2.28 2.28 0 00-.681.478v-1.006a3.168 3.168 0 011.708-.483c.62 0 1.104.14 1.375.414.194.195.293.464.293.794v1.825c0 .11.023.184.07.232.032.035.08.053.141.053.06 0 .13-.011.28-.099v.666c-.327.158-.709.263-.974.263-.21 0-.358-.035-.466-.106m-.29-1.91c-.378.135-.645.248-.824.37-.187.136-.272.28-.272.478 0 .116.047.228.126.31.076.08.178.122.285.122.228 0 .482-.113.692-.308h.002v-.978l-.009.005zM75.782 24.483h-1.574v.764h1.574v-.764z"></path>
+  <path fill="var(--paymentMethodLogoColor, #0F298F)" d="M69.312 26.523c-.111-.07-.181-.18-.223-.344l-.004-.008-.006.003c-.46.317-.848.455-1.301.455-.318 0-.608-.119-.823-.337a.929.929 0 01-.278-.643c0-.921.648-1.125 2.211-1.616l.136-.044h.004v-.004c.016-.21-.034-.371-.138-.485-.115-.126-.303-.191-.554-.191a1.82 1.82 0 00-.77.182c-.256.115-.49.282-.683.478v-1.006a3.18 3.18 0 011.711-.483c.62 0 1.1.14 1.375.414.192.195.29.464.29.794v1.825c0 .11.023.184.07.232.032.035.083.053.144.053.06 0 .128-.011.279-.099v.666c-.33.158-.71.263-.976.263-.208 0-.359-.035-.465-.106m-.292-1.91c-.377.135-.643.248-.823.37-.187.136-.27.28-.27.478 0 .116.046.228.127.31.073.08.176.122.282.122.23 0 .481-.113.69-.308h.003v-.978l-.009.005z"></path>
+  <path fill="var(--paymentMethodLogoColor, url(#paint0_linear_19233_4049-payment-method-logo-PayEasy))" d="M67.438 2.004c-.88 0-1.738.22-2.534.617a7.097 7.097 0 00-2.195 1.724s1.864.24 2.403.312l.01-.011c.7-.833 1.513-1.498 2.406-1.955a5.968 5.968 0 012.73-.687C70.265 2 70.271 2 70.28 2l-2.843.004z"></path>
+  <path fill="var(--paymentMethodLogoColor, url(#paint1_linear_19233_4049-payment-method-logo-PayEasy))" d="M71.836 4.76a3.606 3.606 0 00-1.1.214c1.196.752 1.986 2.268 1.986 4.037 0 2.577-1.673 4.936-3.846 5.286a3.234 3.234 0 01-.575.04c.1.135.202.252.314.37.849.89 1.994 1.31 3.222 1.079 1.186-.222 2.229-1.016 2.96-2.104.722-1.07 1.16-2.434 1.16-3.873 0-1.44-.438-2.706-1.16-3.613-.704-.888-1.697-1.44-2.828-1.44-.045 0-.089 0-.132.004"></path>
+  <path fill="var(--paymentMethodLogoColor, url(#paint2_linear_19233_4049-payment-method-logo-PayEasy))" d="M60.179 18.396c.47 3.762 1.685 6.239 2.302 7.109l2.236 1.679c-.78-1.232-2.01-3.976-2.43-7.967-.416-3.992-.017-9.23 2.453-15.453l-2.391-.214c-2.364 6.03-2.638 11.083-2.171 14.846"></path>
+  <path fill="var(--paymentMethodLogoColor, url(#paint3_linear_19233_4049-payment-method-logo-PayEasy))" d="M68.614 14.707c-.87-.91-1.422-2.293-1.422-3.91 0-1.616.551-3.124 1.422-4.23.849-1.078 1.994-1.759 3.221-1.807 1.187-.044 2.23.513 2.962 1.436.72.908 1.159 2.175 1.159 3.613 0 1.438-.438 2.803-1.16 3.873-.732 1.088-1.775 1.882-2.96 2.104a3.618 3.618 0 01-.66.063c-.974 0-1.868-.414-2.562-1.143m1.643-12.702a5.98 5.98 0 00-2.73.687c-.892.457-1.706 1.123-2.406 1.955a.17.17 0 01-.01.011 28.78 28.78 0 00-.37-.893c-2.47 6.223-2.87 11.461-2.453 15.453.405 3.856 1.566 6.545 2.349 7.837.017.029.037.057.053.086a.82.82 0 00.033.047c.003.006.008.01.015.01.008-.003.011-.005.015-.01a35.8 35.8 0 001.727-5.998c.165-.86.3-1.727.396-2.595.212.09.43.17.652.234.868.251 1.799.28 2.754.068a6.73 6.73 0 002.57-1.223 8.68 8.68 0 001.969-2.125c1.072-1.618 1.722-3.666 1.722-5.805 0-2.138-.65-4.035-1.722-5.416a6.217 6.217 0 00-1.97-1.682 5.431 5.431 0 00-2.57-.641h-.023z"></path>
+  <path fill="var(--paymentMethodLogoColor, url(#paint4_radial_19233_4049-payment-method-logo-PayEasy))" d="M57.667 10.414c0 .585.466 1.06 1.045 1.06.58 0 1.046-.475 1.046-1.06 0-.585-.47-1.058-1.046-1.058-.577 0-1.045.474-1.045 1.058z"></path>
+  <path fill="var(--paymentMethodLogoColor, url(#paint5_radial_19233_4049-payment-method-logo-PayEasy))" d="M79.053 10.414c0 1.736 1.392 3.145 3.107 3.145 1.715 0 3.103-1.41 3.103-3.145s-1.39-3.143-3.103-3.143c-1.713 0-3.107 1.41-3.107 3.143z"></path>
+  <path fill="var(--paymentMethodLogoColor, url(#paint6_radial_19233_4049-payment-method-logo-PayEasy))" d="M72.967 10.414c0 1.389 1.111 2.516 2.481 2.516 1.37 0 2.483-1.127 2.483-2.516s-1.112-2.512-2.483-2.512c-1.37 0-2.481 1.124-2.481 2.512z"></path>
+  <path fill="var(--paymentMethodLogoColor, url(#paint7_radial_19233_4049-payment-method-logo-PayEasy))" d="M67.919 10.414c0 1.111.89 2.01 1.987 2.01s1.986-.9 1.986-2.01c0-1.11-.887-2.01-1.986-2.01-1.1 0-1.987.9-1.987 2.01z"></path>
+  <defs>
+    <radialGradient id="paint4_radial_19233_4049-payment-method-logo-PayEasy" cx="0" cy="0" r="1" gradientTransform="matrix(1.04633 0 0 1.05932 58.712 10.415)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CCE70B"></stop>
+      <stop offset=".15" stop-color="#CCE70B"></stop>
+      <stop offset=".24" stop-color="#C6E40C"></stop>
+      <stop offset=".36" stop-color="#B6DC0F"></stop>
+      <stop offset=".5" stop-color="#9CD015"></stop>
+      <stop offset=".64" stop-color="#77BF1D"></stop>
+      <stop offset=".79" stop-color="#48A927"></stop>
+      <stop offset=".95" stop-color="#0F8F33"></stop>
+      <stop offset=".99" stop-color="#008837"></stop>
+      <stop offset="1" stop-color="#008837"></stop>
+    </radialGradient>
+    <radialGradient id="paint5_radial_19233_4049-payment-method-logo-PayEasy" cx="0" cy="0" r="1" gradientTransform="matrix(3.10552 0 0 3.14407 82.158 10.415)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CCE70B"></stop>
+      <stop offset=".15" stop-color="#CCE70B"></stop>
+      <stop offset=".24" stop-color="#C6E40C"></stop>
+      <stop offset=".36" stop-color="#B6DC0F"></stop>
+      <stop offset=".5" stop-color="#9CD015"></stop>
+      <stop offset=".64" stop-color="#77BF1D"></stop>
+      <stop offset=".79" stop-color="#48A927"></stop>
+      <stop offset=".95" stop-color="#0F8F33"></stop>
+      <stop offset=".99" stop-color="#008837"></stop>
+      <stop offset="1" stop-color="#008837"></stop>
+    </radialGradient>
+    <radialGradient id="paint6_radial_19233_4049-payment-method-logo-PayEasy" cx="0" cy="0" r="1" gradientTransform="matrix(2.4833 0 0 2.51412 75.449 10.416)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CCE70B"></stop>
+      <stop offset=".15" stop-color="#CCE70B"></stop>
+      <stop offset=".24" stop-color="#C6E40C"></stop>
+      <stop offset=".36" stop-color="#B6DC0F"></stop>
+      <stop offset=".5" stop-color="#9CD015"></stop>
+      <stop offset=".64" stop-color="#77BF1D"></stop>
+      <stop offset=".79" stop-color="#48A927"></stop>
+      <stop offset=".95" stop-color="#0F8F33"></stop>
+      <stop offset=".99" stop-color="#008837"></stop>
+      <stop offset="1" stop-color="#008837"></stop>
+    </radialGradient>
+    <radialGradient id="paint7_radial_19233_4049-payment-method-logo-PayEasy" cx="0" cy="0" r="1" gradientTransform="matrix(1.98571 0 0 2.01036 69.905 10.414)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CCE70B"></stop>
+      <stop offset=".15" stop-color="#CCE70B"></stop>
+      <stop offset=".24" stop-color="#C6E40C"></stop>
+      <stop offset=".36" stop-color="#B6DC0F"></stop>
+      <stop offset=".5" stop-color="#9CD015"></stop>
+      <stop offset=".64" stop-color="#77BF1D"></stop>
+      <stop offset=".79" stop-color="#48A927"></stop>
+      <stop offset=".95" stop-color="#0F8F33"></stop>
+      <stop offset=".99" stop-color="#008837"></stop>
+      <stop offset="1" stop-color="#008837"></stop>
+    </radialGradient>
+    <linearGradient id="paint0_linear_19233_4049-payment-method-logo-PayEasy" x1="66.468" x2="66.517" y1="4.681" y2="1.933" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A50A1"></stop>
+      <stop offset=".2" stop-color="#0A50A1"></stop>
+      <stop offset=".7" stop-color="#1D88BC"></stop>
+      <stop offset=".74" stop-color="#258DBE"></stop>
+      <stop offset=".81" stop-color="#3B9BC6"></stop>
+      <stop offset=".89" stop-color="#60B3D3"></stop>
+      <stop offset=".99" stop-color="#92D4E5"></stop>
+      <stop offset="1" stop-color="#99D9E8"></stop>
+    </linearGradient>
+    <linearGradient id="paint1_linear_19233_4049-payment-method-logo-PayEasy" x1="71.504" x2="73.467" y1="15.96" y2="4.97" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3690C0"></stop>
+      <stop offset=".02" stop-color="#3690C0"></stop>
+      <stop offset=".3" stop-color="#67A9CF"></stop>
+      <stop offset=".7" stop-color="#B2D7E8"></stop>
+      <stop offset=".78" stop-color="#7AAAD0"></stop>
+      <stop offset=".9" stop-color="#2969AE"></stop>
+      <stop offset=".95" stop-color="#0A50A1"></stop>
+      <stop offset="1" stop-color="#0A50A1"></stop>
+    </linearGradient>
+    <linearGradient id="paint2_linear_19233_4049-payment-method-logo-PayEasy" x1="61.457" x2="64.723" y1="26.72" y2="3.762" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0670B0"></stop>
+      <stop offset=".05" stop-color="#0670B0"></stop>
+      <stop offset=".16" stop-color="#368DBF"></stop>
+      <stop offset=".4" stop-color="#AFD6E7"></stop>
+      <stop offset=".72" stop-color="#5CAACE"></stop>
+      <stop offset=".98" stop-color="#1D88BC"></stop>
+      <stop offset="1" stop-color="#1D88BC"></stop>
+    </linearGradient>
+    <linearGradient id="paint3_linear_19233_4049-payment-method-logo-PayEasy" x1="61.86" x2="73.423" y1="6.21" y2="19.82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0290BE"></stop>
+      <stop offset=".44" stop-color="#0858A4"></stop>
+      <stop offset=".81" stop-color="#0D3092"></stop>
+      <stop offset="1" stop-color="#0F218B"></stop>
+    </linearGradient>
+  </defs>
+  <title>PayEasy</title>
+</svg>

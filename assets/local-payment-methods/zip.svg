@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="30" fill="none" viewBox="0 0 150 30" class="PaymentMethodLogo ">
+  <path fill="var(--paymentMethodLogoColor, #AA8FFF)" fill-rule="evenodd" d="M64.623 7.316l1.981 16.682h19.388L84.01 7.316H64.623z" clip-rule="evenodd"></path>
+  <path fill="var(--paymentMethodLogoColor, #1A0826)" fill-rule="evenodd" d="M70.587 5.103c-.988 1.167-2.819 1.167-4.087 0-1.27-1.167-1.496-3.06-.507-4.227.99-1.168 2.82-1.168 4.087 0 1.27 1.167 1.496 3.06.507 4.227zm28.57 10.882l-6.067.007-.475-4.004 6.099.005c1.434.018 2.169.853 2.287 1.996.076.736-.25 1.996-1.843 1.996zm7.167-2.662c-.448-3.75-3.296-6.023-7.168-6.007H86.26L88.241 24h5.801l-.397-3.337h6.14c4.831 0 7.043-3.114 6.539-7.34zm-61.896 6.015L44.98 24h19.373l-.633-5.338h-9.034L54.609 18l8.319-6.011-.556-4.672H43l.634 5.34h9.048l.08.666-8.334 6.015z" clip-rule="evenodd"></path>
+  <title>Zip</title>
+</svg>

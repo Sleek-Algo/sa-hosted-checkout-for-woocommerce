@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="30" fill="none" viewBox="0 0 150 30" class="PaymentMethodLogo ">
+  <g clip-path="url(#clip0_2547_181202-payment-method-logo-CardFallback)">
+    <path fill="var(--paymentMethodLogoColor, #E7ECF1)" d="M64 9.667A2.667 2.667 0 0166.667 7H84a2.667 2.667 0 012.667 2.667v10.666A2.667 2.667 0 0184 23H66.667A2.667 2.667 0 0164 20.333V9.667z"></path>
+    <path fill="var(--paymentMethodLogoColor, #4F5B76)" fill-rule="evenodd" d="M64 9.667A2.667 2.667 0 0166.667 7H84a2.667 2.667 0 012.667 2.667v.166H64v-.166zm0 3v7.666A2.667 2.667 0 0066.667 23H84a2.667 2.667 0 002.667-2.667v-7.666H64zm2.833 7.083c0-.782.635-1.417 1.417-1.417h1.417a1.417 1.417 0 010 2.834H68.25a1.417 1.417 0 01-1.417-1.417z" clip-rule="evenodd"></path>
+  </g>
+  <defs>
+    <clipPath id="clip0_2547_181202-payment-method-logo-CardFallback">
+      <path fill="var(--paymentMethodLogoColor, #fff)" d="M0 0h22.667v16H0z" transform="translate(64 7)"></path>
+    </clipPath>
+  </defs>
+  <title>Card</title>
+</svg>
+
+
+
+
+

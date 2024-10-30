@@ -1,0 +1,52 @@
+:where(.sahcfwc-stripe-settings-form) {
+    background-color: #fff !important;
+    border-radius: 6px;
+    .sahcfwc-pro-card {
+        background-color: transparent !important;
+    }
+    .sahcfwc-form-item-label>label {
+        width: 300px;
+        max-width: 300px;
+    }
+    label[for="checkbox-group"]+input[type="checkbox"] {
+        width: auto !important;
+        max-width: none !important;
+    }
+    .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row label {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row {
+        flex-direction: column;
+    }
+     :where(.sahcfwc-btn.sahcfwc-btn-block) {
+        margin-top: 32px;
+    }
+     :where(.css-dev-only-do-not-override-xxt8zy).sahcfwc-pro-form-list-action {
+        position: relative;
+        top: 35px;
+    }
+    .sahcfwc-btn-primary {
+        margin: 0 20px 20px;
+    }
+}
+
+    
+
+@media only screen and (max-width: 1200.5px) {
+     :where(.sahcfwc-stripe-settings-form) {
+        .sahcfwc-form-item-label>label {
+            width: 200px;
+            max-width: 200px;
+        }
+    }
+}
+
+@media only screen and (max-width: 575.5px) {
+     :where(.sahcfwc-stripe-settings-form) {
+        .sahcfwc-form-item-label>label {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}

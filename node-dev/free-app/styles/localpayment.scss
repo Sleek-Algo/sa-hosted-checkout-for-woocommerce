@@ -1,0 +1,14 @@
+
+.stripe_payment_toggle {
+    pointer-events: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .sahcfwc-checkout-settings-form {
+        .sa-procard-grids {
+            .sahcfwc-pro-card-header {
+                flex-direction: column;
+            }
+        }
+    }
+}
