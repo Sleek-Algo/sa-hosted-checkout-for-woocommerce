@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Dashboard class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
+
 namespace SAHCFWC\Pages;
 
 if ( ! class_exists( '\\SAHCFWC\\Pages\\Dashboard' ) ) {

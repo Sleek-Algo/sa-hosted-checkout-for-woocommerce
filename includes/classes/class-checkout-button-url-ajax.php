@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Checkout_Button_Url_Ajax class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
+
 namespace SAHCFWC\Classes;
 
 use Automattic\WooCommerce\Utilities\OrderUtil;
@@ -243,7 +243,7 @@ if ( ! class_exists( ' \\SAHCFWC\\Classes\\Checkout_Button_Url_Ajax' ) ) {
 		public $sahcfwc_stripe_customize_terms_service_text;
 
 		/**
-		 * sahcfwc id.
+		 * Sahcfwc id.
 		 *
 		 * @since 1.0.0
 		 *
@@ -522,7 +522,7 @@ if ( ! class_exists( ' \\SAHCFWC\\Classes\\Checkout_Button_Url_Ajax' ) ) {
 			);
 			$num                                  = 0;
 			foreach ( WC()->cart->get_applied_coupons() as $coupon ) {
-				$checkoutarray['payment_intent_data']['metadata'][ 'coupon_data_' . ++$num ] = $coupon;
+				$checkoutarray['payment_intent_data']['metadata'][ 'coupon_data_' . ( ++$num ) ] = $coupon;
 			}
 			try {
 				$checkout_session = \SAHCFWC\Libraries\Stripe\Checkout\Session::create( $checkoutarray, $this->sahcfwc_stripe_secret );

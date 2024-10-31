@@ -9,154 +9,118 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-14T07:22:53+00:00\n"
+"POT-Creation-Date: 2024-10-31T07:21:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
-"X-Domain: SAHCFWC\n"
+"X-Domain: sa-hosted-checkout-for-woocommerce\n"
 
 #. Plugin Name of the plugin
-#: C:\Users\Nabeel\Local Sites\sccp2\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
+#: D:\local-wp-sites\sa.scpp.local.host.com\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/Header.jsx:15
-#: node-dev/src/premium-app/components/Header.jsx:11
+#: node-dev/free-app/components/Header.jsx:15
 msgid "SA Hosted Checkout for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: C:\Users\Nabeel\Local Sites\sccp2\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
+#: D:\local-wp-sites\sa.scpp.local.host.com\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
 msgid "https://www.sleekalgo.com"
 msgstr ""
 
 #. Description of the plugin
-#: C:\Users\Nabeel\Local Sites\sccp2\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
+#: D:\local-wp-sites\sa.scpp.local.host.com\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
 msgid "Increase conversions by using Sleek Checkout on your WooCommerce website. Let your customers pay with confidence using highly optimized, Stripe hosted checkout. Setup in a few minutes. All configuration options are available."
 msgstr ""
 
 #. Author of the plugin
-#: C:\Users\Nabeel\Local Sites\sccp2\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
+#: D:\local-wp-sites\sa.scpp.local.host.com\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
 msgid "Sleek Algo"
 msgstr ""
 
 #. Author URI of the plugin
-#: C:\Users\Nabeel\Local Sites\sccp2\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
+#: D:\local-wp-sites\sa.scpp.local.host.com\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
 msgid "https://www.sleekalgo.com/"
 msgstr ""
 
-#: includes/classes/class-checkout-button-url-ajax.php:322
+#: includes/classes/class-checkout-button-url-ajax.php:318
 msgid "A security error has occurred. Please refresh the page and try again."
 msgstr ""
 
-#: includes/classes/class-checkout-button-url-ajax.php:676
-#: includes/classes/class-payment-gateway.php:704
+#: includes/classes/class-checkout-button-url-ajax.php:506
+#: includes/classes/class-payment-gateway.php:555
 msgid "Payment to be made upon delivery."
 msgstr ""
 
-#: includes/classes/class-checkout-button-url-ajax.php:743
+#: includes/classes/class-checkout-button-url-ajax.php:530
 msgid "Error creating checkout session:"
 msgstr ""
 
-#: includes/classes/class-checkout-button-url-ajax.php:746
+#: includes/classes/class-checkout-button-url-ajax.php:533
 msgid "Error creating checkout session: "
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:274
-#: includes/classes/class-payment-gateway.php:299
+#: includes/classes/class-payment-gateway.php:253
+#: includes/classes/class-payment-gateway.php:278
 msgid "Stripe Checkout"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:275
+#: includes/classes/class-payment-gateway.php:254
 msgid "Let your customers pay with confidence using highly optimized, Stripe hosted checkout."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:289
+#: includes/classes/class-payment-gateway.php:268
 msgid "Enable/Disable"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:290
+#: includes/classes/class-payment-gateway.php:269
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:192
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:194
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:204
 msgid "Enable Stripe Checkout"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:296
+#: includes/classes/class-payment-gateway.php:275
 msgid "Title"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:298
+#: includes/classes/class-payment-gateway.php:277
 msgid "Payment method description that the customer will see on your checkout."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:303
+#: includes/classes/class-payment-gateway.php:282
 msgid "Description"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:305
+#: includes/classes/class-payment-gateway.php:284
 msgid "Payment method description that the customer will see on your website."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:306
+#: includes/classes/class-payment-gateway.php:285
 msgid "Stripe Checkout redirects users to a secure, Stripe-hosted payment page to accept payment."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:310
+#: includes/classes/class-payment-gateway.php:289
 msgid "Instructions"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:312
+#: includes/classes/class-payment-gateway.php:291
 msgid "Instructions that will be added to the thank you page."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:313
+#: includes/classes/class-payment-gateway.php:292
 msgid "Thanks you have paid with stripe hosted checkout."
 msgstr ""
 
-#: includes/classes/class-post-checkout.php:131
-#: includes/classes/class-post-checkout.php:172
+#: includes/classes/class-post-checkout.php:91
+#: includes/classes/class-post-checkout.php:129
 msgid "Nice try."
 msgstr ""
 
-#: includes/classes/class-pre-checkout.php:97
+#: includes/classes/class-pre-checkout.php:92
 msgid "Please log in before applying the coupon."
 msgstr ""
 
-#: includes/pages/class-dashboard.php:55
-#: includes/pages/class-dashboard.php:56
+#: includes/pages/class-dashboard.php:57
+#: includes/pages/class-dashboard.php:58
 msgid "Sleek Checkout"
-msgstr ""
-
-#: includes/shortcodes/class-thank-you-page-date.php:64
-msgid "Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again."
-msgstr ""
-
-#: includes/shortcodes/class-thank-you-page-date.php:66
-msgid "Pay"
-msgstr ""
-
-#: includes/shortcodes/class-thank-you-page-date.php:68
-msgid "My account"
-msgstr ""
-
-#: includes/shortcodes/class-thank-you-page-date.php:75
-msgid "Order number:"
-msgstr ""
-
-#: includes/shortcodes/class-thank-you-page-date.php:79
-msgid "Date:"
-msgstr ""
-
-#: includes/shortcodes/class-thank-you-page-date.php:84
-msgid "Email:"
-msgstr ""
-
-#: includes/shortcodes/class-thank-you-page-date.php:89
-msgid "Total:"
-msgstr ""
-
-#: includes/shortcodes/class-thank-you-page-date.php:94
-msgid "Payment method:"
 msgstr ""
 
 #: includes/traits/stripe-local-payment-methods-data.php:38
@@ -432,1026 +396,608 @@ msgstr ""
 msgid "Let your Swedish customers pay with Swish, enabling them purchase using the Swish mobile app and the Swedish BankID mobile app."
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:124
-msgid "Could not deactivate the SA Hosted Checkout for WooCommerce free plugin. Please deactivate it manually."
-msgstr ""
-
-#: sa-hosted-checkout-for-woocommerce.php:148
+#: sa-hosted-checkout-for-woocommerce.php:116
 msgid "Settings"
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:149
+#: sa-hosted-checkout-for-woocommerce.php:117
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/Header.jsx:45
-#: node-dev/src/premium-app/components/Header.jsx:24
+#: node-dev/free-app/components/Header.jsx:54
 msgid "Documentation"
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:150
+#: sa-hosted-checkout-for-woocommerce.php:118
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/Header.jsx:37
-#: node-dev/src/premium-app/components/Header.jsx:20
+#: node-dev/free-app/components/Header.jsx:43
 msgid "Support"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/Header.jsx:29
-#: node-dev/src/free-app/components/TabContent/Features.jsx:199
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:348
+#: node-dev/free-app/components/Header.jsx:32
+#: node-dev/free-app/components/TabContent/Features.jsx:199
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:375
 msgid "Upgrade to Premium "
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:73
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:72
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:73
 msgid "test-mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:85
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:85
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:88
 msgid "Please note: The Stripe checkout functionality will only work if the Enable Stripe Checkout option is enabled."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:97
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:101
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:124
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:101
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:97
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:104
 msgid "reset"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:98
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:102
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:125
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:102
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:101
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:108
 msgid "Submit"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:43
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:42
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:43
 msgid "yes"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:44
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:781
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:856
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:1027
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:43
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:73
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:44
 msgid "no"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:65
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:86
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:326
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:56
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:74
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:77
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:314
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:55
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:65
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:86
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:332
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:56
 msgid "Congratulations! Your settings have been successfully saved."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/NavTabs.jsx:90
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:187
-#: node-dev/src/premium-app/components/NavTabs.jsx:120
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:189
+#: node-dev/free-app/components/NavTabs.jsx:90
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:196
 msgid "Stripe Settings"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:197
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:199
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:209
 msgid "This option allows you to activate  Stripe Checkout functionality on your website."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:165
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:194
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:219
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:238
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:371
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:502
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:208
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:319
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:271
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:290
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:312
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:331
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:618
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:695
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:719
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:795
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:869
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:210
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:309
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:177
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:215
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:246
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:274
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:434
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:598
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:220
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:349
 msgid "Enable"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:169
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:198
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:223
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:242
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:375
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:506
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:212
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:323
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:275
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:294
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:316
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:335
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:622
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:699
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:723
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:799
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:873
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:214
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:313
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:184
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:222
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:253
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:281
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:441
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:605
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:227
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:356
 msgid "Disable"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:232
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:431
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:234
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:420
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:250
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:479
 msgid "Please Enter the Live Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:245
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:369
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:247
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:358
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:263
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:411
 msgid "Please Enter the Test Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:265
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:267
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:283
 msgid "Stripe Integration Mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:267
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:269
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:288
 msgid "This option allows you to choose Stripe Integration Mode,  either live or test, on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:273
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:275
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:294
 msgid "Test Mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:277
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:279
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:301
 msgid "Live Mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:302
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:301
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:329
 msgid "Admin Test Mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:309
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:303
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:339
 msgid "This option allows you to  activate admin test mode on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:331
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:336
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:320
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:325
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:367
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:375
 msgid "Test Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:332
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:321
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:371
 msgid "This option allows you to add a test secret key for the Stripe Test Mode."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:353
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:342
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:395
 msgid "Test Secret key ending *****"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:380
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:369
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:422
 msgid "The secret key should begin with the country code followed by 'test'."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:394
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:399
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:383
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:388
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:436
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:444
 msgid "Live Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:395
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:384
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:440
 msgid "This option allows you to add a secret key for the Stripe Live Mode."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:415
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:404
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:463
 msgid "Live Secret key ending *****"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:442
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:431
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:490
 msgid "The secret key should begin with the country code followed by 'live'."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:455
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:465
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:503
 msgid "Webhook Signing Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:459
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:469
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:507
 msgid "Webhook Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:474
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:484
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:525
 msgid "Webhook Signing Secret key ending *****"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSetting.jsx:484
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:494
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:535
 msgid "Please enter the Live Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/NavTabs.jsx:96
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:146
-#: node-dev/src/premium-app/components/NavTabs.jsx:126
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:252
+#: node-dev/free-app/components/NavTabs.jsx:99
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:152
 msgid "Checkout Settings"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:150
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:256
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:159
 msgid "Checkout Setting"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:154
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:260
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:166
 msgid "Enable Stripe Shipping Address"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:159
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:265
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:171
 msgid "This option allows the display of the shipping address field on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:180
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:282
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:198
 msgid "Adjustable Quantity Status"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:187
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:284
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:208
 msgid "This option allows to adjust the quantity of products on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:208
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:301
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:235
 msgid "Enable Stripe Terms & Services"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:213
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:306
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:240
 msgid "This option allows the display of the terms and services checkbox on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:230
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:323
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:263
 msgid "Enable Stripe Phone Number"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:232
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:325
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:268
 msgid "This option allows the display of  the phone number field on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:251
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:344
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:293
 msgid "Stripe Cancel URL"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:253
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:346
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:298
 msgid "This option allows you to be redirected to a new specified URL after canceling an order on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:276
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:369
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:321
 msgid "Please enter a valid URL "
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:290
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:408
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:335
 msgid "Text copied successfully!"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:303
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:381
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:348
 msgid "WooCommerce Custom ThankYou Page"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:313
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:386
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:358
 msgid "This option allows the display of a custom thank-you page after placing an order on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:320
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:349
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:194
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:392
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:541
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:180
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:365
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:403
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:194
 msgid "Default"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:324
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:353
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:198
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:396
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:545
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:184
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:372
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:410
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:201
 msgid "Custom"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:335
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:533
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:386
 msgid "Stripe Checkout Language"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:342
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:535
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:396
 msgid "This option allows you to choose the language as either custom or default on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:363
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:610
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:423
 msgid "Delete Temporary Order"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:365
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:612
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:428
 msgid "This option allows you to delete a temporary order when you return back to the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:387
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:634
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:456
 msgid "Custom Text Messages"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:395
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:638
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:467
 msgid "Add message after Shipping address"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:405
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:643
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:477
 msgid "This option allows the display of customized text after the shipping address field on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:409
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:430
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:451
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:475
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:647
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:657
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:667
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:680
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:481
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:508
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:535
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:562
 msgid "Enter text"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:419
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:651
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:494
 msgid "Add message after submit"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:426
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:653
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:504
 msgid "This option allows the display of customized text after the submit button on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:440
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:661
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:521
 msgid "Add message before submit"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:447
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:663
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:531
 msgid "This option allows the display of customized text before the submit button on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:461
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:671
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:548
 msgid "Customize terms and service text"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:471
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:676
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:558
 msgid "This option allows the display of customized terms and service text on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:482
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:684
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:572
 msgid "Stripe Custom Field Options"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:489
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:687
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:582
 msgid "Stripe Custom field options"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/CheckoutSetting.jsx:496
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:689
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:592
 msgid "This option allows the display of the custom field on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/NavTabs.jsx:104
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:167
-#: node-dev/src/premium-app/components/NavTabs.jsx:134
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:158
+#: node-dev/free-app/components/NavTabs.jsx:110
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:167
 msgid "Payment Methods"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:174
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:177
 msgid "Custom Payment Method"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:182
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:169
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:182
 msgid "This option allows you to choose the payment method as either default or custom on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:213
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:199
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:219
 msgid "Stripe default payment method is set. To add a custom payment method, select the custom option."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:251
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:238
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:257
 msgid "enable"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/LocalPaymentMethods.jsx:255
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:242
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:261
 msgid "disable"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:30
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:33
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:30
 msgid "customer_email"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:32
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:35
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:35
 msgid "The rule name is the unique key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:42
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:45
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:48
 msgid "Search by customer email"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:46
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:50
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:55
 msgid "created_at"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:59
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:63
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:68
 msgid "Start date"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:60
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:64
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:69
 msgid "End date"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:66
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:74
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:75
 msgid "Customer Email"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:72
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:81
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:81
 msgid "Total Amount"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:88
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:98
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:97
 msgid "Payment Status"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:115
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:125
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:124
 msgid "Session URL"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:133
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:144
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:142
 msgid "Date Expired"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:145
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:157
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:154
 msgid "Date Created"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:184
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:194
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:193
 msgid "No records found"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:192
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:201
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:204
 msgid "Reset"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:193
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:202
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:208
 msgid "Inquiry"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:299
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:263
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:317
 msgid "Session Detail"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:317
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:280
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:338
 msgid "Fields"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/TabContent/StripeSessions.jsx:321
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:973
+#: node-dev/free-app/components/TabContent/StripeSessions.jsx:345
 msgid "Value"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:32
+#: node-dev/free-app/components/TabContent/Features.jsx:32
 msgid "Stripe Integration mode: Provides two modes of integration \"Live mode\" & \"Test mode\"."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:41
+#: node-dev/free-app/components/TabContent/Features.jsx:41
 msgid "Shipping Address option: Add shipping address to be displayed on checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:50
+#: node-dev/free-app/components/TabContent/Features.jsx:50
 msgid "Custom Phone number option: Add Phone number field to be displayed on checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:59
+#: node-dev/free-app/components/TabContent/Features.jsx:59
 msgid "Custom Cancel URL: Let your customer redirect to a specified URL after cancelling an order."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:68
+#: node-dev/free-app/components/TabContent/Features.jsx:68
 msgid "Managing Temporary order: Allows your customers to delete all temporary orders."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:77
+#: node-dev/free-app/components/TabContent/Features.jsx:77
 msgid "Custom payment methods: Support any or all payment methods."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:86
+#: node-dev/free-app/components/TabContent/Features.jsx:86
 msgid "Custom language option: Change the language of Stripe checkout displayed to your customers."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:95
+#: node-dev/free-app/components/TabContent/Features.jsx:95
 msgid "Custom text before & after submit button: Add custom text to be displayed before and after submit button of Stripe Checkout."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:104
+#: node-dev/free-app/components/TabContent/Features.jsx:104
 msgid "Adjustable quantity option: Let your customers adjust the quantity of products on Stripe Checkout."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:113
+#: node-dev/free-app/components/TabContent/Features.jsx:113
 msgid "Stripe Checkout Sessions Information: Ability to view all the Stripe Checkout sessions created on the web store with their status of completion and customer information."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:122
+#: node-dev/free-app/components/TabContent/Features.jsx:122
 msgid "Admin test mode: This option automatically enables test mode of payment for administrators of the website."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:131
+#: node-dev/free-app/components/TabContent/Features.jsx:131
 msgid "Custom Thank You page: Redirect your customers to a tailored thankyou page as per your choice."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:140
+#: node-dev/free-app/components/TabContent/Features.jsx:140
 msgid "Custom fields option: Ability to display custom fields on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:149
+#: node-dev/free-app/components/TabContent/Features.jsx:149
 msgid "Coupon and Discount: The capability to apply coupons and discounts on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:159
+#: node-dev/free-app/components/TabContent/Features.jsx:159
 msgid "Feature List"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:165
+#: node-dev/free-app/components/TabContent/Features.jsx:165
 msgid "Free"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/TabContent/Features.jsx:171
+#: node-dev/free-app/components/TabContent/Features.jsx:171
 msgid "Premium"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/NavTabs.jsx:74
-#: node-dev/src/premium-app/components/NavTabs.jsx:88
+#: node-dev/free-app/components/NavTabs.jsx:74
 msgid "The Country and Currency on the WooCommerce settings should be same with Stripe settings."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: assets/backend/premium-app.js:1
-#: node-dev/src/free-app/components/NavTabs.jsx:118
-#: node-dev/src/premium-app/components/NavTabs.jsx:141
+#: node-dev/free-app/components/NavTabs.jsx:127
 msgid "Stripe Sessions"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/src/free-app/components/NavTabs.jsx:131
+#: node-dev/free-app/components/NavTabs.jsx:143
 msgid "Features"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:444
-msgid "Webhook URL :"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/StripeSetting.jsx:447
-msgid "Please Copy the Webhook URL"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:421
-msgid "Order Details Short Code :"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:424
-msgid "Please Copy the Shortcode"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:511
-msgid "Page"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:512
-msgid "This option allows you to select a custom thank-you page"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:516
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:523
-msgid "Please select a page"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:589
-msgid "Locale"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:590
-msgid "This option allows you to change the language on the Stripe checkout page."
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:594
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:601
-msgid "Please select a language"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:712
-msgid "Add Custom Text Field Options"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:737
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:812
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:886
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:940
-msgid "Label"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:738
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:813
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:887
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:941
-msgid "This option allows you to add label text to the custom field."
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:743
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:818
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:892
-msgid "Type your field label"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:753
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:828
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:902
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:964
-msgid "Please add a label"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:762
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:837
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:1008
-msgid "This fields is required?"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:766
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:1012
-msgid "This option determines whether a custom field is required or not on the Stripe checkout page"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:772
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:847
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:1018
-msgid "Yes"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:776
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:851
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:1022
-msgid "No"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:788
-msgid "Add Custom Number Field Options"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:841
-msgid "This option determines whether a custom field is required or not on the Stripe checkout page "
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:862
-msgid "Add Custom Dropdown Field Options"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:914
-msgid "Copy this row"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:920
-msgid "Delete this row"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:926
-msgid "Add New Row"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:945
-msgid "Type label text"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:974
-msgid "This option allows you  to add value to the dropdown field option for the database."
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:978
-msgid "Type value text"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/CheckoutSetting.jsx:997
-msgid "Please add a value"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/LocalPaymentMethods__premium_only.jsx:164
-msgid "Custom Payment Method."
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/TabContent/StripeSessions__premium_only.jsx:287
-msgid "Details"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/NavTabs.jsx:98
-msgid "Please use the license key to activate the premium features"
-msgstr ""
-
-#: assets/backend/premium-app.js:1
-#: node-dev/src/premium-app/components/NavTabs.jsx:114
-msgid "License"
 msgstr ""

@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Stripe_Lister class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
+
 namespace SAHCFWC\Webhooks;
 
 if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
@@ -167,7 +167,7 @@ if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param  object $event stripe data.
+		 * @param  object $event_data stripe data.
 		 * @return void
 		 */
 		public function sahcfwc_charge_succeeded_handler( $event_data ) {
@@ -239,7 +239,7 @@ if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param  object $event stripe data.
+		 * @param  object $event_data stripe data.
 		 * @return void
 		 */
 		public function sahcfwc_payment_intent_succeeded_handler( $event_data ) {

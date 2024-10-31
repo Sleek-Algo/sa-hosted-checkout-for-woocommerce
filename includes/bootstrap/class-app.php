@@ -1,10 +1,10 @@
 <?php
-
 /**
  * App class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
+
 namespace SAHCFWC\Bootstrap;
 
 if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\App' ) ) {

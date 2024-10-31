@@ -1,10 +1,10 @@
 <?php
-
 /**
  * WC_Payment_Gateway class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
+
 namespace SAHCFWC\Classes;
 
 if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
@@ -370,90 +370,93 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 			 * @return array.
 			 */
 			public function get_payment_session_checkout_url( $session_id, $order ) {
+				// @codingStandardsIgnoreStart
 				return sprintf(
 					'#response=%s',
-                    // @codingStandardsIgnoreStart
                     base64_encode( wp_json_encode( array(
                         'session_id' => $session_id,
                         'order_id'   => ( WC()->version < '2.7.0' ? $order->id : $order->get_id() ),
                         'time'       => wp_rand( 0, 999999 ),
                     ) ) )
                  );
-            }
+				 // @codingStandardsIgnoreEnd
+			}
 
-            /**
-             * Round ammound.
-             *
-             * @since 1.0.0
-             *
-             * @param  int| $order_id WooCommerce order id.
-             * @return array.
-             */
-            public function process_payment( $order_id ) {
-                $order = wc_get_order( $order_id );
-                $currency = $order->get_currency();
-                $cart = WC()->cart;
-                if ( !$cart->is_empty() ) {
-                    do_action( 'sahcfwc_woocommerce_before_calculate_totals', $cart );
-                    $lineitems = array();
-                    foreach ( $cart->get_cart() as $cart_item_key => $cart_item ) {
-                        $item_name = $cart_item['data']->get_title();
-                        $quantity = $cart_item['quantity'];
-                        $price = $cart_item['data']->get_price();
-                        $metadata = array();
-                        $metadata['cart_item_key'] = $cart_item_key;
-                        $metadata['order_id'] = $order_id;
-                        $metadata['product_id'] = $cart_item['product_id'];
-                        $lineitem = array();
-                        $lineitem['quantity'] = $quantity;
-                        $lineitemdata = array();
-                        $lineitemdata['currency'] = $currency;
-                        $_product = wc_get_product( $cart_item['product_id'] );
-                        $description = wc_get_formatted_cart_item_data( $cart_item, true );
-                        $lineitemdata['product_data'] = array(
-                            'name'     => $item_name,
-                            'metadata' => $metadata,
-                        );
-                        $images = array();
-                        if ( $_product->get_image_id() ) {
-                            $image = wp_get_attachment_image_src( $_product->get_image_id() );
-                            $images[] = ( isset( $image[0] ) && !empty( $image[0] ) ? $image[0] : SAHCFWC_URL_ASSETS_FRONTEND_IMAGES . '/sahcfwc-woocommerce-placeholder.png' );
-                        } else {
-                            $images[] = SAHCFWC_URL_ASSETS_FRONTEND_IMAGES . '/sahcfwc-woocommerce-placeholder.png';
-                        }
-                        $lineitemdata['product_data']['images'] = $images;
-                        if ( $description ) {
-                            $lineitemdata['product_data']['description'] = $description;
-                        }
-                        $lineitemdata['product_data']['metadata'] = $metadata;
-                        $price = number_format(
-                            (float) $price,
-                            2,
-                            '.',
-                            ''
-                        );
-                        $lineitemdata['unit_amount_decimal'] = preg_replace( '/\\D/', '', $price );
-                        $lineitem['price_data'] = $lineitemdata;
-                        $adjustable_quantity = array();
-                        $lineitems[] = $lineitem;
-                    }
-                } else {
-                    header( 'Location: ' . home_url( 'cart' ) );
-                    return;
-                }
-                if ( isset( $this->sahcfwc_stripe_secret ) && !empty( $this->sahcfwc_stripe_secret ) ) {
-                    \SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
-                    $cart_discount = WC()->cart->get_cart_discount_total() * 100;
-                    $coupon = null;
-                    if ( $cart_discount ) {
-                        $stripe_n = new \SAHCFWC\Libraries\Stripe\StripeClient($this->sahcfwc_stripe_secret);
-                        $coupon = $stripe_n->coupons->create( array(
-                            'amount_off' => $cart_discount,
-                            'currency'   => $currency,
-                            'duration'   => 'once',
-                        ) );
-                    }
-                    $stripe = new \SAHCFWC\Libraries\Stripe\StripeClient($this->sahcfwc_stripe_secret);
+			/**
+			 * Round ammound.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param  int| $order_id WooCommerce order id.
+			 * @return array.
+			 */
+			public function process_payment( $order_id ) {
+				$order    = wc_get_order( $order_id );
+				$currency = $order->get_currency();
+				$cart     = WC()->cart;
+				if ( ! $cart->is_empty() ) {
+					do_action( 'sahcfwc_woocommerce_before_calculate_totals', $cart );
+					$lineitems = array();
+					foreach ( $cart->get_cart() as $cart_item_key => $cart_item ) {
+						$item_name                    = $cart_item['data']->get_title();
+						$quantity                     = $cart_item['quantity'];
+						$price                        = $cart_item['data']->get_price();
+						$metadata                     = array();
+						$metadata['cart_item_key']    = $cart_item_key;
+						$metadata['order_id']         = $order_id;
+						$metadata['product_id']       = $cart_item['product_id'];
+						$lineitem                     = array();
+						$lineitem['quantity']         = $quantity;
+						$lineitemdata                 = array();
+						$lineitemdata['currency']     = $currency;
+						$_product                     = wc_get_product( $cart_item['product_id'] );
+						$description                  = wc_get_formatted_cart_item_data( $cart_item, true );
+						$lineitemdata['product_data'] = array(
+							'name'     => $item_name,
+							'metadata' => $metadata,
+						);
+						$images                       = array();
+						if ( $_product->get_image_id() ) {
+							$image    = wp_get_attachment_image_src( $_product->get_image_id() );
+							$images[] = ( isset( $image[0] ) && ! empty( $image[0] ) ? $image[0] : SAHCFWC_URL_ASSETS_FRONTEND_IMAGES . '/sahcfwc-woocommerce-placeholder.png' );
+						} else {
+							$images[] = SAHCFWC_URL_ASSETS_FRONTEND_IMAGES . '/sahcfwc-woocommerce-placeholder.png';
+						}
+						$lineitemdata['product_data']['images'] = $images;
+						if ( $description ) {
+							$lineitemdata['product_data']['description'] = $description;
+						}
+						$lineitemdata['product_data']['metadata'] = $metadata;
+						$price                                    = number_format(
+							(float) $price,
+							2,
+							'.',
+							''
+						);
+						$lineitemdata['unit_amount_decimal']      = preg_replace( '/\\D/', '', $price );
+						$lineitem['price_data']                   = $lineitemdata;
+						$adjustable_quantity                      = array();
+						$lineitems[]                              = $lineitem;
+					}
+				} else {
+					header( 'Location: ' . home_url( 'cart' ) );
+					return;
+				}
+				if ( isset( $this->sahcfwc_stripe_secret ) && ! empty( $this->sahcfwc_stripe_secret ) ) {
+					\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
+					$cart_discount = WC()->cart->get_cart_discount_total() * 100;
+					$coupon        = null;
+					if ( $cart_discount ) {
+						$stripe_n = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+						$coupon   = $stripe_n->coupons->create(
+							array(
+								'amount_off' => $cart_discount,
+								'currency'   => $currency,
+								'duration'   => 'once',
+							)
+						);
+					}
+					$stripe = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
                     // @codingStandardsIgnoreStart
                     $stripe->countrySpecs->retrieve( 'US', array() );
                     // @codingStandardsIgnoreEnd
@@ -461,7 +464,9 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 						'line_items'                 => $lineitems,
 						'mode'                       => 'payment',
 						'success_url'                => wp_sanitize_redirect( home_url() ) . '/?wc-ajax=sahcfwc_stripe_checkout_order&sessionid={CHECKOUT_SESSION_ID}&order_id=' . $order_id . '&_wpnonce=' . wp_create_nonce( 'sahcfwc_checkout_nonce' ),
+						// @codingStandardsIgnoreStart
 						'cancel_url'                 => wp_sanitize_redirect( home_url() ) . '/?wc-ajax=sahcfwc_stripe_cancel_order&sessionid={CHECKOUT_SESSION_ID}&_wpnonce=' . wp_create_nonce( 'sahcfwc_checkout_nonce' ) . '&order_id=' . base64_encode( $order_id ),
+						// @codingStandardsIgnoreEnd
 						'billing_address_collection' => 'required',
 						'expires_at'                 => time() + 3600 * 1,
 					);

@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Stripe_Checkout class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
+
 namespace SAHCFWC\Settings;
 
 if ( ! class_exists( '\\SAHCFWC\\Settings\\Stripe_Checkout' ) ) {

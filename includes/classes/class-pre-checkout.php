@@ -1,10 +1,10 @@
 <?php
-
 /**
  * Pre_Checkout class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
+
 namespace SAHCFWC\Classes;
 
 if ( ! class_exists( '\\SAHCFWC\\Classes\\Pre_Checkout' ) ) {

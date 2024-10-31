@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'sleekalgo/sa-hosted-checkout-for-woocommerce',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '8f1662d45b551debc983c500ff3ad6b3a5405370',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -44,9 +44,9 @@
             ),
         ),
         'sleekalgo/sa-hosted-checkout-for-woocommerce' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '8f1662d45b551debc983c500ff3ad6b3a5405370',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
