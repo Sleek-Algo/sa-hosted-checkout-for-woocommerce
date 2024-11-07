@@ -105,12 +105,13 @@ if ( ! class_exists( '\\SAHCFWC\\Pages\\Dashboard' ) ) {
 				);
 				$license_status                           = ( get_option( 'sahcfwc_checkout_license_action' ) === false ? 'deactivate' : get_option( 'sahcfwc_checkout_license_action' ) );
 				$url                                      = get_site_url( null, 'wp-admin/admin.php?page=sahcfwc-dashboard-pricing' );
+				$premium_url                              = 'https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/';
 				$sahcfwc_customizations_localized_objects = array(
 					'language'             => get_user_locale(),
 					'webhook_URL'          => get_site_url() . '/wp-json/sa/sahcfwc/v1/webhooks/stripe-lister',
 					'language_dir'         => ( is_rtl() ? 'rtl' : 'ltr' ),
 					'license_status'       => $license_status,
-					'purchase_premium_url' => $url,
+					'purchase_premium_url' => $premium_url,
 					'text_domain'          => 'sa-hosted-checkout-for-woocommerce',
 				);
 				wp_localize_script( 'sahcfwc-app-script', 'sahcfwc_customizations_localized_objects', apply_filters( 'sahcfwc_customizations_localized_objects', $sahcfwc_customizations_localized_objects ) );

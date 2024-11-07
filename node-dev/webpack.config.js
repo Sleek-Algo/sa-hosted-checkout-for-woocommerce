@@ -3,7 +3,6 @@ const path = require( 'path' );
 const FileManagerPlugin = require( 'filemanager-webpack-plugin' );
 const create_zip = process.env.CREATE_ZIP || 'no'; // Change this to 'yes' to create the zip
 const NODE_ENV = process.env.NODE_ENV || 'development';
-const TerserPlugin = require( 'terser-webpack-plugin' );
 
 /**
  * WordPress Dependencies
@@ -70,11 +69,6 @@ if ( create_zip === 'yes' ) {
 								DevelopmentZipVersionFolder + '/assets',
 						},
 						{
-							source: '../freemius',
-							destination:
-								DevelopmentZipVersionFolder + '/freemius',
-						},
-						{
 							source: '../includes',
 							destination:
 								DevelopmentZipVersionFolder + '/includes',
@@ -138,11 +132,6 @@ if ( create_zip === 'yes' ) {
 						{
 							source: '../assets',
 							destination: ProductionZipVersionFolder + '/assets',
-						},
-						{
-							source: '../freemius',
-							destination:
-								ProductionZipVersionFolder + '/freemius',
 						},
 						{
 							source: '../includes',
@@ -223,17 +212,5 @@ module.exports = {
 			filename: '[name].js',
 		},
 		plugins: plugins,
-		optimization: {
-			minimizer: [
-				new TerserPlugin( {
-					terserOptions: {
-						output: {
-							comments: /<\/?fs_premium_only>/i, // Retain only Freemius tags
-						},
-					},
-					extractComments: false, // Don't extract comments to separate file
-				} ),
-			],
-		},
 	},
 };

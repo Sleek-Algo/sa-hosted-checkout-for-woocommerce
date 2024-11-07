@@ -2,7 +2,7 @@
 
 ## Description
 
-Increase conversions by using Stripe Checkout on your WooCommerce website. Let your customers pay with confidence using highly optimized, Stripe hosted checkout. Setup in a few minutes. All configuration options are available.
+This plugin is the most extensive integration between WooCommerce and Stripe Checkout, developed to improve your online store's revenues by giving more confidence to the customers to checkout on your store. It effortlessly connects your WooCommerce store with Stripe Checkout bypassing the WooCommerce checkout completely. You can customize the Stripe Checkout displayed to your customers by using the settings available in the plugin. All possible options are available the premium version along with some additional features to review the Stripe checkout sessions created on your website. 
 
 ## Version 1.0.0
 
@@ -10,22 +10,54 @@ Increase conversions by using Stripe Checkout on your WooCommerce website. Let y
 
 - WooCommerce Latest Version
 
-**Features**
-- Bypass your WooCommerce checkout completely and let your customers pay with confidence on Stripe hosted checkout.
-- Allow adjusting product quantities on Stripe checkout.
-- Display terms and services on the Stripe checkout page.
-- Add a phone number field on your stripe checkout page.
-- Ability to provide custom text messages such as adding text after shipping address fields, after submit button, before submit button and customizing terms and service text.
-- Ability to display custom fields on the Stripe checkout page. For instance creating custom dropdown fields, custom text fields, and custom number fields.
-- Ability to choose which payment methods are available on Stripe checkout for your customers.
-- Ability to view all the Stripe Checkout sessions created on the web store with their status of completion and customer information.
-- Supports WooCommerce discounts and Coupons out of the box.
-- Add a custom cancellation page.
-- Display a custom Thank You page after the customer completes checkout on Stripe.
-- Ability to choose the language of the Stripe checkout.
-- Enable or disable shipping address on Stripe checkout.
-- Toggle between Live and Test modes easily.
-- Enable Test mode for admin users only.
+### 🎉 Free Version - Features
+* Bypass your WooCommerce checkout completely and let your customers pay with confidence on Stripe hosted checkout
+* Enable or Disable Phone Number field on Stripe Checkout
+* Add or remove Terms & Services checkbox from Stripe Checkout
+* Add a Cancellation URL to redirect the customer to, when the customer cancels Strpe Checkout
+
+### 🌟 Premium Version - Features: 🎯
+* All features in the free version and the following
+* Support WooCommerce Coupon codes and Discounts out of the box
+* Support any or all payment methods from: 
+* Change the language of Stripe checkout displayed to your customers
+* Add custom fields to Stripe Checkout which can be a number field, a text field and a dropdown field
+* Add custom text to be displayed as terms and services text
+* Add custom text to be displayed before and after submit button of Stripe Checkout
+* Add custom text to be displayed after shipping address fields of Stripe Checkout
+* Let your customers adjust the quantity of products on Stripe Checkout
+* Ability to view all the Stripe Checkout sessions created on the web store with their status of completion and customer information
+* Automatically enable test mode of Stripe payment for administrators of the website
+
+Get the [premium version](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/) now 🚀.
+
+### 👉 Video Tutorial 👈
+https://www.youtube.com/watch?v=2ktSTBzG95c
+
+
+### Documentation 📚
+Discover how to make the most of Otter Blocks with our detailed and user-friendly [documentation](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/#installation-guide).
+
+### 🌐 Translation Ready 🤩
+*SA Hosted Checkout for WooCommerce* is compatible with Loco Translate, WPML, Polylang, TranslatePress, Weglot, and more. To contribute, add a new language via translate.wordpress.org.
+
+### ⏩ Use of Third-Party Libraries 🛠️ 
+The *SA Hosted Checkout for WooCommerce* plugin has been built using the following third-party libraries to enhance functionality and user experience:
+- [Stripe PHP SDK](https://github.com/stripe/stripe-php) – This SDK is integrated to support [Stripe Checkout](https://stripe.com/payments/checkout), allowing secure and seamless payment processing.
+- [React.js](https://react.dev/) – React.js is used to manage the plugin’s admin interface components for a dynamic and responsive user experience.
+- [Ant Design](https://ant.design/) – We used Ant Design and [Ant Design ProComponents](https://procomponents.ant.design/en-US) to create a polished and intuitive UI for the plugin's admin interfaces.
+- [WordPress Scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) – WordPress Scripts manage the plugin’s build system, as the admin interface is developed in React’s JSX syntax, with builds generated via WordPress's robust tooling.
+
+### 😍 Useful Links 📌
+* [Documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide)
+* [Support Forum](https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce/)
+* [Translations](https://translate.wordpress.org/projects/wp-plugins/sa-hosted-checkout-for-woocommerce/)
+
+### Become a Contributor 👨🏻‍💻
+*SA Hosted Checkout for WooCommerce* is an open-source project, and we welcome contributors to be part of our vibrant community! Help us improve the plugin and make it even better.
+
+### 🤝 Support 👀
+We offers full support on the WordPress.org [Forum](https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce/). Before starting a new thread, please check available documentation and other support threads. Leave a clear and concise description of your issue, and we will respond as soon as possible.
 
 
 ## Installation
