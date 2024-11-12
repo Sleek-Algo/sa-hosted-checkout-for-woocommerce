@@ -1,13 +1,13 @@
 <?php
 /**
- * Stripe_Lister class.
+ * SAHCFWC_Stripe_Lister class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Webhooks;
 
-if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
+if ( ! class_exists( '\\SAHCFWC\\Webhooks\\SAHCFWC_Stripe_Lister' ) ) {
 	/**
 	 * Load stripe webhook events
 	 *
@@ -19,13 +19,13 @@ if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Stripe_Lister {
+	class SAHCFWC_Stripe_Lister {
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
-		use \SAHCFWC\Traits\RestAPI;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_RestAPI;
 		/**
 		 * Api url.
 		 *
@@ -42,7 +42,7 @@ if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
 		 *
 		 * @var string
 		 */
-		private $stripe;
+		private $sahcfwc_stripe;
 
 		/**
 		 * Stripe secret key.
@@ -65,12 +65,14 @@ if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
 			$this->sahcfwc_stripe_secret = $this->sahcfwc_get_stripe_secret_key();
 			if ( ! empty( $this->sahcfwc_stripe_secret ) ) {
 				try {
-					$this->stripe = new \SAHCFWC\Libraries\Stripe\StripeClient(
-						array(
-							'api_key'        => $this->sahcfwc_stripe_secret,
-							'stripe_version' => '2023-08-16',
-						)
-					);
+					if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+						$this->sahcfwc_stripe = new \SAHCFWC\Libraries\Stripe\StripeClient(
+							array(
+								'api_key'        => $this->sahcfwc_stripe_secret,
+								'stripe_version' => '2023-08-16',
+							)
+						);
+					}
 				} catch ( \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException $e ) {
 					$error = $e;
 				} catch ( \Exception $e ) {
@@ -122,7 +124,11 @@ if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
 			$sig_header     = ( isset( $_SERVER['HTTP_STRIPE_SIGNATURE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_STRIPE_SIGNATURE'] ) ) : false );
 			$event          = null;
 			try {
-				$event      = \SAHCFWC\Libraries\Stripe\Webhook::constructEvent( $payload, $sig_header, $webhook_secret );
+				if( class_exists('\SAHCFWC\Libraries\Stripe\Webhook') ){
+					$event      = \SAHCFWC\Libraries\Stripe\Webhook::constructEvent( $payload, $sig_header, $webhook_secret );
+				}else{
+					$event      = [];
+				}
 				$event_type = $event->type ?? 'No event type found';
 				$event_data = $event->data;
 				if ( 'charge.succeeded' === $event_type ) {
@@ -271,11 +277,11 @@ if ( ! class_exists( '\\SAHCFWC\\Webhooks\\Stripe_Lister' ) ) {
 			if ( 0 === $order_stripe_checkout_id ) {
 				return;
 			}
-			$stripe_checkout_session_all_line_items = $this->stripe->checkout->sessions->allLineItems( $order_stripe_checkout_id, array() );
+			$stripe_checkout_session_all_line_items = $this->sahcfwc_stripe->checkout->sessions->allLineItems( $order_stripe_checkout_id, array() );
 			$wc_order_line_items                    = $order->get_items();
 			foreach ( $stripe_checkout_session_all_line_items->data as $order_product_index => $stripe_checkout_session_line_item ) {
 				$stripe_product_id                     = $stripe_checkout_session_line_item->price->product;
-				$stripe_product                        = $this->stripe->products->retrieve( $stripe_product_id, array() );
+				$stripe_product                        = $this->sahcfwc_stripe->products->retrieve( $stripe_product_id, array() );
 				$stripe_product_quantity               = $stripe_checkout_session_line_item->quantity;
 				$striep_checkout_session_wc_product_id = $stripe_product->metadata->product_id;
 				foreach ( $wc_order_line_items as $item_id => $wc_order_line_item ) {

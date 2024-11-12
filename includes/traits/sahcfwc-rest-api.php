@@ -1,18 +1,18 @@
 <?php
 /**
- * RestAPI trait.
+ * SAHCFWC_RestAPI trait.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Traits;
 
-if ( ! trait_exists( '\SAHCFWC\Traits\RestAPI' ) ) {
+if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_RestAPI' ) ) {
 
 	/**
-	 * RestAPI trait
+	 * SAHCFWC_RestAPI trait
 	 *
-	 * This class use for restapi class
+	 * This class use for SAHCFWC_restapi class
 	 *
 	 * @copyright  sleekalgo
 	 * @version    Release: 1.0.0
@@ -20,7 +20,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\RestAPI' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	trait RestAPI {
+	trait SAHCFWC_RestAPI {
 
 		/**
 		 * Version.
@@ -29,7 +29,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\RestAPI' ) ) {
 		 *
 		 * @var string
 		 */
-		public $api_version = 'v1';
+		public $sahcfwc_api_version = 'v1';
 
 		/**
 		 * Namespace.
@@ -38,7 +38,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\RestAPI' ) ) {
 		 *
 		 * @var string
 		 */
-		public $api_namespace = 'sa/sahcfwc';
+		public $sahcfwc_api_namespace = 'sa/sahcfwc';
 
 		/**
 		 * Register integration mode.
@@ -48,7 +48,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\RestAPI' ) ) {
 		 * @return string|api_base_url return URL
 		 */
 		public function sahcfwc_get_api_base_url() {
-			$api_base_url = $this->api_namespace . '/' . $this->api_version;
+			$api_base_url = $this->sahcfwc_api_namespace . '/' . $this->sahcfwc_api_version;
 
 			return $api_base_url;
 		}

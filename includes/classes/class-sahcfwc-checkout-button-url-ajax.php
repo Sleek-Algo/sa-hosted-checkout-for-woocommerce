@@ -1,6 +1,6 @@
 <?php
 /**
- * Checkout_Button_Url_Ajax class.
+ * SAHCFWC_Checkout_Button_Url_Ajax class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
@@ -8,7 +8,7 @@
 namespace SAHCFWC\Classes;
 
 use Automattic\WooCommerce\Utilities\OrderUtil;
-if ( ! class_exists( ' \\SAHCFWC\\Classes\\Checkout_Button_Url_Ajax' ) ) {
+if ( ! class_exists( ' \\SAHCFWC\\Classes\\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 	/**
 	 * Load Ajax handler functionality
 	 *
@@ -20,12 +20,12 @@ if ( ! class_exists( ' \\SAHCFWC\\Classes\\Checkout_Button_Url_Ajax' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Checkout_Button_Url_Ajax {
+	class SAHCFWC_Checkout_Button_Url_Ajax {
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
 		/**
 		 * Stripe secret key.
 		 *
@@ -352,8 +352,12 @@ if ( ! class_exists( ' \\SAHCFWC\\Classes\\Checkout_Button_Url_Ajax' ) ) {
 			if ( ! isset( $this->sahcfwc_stripe_secret ) || empty( $this->sahcfwc_stripe_secret ) ) {
 				return '';
 			}
-			\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
-			$this->sahcfwc_stripe_client = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+			if( class_exists('\SAHCFWC\Libraries\Stripe\Stripe') ){
+				\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
+			}
+			if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+				$this->sahcfwc_stripe_client = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+			}
 			if ( WC()->session->get( 'order_awaiting_payment' ) ) {
 				$order_id = WC()->session->get( 'order_awaiting_payment' );
 				if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
@@ -525,7 +529,9 @@ if ( ! class_exists( ' \\SAHCFWC\\Classes\\Checkout_Button_Url_Ajax' ) ) {
 				$checkoutarray['payment_intent_data']['metadata'][ 'coupon_data_' . ( ++$num ) ] = $coupon;
 			}
 			try {
-				$checkout_session = \SAHCFWC\Libraries\Stripe\Checkout\Session::create( $checkoutarray, $this->sahcfwc_stripe_secret );
+				if( class_exists('\SAHCFWC\Libraries\Stripe\Checkout\Session') ){
+					$checkout_session = \SAHCFWC\Libraries\Stripe\Checkout\Session::create( $checkoutarray, $this->sahcfwc_stripe_secret );
+				}
 			} catch ( \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException $e ) {
 				$error = esc_html__( 'Error creating checkout session:', 'sa-hosted-checkout-for-woocommerce' ) . $e->getMessage();
 				$url   = 'javascript:;';

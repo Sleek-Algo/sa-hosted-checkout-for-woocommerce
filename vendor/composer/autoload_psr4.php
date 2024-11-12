@@ -16,7 +16,6 @@ return array(
     'Symfony\\Component\\String\\' => array($vendorDir . '/symfony/string'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
-    'Stripe\\' => array($vendorDir . '/stripe/stripe-php/lib'),
     'SAHCFWC\\Libraries\\Stripe\\' => array($baseDir . '/libraries/Stripe/lib'),
     'SAHCFWC\\' => array($baseDir . '/includes'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),

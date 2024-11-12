@@ -58,20 +58,19 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
      */
     $loader = (require_once SAHCFWC_DIR . '/vendor/autoload.php');
     // Log the class map for debugging
-    // $classMap = $loader->getClassMap();
 }
 
 function sahcfwc_plugin_init() {
     $plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'woocommerce/woocommerce.php';
     if ( in_array( $plugin_path, wp_get_active_and_valid_plugins() ) ) {
-        \SAHCFWC\Bootstrap\App::get_instance();
+        \SAHCFWC\Bootstrap\SAHCFWC_App::get_instance();
         do_action( 'sahcfwc_plugin_loaded' );
     } else {
         deactivate_plugins( plugin_basename( __FILE__ ) );
     }
 }
 
-function register_plugin_row_meta_links(
+function sahcfwc_register_plugin_row_meta_links(
     $plugin_meta,
     $plugin_file,
     $plugin_data,
@@ -88,7 +87,7 @@ function register_plugin_row_meta_links(
 
 add_filter(
     'plugin_row_meta',
-    'register_plugin_row_meta_links',
+    'sahcfwc_register_plugin_row_meta_links',
     10,
     4
 );

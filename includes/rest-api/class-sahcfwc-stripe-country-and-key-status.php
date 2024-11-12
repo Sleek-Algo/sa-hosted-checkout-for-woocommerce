@@ -1,13 +1,13 @@
 <?php
 /**
- * Stripe_Country_And_Key_Status class.
+ * SAHCFWC_Stripe_Country_And_Key_Status class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\RestApi;
 
-if ( ! class_exists( '\SAHCFWC\RestApi\Stripe_Country_And_Key_Status' ) ) {
+if ( ! class_exists( '\SAHCFWC\RestApi\SAHCFWC_Stripe_Country_And_Key_Status' ) ) {
 
 	/**
 	 * Api for checking country
@@ -20,14 +20,14 @@ if ( ! class_exists( '\SAHCFWC\RestApi\Stripe_Country_And_Key_Status' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Stripe_Country_And_Key_Status {
+	class SAHCFWC_Stripe_Country_And_Key_Status {
 
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
-		use \SAHCFWC\Traits\RestAPI;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_RestAPI;
 
 		/**
 		 * Api url.

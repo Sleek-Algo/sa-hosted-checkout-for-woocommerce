@@ -1,13 +1,13 @@
 <?php
 /**
- * Meta_Table_Session class.
+ * SAHCFWC_Meta_Table_Session class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Classes;
 
-if ( ! class_exists( '\SAHCFWC\Classes\Meta_Table_Session' ) ) {
+if ( ! class_exists( '\SAHCFWC\Classes\SAHCFWC_Meta_Table_Session' ) ) {
 
 	/**
 	 * Load metadata function.
@@ -20,13 +20,13 @@ if ( ! class_exists( '\SAHCFWC\Classes\Meta_Table_Session' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Meta_Table_Session {
+	class SAHCFWC_Meta_Table_Session {
 
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
 
 		/**
 		 * A constructor to prevent this class from being loaded more than once.

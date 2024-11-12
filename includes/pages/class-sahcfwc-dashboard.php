@@ -1,13 +1,13 @@
 <?php
 /**
- * Dashboard class.
+ * SAHCFWC_Dashboard class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Pages;
 
-if ( ! class_exists( '\\SAHCFWC\\Pages\\Dashboard' ) ) {
+if ( ! class_exists( '\\SAHCFWC\\Pages\\SAHCFWC_Dashboard' ) ) {
 	/**
 	 * Load Admin dashboard
 	 *
@@ -19,12 +19,12 @@ if ( ! class_exists( '\\SAHCFWC\\Pages\\Dashboard' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Dashboard {
+	class SAHCFWC_Dashboard {
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
 		/**
 		 * A constructor to prevent this class from being loaded more than once.
 		 *

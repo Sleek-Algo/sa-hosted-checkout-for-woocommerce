@@ -1,13 +1,13 @@
 <?php
 /**
- * Stripe_Local_Payment_Methods class.
+ * SAHCFWC_Stripe_Local_Payment_Methods class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\RestApi;
 
-if ( ! class_exists( '\SAHCFWC\RestApi\Stripe_Local_Payment_Methods' ) ) {
+if ( ! class_exists( '\SAHCFWC\RestApi\SAHCFWC_Stripe_Local_Payment_Methods' ) ) {
 
 	/**
 	 * Api for payment methods
@@ -20,15 +20,15 @@ if ( ! class_exists( '\SAHCFWC\RestApi\Stripe_Local_Payment_Methods' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Stripe_Local_Payment_Methods {
+	class SAHCFWC_Stripe_Local_Payment_Methods {
 
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
-		use \SAHCFWC\Traits\RestAPI;
-		use \SAHCFWC\Traits\Stripe_Local_Payment_Methods;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_RestAPI;
+		use \SAHCFWC\Traits\SAHCFWC_Stripe_Local_Payment_Methods_List;
 
 		/**
 		 * Api url.
@@ -82,7 +82,7 @@ if ( ! class_exists( '\SAHCFWC\RestApi\Stripe_Local_Payment_Methods' ) ) {
 			$store_raw_country            = sanitize_text_field( get_option( 'woocommerce_default_country' ) );
 			$split_country                = explode( ':', $store_raw_country );
 			$stripe_local_payment_methods = $this->sahcfwc_get_stripe_local_payment_methods( strtolower( $split_country[0] ) );
-			$sanitized_payment_methods    = $this->esc_payment_methods( $stripe_local_payment_methods );
+			$sanitized_payment_methods    = $this->sahcfwc_esc_payment_methods( $stripe_local_payment_methods );
 			wp_send_json( $sanitized_payment_methods );
 		}
 
@@ -94,7 +94,7 @@ if ( ! class_exists( '\SAHCFWC\RestApi\Stripe_Local_Payment_Methods' ) ) {
 		 * @param  array $payment_methods Stripe payment methods.
 		 * @return array|sanitized_methods list of paymet methods.
 		 */
-		private function esc_payment_methods( $payment_methods ) {
+		private function sahcfwc_esc_payment_methods( $payment_methods ) {
 			$sanitized_methods = array();
 
 			foreach ( $payment_methods as $method ) {
@@ -102,7 +102,7 @@ if ( ! class_exists( '\SAHCFWC\RestApi\Stripe_Local_Payment_Methods' ) ) {
 					'id'          => esc_html( $method['id'] ),
 					'title'       => esc_html( $method['title'] ),
 					'icon_url'    => esc_url( $method['icon_url'] ),
-					'countries'   => $this->esc_countries( $method['countries'] ),
+					'countries'   => $this->sahcfwc_esc_countries( $method['countries'] ),
 					'description' => esc_html( $method['description'] ),
 					'help'        => esc_html( $method['help'] ),
 					'legal'       => esc_html( $method['legal'] ),
@@ -125,7 +125,7 @@ if ( ! class_exists( '\SAHCFWC\RestApi\Stripe_Local_Payment_Methods' ) ) {
 		 * @param  array $countries Stripe supported countries.
 		 * @return array|sanitized_methods list of countries.
 		 */
-		private function esc_countries( $countries ) {
+		private function sahcfwc_esc_countries( $countries ) {
 			$sanitized_countries = array();
 			foreach ( $countries as $country ) {
 				foreach ( $country as $code => $name ) {

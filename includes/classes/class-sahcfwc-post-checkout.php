@@ -1,13 +1,13 @@
 <?php
 /**
- * Post_Checkout class.
+ * SAHCFWC_Post_Checkout class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Classes;
 
-if ( ! class_exists( '\\SAHCFWC\\Classes\\Post_Checkout' ) ) {
+if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Post_Checkout' ) ) {
 	/**
 	 * Load Plugin functionality
 	 *
@@ -19,12 +19,12 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Post_Checkout' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Post_Checkout {
+	class SAHCFWC_Post_Checkout {
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
 		/**
 		 * Stripe secret key.
 		 *
@@ -64,11 +64,15 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Post_Checkout' ) ) {
 			$this->sahcfwc_stripe_cancel_url = get_option( 'sahcfwc_stripe_cancel_url' );
 			$this->sahcfwc_stripe_secret     = $this->sahcfwc_get_stripe_secret_key();
 			if ( ! empty( $this->sahcfwc_stripe_secret ) ) {
-				$this->sahcfwc_stripe_client = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+				if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+					$this->sahcfwc_stripe_client = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+				}
 			}
 			if ( ! empty( $this->sahcfwc_stripe_secret ) ) {
 				try {
-					\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
+					if( class_exists('\SAHCFWC\Libraries\Stripe\Stripe') ){
+						\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
+					}
 				} catch ( \SAHCFWC\Libraries\Stripe\Exception\AuthenticationException $e ) {
 					$error = $e;
 				} catch ( \Exception $e ) {
@@ -233,7 +237,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Post_Checkout' ) ) {
 			 */
 			WC()->cart->empty_cart();
 			try {
-				$payment_gateway_object = new \SAHCFWC\Classes\Payment_Gateway();
+				$payment_gateway_object = new \SAHCFWC\Classes\SAHCFWC_Payment_Gateway();
 			} catch ( \Exception $e ) {
 				$error = $e;
 			}

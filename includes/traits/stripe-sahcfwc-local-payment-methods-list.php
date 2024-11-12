@@ -1,16 +1,16 @@
 <?php
 /**
- * Stripe_Local_Payment_Methods trait.
+ * SAHCFWC_Stripe_Local_Payment_Methods_List trait.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Traits;
 
-if ( ! trait_exists( 'SAHCFWC\Traits\Stripe_Local_Payment_Methods' ) ) {
+if ( ! trait_exists( 'SAHCFWC\Traits\SAHCFWC_Stripe_Local_Payment_Methods_List' ) ) {
 
 	/**
-	 * Stripe_Local_Payment_Methods trait
+	 * SAHCFWC_Stripe_Local_Payment_Methods_List trait
 	 *
 	 * This class create list of stipe payment method
 	 *
@@ -20,7 +20,7 @@ if ( ! trait_exists( 'SAHCFWC\Traits\Stripe_Local_Payment_Methods' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	trait Stripe_Local_Payment_Methods {
+	trait SAHCFWC_Stripe_Local_Payment_Methods_List {
 
 		/**
 		 * Payment method list.

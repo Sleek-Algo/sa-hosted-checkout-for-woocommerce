@@ -1,13 +1,13 @@
 <?php
 /**
- * Stripe_Checkout class.
+ * SAHCFWC_Stripe_Checkout class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Settings;
 
-if ( ! class_exists( '\\SAHCFWC\\Settings\\Stripe_Checkout' ) ) {
+if ( ! class_exists( '\\SAHCFWC\\Settings\\SAHCFWC_Stripe_Checkout' ) ) {
 	/**
 	 * Regsiter stripe settings
 	 *
@@ -19,12 +19,12 @@ if ( ! class_exists( '\\SAHCFWC\\Settings\\Stripe_Checkout' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Stripe_Checkout {
+	class SAHCFWC_Stripe_Checkout {
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
 		/**
 		 * A constructor to prevent this class from being loaded more than once.
 		 *

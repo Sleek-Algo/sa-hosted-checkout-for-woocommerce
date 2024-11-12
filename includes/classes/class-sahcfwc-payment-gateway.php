@@ -7,7 +7,7 @@
 
 namespace SAHCFWC\Classes;
 
-if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
+if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Payment_Gateway' ) ) {
 	if ( class_exists( 'WC_Payment_Gateway' ) ) {
 		/**
 		 * Load payment gatway
@@ -20,12 +20,12 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 		 * @package    SA Hosted Checkout for WooCommerce
 		 * @since      Class available since Release 1.0.0
 		 */
-		class Payment_Gateway extends \WC_Payment_Gateway {
+		class SAHCFWC_Payment_Gateway extends \WC_Payment_Gateway {
 			/**
 			 * Traits used inside class
 			 */
-			use \SAHCFWC\Traits\Singleton;
-			use \SAHCFWC\Traits\Helpers;
+			use \SAHCFWC\Traits\SAHCFWC_Singleton;
+			use \SAHCFWC\Traits\SAHCFWC_Helpers;
 			/**
 			 * Stripe secret key.
 			 *
@@ -225,8 +225,8 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 			 */
 			public function __construct() {
 				// Setup general properties.
-				$this->set_stripe_secret();
-				$this->setup_properties();
+				$this->sahcfwc_set_stripe_secret();
+				$this->sahcfwc_setup_properties();
 				// Load the settings.
 				$this->init_form_fields();
 				$this->init_settings();
@@ -235,9 +235,9 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 				$this->description  = $this->get_option( 'description' );
 				$this->instructions = $this->get_option( 'instructions' );
 				// Actions.
-				add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
+				add_action( 'wp_enqueue_scripts', array( $this, 'sahcfwc_payment_scripts' ) );
 				add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
-				add_action( 'set_logged_in_cookie', array( $this, 'eh_set_cookie_on_current_request' ) );
+				add_action( 'set_logged_in_cookie', array( $this, 'sahcfwc_eh_set_cookie_on_current_request' ) );
 			}
 
 			/**
@@ -247,7 +247,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 			 *
 			 * @return void.
 			 */
-			protected function setup_properties() {
+			protected function sahcfwc_setup_properties() {
 				$this->id                 = 'sahcfwc_stripe_checkout';
 				$this->icon               = apply_filters( 'sahcfwc_stripe_checkout_payment_gateway_icon', '' );
 				$this->method_title       = esc_html__( 'Stripe Checkout', 'sa-hosted-checkout-for-woocommerce' );
@@ -346,7 +346,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 			 * @param  string $cookie .
 			 * @return void.
 			 */
-			public function eh_set_cookie_on_current_request( $cookie ) {
+			public function sahcfwc_eh_set_cookie_on_current_request( $cookie ) {
 				$_COOKIE[ LOGGED_IN_COOKIE ] = $cookie;
 			}
 
@@ -357,7 +357,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 			 *
 			 * @return void The Stripe checkout.
 			 */
-			public function payment_scripts() {
+			public function sahcfwc_payment_scripts() {
 			}
 
 			/**
@@ -443,11 +443,17 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 					return;
 				}
 				if ( isset( $this->sahcfwc_stripe_secret ) && ! empty( $this->sahcfwc_stripe_secret ) ) {
-					\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
+					if( class_exists('\SAHCFWC\Libraries\Stripe\Stripe') ){
+						\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
+					}
 					$cart_discount = WC()->cart->get_cart_discount_total() * 100;
 					$coupon        = null;
 					if ( $cart_discount ) {
-						$stripe_n = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+						if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+							$stripe_n = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+						}else{
+							$stripe_n = [];
+						}
 						$coupon   = $stripe_n->coupons->create(
 							array(
 								'amount_off' => $cart_discount,
@@ -456,7 +462,11 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 							)
 						);
 					}
-					$stripe = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+					if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+						$stripe = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
+					}else{
+						$stripe = [];
+					}
                     // @codingStandardsIgnoreStart
                     $stripe->countrySpecs->retrieve( 'US', array() );
                     // @codingStandardsIgnoreEnd
@@ -572,7 +582,9 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 							'sahcfwc_plugin_name'    => get_site_url(),
 						),
 					);
-					$checkout_session                     = \SAHCFWC\Libraries\Stripe\Checkout\Session::create( $checkoutarray, $this->sahcfwc_stripe_secret );
+					if( class_exists('\SAHCFWC\Libraries\Stripe\Checkout\Session') ){
+						$checkout_session = \SAHCFWC\Libraries\Stripe\Checkout\Session::create( $checkoutarray, $this->sahcfwc_stripe_secret );
+					}
 					update_option(
 						'sahcfwc_stripe_checkout_' . $checkout_session->id,
 						array(
@@ -654,7 +666,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 			 * @param  array| $user_obj user order.
 			 * @return object.
 			 */
-			public function create_stripe_customer( $order, $user_obj ) {
+			public function sahcfwc_create_stripe_customer( $order, $user_obj ) {
 				if ( ! empty( $order ) ) {
 					$order_no = $order->get_order_number();
 					$params   = array(
@@ -679,7 +691,11 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 						'email'       => $user_obj->user_email,
 					);
 				}
-				$response = \SAHCFWC\Libraries\Stripe\Customer::create( $params );
+				if( class_exists('\SAHCFWC\Libraries\Stripe\Customer') ){
+					$response = \SAHCFWC\Libraries\Stripe\Customer::create( $params );
+				}else{
+					$response = [];
+				}
 				if ( empty( $response->id ) ) {
 					return false;
 				}
@@ -737,7 +753,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Payment_Gateway' ) ) {
 			 *
 			 * @return void.
 			 */
-			private function set_stripe_secret() {
+			private function sahcfwc_set_stripe_secret() {
 				$this->sahcfwc_stripe_shipping_address_status = sanitize_text_field( get_option( 'sahcfwc_stripe_shipping_address_status' ) );
 				$this->sahcfwc_stripe_terms_condition_status  = sanitize_text_field( get_option( 'sahcfwc_stripe_terms_condition_status' ) );
 				$this->sahcfwc_stripe_phone_num_status        = sanitize_text_field( get_option( 'sahcfwc_stripe_phone_num_status' ) );

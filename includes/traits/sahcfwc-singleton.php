@@ -27,8 +27,8 @@
 
 namespace SAHCFWC\Traits;
 
-if ( ! trait_exists( '\SAHCFWC\Traits\Singleton' ) ) {
-	trait Singleton {
+if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Singleton' ) ) {
+	trait SAHCFWC_Singleton {
 		/**
 		 * Protected class constructor to prevent direct object creation
 		 *

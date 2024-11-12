@@ -1,13 +1,13 @@
 <?php
 /**
- * Pre_Checkout class.
+ * SAHCFWC_Pre_Checkout class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Classes;
 
-if ( ! class_exists( '\\SAHCFWC\\Classes\\Pre_Checkout' ) ) {
+if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Pre_Checkout' ) ) {
 	/**
 	 * Load pre stripe functionality.
 	 *
@@ -19,12 +19,12 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\Pre_Checkout' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class Pre_Checkout {
+	class SAHCFWC_Pre_Checkout {
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
 		/**
 		 * Stripe secret key.
 		 *

@@ -1,13 +1,13 @@
 <?php
 /**
- * App class.
+ * SAHCFWC_App class.
  *
  * @package Sleek_Checkout_for_WooCommerce
  */
 
 namespace SAHCFWC\Bootstrap;
 
-if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\App' ) ) {
+if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\SAHCFWC_App' ) ) {
 	/**
 	 * Load Plugin functionality
 	 *
@@ -19,12 +19,12 @@ if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\App' ) ) {
 	 * @package    SA Hosted Checkout for WooCommerce
 	 * @since      Class available since Release 1.0.0
 	 */
-	class App {
+	class SAHCFWC_App {
 		/**
 		 * Traits used inside class
 		 */
-		use \SAHCFWC\Traits\Singleton;
-		use \SAHCFWC\Traits\Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_Singleton;
+		use \SAHCFWC\Traits\SAHCFWC_Helpers;
 		/**
 		 * The Stripe status.
 		 *
@@ -99,7 +99,7 @@ if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\App' ) ) {
 		 * @return void.
 		 */
 		public function sahcfwc_plugin_loaded_handler() {
-			\SAHCFWC\Webhooks\Stripe_Lister::get_instance();
+			\SAHCFWC\Webhooks\SAHCFWC_Stripe_Lister::get_instance();
 		}
 
 		/**
@@ -111,10 +111,10 @@ if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\App' ) ) {
 		 * @return void.
 		 */
 		public function sahcfwc_init_classes() {
-			\SAHCFWC\Classes\Checkout_Button_Url_Ajax::get_instance();
-			\SAHCFWC\Classes\Pre_Checkout::get_instance();
-			\SAHCFWC\Classes\Post_Checkout::get_instance();
-			\SAHCFWC\Settings\Stripe_Checkout::get_instance();
+			\SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax::get_instance();
+			\SAHCFWC\Classes\SAHCFWC_Pre_Checkout::get_instance();
+			\SAHCFWC\Classes\SAHCFWC_Post_Checkout::get_instance();
+			\SAHCFWC\Settings\SAHCFWC_Stripe_Checkout::get_instance();
 		}
 
 		/**
@@ -126,9 +126,9 @@ if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\App' ) ) {
 		 * @return void.
 		 */
 		public function sahcfwc_init_rest_api_end_points() {
-			\SAHCFWC\RestApi\Stripe_Country_And_Key_Status::get_instance();
+			\SAHCFWC\RestApi\SAHCFWC_Stripe_Country_And_Key_Status::get_instance();
 			// This condition block will be auto removed from the Free version.
-			\SAHCFWC\RestApi\Stripe_Local_Payment_Methods::get_instance();
+			\SAHCFWC\RestApi\SAHCFWC_Stripe_Local_Payment_Methods::get_instance();
 		}
 
 		/**
@@ -141,7 +141,7 @@ if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\App' ) ) {
 		 */
 		public function sahcfwc_init_admin_pages() {
 			if ( current_user_can( 'manage_options' ) ) {
-				\SAHCFWC\Pages\Dashboard::get_instance();
+				\SAHCFWC\Pages\SAHCFWC_Dashboard::get_instance();
 			}
 		}
 
@@ -161,7 +161,7 @@ if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\App' ) ) {
 				if ( false !== $stripe_secret ) {
 					if ( $is_match_country ) {
 						if ( 'yes' === $this->sahcfwc_stripe_checkout_status ) {
-							$methods[] = \SAHCFWC\Classes\Payment_Gateway::get_instance();
+							$methods[] = \SAHCFWC\Classes\SAHCFWC_Payment_Gateway::get_instance();
 						}
 					}
 				}
