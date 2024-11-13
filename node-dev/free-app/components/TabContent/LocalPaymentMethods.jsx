@@ -98,7 +98,7 @@ const LocalPaymentMethods = () => {
 
 	useEffect( () => {
 		apiFetch( {
-			path: '/sa/sahcfwc/v1/stripe-local-payment-methods/',
+			path: '/sahcfwc/v1/stripe-local-payment-methods/',
 			method: 'GET',
 		} ).then( ( response ) => {
 			setAvailableLocalPaymentMethods( response );

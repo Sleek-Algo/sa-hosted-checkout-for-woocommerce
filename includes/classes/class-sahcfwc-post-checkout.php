@@ -2,12 +2,12 @@
 /**
  * SAHCFWC_Post_Checkout class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Classes;
 
-if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Post_Checkout' ) ) {
+if ( ! class_exists( '\SAHCFWC\Classes\SAHCFWC_Post_Checkout' ) ) {
 	/**
 	 * Load Plugin functionality
 	 *
@@ -64,13 +64,13 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Post_Checkout' ) ) {
 			$this->sahcfwc_stripe_cancel_url = get_option( 'sahcfwc_stripe_cancel_url' );
 			$this->sahcfwc_stripe_secret     = $this->sahcfwc_get_stripe_secret_key();
 			if ( ! empty( $this->sahcfwc_stripe_secret ) ) {
-				if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+				if ( class_exists( '\SAHCFWC\Libraries\Stripe\StripeClient' ) ) {
 					$this->sahcfwc_stripe_client = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
 				}
 			}
 			if ( ! empty( $this->sahcfwc_stripe_secret ) ) {
 				try {
-					if( class_exists('\SAHCFWC\Libraries\Stripe\Stripe') ){
+					if ( class_exists( '\SAHCFWC\Libraries\Stripe\Stripe' ) ) {
 						\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
 					}
 				} catch ( \SAHCFWC\Libraries\Stripe\Exception\AuthenticationException $e ) {
@@ -189,7 +189,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Post_Checkout' ) ) {
 			/**
 			 * Set WC Order Data.
 			 */
-			$order->set_customer_id( apply_filters( 'sahcfwc_woocommerce_checkout_customer_id', get_current_user_id() ) );
+			$order->set_customer_id( apply_filters( 'woocommerce_checkout_customer_id', get_current_user_id() ) );
 			$order->set_currency( get_woocommerce_currency() );
 			$order->set_prices_include_tax( 'yes' === get_option( 'woocommerce_prices_include_tax' ) );
 			$order->set_customer_ip_address( \WC_Geolocation::get_ip_address() );
@@ -212,7 +212,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Post_Checkout' ) ) {
 			 * Save Order Changes.
 			 */
 			$order->save();
-			do_action( 'sahcfwc_woocommerce_new_order', $order_id, $order );
+			do_action( 'woocommerce_new_order', $order_id, $order );
 			if ( isset( $stripe_checkout_session->client_reference_id ) && is_numeric( $stripe_checkout_session->client_reference_id ) ) {
 				update_post_meta( $order_id, '_customer_user', $stripe_checkout_session->client_reference_id );
 			}

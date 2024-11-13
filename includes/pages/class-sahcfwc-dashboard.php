@@ -2,12 +2,12 @@
 /**
  * SAHCFWC_Dashboard class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Pages;
 
-if ( ! class_exists( '\\SAHCFWC\\Pages\\SAHCFWC_Dashboard' ) ) {
+if ( ! class_exists( '\SAHCFWC\Pages\SAHCFWC_Dashboard' ) ) {
 	/**
 	 * Load Admin dashboard
 	 *
@@ -105,10 +105,10 @@ if ( ! class_exists( '\\SAHCFWC\\Pages\\SAHCFWC_Dashboard' ) ) {
 				);
 				$license_status                           = ( get_option( 'sahcfwc_checkout_license_action' ) === false ? 'deactivate' : get_option( 'sahcfwc_checkout_license_action' ) );
 				$url                                      = get_site_url( null, 'wp-admin/admin.php?page=sahcfwc-dashboard-pricing' );
-				$premium_url                              = 'https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/';
+				$premium_url                              = 'https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/';
 				$sahcfwc_customizations_localized_objects = array(
 					'language'             => get_user_locale(),
-					'webhook_URL'          => get_site_url() . '/wp-json/sa/sahcfwc/v1/webhooks/stripe-lister',
+					'webhook_URL'          => get_site_url() . '/wp-json/sahcfwc/v1/webhooks/stripe-listener',
 					'language_dir'         => ( is_rtl() ? 'rtl' : 'ltr' ),
 					'license_status'       => $license_status,
 					'purchase_premium_url' => $premium_url,

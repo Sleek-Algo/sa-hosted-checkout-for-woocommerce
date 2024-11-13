@@ -2,13 +2,13 @@
 /**
  * WC_Payment_Gateway class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Classes;
 
-if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Payment_Gateway' ) ) {
-	if ( class_exists( 'WC_Payment_Gateway' ) ) {
+if ( ! class_exists( '\SAHCFWC\Classes\SAHCFWC_Payment_Gateway' ) ) {
+	if ( class_exists( '\WC_Payment_Gateway' ) ) {
 		/**
 		 * Load payment gatway
 		 *
@@ -443,18 +443,18 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Payment_Gateway' ) ) {
 					return;
 				}
 				if ( isset( $this->sahcfwc_stripe_secret ) && ! empty( $this->sahcfwc_stripe_secret ) ) {
-					if( class_exists('\SAHCFWC\Libraries\Stripe\Stripe') ){
+					if ( class_exists( '\SAHCFWC\Libraries\Stripe\Stripe' ) ) {
 						\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
 					}
 					$cart_discount = WC()->cart->get_cart_discount_total() * 100;
 					$coupon        = null;
 					if ( $cart_discount ) {
-						if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+						if ( class_exists( '\SAHCFWC\Libraries\Stripe\StripeClient' ) ) {
 							$stripe_n = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
-						}else{
-							$stripe_n = [];
+						} else {
+							$stripe_n = array();
 						}
-						$coupon   = $stripe_n->coupons->create(
+						$coupon = $stripe_n->coupons->create(
 							array(
 								'amount_off' => $cart_discount,
 								'currency'   => $currency,
@@ -462,10 +462,10 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Payment_Gateway' ) ) {
 							)
 						);
 					}
-					if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+					if ( class_exists( '\SAHCFWC\Libraries\Stripe\StripeClient' ) ) {
 						$stripe = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
-					}else{
-						$stripe = [];
+					} else {
+						$stripe = array();
 					}
                     // @codingStandardsIgnoreStart
                     $stripe->countrySpecs->retrieve( 'US', array() );
@@ -582,7 +582,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Payment_Gateway' ) ) {
 							'sahcfwc_plugin_name'    => get_site_url(),
 						),
 					);
-					if( class_exists('\SAHCFWC\Libraries\Stripe\Checkout\Session') ){
+					if ( class_exists( '\SAHCFWC\Libraries\Stripe\Checkout\Session' ) ) {
 						$checkout_session = \SAHCFWC\Libraries\Stripe\Checkout\Session::create( $checkoutarray, $this->sahcfwc_stripe_secret );
 					}
 					update_option(
@@ -591,7 +591,7 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Payment_Gateway' ) ) {
 							'cart' => $cart->get_cart(),
 						)
 					);
-					$order->add_meta_data( '_sahcfwc_stripe_checkout_session_id', $checkout_session->id );
+					$order->add_meta_data( 'sahcfwc_stripe_checkout_session_id', $checkout_session->id );
 					$order->save_meta_data();
 					$order->save();
 					if ( isset( $checkout_session->url ) && ! empty( $checkout_session->url ) ) {
@@ -691,10 +691,10 @@ if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Payment_Gateway' ) ) {
 						'email'       => $user_obj->user_email,
 					);
 				}
-				if( class_exists('\SAHCFWC\Libraries\Stripe\Customer') ){
+				if ( class_exists( '\SAHCFWC\Libraries\Stripe\Customer' ) ) {
 					$response = \SAHCFWC\Libraries\Stripe\Customer::create( $params );
-				}else{
-					$response = [];
+				} else {
+					$response = array();
 				}
 				if ( empty( $response->id ) ) {
 					return false;

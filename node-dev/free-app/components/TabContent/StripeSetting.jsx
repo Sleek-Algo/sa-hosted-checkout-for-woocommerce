@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Card, message, Alert, Space, Tooltip, Badge } from 'antd';
+import { message, Alert, Space, Tooltip, Typography } from 'antd';
 import {
 	ProCard,
 	ProForm,
 	ProFormText,
 	ProFormSegmented,
 } from '@ant-design/pro-components';
-
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 import { generatShortkey } from '../Helpers';
@@ -16,6 +15,7 @@ const StripeSetting = () => {
 	/**
 	 * States
 	 */
+	const formRef = ProForm.useForm();
 	const [ stripeTestModeStatus, setStripeTestModeStatus ] = useState( true );
 	const [ stripeLiveModeStatus, setStripeLiveModeStatus ] = useState( false );
 	const [ isApiProcessing, setIsApiProcessing ] = useState( false );
@@ -33,6 +33,7 @@ const StripeSetting = () => {
 	const [ isProPlan, setIsProPlan ] = useState(
 		sahcfwc_customizations_localized_objects.is_free_plan
 	);
+
 	const handleClick = ( formData ) => {
 		/**
 		 * Set API Processing State
@@ -76,6 +77,8 @@ const StripeSetting = () => {
 		),
 		sahcfwc_stripe_test_secret_key: '',
 		sahcfwc_stripe_live_secret_key: '',
+		sahcfwc_stripe_webhook_url:
+			sahcfwc_customizations_localized_objects.webhook_URL,
 		sahcfwc_stripe_webhook_key: '',
 	};
 
@@ -94,6 +97,7 @@ const StripeSetting = () => {
 				</Space>
 			) }
 			<ProForm
+				formRef={ formRef }
 				className="sahcfwc-stripe-settings-form"
 				loading={ isApiProcessing }
 				initialValues={ formInitialValues }
@@ -497,6 +501,58 @@ const StripeSetting = () => {
 									},
 								},
 							] }
+						/>
+						<ProFormText
+							name="sahcfwc_stripe_webhook_url"
+							label={ __(
+								'Webhook URL',
+								'sa-hosted-checkout-for-woocommerce'
+							) }
+							fieldProps={ {
+								disabled: true,
+								addonAfter: (
+									<Typography.Text
+										copyable={ {
+											text: sahcfwc_customizations_localized_objects.webhook_URL,
+											tooltips: [
+												'Click here to copy the webhook URL',
+												'You have copied the webhook URL!',
+											],
+										} }
+									/>
+								),
+							} }
+							colProps={ {
+								xs: 24,
+								sm: 24,
+								md: 24,
+								lg: 24,
+								xl: 24,
+							} }
+							extra={
+								<div>
+									{ __(
+										<span>
+											To set up the webhook, copy the
+											provided URL by clicking on the copy
+											icon. Then, go to your
+											<a
+												href="https://dashboard.stripe.com/test/webhooks"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												Stripe dashboard webhooks screen
+											</a>
+											and paste the copied URL there.
+											After adding it, Stripe will
+											generate a webhook signing secret
+											key for secure verification.
+										</span>,
+										'sa-hosted-checkout-for-woocommerce'
+									) }
+									{ webhookKey }
+								</div>
+							}
 						/>
 						<ProFormText.Password
 							name="sahcfwc_stripe_webhook_key"

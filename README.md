@@ -29,14 +29,14 @@ This plugin is the most extensive integration between WooCommerce and Stripe Che
 * Ability to view all the Stripe Checkout sessions created on the web store with their status of completion and customer information
 * Automatically enable test mode of Stripe payment for administrators of the website
 
-Get the [premium version](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/) now 🚀.
+Get the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) now 🚀.
 
 ### 👉 Video Tutorial 👈
 https://www.youtube.com/watch?v=2ktSTBzG95c
 
 
 ### Documentation 📚
-Discover how to make the most of Otter Blocks with our detailed and user-friendly [documentation](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/#installation-guide).
+Discover how to make the most of Otter Blocks with our detailed and user-friendly [documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide).
 
 ### 🌐 Translation Ready 🤩
 *SA Hosted Checkout for WooCommerce* is compatible with Loco Translate, WPML, Polylang, TranslatePress, Weglot, and more. To contribute, add a new language via translate.wordpress.org.

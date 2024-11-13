@@ -22,7 +22,7 @@
  *
  * If you specifically need multiple objects, then use a normal class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Traits;

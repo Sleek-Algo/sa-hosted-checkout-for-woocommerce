@@ -2,7 +2,7 @@
 /**
  * SAHCFWC_Meta_Table_Session class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Classes;

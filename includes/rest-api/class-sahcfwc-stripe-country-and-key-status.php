@@ -2,7 +2,7 @@
 /**
  * SAHCFWC_Stripe_Country_And_Key_Status class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\RestApi;

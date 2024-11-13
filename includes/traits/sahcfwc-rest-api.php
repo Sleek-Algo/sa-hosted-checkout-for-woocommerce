@@ -2,7 +2,7 @@
 /**
  * SAHCFWC_RestAPI trait.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Traits;
@@ -38,7 +38,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_RestAPI' ) ) {
 		 *
 		 * @var string
 		 */
-		public $sahcfwc_api_namespace = 'sa/sahcfwc';
+		public $sahcfwc_api_namespace = 'sahcfwc';
 
 		/**
 		 * Register integration mode.

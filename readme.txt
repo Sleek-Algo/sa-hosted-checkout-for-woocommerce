@@ -35,13 +35,13 @@ This plugin is the most extensive integration between WooCommerce and Stripe Che
 * Ability to view all the Stripe Checkout sessions created on the web store with their status of completion and customer information
 * Automatically enable test mode of Stripe payment for administrators of the website
 
-Get the [premium version](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/) now 🚀.
+Get the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) now 🚀.
 
 ==👉 Video Tutorial 👈==
 https://www.youtube.com/watch?v=2ktSTBzG95c
 
 = Documentation 📚 =
-Discover how to make the most of Otter Blocks with our detailed and user-friendly [documentation](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/#installation-guide).
+Discover how to make the most of Otter Blocks with our detailed and user-friendly [documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide).
 
 = 🌐 Translation Ready 🤩 =
 *SA Hosted Checkout for WooCommerce* is compatible with Loco Translate, WPML, Polylang, TranslatePress, Weglot, and more. To contribute, add a new language via translate.wordpress.org.
@@ -95,13 +95,13 @@ For further details please check our [Installation Guide](https://www.sleekalgo.
 Get your Test/Live Stripe keys and webhook keys from the Stripe account, enter those keys in the Stripe Settings tab and Click on the Enable button.
 
 =  I want to add custom payment methods to my Stripe Checkout =
-In order to provide custom payment methods on your website, please purchase the [premium version](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/) of the plugin.
+In order to provide custom payment methods on your website, please purchase the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) of the plugin.
 
 = I want to customize my Stripe Checkout page =
-The [premium version](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/) of Stripe Checkout Plug and Play provides options to add custom text, number and dropdown fields for better customization.
+The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) of Stripe Checkout Plug and Play provides options to add custom text, number and dropdown fields for better customization.
 
 = How can I check Stripe Checkout sessions which were created on my website but never completed? =
-The [premium version](https://www.sleekalgo.com/woocommerce-stripe-checkout-plug-and-play/) offers you access to Stripe Sessions for quick and easy viewing of the customer and order details.
+The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) offers you access to Stripe Sessions for quick and easy viewing of the customer and order details.
 
 
 == Changelog ==

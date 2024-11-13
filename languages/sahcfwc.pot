@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-07T10:57:39+00:00\n"
+"POT-Creation-Date: 2024-11-13T11:33:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: sa-hosted-checkout-for-woocommerce\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: D:\local-wp-sites\sa.scpp.local.host.com\app\public\wp-content\plugins\sa-hosted-checkout-for-woocommerce\sa-hosted-checkout-for-woocommerce.php
-msgid "https://www.sleekalgo.com"
+msgid "https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/"
 msgstr ""
 
 #. Description of the plugin
@@ -41,358 +41,358 @@ msgstr ""
 msgid "https://www.sleekalgo.com/"
 msgstr ""
 
-#: includes/classes/class-checkout-button-url-ajax.php:318
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:318
 msgid "A security error has occurred. Please refresh the page and try again."
 msgstr ""
 
-#: includes/classes/class-checkout-button-url-ajax.php:506
-#: includes/classes/class-payment-gateway.php:555
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:510
+#: includes/classes/class-sahcfwc-payment-gateway.php:565
 msgid "Payment to be made upon delivery."
 msgstr ""
 
-#: includes/classes/class-checkout-button-url-ajax.php:530
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:536
 msgid "Error creating checkout session:"
 msgstr ""
 
-#: includes/classes/class-checkout-button-url-ajax.php:533
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:539
 msgid "Error creating checkout session: "
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:253
-#: includes/classes/class-payment-gateway.php:278
+#: includes/classes/class-sahcfwc-payment-gateway.php:253
+#: includes/classes/class-sahcfwc-payment-gateway.php:278
 msgid "Stripe Checkout"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:254
+#: includes/classes/class-sahcfwc-payment-gateway.php:254
 msgid "Let your customers pay with confidence using highly optimized, Stripe hosted checkout."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:268
+#: includes/classes/class-sahcfwc-payment-gateway.php:268
 msgid "Enable/Disable"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:269
+#: includes/classes/class-sahcfwc-payment-gateway.php:269
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:204
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:208
 msgid "Enable Stripe Checkout"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:275
+#: includes/classes/class-sahcfwc-payment-gateway.php:275
 msgid "Title"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:277
+#: includes/classes/class-sahcfwc-payment-gateway.php:277
 msgid "Payment method description that the customer will see on your checkout."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:282
+#: includes/classes/class-sahcfwc-payment-gateway.php:282
 msgid "Description"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:284
+#: includes/classes/class-sahcfwc-payment-gateway.php:284
 msgid "Payment method description that the customer will see on your website."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:285
+#: includes/classes/class-sahcfwc-payment-gateway.php:285
 msgid "Stripe Checkout redirects users to a secure, Stripe-hosted payment page to accept payment."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:289
+#: includes/classes/class-sahcfwc-payment-gateway.php:289
 msgid "Instructions"
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:291
+#: includes/classes/class-sahcfwc-payment-gateway.php:291
 msgid "Instructions that will be added to the thank you page."
 msgstr ""
 
-#: includes/classes/class-payment-gateway.php:292
+#: includes/classes/class-sahcfwc-payment-gateway.php:292
 msgid "Thanks you have paid with stripe hosted checkout."
 msgstr ""
 
-#: includes/classes/class-post-checkout.php:91
-#: includes/classes/class-post-checkout.php:129
+#: includes/classes/class-sahcfwc-post-checkout.php:95
+#: includes/classes/class-sahcfwc-post-checkout.php:133
 msgid "Nice try."
 msgstr ""
 
-#: includes/classes/class-pre-checkout.php:92
+#: includes/classes/class-sahcfwc-pre-checkout.php:92
 msgid "Please log in before applying the coupon."
 msgstr ""
 
-#: includes/pages/class-dashboard.php:57
-#: includes/pages/class-dashboard.php:58
+#: includes/pages/class-sahcfwc-dashboard.php:57
+#: includes/pages/class-sahcfwc-dashboard.php:58
 msgid "Sleek Checkout"
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:38
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:38
 msgid "USD bank transfers"
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:43
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:43
 msgid "United States"
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:47
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:47
 msgid "Keep transaction cost low with credit transfers—ideal for large, one-off transactions like B2B payments."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:48
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:48
 msgid "For large transactions, Stripe makes it possible to accept credit transfers or wires with automated reconciliation, lowering the chance of payment failure without adding operational complexity."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:49
-#: includes/traits/stripe-local-payment-methods-data.php:122
-#: includes/traits/stripe-local-payment-methods-data.php:223
-#: includes/traits/stripe-local-payment-methods-data.php:259
-#: includes/traits/stripe-local-payment-methods-data.php:278
-#: includes/traits/stripe-local-payment-methods-data.php:693
-#: includes/traits/stripe-local-payment-methods-data.php:746
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:49
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:122
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:223
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:259
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:278
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:693
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:746
 msgid "This payment method requires you to have a legal entity registered in the country where you are offering the payment method."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:55
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:55
 msgid "iDEAL"
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:102
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:102
 msgid "Increase conversion with Dutch customers by enabling iDEAL—the most popular payment method in the Netherlands, with 57% share of online payments."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:103
-#: includes/traits/stripe-local-payment-methods-data.php:333
-#: includes/traits/stripe-local-payment-methods-data.php:617
-#: includes/traits/stripe-local-payment-methods-data.php:673
-#: includes/traits/stripe-local-payment-methods-data.php:692
-#: includes/traits/stripe-local-payment-methods-data.php:1046
-#: includes/traits/stripe-local-payment-methods-data.php:1137
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:103
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:333
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:617
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:673
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:692
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1046
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1137
 msgid "Increase conversion by offering customers a more convenient and secure way to pay from their bank account. By authorizing payment using the customer’s online banking credentials, bank redirects are the preferred method of paying online in many countries."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:120
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:120
 msgid "Let US and CA customers pay in 4 interest-free payments every 2 weeks or monthly installments up to 36 months depending on location. Affirm has over 31 million addressable customers in the US and CA. "
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:121
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:121
 msgid "Offer flexible buy now, pay later payment options that increase your customers purchasing power, leading to higher conversion and order value."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:141
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:141
 msgid "Let your customers break their payment into 3 or 4 interest-free installments using Afterpay (also known as Clearpay), with 20 million active global customers"
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:142
-#: includes/traits/stripe-local-payment-methods-data.php:808
-#: includes/traits/stripe-local-payment-methods-data.php:1300
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:142
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:808
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1300
 msgid "Offer flexible buy now, pay later payment options that increase your customers’ purchasing power, leading to higher conversion and order value."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:143
-#: includes/traits/stripe-local-payment-methods-data.php:809
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:143
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:809
 msgid "This payment method requires you to have a legal entity registered in the country (or in the European Union) where you are offering the payment method"
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:158
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:158
 msgid "Offer customers the option to pay using PayNow, Singapore’s national payment scheme and the fastest growing major payment method in the country"
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:159
-#: includes/traits/stripe-local-payment-methods-data.php:277
-#: includes/traits/stripe-local-payment-methods-data.php:1424
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:159
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:277
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1424
 msgid "Enable your customers to pay almost instantly, 24/7 directly from their bank accounts, wallets, or other funding source, which helps increase speed and conversion—all at a low cost to your business."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:160
-#: includes/traits/stripe-local-payment-methods-data.php:242
-#: includes/traits/stripe-local-payment-methods-data.php:711
-#: includes/traits/stripe-local-payment-methods-data.php:999
-#: includes/traits/stripe-local-payment-methods-data.php:1047
-#: includes/traits/stripe-local-payment-methods-data.php:1065
-#: includes/traits/stripe-local-payment-methods-data.php:1082
-#: includes/traits/stripe-local-payment-methods-data.php:1301
-#: includes/traits/stripe-local-payment-methods-data.php:1318
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:160
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:242
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:711
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:999
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1047
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1065
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1082
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1301
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1318
 msgid "This payment method requires you to have a legal entity registered in the country where you are offering the payment method"
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:204
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:204
 msgid "Offer a trusted and familiar payment method available to customers in over 200 markets to help millions of active global PayPal users speed through checkout."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:205
-#: includes/traits/stripe-local-payment-methods-data.php:710
-#: includes/traits/stripe-local-payment-methods-data.php:860
-#: includes/traits/stripe-local-payment-methods-data.php:1192
-#: includes/traits/stripe-local-payment-methods-data.php:1230
-#: includes/traits/stripe-local-payment-methods-data.php:1317
-#: includes/traits/stripe-local-payment-methods-data.php:1335
-#: includes/traits/stripe-local-payment-methods-data.php:1381
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:205
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:710
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:860
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1192
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1230
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1317
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1335
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1381
 msgid "Enable your customers to check out faster with wallet payment methods that digitally store credit and debit cards. Wallets eliminate the need for customers to manually enter their card and billing information, offering a quick and convenient way to pay."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:206
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:206
 msgid "This payment method requires you have a legal entity registered in European Union, UK or Switzerland."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:221
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:221
 msgid "Let your Mexican customers pay with OXXO—a voucher-based payment method that represents more than 30% of transactions in Mexico."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:222
-#: includes/traits/stripe-local-payment-methods-data.php:258
-#: includes/traits/stripe-local-payment-methods-data.php:998
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:222
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:258
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:998
 msgid "Allow customers to pay bills and online purchases in-store with cash."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:240
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:240
 msgid "Let your customers pay with pre-authorized debits (PADs), a popular direct debit payment method in Canada."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:241
-#: includes/traits/stripe-local-payment-methods-data.php:455
-#: includes/traits/stripe-local-payment-methods-data.php:1064
-#: includes/traits/stripe-local-payment-methods-data.php:1081
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:241
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:455
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1064
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1081
 msgid "Minimize involuntary churn and lower transaction costs by accepting direct debits for subscription or recurring charges."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:257
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:257
 msgid "Offer customers the option to pay at over 34,000 convenience stores in Japan through a unified Stripe integration."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:276
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:276
 msgid "Let customers in Thailand pay using PromptPay, the national payment scheme supported by the Thai government."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:332
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:332
 msgid "Let your Polish customers pay with P24—a popular bank transfer method in Poland."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:399
-#: includes/traits/stripe-local-payment-methods-data.php:520
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:399
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:520
 msgid "Accept the dominant payment method globally with one of the largest card networks in the world."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:400
-#: includes/traits/stripe-local-payment-methods-data.php:521
-#: includes/traits/stripe-local-payment-methods-data.php:541
-#: includes/traits/stripe-local-payment-methods-data.php:561
-#: includes/traits/stripe-local-payment-methods-data.php:727
-#: includes/traits/stripe-local-payment-methods-data.php:745
-#: includes/traits/stripe-local-payment-methods-data.php:765
-#: includes/traits/stripe-local-payment-methods-data.php:917
-#: includes/traits/stripe-local-payment-methods-data.php:981
-#: includes/traits/stripe-local-payment-methods-data.php:1282
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:400
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:521
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:541
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:561
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:727
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:745
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:765
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:917
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:981
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1282
 msgid "Accept all major debit and credit cards from customers in every country."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:454
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:454
 msgid "Minimize involuntary churn for subscriptions or recurring payments by debiting your customers’ bank accounts in 36 European countries."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:540
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:540
 msgid "Accept the popular credit card supported in over 185 countries."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:560
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:560
 msgid "Accept a popular US card with high authorization rates."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:616
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:616
 msgid "Let your Austrian customers pay with EPS—an online transfer payment method with over 18% market share in Austria."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:672
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:672
 msgid "Let German customer’s pay with Giropay—a popular bank transfer method that accounts for over 16% of online checkouts in Germany."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:691
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:691
 msgid "Let your Malaysian customers pay with FPX, one of the most popular payment methods in Malaysia, using their bank credentials."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:709
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:709
 msgid "Let your Singapore and Malaysia customers pay with GrabPay wallets in Singapore and Malaysia respectively."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:726
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:726
 msgid "Accept the dominant payment method globally with Canada’s leading debit card."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:744
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:744
 msgid "Support nearly 140 million cardholders worldwide with the most widely accepted Japanese credit card in Japan."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:764
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:764
 msgid "Support 140 million cardholders shopping worldwide with JCBI, the one and only international payment brand from Japan."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:807
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:807
 msgid "Offer flexible payment options that give customers more freedom to choose when and how to pay for a purchase, with 150 million consumers across 27 markets."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:859
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:859
 msgid "Deliver a frictionless and seamless checkout experience with Link, a 1-click checkout that autofills your customer’s payment and shipping details."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:916
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:916
 msgid "Expand your reach and increase conversions with France’s largest card network."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:980
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:980
 msgid "Accept the dominant payment method globally with a popular credit card used in more than 130 countries."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:997
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:997
 msgid "Let your Brazilian customers pay with Boleto—a voucher-based payment method that represents more than 20% of transactions in Brazil."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1045
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1045
 msgid "Increase your reach and conversion with one of Poland’s fastest growing bank-based methods."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1063
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1063
 msgid "Accept Bulk Electronic Clearing System (BECS) Direct Debit payments from customers with an Australian bank account."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1080
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1080
 msgid "Let your UK customers set up one-off or recurring payments through Bacs Direct Debit."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1136
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1136
 msgid "Let your Belgian customers pay with Bancontact—Belgium’s most popular payment method offered by over 80% of online businesses."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1191
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1191
 msgid "Allow customers to pay with Alipay in 11 major currencies to reach consumers in China and overseas Chinese consumers and travelers."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1229
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1229
 msgid "Let your customers pay with WeChat Pay—the wallet inside the popular messaging app WeChat that has more than 900 million active monthly users."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1281
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1281
 msgid "Support nearly 9 billion UnionPay cards in circulation worldwide when you integrate with Stripe."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1299
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1299
 msgid "Give Australian customers a more flexible way to pay. Zip is a familiar payment method used by 3.2 million customers and 43,200 retailers in Australia and New Zealand."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1316
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1316
 msgid "Accept payments with Cash App Pay, allowing customers to pay using their Cash App balance or linked debit card."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1334
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1334
 msgid "Offer your customers the convenience of Revolut Pay, allowing them to pay directly through their Revolut account or to check out as a guest."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1336
-#: includes/traits/stripe-local-payment-methods-data.php:1382
-#: includes/traits/stripe-local-payment-methods-data.php:1425
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1336
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1382
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1425
 msgid "This payment method requires you to have a legal entity registered in the country (or in the European Union) where you are offering the payment method."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1380
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1380
 msgid "Offer customers the option to pay using MobilePay, a single-use card wallet payment method used in Denmark and Finland."
 msgstr ""
 
-#: includes/traits/stripe-local-payment-methods-data.php:1423
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1423
 msgid "Let your Swedish customers pay with Swish, enabling them purchase using the Swish mobile app and the Swedish BankID mobile app."
 msgstr ""
 
@@ -420,34 +420,34 @@ msgid "Upgrade to Premium "
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:73
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:74
 msgid "test-mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:88
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:91
 msgid "Please note: The Stripe checkout functionality will only work if the Enable Stripe Checkout option is enabled."
 msgstr ""
 
 #: assets/backend/free-app.js:1
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:97
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:104
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:108
 msgid "reset"
 msgstr ""
 
 #: assets/backend/free-app.js:1
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:101
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:108
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:112
 msgid "Submit"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:43
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:44
 msgid "yes"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:44
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:45
 msgid "no"
 msgstr ""
 
@@ -455,18 +455,18 @@ msgstr ""
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:65
 #: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:86
 #: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:332
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:56
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:57
 msgid "Congratulations! Your settings have been successfully saved."
 msgstr ""
 
 #: assets/backend/free-app.js:1
 #: node-dev/free-app/components/NavTabs.jsx:90
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:196
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:200
 msgid "Stripe Settings"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:209
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:213
 msgid "This option allows you to activate  Stripe Checkout functionality on your website."
 msgstr ""
 
@@ -477,8 +477,8 @@ msgstr ""
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:274
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:434
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:598
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:220
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:349
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:224
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:353
 msgid "Enable"
 msgstr ""
 
@@ -489,112 +489,117 @@ msgstr ""
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:281
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:441
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:605
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:227
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:356
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:231
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:360
 msgid "Disable"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:250
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:479
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:254
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:483
 msgid "Please Enter the Live Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:263
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:411
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:267
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:415
 msgid "Please Enter the Test Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:283
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:287
 msgid "Stripe Integration Mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:288
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:292
 msgid "This option allows you to choose Stripe Integration Mode,  either live or test, on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:294
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:298
 msgid "Test Mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:301
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:305
 msgid "Live Mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:329
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:333
 msgid "Admin Test Mode"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:339
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:343
 msgid "This option allows you to  activate admin test mode on the Stripe checkout page."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:367
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:375
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:371
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:379
 msgid "Test Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:371
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:375
 msgid "This option allows you to add a test secret key for the Stripe Test Mode."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:395
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:399
 msgid "Test Secret key ending *****"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:422
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:426
 msgid "The secret key should begin with the country code followed by 'test'."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:436
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:444
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:440
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:448
 msgid "Live Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:440
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:444
 msgid "This option allows you to add a secret key for the Stripe Live Mode."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:463
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:467
 msgid "Live Secret key ending *****"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:490
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:494
 msgid "The secret key should begin with the country code followed by 'live'."
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:503
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:507
+msgid "Webhook URL"
+msgstr ""
+
+#: assets/backend/free-app.js:1
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:559
 msgid "Webhook Signing Secret Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:507
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:563
 msgid "Webhook Key"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:525
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:581
 msgid "Webhook Signing Secret key ending *****"
 msgstr ""
 
 #: assets/backend/free-app.js:1
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:535
+#: node-dev/free-app/components/TabContent/StripeSetting.jsx:591
 msgid "Please enter the Live Secret Key"
 msgstr ""
 

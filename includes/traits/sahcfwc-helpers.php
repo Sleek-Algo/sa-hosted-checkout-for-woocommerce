@@ -2,7 +2,7 @@
 /**
  * SAHCFWC_Helpers trait.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Traits;
@@ -74,7 +74,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 			// Retrieve your Stripe account details.
 			if ( ! empty( $this->sahcfwc_get_stripe_secret_key() ) ) {
 				try {
-					if( class_exists('\SAHCFWC\Libraries\Stripe\Account') ){
+					if ( class_exists( '\SAHCFWC\Libraries\Stripe\Account' ) ) {
 						$stripe_account_detail = \SAHCFWC\Libraries\Stripe\Account::retrieve( null, array( 'api_key' => $this->sahcfwc_get_stripe_secret_key() ) );
 					}
 				} catch ( \SAHCFWC\Libraries\Stripe\Exception\AuthenticationException $e ) {
@@ -173,7 +173,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 					'email'       => $user_obj->user_email,
 				);
 			}
-			if( class_exists('\SAHCFWC\Libraries\Stripe\Customer') ){
+			if ( class_exists( '\SAHCFWC\Libraries\Stripe\Customer' ) ) {
 				$response = \SAHCFWC\Libraries\Stripe\Customer::create( $params );
 			}
 

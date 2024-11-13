@@ -26,7 +26,7 @@ const NavTabs = () => {
 	const effectRan = useRef( false ); // Track if useEffect has run
 	const getTabStatus = () => {
 		apiFetch( {
-			path: '/sa/sahcfwc/v1/stripe-check-data-exist/',
+			path: '/sahcfwc/v1/stripe-check-data-exist/',
 			method: 'Get',
 		} )
 			.then( ( response ) => {

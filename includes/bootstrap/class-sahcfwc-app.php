@@ -2,12 +2,12 @@
 /**
  * SAHCFWC_App class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Bootstrap;
 
-if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\SAHCFWC_App' ) ) {
+if ( ! class_exists( '\SAHCFWC\Bootstrap\SAHCFWC_App' ) ) {
 	/**
 	 * Load Plugin functionality
 	 *
@@ -44,12 +44,12 @@ if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\SAHCFWC_App' ) ) {
 		 */
 		public function __construct() {
 			$this->sahcfwc_stripe_checkout_status = get_option( 'sahcfwc_stripe_checkout_status' );
-			add_action( 'sahcfwc_plugin_loaded', array( $this, 'sahcfwc_plugin_loaded_handler' ), 9999 );
+			add_action( 'sahcfwc_plugin_loaded', array( $this, 'sahcfwc_init_webhooks' ), 9999 );
 			add_action( 'init', array( $this, 'sahcfwc_init_localization' ), 10 );
 			add_action( 'init', array( $this, 'sahcfwc_init_classes' ), 10 );
-			add_filter( 'woocommerce_payment_gateways', array( $this, 'sahcfwc_add_gateways' ), 9999 );
 			add_action( 'init', array( $this, 'sahcfwc_init_rest_api_end_points' ), 10 );
 			add_action( 'init', array( $this, 'sahcfwc_init_admin_pages' ), 10 );
+			add_filter( 'woocommerce_payment_gateways', array( $this, 'sahcfwc_add_gateways' ), 9999 );
 			add_action(
 				'woocommerce_email',
 				array( $this, 'sahcfwc_disable_emails_new_orders' ),
@@ -91,15 +91,13 @@ if ( ! class_exists( '\\SAHCFWC\\Bootstrap\\SAHCFWC_App' ) ) {
 		}
 
 		/**
-		 * Inint Stripe Lister Intsance.
+		 * Inint webhooks.
 		 *
 		 * @since 1.0.0
-		 *
-		 * @see Stripe Lister::instance()
 		 * @return void.
 		 */
-		public function sahcfwc_plugin_loaded_handler() {
-			\SAHCFWC\Webhooks\SAHCFWC_Stripe_Lister::get_instance();
+		public function sahcfwc_init_webhooks() {
+			\SAHCFWC\Webhooks\SAHCFWC_Stripe_Listener::get_instance();
 		}
 
 		/**

@@ -2,12 +2,12 @@
 /**
  * SAHCFWC_Pre_Checkout class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Classes;
 
-if ( ! class_exists( '\\SAHCFWC\\Classes\\SAHCFWC_Pre_Checkout' ) ) {
+if ( ! class_exists( '\SAHCFWC\Classes\SAHCFWC_Pre_Checkout' ) ) {
 	/**
 	 * Load pre stripe functionality.
 	 *

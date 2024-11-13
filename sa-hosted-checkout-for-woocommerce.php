@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: SA Hosted Checkout for WooCommerce
- * Plugin URI: https://www.sleekalgo.com
+ * Plugin URI: https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/
  * Description: Increase conversions by using Sleek Checkout on your WooCommerce website. Let your customers pay with confidence using highly optimized, Stripe hosted checkout. Setup in a few minutes. All configuration options are available test-01.
  * Version: 1.0.0
  * Requires at least: 5.1
@@ -69,6 +69,7 @@ function sahcfwc_plugin_init() {
         deactivate_plugins( plugin_basename( __FILE__ ) );
     }
 }
+add_action( 'plugins_loaded', 'sahcfwc_plugin_init', 30 );
 
 function sahcfwc_register_plugin_row_meta_links(
     $plugin_meta,
@@ -77,7 +78,7 @@ function sahcfwc_register_plugin_row_meta_links(
     $status
 ) {
     if ( plugin_basename( __FILE__ ) === $plugin_file ) {
-        $setting_url = admin_url( 'admin.php' ) . '?page=scpp-dashboard';
+        $setting_url = admin_url( 'admin.php' ) . '?page=sahcfwc-dashboard';
         $plugin_meta[] = '<a href="' . $setting_url . '" target="_blank">' . esc_html__( 'Settings', 'sa-hosted-checkout-for-woocommerce' ) . '</a>';
         $plugin_meta[] = '<a href="https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/" target="_blank">' . esc_html__( 'Documentation', 'sa-hosted-checkout-for-woocommerce' ) . '</a>';
         $plugin_meta[] = '<a href="https://www.sleekalgo.com/contact-us/" target="_blank">' . esc_html__( 'Support', 'sa-hosted-checkout-for-woocommerce' ) . '</a>';
@@ -91,4 +92,4 @@ add_filter(
     10,
     4
 );
-add_action( 'plugins_loaded', 'sahcfwc_plugin_init', 30 );
+

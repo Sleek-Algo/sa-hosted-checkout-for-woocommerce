@@ -2,13 +2,13 @@
 /**
  * SAHCFWC_Checkout_Button_Url_Ajax class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Classes;
 
 use Automattic\WooCommerce\Utilities\OrderUtil;
-if ( ! class_exists( ' \\SAHCFWC\\Classes\\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
+if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 	/**
 	 * Load Ajax handler functionality
 	 *
@@ -352,10 +352,10 @@ if ( ! class_exists( ' \\SAHCFWC\\Classes\\SAHCFWC_Checkout_Button_Url_Ajax' ) )
 			if ( ! isset( $this->sahcfwc_stripe_secret ) || empty( $this->sahcfwc_stripe_secret ) ) {
 				return '';
 			}
-			if( class_exists('\SAHCFWC\Libraries\Stripe\Stripe') ){
+			if ( class_exists( '\SAHCFWC\Libraries\Stripe\Stripe' ) ) {
 				\SAHCFWC\Libraries\Stripe\Stripe::setApiKey( $this->sahcfwc_stripe_secret );
 			}
-			if( class_exists('\SAHCFWC\Libraries\Stripe\StripeClient') ){
+			if ( class_exists( '\SAHCFWC\Libraries\Stripe\StripeClient' ) ) {
 				$this->sahcfwc_stripe_client = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
 			}
 			if ( WC()->session->get( 'order_awaiting_payment' ) ) {
@@ -529,7 +529,7 @@ if ( ! class_exists( ' \\SAHCFWC\\Classes\\SAHCFWC_Checkout_Button_Url_Ajax' ) )
 				$checkoutarray['payment_intent_data']['metadata'][ 'coupon_data_' . ( ++$num ) ] = $coupon;
 			}
 			try {
-				if( class_exists('\SAHCFWC\Libraries\Stripe\Checkout\Session') ){
+				if ( class_exists( '\SAHCFWC\Libraries\Stripe\Checkout\Session' ) ) {
 					$checkout_session = \SAHCFWC\Libraries\Stripe\Checkout\Session::create( $checkoutarray, $this->sahcfwc_stripe_secret );
 				}
 			} catch ( \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException $e ) {
@@ -550,11 +550,11 @@ if ( ! class_exists( ' \\SAHCFWC\\Classes\\SAHCFWC_Checkout_Button_Url_Ajax' ) )
 			);
 			// add order_session_id.
 			if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
-				$order->add_meta_data( '_sahcfwc_stripe_checkout_session_id', ( isset( $checkout_session->id ) ? $checkout_session->id : '' ) );
+				$order->add_meta_data( 'sahcfwc_stripe_checkout_session_id', ( isset( $checkout_session->id ) ? $checkout_session->id : '' ) );
 				$order->save_meta_data();
 				$order->save();
 			} else {
-				add_post_meta( $order_id, '_sahcfwc_stripe_checkout_session_id', $checkout_session->id );
+				add_post_meta( $order_id, 'sahcfwc_stripe_checkout_session_id', $checkout_session->id );
 			}
 			$result = array(
 				'stripe_checkout_session_url' => ( isset( $checkout_session->url ) && ! empty( $checkout_session->url ) ? esc_url( $checkout_session->url ) : esc_url( $url ) ),

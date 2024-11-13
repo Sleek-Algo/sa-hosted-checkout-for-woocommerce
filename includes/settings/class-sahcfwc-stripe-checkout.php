@@ -2,12 +2,12 @@
 /**
  * SAHCFWC_Stripe_Checkout class.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Settings;
 
-if ( ! class_exists( '\\SAHCFWC\\Settings\\SAHCFWC_Stripe_Checkout' ) ) {
+if ( ! class_exists( '\SAHCFWC\Settings\SAHCFWC_Stripe_Checkout' ) ) {
 	/**
 	 * Regsiter stripe settings
 	 *

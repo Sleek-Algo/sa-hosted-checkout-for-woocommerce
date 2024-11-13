@@ -2,7 +2,7 @@
 /**
  * SAHCFWC_Stripe_Local_Payment_Methods_List trait.
  *
- * @package Sleek_Checkout_for_WooCommerce
+ * @package sa-hosted-checkout-for-woocommerce
  */
 
 namespace SAHCFWC\Traits;
