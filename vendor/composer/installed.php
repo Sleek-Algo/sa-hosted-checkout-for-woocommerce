@@ -3,7 +3,7 @@
         'name' => 'sleekalgo/sa-hosted-checkout-for-woocommerce',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '015af892a53b3e623bd9dbb04ccd95318a15aaa3',
+        'reference' => '246cf4a42bd1ebfdc0c1a5b1431860b5a46fd8bd',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -46,7 +46,7 @@
         'sleekalgo/sa-hosted-checkout-for-woocommerce' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '015af892a53b3e623bd9dbb04ccd95318a15aaa3',
+            'reference' => '246cf4a42bd1ebfdc0c1a5b1431860b5a46fd8bd',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

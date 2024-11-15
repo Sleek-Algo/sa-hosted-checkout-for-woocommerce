@@ -550,7 +550,6 @@ const StripeSetting = () => {
 										</span>,
 										'sa-hosted-checkout-for-woocommerce'
 									) }
-									{ webhookKey }
 								</div>
 							}
 						/>

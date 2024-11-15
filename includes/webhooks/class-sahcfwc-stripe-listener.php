@@ -117,35 +117,49 @@ if ( ! class_exists( '\SAHCFWC\Webhooks\SAHCFWC_Stripe_Listener' ) ) {
 		 * @return object
 		 */
 		public function sahcfwc_application_webhook_callback( \WP_REST_Request $request ) {
+
             // @codingStandardsIgnoreStart
             $payload = @file_get_contents( 'php://input' );
             // @codingStandardsIgnoreEnd
 			$webhook_secret = get_option( 'sahcfwc_stripe_webhook_key' );
-			$sig_header     = ( isset( $_SERVER['HTTP_STRIPE_SIGNATURE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_STRIPE_SIGNATURE'] ) ) : false );
-			$event          = null;
+			$sig_header     = $request->get_header( 'stripe_signature' );
+
 			try {
+
+				$event = null;
 				if ( class_exists( '\SAHCFWC\Libraries\Stripe\Webhook' ) ) {
 					$event = \SAHCFWC\Libraries\Stripe\Webhook::constructEvent( $payload, $sig_header, $webhook_secret );
-				} else {
-					$event = array();
 				}
-				$event_type = $event->type ?? 'No event type found';
-				$event_data = $event->data;
+
+				$event_type   = ( isset( $event->type ) ) ? $event->type : '';
+				$event_data   = ( isset( $event->data ) ) ? $event->data : null;
+				$event_action = '';
+
 				if ( 'charge.succeeded' === $event_type ) {
-					do_action( 'sahcfwc_charge_succeeded', $event_data );
+					$event_action = 'sahcfwc_charge_succeeded';
 				} elseif ( 'checkout.session.completed' === $event_type ) {
-					do_action( 'sahcfwc_session_completed', $event_data );
+					$event_action = 'sahcfwc_session_completed';
 				} elseif ( 'payment_intent.succeeded' === $event_type ) {
-					do_action( 'sahcfwc_payment_intent_succeeded', $event_data );
+					$event_action = 'sahcfwc_payment_intent_succeeded';
 				} elseif ( 'payout.paid' === $event_type ) {
-					do_action( 'sahcfwc_payout_paid', $event_data );
+					$event_action = 'sahcfwc_payout_paid';
 				} elseif ( 'payout.failed' === $event_type ) {
-					do_action( 'sahcfwc_payout_failed', $event_data );
+					$event_action = 'sahcfwc_payout_failed';
+				}
+
+				if ( ! empty( $event_type ) && ! empty( $event_action ) ) {
+					do_action( $event_action, $event_data );
+					return wp_send_json_success(
+						array(
+							'event_type'   => esc_html( $event_type ),
+							'event_action' => esc_html( $event_action ),
+						)
+					);
 				} else {
 					return wp_send_json_error(
 						array(
-							'reason'    => esc_html( 'Invalid Signature' ),
-							'Signature' => esc_html( $sig_header ),
+							'event_type' => esc_html( $event_type ),
+							'reason'     => esc_html( 'Sorry!, We do not need this Event because it is not utilized.' ),
 						)
 					);
 				}
