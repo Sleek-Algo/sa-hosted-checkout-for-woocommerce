@@ -54,8 +54,8 @@ if ( ! class_exists( '\SAHCFWC\Pages\SAHCFWC_Dashboard' ) ) {
 			// Add second submenu for "Session".
 			add_submenu_page(
 				'woocommerce',
-				esc_html__( 'Sleek Checkout', 'sa-hosted-checkout-for-woocommerce' ),
-				esc_html__( 'Sleek Checkout', 'sa-hosted-checkout-for-woocommerce' ),
+				esc_html__( 'SA Hosted Checkout', 'sa-hosted-checkout-for-woocommerce' ),
+				esc_html__( 'SA Hosted Checkout', 'sa-hosted-checkout-for-woocommerce' ),
 				'manage_options',
 				'sahcfwc-dashboard',
 				array( $this, 'sahcfwc_dashboard_page' )
