@@ -42,6 +42,18 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 		}
 
 		/**
+		 * Check if restricted keys are being used.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return bool True if using restricted keys, false otherwise.
+		 */
+		public function sahcfwc_is_using_restricted_keys() {
+			$api_key_type = sanitize_text_field(get_option('sahcfwc_api_key_type', 'standard'));
+			return 'restricted' === $api_key_type;
+		}
+
+		/**
 		 * Get stripe secret key.
 		 *
 		 * @since 1.0.0
@@ -50,13 +62,18 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 		 */
 		public function sahcfwc_get_stripe_secret_key() {
 			$stripe_integration_mode = $this->sahcfwc_get_stripe_integration_mode();
-			$stripe_test_secret_key  = sanitize_text_field( get_option( 'sahcfwc_stripe_test_secret_key' ) );
-			$stripe_live_secret_key  = sanitize_text_field( get_option( 'sahcfwc_stripe_live_secret_key' ) );
+			$api_key_type 			 = sanitize_text_field( get_option( 'sahcfwc_api_key_type', 'standard' ) );
 			$reslut                  = '';
 			if ( 'live-mode' === $stripe_integration_mode ) {
-				$reslut = $stripe_live_secret_key;
+				if ('restricted' === $api_key_type) {
+					return sanitize_text_field(get_option('sahcfwc_restricted_live_key', ''));
+				}
+				return sanitize_text_field(get_option('sahcfwc_stripe_live_secret_key', ''));
 			} else {
-				$reslut = $stripe_test_secret_key;
+				if ('restricted' === $api_key_type) {
+					return sanitize_text_field(get_option('sahcfwc_restricted_test_key', ''));
+				}
+				return sanitize_text_field(get_option('sahcfwc_stripe_test_secret_key', ''));
 			}
 
 			return $reslut;
@@ -183,6 +200,5 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 
 			return $response;
 		}
-
 	}
 }

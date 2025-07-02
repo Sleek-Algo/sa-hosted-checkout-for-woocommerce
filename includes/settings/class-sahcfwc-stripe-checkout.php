@@ -145,6 +145,48 @@ if ( ! class_exists( '\SAHCFWC\Settings\SAHCFWC_Stripe_Checkout' ) ) {
 					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_webhook_key' ),
 				)
 			);
+			// Add these new settings for Restricted API Keys
+			register_setting(
+				'sahcfwc_stripe_checkout_settings',
+				'sahcfwc_use_restricted_keys',
+				array(
+					'default'           => 'no',
+					'show_in_rest'      => true,
+					'type'              => 'string',
+					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_restricted_keys_status' ),
+				)
+			);
+			register_setting(
+				'sahcfwc_stripe_checkout_settings',
+				'sahcfwc_restricted_test_key',
+				array(
+					'default'           => '',
+					'show_in_rest'      => true,
+					'type'              => 'string',
+					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_restricted_test_key' ),
+				)
+			);
+			register_setting(
+				'sahcfwc_stripe_checkout_settings',
+				'sahcfwc_restricted_live_key',
+				array(
+					'default'           => '',
+					'show_in_rest'      => true,
+					'type'              => 'string',
+					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_restricted_live_key' ),
+				)
+			);
+			// Add this to your register_settings function
+			register_setting(
+				'sahcfwc_stripe_checkout_settings',
+				'sahcfwc_api_key_type',
+				array(
+					'default'           => 'standard',
+					'show_in_rest'      => true,
+					'type'              => 'string',
+					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_api_key_type' ),
+				)
+			);
 		}
 
 		/**
@@ -301,6 +343,62 @@ if ( ! class_exists( '\SAHCFWC\Settings\SAHCFWC_Stripe_Checkout' ) ) {
 			}
 		}
 
-	}
+		/**
+		* Sanitize restricted keys status
+		*
+		* @since 1.0.0
+		*
+		* @param string $input The value to sanitize.
+		* @return string 'yes' or 'no'
+		*/
+		public function sahcfwc_sanitize_restricted_keys_status($input) {
+			return ($input === 'yes' || $input === 'no') ? $input : 'no';
+		}
 
+		/**
+		 * Sanitize restricted test key
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $input The value to sanitize.
+		 * @return string Sanitized key or empty string if invalid
+		 */
+		public function sahcfwc_sanitize_restricted_test_key($input) {
+			$sanitized_key = sanitize_text_field($input);
+			// Restricted keys have different patterns than regular keys
+			if (preg_match('/^rk_test_[a-zA-Z0-9]{24,}$/', $sanitized_key)) {
+				return $sanitized_key;
+			}
+			return '';
+		}
+
+		/**
+		 * Sanitize restricted live key
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $input The value to sanitize.
+		 * @return string Sanitized key or empty string if invalid
+		 */
+		public function sahcfwc_sanitize_restricted_live_key($input) {
+			$sanitized_key = sanitize_text_field($input);
+			// Restricted keys have different patterns than regular keys
+			if (preg_match('/^rk_live_[a-zA-Z0-9]{24,}$/', $sanitized_key)) {
+				return $sanitized_key;
+			}
+			return '';
+		}
+
+		/**
+		* Sanitize api key Type
+		*
+		* @since 1.0.0
+		*
+		* @param string $input The value to sanitize.
+		* @return string 'standard' or 'restricted'
+		*/
+		public function sahcfwc_sanitize_api_key_type($input) {
+			return ($input === 'standard' || $input === 'restricted') ? $input : 'standard';
+		}
+	}
 }

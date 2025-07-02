@@ -1,7 +1,509 @@
-#sahcfwc-app-main .sahcfwc-app-header{background-color:#fff;box-shadow:0 1px 0 hsla(0,0%,84%,.5),0 1px 2px #eee;padding-left:15px}#sahcfwc-app-main .sahcfwc-support{display:flex;flex-direction:row;font-size:20px;gap:20px;justify-content:center}#sahcfwc-app-main .sahcfwc-app-logo{align-items:center;display:flex;flex-direction:row;justify-content:space-between}#sahcfwc-app-main .sahcfwc-app-logo h1{line-height:2rem}#sahcfwc-app-main a{text-decoration:none}#sahcfwc-app-main .sahcfwc-version{display:inline-block;font-size:14px;padding-left:5px}@media only screen and (max-width:991.5px){#sahcfwc-app-main .sahcfwc-app-logo{align-items:flex-start;flex-direction:column;justify-content:flex-start}}
-#sahcfwc-app-main .sahcfwc-app-Footer{background-color:#fff;bottom:0;box-shadow:0 1px 0 hsla(0,0%,84%,.5),0 1px 2px #eee;margin-top:10px;position:fixed;text-align:center;width:100%;z-index:1000}#sahcfwc-app-main .my-prefix-layout .sahcfwc-layout-header.my-prefix-layout-header-fixed-header{position:absolute}
-:where(.sahcfwc-stripe-settings-form){background-color:#fff!important;border-radius:6px}:where(.sahcfwc-stripe-settings-form) .sahcfwc-pro-card{background-color:transparent!important}:where(.sahcfwc-stripe-settings-form) .sahcfwc-form-item-label>label{max-width:300px;width:300px}:where(.sahcfwc-stripe-settings-form) label[for=checkbox-group]+input[type=checkbox]{max-width:none!important;width:auto!important}:where(.sahcfwc-stripe-settings-form) .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row label{max-width:none!important;width:100%!important}:where(.sahcfwc-stripe-settings-form) .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row{flex-direction:column}:where(.sahcfwc-stripe-settings-form) :where(.sahcfwc-btn.sahcfwc-btn-block){margin-top:32px}:where(.sahcfwc-stripe-settings-form) :where(.css-dev-only-do-not-override-xxt8zy).sahcfwc-pro-form-list-action{position:relative;top:35px}:where(.sahcfwc-stripe-settings-form) .sahcfwc-btn-primary{margin:0 20px 20px}@media only screen and (max-width:1200.5px){:where(.sahcfwc-stripe-settings-form) .sahcfwc-form-item-label>label{max-width:200px;width:200px}}@media only screen and (max-width:575.5px){:where(.sahcfwc-stripe-settings-form) .sahcfwc-form-item-label>label{max-width:100%;width:100%}}
-:where(.sahcfwc-checkout-settings-form){background-color:#fff!important;border-radius:6px;margin-bottom:20px!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-input-affix-wrapper>input.sahcfwc-input:focus,:where(.sahcfwc-checkout-settings-form) .sahcfwc-select-selector input:focus{border:none!important;box-shadow:none!important;outline:none!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-pro-card{background-color:transparent!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-form-item-label>label{max-width:400px;width:400px}:where(.sahcfwc-checkout-settings-form) label[for=checkbox-group]+input[type=checkbox]{max-width:none!important;width:auto!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row label{max-width:none!important;width:100%!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row{flex-direction:column}:where(.sahcfwc-checkout-settings-form) .sahcfwc-pro-form-list-action{line-height:normal!important;position:relative;top:auto}:where(.sahcfwc-checkout-settings-form) .sahcfwc-form-item-control{flex:1!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-form-horizontal .sahcfwc-form-item-control{flex:1!important}:where(.sahcfwc-checkout-settings-form) :where(.css-dev-only-do-not-override-1gosnuh).sahcfwc-form-horizontal .sahcfwc-form-item-control{flex:1!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-app-logo h1{line-height:43px}:where(.sahcfwc-checkout-settings-form) .sahcfwc_stripe_locale_status_text{display:flex;margin-bottom:-15px;padding-top:30px}:where(.sahcfwc-checkout-settings-form) .sahcfwc-short-code-para{align-items:baseline;display:flex;gap:0 5px;padding:12px 0;width:100%}:where(.sahcfwc-checkout-settings-form) .sahcfwc-short-code-copy{border:1px solid #d9d9d9;border-radius:6px;cursor:pointer;display:flex;font-size:18px;font-weight:600;justify-content:space-between;padding:3px 10px 5px;width:27.5%}:where(.sahcfwc-checkout-settings-form) .sahcfwc-payment-info{margin-bottom:0!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-order-detail-code{width:400px}:where(.sahcfwc-checkout-settings-form) :where(.css-1aut3cz).sahcfwc-col{min-height:auto!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-btn-primary{margin:0 20px 20px}.sahcfwc-copy-alert{left:50%;position:fixed;top:30%;transform:translate(-50%,-50%);width:15%;z-index:100}@media only screen and (max-width:1200.5px){.sahcfwc-copy-alert{width:35%}}@media only screen and (max-width:1025px){.sahcfwc-short-code-copy{width:41.7%}}@media only screen and (max-width:820.5px){.sahcfwc-short-code-copy{width:50.7%}.sahcfwc-copy-alert{width:50%}}@media only screen and (max-width:767.5px){:where(.sahcfwc-checkout-settings-form) .sahcfwc-form-item-label>label{width:100%}.sahcfwc-pro-form>div:not(.sahcfwc-pro-form-light-filter) .pro-field-md{width:100%!important}.sahcfwc-order-detail-code,.sahcfwc-short-code-copy{width:100%}td.ant-table-cell.ant-table-cell-fix-left.ant-table-cell-fix-left-last{position:static!important}.sahcfwc-row{flex-direction:column}}@media only screen and (max-width:565px){:where(.sahcfwc-checkout-settings-form) .sahcfwc-pro-form>div:not(.sahcfwc-pro-form-light-filter) .pro-field-md{width:100%!important}:where(.sahcfwc-checkout-settings-form) .sahcfwc-pro-form-list-action{position:relative;top:-9px}.sahcfwc-copy-alert{width:85%}}
-.stripe_payment_toggle{pointer-events:none}@media only screen and (max-width:800px){.sahcfwc-checkout-settings-form .sa-procard-grids .sahcfwc-pro-card-header{flex-direction:column}}
-.feature-list-table{margin:0 10px 10px}.feature-list-table .sahcfwc-table-tbody .sahcfwc-table-cell{padding:10px 20px!important}.features-table{margin-bottom:30px}.features-table .features-table-upg-btn{padding:10px;text-align:right}
-#sahcfwc_stripe_after_shpping_address_text,#sahcfwc_stripe_after_submit_text,#sahcfwc_stripe_befour_text,#sahcfwc_stripe_customize_terms_service_text{resize:none}#wpcontent{padding-left:0}#wpcontent #sahcfwc-app{height:90.6vh}#wpcontent #sahcfwc-app .sahcfwc-app-container{padding:10px}#wpcontent #sahcfwc-app .sahcfwc-app-main-container{margin-bottom:50px;padding:10px}#wpcontent #sahcfwc-app .sahcfwc-app-tab-content-container{background-color:#f0f0f1;padding:20px}#wpcontent #sahcfwc-app .sahcfwc-app-content-wrapper{background-color:#fff;padding:10px}#wpcontent #sahcfwc-app .sahcfwc-app-promotion-wrapper{background-color:#fff;margin-left:10px;padding:20px}#wpfooter{position:fixed}.hover-effect,.hover-effect:hover{transition:all .3s ease-in-out}.hover-effect:hover{box-shadow:-2px 10px 26px -14px rgba(64,224,208,.5)}.sahcfwc-tabs-tab-btn .anticon{margin-right:10px}.sahcfwc-info-icon{border:1px solid;border-radius:50%;display:inline-block;font-size:11px;font-style:normal;font-weight:400;height:14px;line-height:1;text-align:center;width:14px}.sahcfwc-upg-pre-btn{background:#e49b0f;border-color:#e49b0f;color:#fff;font-weight:500}.sahcfwc-upg-pre-btn:hover{background:#fff!important;border-color:#e49b0f!important;color:#e49b0f!important}.anticon-question-circle{margin-left:5px;margin-top:2px}.sahcfwc-stripe-session-vissible-div{margin-top:16px;text-align:center}.sahcfwc-stripe-session-vissible-div p{font-size:16px;font-weight:500;padding-bottom:15px}@media only screen and (max-width:1200px){#adminmenuwrap{float:left;position:relative;z-index:444}}@media only screen and (max-width:991.5px){.sahcfwc-app-promotion-wrapper{margin:20px 0 0!important}}:where(.css-7nz3ip).sahcfwc-tabs .sahcfwc-tabs-tab-btn .sahcfwc-tabs-tab-icon:not(:last-child){font-size:17px}.sahcfwc-tabs-nav-wrap{padding-left:20px}@media only screen and (max-width:1366.5px){.ant-message-top{top:200px!important}}@media only screen and (max-width:767.5px){#wpcontent #sahcfwc-app .sahcfwc-app-tab-content-container{background-color:#f0f0f1;padding:10px}}@media only screen and (max-width:575.5px){:where(.sahcfwc-checkout-settings-form) .sahcfwc-short-code-para{flex-direction:column}.sahcfwc-short-code-cop{margin-top:1em}}.sahcfwc-card-header-btn .sahcfwc-form-item{margin-bottom:0}.disabled-prem{color:#c1c0c0!important;filter:blur(.5px);font-weight:300}.disabled-prem .sahcfwc-segmented-item-selected,.disabled-prem input[type=radio]:checked:before{background-color:#e6e3e3!important}.disabled-prem .sahcfwc-tabs-tab-icon svg{color:#e6e3e3!important}.disabled-prem input{display:none}.disabled-prem-table{cursor:not-allowed;filter:blur(1.4px);position:relative}.disabled-prem-table:before{bottom:0;content:"";height:100%;left:0;opacity:.5;position:absolute;right:0;top:0;width:100%;z-index:2}.glitter{color:#e49b0f;display:inline-block;font-size:16px;font-weight:600;position:relative}.glitter:before{animation:sparkle 1.5s ease-in-out infinite;background:radial-gradient(circle,rgba(228,155,15,.5),rgba(228,155,15,0));border-radius:50%;content:"";height:30px;left:-10px;opacity:0;position:absolute;top:-13px;width:30px}@keyframes sparkle{0%{opacity:0;transform:scale(.5) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(180deg)}to{opacity:0;transform:scale(.5) rotate(1turn)}}.glitter:hover:before{animation:sparkle .8s ease-in-out infinite}:where(.css-dev-only-do-not-override-q7hk36).sahcfwc-tabs .sahcfwc-tabs-tab-btn .sahcfwc-tabs-tab-icon:not(:last-child){margin:0!important}
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./free-app/styles/header.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+#sahcfwc-app-main .sahcfwc-app-header {
+  padding-left: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 0 rgba(213, 213, 213, 0.5), 0 1px 2px #eee;
+}
+#sahcfwc-app-main .sahcfwc-support {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  font-size: 20px;
+}
+#sahcfwc-app-main .sahcfwc-app-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#sahcfwc-app-main .sahcfwc-app-logo h1 {
+  line-height: 2rem;
+}
+#sahcfwc-app-main a {
+  text-decoration: none;
+}
+#sahcfwc-app-main .sahcfwc-version {
+  font-size: 14px;
+  display: inline-block;
+  padding-left: 5px;
+}
+
+@media only screen and (max-width: 991.5px) {
+  #sahcfwc-app-main .sahcfwc-app-logo {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./free-app/styles/footer.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+#sahcfwc-app-main .sahcfwc-app-Footer {
+  background-color: #ffffff;
+  box-shadow: 0 1px 0 rgba(213, 213, 213, 0.5), 0 1px 2px #eee;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  z-index: 1000;
+}
+#sahcfwc-app-main .my-prefix-layout .sahcfwc-layout-header.my-prefix-layout-header-fixed-header {
+  position: absolute;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./free-app/styles/stripeSetting.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
+:where(.sahcfwc-stripe-settings-form) {
+  background-color: #fff !important;
+  border-radius: 6px;
+}
+:where(.sahcfwc-stripe-settings-form) .sahcfwc-pro-card {
+  background-color: transparent !important;
+}
+:where(.sahcfwc-stripe-settings-form) .sahcfwc-form-item-label > label {
+  width: 300px;
+  max-width: 300px;
+}
+:where(.sahcfwc-stripe-settings-form) label[for=checkbox-group] + input[type=checkbox] {
+  width: auto !important;
+  max-width: none !important;
+}
+:where(.sahcfwc-stripe-settings-form) .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row label {
+  width: 100% !important;
+  max-width: none !important;
+}
+:where(.sahcfwc-stripe-settings-form) .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row {
+  flex-direction: column;
+}
+:where(.sahcfwc-stripe-settings-form) :where(.sahcfwc-btn.sahcfwc-btn-block) {
+  margin-top: 32px;
+}
+:where(.sahcfwc-stripe-settings-form) :where(.css-dev-only-do-not-override-xxt8zy).sahcfwc-pro-form-list-action {
+  position: relative;
+  top: 35px;
+}
+:where(.sahcfwc-stripe-settings-form) .sahcfwc-btn-primary {
+  margin: 0 20px 20px;
+}
+
+@media only screen and (max-width: 1200.5px) {
+  :where(.sahcfwc-stripe-settings-form) .sahcfwc-form-item-label > label {
+    width: 200px;
+    max-width: 200px;
+  }
+}
+@media only screen and (max-width: 575.5px) {
+  :where(.sahcfwc-stripe-settings-form) .sahcfwc-form-item-label > label {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./free-app/styles/checkoutSetting.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+:where(.sahcfwc-checkout-settings-form) {
+  background-color: #fff !important;
+  border-radius: 6px;
+  margin-bottom: 20px !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-input-affix-wrapper > input.sahcfwc-input:focus,
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-select-selector input:focus {
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-pro-card {
+  background-color: transparent !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-form-item-label > label {
+  width: 400px;
+  max-width: 400px;
+}
+:where(.sahcfwc-checkout-settings-form) label[for=checkbox-group] + input[type=checkbox] {
+  width: auto !important;
+  max-width: none !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row label {
+  width: 100% !important;
+  max-width: none !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-col.sahcfwc-col-xs-24.sahcfwc-col-sm-24.sahcfwc-col-md-12.sahcfwc-col-lg-12.sahcfwc-col-xl-12 .sahcfwc-row.sahcfwc-form-item-row {
+  flex-direction: column;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-pro-form-list-action {
+  position: relative;
+  top: auto;
+  line-height: initial !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-form-item-control {
+  flex: 1 !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-form-horizontal .sahcfwc-form-item-control {
+  flex: 1 !important;
+}
+:where(.sahcfwc-checkout-settings-form) :where(.css-dev-only-do-not-override-1gosnuh).sahcfwc-form-horizontal .sahcfwc-form-item-control {
+  flex: 1 !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-app-logo h1 {
+  line-height: 43px;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc_stripe_locale_status_text {
+  display: flex;
+  padding-top: 30px;
+  margin-bottom: -15px;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-short-code-para {
+  display: flex;
+  gap: 0 5px;
+  width: 100%;
+  padding: 12px 0px;
+  align-items: baseline;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-short-code-copy {
+  width: 27.5%;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 3px 10px 5px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  cursor: pointer;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-payment-info {
+  margin-bottom: 0 !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-order-detail-code {
+  width: 400px;
+}
+:where(.sahcfwc-checkout-settings-form) :where(.css-1aut3cz).sahcfwc-col {
+  min-height: auto !important;
+}
+:where(.sahcfwc-checkout-settings-form) .sahcfwc-btn-primary {
+  margin: 0 20px 20px;
+}
+
+.sahcfwc-copy-alert {
+  width: 15%;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+@media only screen and (max-width: 1200.5px) {
+  .sahcfwc-copy-alert {
+    width: 35%;
+  }
+}
+@media only screen and (max-width: 1025px) {
+  .sahcfwc-short-code-copy {
+    width: 41.7%;
+  }
+}
+@media only screen and (max-width: 820.5px) {
+  .sahcfwc-short-code-copy {
+    width: 50.7%;
+  }
+  .sahcfwc-copy-alert {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 767.5px) {
+  :where(.sahcfwc-checkout-settings-form) .sahcfwc-form-item-label > label {
+    width: 100%;
+  }
+  .sahcfwc-pro-form > div:not(.sahcfwc-pro-form-light-filter) .pro-field-md {
+    width: 100% !important;
+  }
+  .sahcfwc-order-detail-code {
+    width: 100%;
+  }
+  .sahcfwc-short-code-copy {
+    width: 100%;
+  }
+  td.ant-table-cell.ant-table-cell-fix-left.ant-table-cell-fix-left-last {
+    position: static !important;
+  }
+  .sahcfwc-row {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 565px) {
+  :where(.sahcfwc-checkout-settings-form) .sahcfwc-pro-form > div:not(.sahcfwc-pro-form-light-filter) .pro-field-md {
+    width: 100% !important;
+  }
+  :where(.sahcfwc-checkout-settings-form) .sahcfwc-pro-form-list-action {
+    position: relative;
+    top: -9px;
+  }
+  .sahcfwc-copy-alert {
+    width: 85%;
+  }
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./free-app/styles/localpayment.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+.stripe_payment_toggle {
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .sahcfwc-checkout-settings-form .sa-procard-grids .sahcfwc-pro-card-header {
+    flex-direction: column;
+  }
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./free-app/styles/featurelist.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+.feature-list-table {
+  margin: 0 10px 10px;
+}
+.feature-list-table .sahcfwc-table-tbody .sahcfwc-table-cell {
+  padding: 10px 20px !important;
+}
+
+.features-table {
+  margin-bottom: 30px;
+}
+.features-table .features-table-upg-btn {
+  text-align: right;
+  padding: 10px;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./free-app/styles/app.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+#sahcfwc_stripe_after_shpping_address_text {
+  resize: none;
+}
+
+#sahcfwc_stripe_after_submit_text {
+  resize: none;
+}
+
+#sahcfwc_stripe_befour_text {
+  resize: none;
+}
+
+#sahcfwc_stripe_customize_terms_service_text {
+  resize: none;
+}
+
+#wpcontent {
+  padding-left: 0;
+}
+#wpcontent #sahcfwc-app {
+  height: 90.6vh;
+}
+#wpcontent #sahcfwc-app .sahcfwc-app-container {
+  padding: 10px;
+}
+#wpcontent #sahcfwc-app .sahcfwc-app-main-container {
+  padding: 10px;
+  margin-bottom: 50px;
+}
+#wpcontent #sahcfwc-app .sahcfwc-app-tab-content-container {
+  padding: 20px;
+  background-color: #f0f0f1;
+}
+#wpcontent #sahcfwc-app .sahcfwc-app-content-wrapper {
+  background-color: #fff;
+  padding: 10px;
+}
+#wpcontent #sahcfwc-app .sahcfwc-app-promotion-wrapper {
+  margin-left: 10px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+#wpfooter {
+  position: fixed;
+}
+
+.hover-effect {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-effect:hover {
+  box-shadow: -2px 10px 26px -14px rgba(64, 224, 208, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.sahcfwc-tabs-tab-btn .anticon {
+  margin-right: 10px;
+}
+
+.sahcfwc-info-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  font-style: normal;
+}
+
+.sahcfwc-upg-pre-btn {
+  font-weight: 500;
+  border-color: #E49B0F;
+  background: #E49B0F;
+  color: #fff;
+}
+.sahcfwc-upg-pre-btn:hover {
+  background: #fff !important;
+  color: #E49B0F !important;
+  border-color: #E49B0F !important;
+}
+
+.anticon-question-circle {
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
+.sahcfwc-stripe-session-vissible-div {
+  text-align: center;
+  margin-top: 16px;
+}
+.sahcfwc-stripe-session-vissible-div p {
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 15px;
+}
+
+@media only screen and (max-width: 1200px) {
+  #adminmenuwrap {
+    position: relative;
+    float: left;
+    z-index: 444;
+  }
+}
+@media only screen and (max-width: 991.5px) {
+  .sahcfwc-app-promotion-wrapper {
+    margin: 20px 0 0 0 !important;
+  }
+}
+:where(.css-7nz3ip).sahcfwc-tabs .sahcfwc-tabs-tab-btn .sahcfwc-tabs-tab-icon:not(:last-child) {
+  font-size: 17px;
+}
+
+.sahcfwc-tabs-nav-wrap {
+  padding-left: 20px;
+}
+
+@media only screen and (max-width: 1366.5px) {
+  .ant-message-top {
+    top: 200px !important;
+  }
+}
+@media only screen and (max-width: 767.5px) {
+  #wpcontent #sahcfwc-app .sahcfwc-app-tab-content-container {
+    padding: 10px;
+    background-color: #f0f0f1;
+  }
+}
+@media only screen and (max-width: 575.5px) {
+  :where(.sahcfwc-checkout-settings-form) .sahcfwc-short-code-para {
+    flex-direction: column;
+  }
+  .sahcfwc-short-code-cop {
+    margin-top: 1em;
+  }
+}
+.sahcfwc-card-header-btn .sahcfwc-form-item {
+  margin-bottom: 0px;
+}
+
+.disabled-prem {
+  filter: blur(0.5px);
+  color: #c1c0c0 !important;
+  font-weight: 300;
+}
+.disabled-prem .sahcfwc-segmented-item-selected {
+  background-color: #e6e3e3 !important;
+}
+.disabled-prem input[type=radio]:checked::before {
+  background-color: #e6e3e3 !important;
+}
+.disabled-prem .sahcfwc-tabs-tab-icon svg {
+  color: #e6e3e3 !important;
+}
+.disabled-prem input {
+  display: none;
+}
+
+.disabled-prem-table {
+  filter: blur(1.4px);
+  cursor: not-allowed;
+  position: relative;
+}
+.disabled-prem-table::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0.5;
+}
+
+.glitter {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  /* Adjust as needed */
+  color: #E49B0F;
+  /* Text color */
+  font-weight: 600;
+  /* Optional: for better visibility */
+}
+
+.glitter::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: -10px;
+  /* Adjusted for better alignment */
+  width: 30px;
+  /* Slightly larger for better effect */
+  height: 30px;
+  /* Slightly larger for better effect */
+  background: radial-gradient(circle, rgba(228, 155, 15, 0.5), rgba(228, 155, 15, 0));
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 1.5s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+.glitter:hover::before {
+  animation: sparkle 0.8s infinite ease-in-out;
+}
+
+:where(.css-dev-only-do-not-override-q7hk36).sahcfwc-tabs .sahcfwc-tabs-tab-btn .sahcfwc-tabs-tab-icon:not(:last-child) {
+  margin: 0 !important;
+}
+
+/*# sourceMappingURL=free-app.css.map*/

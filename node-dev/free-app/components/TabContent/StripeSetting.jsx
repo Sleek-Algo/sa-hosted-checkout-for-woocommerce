@@ -34,6 +34,14 @@ const StripeSetting = () => {
 		sahcfwc_customizations_localized_objects.is_free_plan
 	);
 
+	// Change this state to track key type
+    const [apiKeyType, setApiKeyType] = useState('standard'); // 'standard' or 'restricted'
+	const [useRestrictedKey, setUseRestrictedKey] = useState(false);
+	const [restrictedTestKey, setRestrictedTestKey] = useState('');
+	const [restrictedLiveKey, setRestrictedLiveKey] = useState('');
+	const [shortRestrictedTestKey, setShortRestrictedTestKey] = useState('');
+	const [shortRestrictedLiveKey, setShortRestrictedLiveKey] = useState('');
+
 	const handleClick = ( formData ) => {
 		/**
 		 * Set API Processing State
@@ -44,6 +52,16 @@ const StripeSetting = () => {
 				? __( 'yes', 'sa-hosted-checkout-for-woocommerce' )
 				: __( 'no', 'sa-hosted-checkout-for-woocommerce' );
 		formData.sahcfwc_stripe_checkout_status = update_val;
+
+		// Only include the keys for the selected type
+        formData.sahcfwc_api_key_type = apiKeyType;
+        if (apiKeyType === 'standard') {
+            formData.sahcfwc_restricted_test_key = '';
+            formData.sahcfwc_restricted_live_key = '';
+        } else {
+            formData.sahcfwc_stripe_test_secret_key = '';
+            formData.sahcfwc_stripe_live_secret_key = '';
+        }
 
 		apiFetch( {
 			path: '/wp/v2/settings/',
@@ -80,6 +98,10 @@ const StripeSetting = () => {
 		sahcfwc_stripe_webhook_url:
 			sahcfwc_customizations_localized_objects.webhook_URL,
 		sahcfwc_stripe_webhook_key: '',
+		// New
+		sahcfwc_api_key_type: 'standard',
+		sahcfwc_restricted_test_key: '',
+        sahcfwc_restricted_live_key: '',
 	};
 
 	return (
@@ -180,6 +202,18 @@ const StripeSetting = () => {
 							)
 						);
 
+						// Add these lines for API key type
+						setApiKeyType(response?.sahcfwc_api_key_type || 'standard');
+						// Update restricted key states
+						setRestrictedTestKey(response?.sahcfwc_restricted_test_key || '');
+						setRestrictedLiveKey(response?.sahcfwc_restricted_live_key || '');
+						setShortRestrictedTestKey(
+							generatShortkey(response?.sahcfwc_restricted_test_key)
+						);
+						setShortRestrictedLiveKey(
+							generatShortkey(response?.sahcfwc_restricted_live_key)
+						);
+
 						return {
 							...formInitialValues,
 							sahcfwc_stripe_checkout_status:
@@ -192,6 +226,12 @@ const StripeSetting = () => {
 								response?.sahcfwc_stripe_live_secret_key,
 							sahcfwc_stripe_webhook_key:
 								response?.sahcfwc_stripe_webhook_key,
+							sahcfwc_api_key_type: 
+								response?.sahcfwc_api_key_type || 'standard',
+							sahcfwc_restricted_test_key: 
+								response?.sahcfwc_restricted_test_key || '',
+            				sahcfwc_restricted_live_key: 
+								response?.sahcfwc_restricted_live_key || ''
 						};
 					} );
 				} }
@@ -240,34 +280,68 @@ const StripeSetting = () => {
 										value === 'yes' ? false : true
 									);
 								} }
-								rules={ [
+								// rules={ [
+								// 	{
+								// 		validator: async ( _, value ) => {
+								// 			if ( value === 'yes' ) {
+								// 				if (
+								// 					liveSceretRequired ===
+								// 						true &&
+								// 					testSceretRequired === false
+								// 				) {
+								// 					if ( ! liveSecretKey ) {
+								// 						return Promise.reject(
+								// 							__(
+								// 								'Please Enter the Live Secret Key',
+								// 								'sa-hosted-checkout-for-woocommerce'
+								// 							)
+								// 						);
+								// 					}
+								// 				} else if (
+								// 					liveSceretRequired ===
+								// 						false &&
+								// 					testSceretRequired === true
+								// 				) {
+								// 					if ( ! testSecretKey ) {
+								// 						return Promise.reject(
+								// 							__(
+								// 								'Please Enter the Test Secret Key',
+								// 								'sa-hosted-checkout-for-woocommerce'
+								// 							)
+								// 						);
+								// 					}
+								// 				}
+								// 				return Promise.resolve();
+								// 			} else {
+								// 				return Promise.resolve();
+								// 			}
+								// 		},
+								// 	},
+								// ] }
+								rules={[
 									{
-										validator: async ( _, value ) => {
-											if ( value === 'yes' ) {
-												if (
-													liveSceretRequired ===
-														true &&
-													testSceretRequired === false
-												) {
-													if ( ! liveSecretKey ) {
+										validator: async (_, value) => {
+											if (value === 'yes') {
+												if (liveSceretRequired === true && testSceretRequired === false) {
+													if (apiKeyType === 'standard' && !liveSecretKey) {
 														return Promise.reject(
-															__(
-																'Please Enter the Live Secret Key',
-																'sa-hosted-checkout-for-woocommerce'
-															)
+															__('Please Enter the Live Secret Key', 'sa-hosted-checkout-for-woocommerce')
 														);
 													}
-												} else if (
-													liveSceretRequired ===
-														false &&
-													testSceretRequired === true
-												) {
-													if ( ! testSecretKey ) {
+													if (apiKeyType === 'restricted' && !restrictedLiveKey) {
 														return Promise.reject(
-															__(
-																'Please Enter the Test Secret Key',
-																'sa-hosted-checkout-for-woocommerce'
-															)
+															__('Please Enter the Restricted Live Key', 'sa-hosted-checkout-for-woocommerce')
+														);
+													}
+												} else if (liveSceretRequired === false && testSceretRequired === true) {
+													if (apiKeyType === 'standard' && !testSecretKey) {
+														return Promise.reject(
+															__('Please Enter the Test Secret Key', 'sa-hosted-checkout-for-woocommerce')
+														);
+													}
+													if (apiKeyType === 'restricted' && !restrictedTestKey) {
+														return Promise.reject(
+															__('Please Enter the Restricted Test Key', 'sa-hosted-checkout-for-woocommerce')
 														);
 													}
 												}
@@ -277,12 +351,13 @@ const StripeSetting = () => {
 											}
 										},
 									},
-								] }
+								]}
 							/>
 						</div>
 					}
 				>
 					<ProForm.Group>
+
 						<ProFormSegmented
 							label={ __(
 								'Stripe Integration Mode',
@@ -327,6 +402,26 @@ const StripeSetting = () => {
 							} }
 						/>
 
+						{/* In your form JSX, replace the restricted keys toggle with: */}
+						<ProFormSegmented
+							label={__('API Key Type', 'sa-hosted-checkout-for-woocommerce')}
+							name="sahcfwc_api_key_type"
+							tooltip={__('Choose between Standard or Restricted API Keys', 'sa-hosted-checkout-for-woocommerce')}
+							request={async () => [
+								{
+									label: __('Standard API Key', 'sa-hosted-checkout-for-woocommerce'),
+									value: 'standard',
+								},
+								{
+									label: __('Restricted API Key', 'sa-hosted-checkout-for-woocommerce'),
+									value: 'restricted',
+								},
+							]}
+							onChange={(value) => {
+								setApiKeyType(value);
+							}}
+						/>
+
 						<ProFormSegmented
 							label={
 								<span className="disabled-prem">
@@ -366,142 +461,245 @@ const StripeSetting = () => {
 							] }
 						/>
 
-						<ProFormText.Password
-							name="sahcfwc_stripe_test_secret_key"
-							label={ __(
-								'Test Secret Key',
-								'sa-hosted-checkout-for-woocommerce'
-							) }
-							tooltip={ __(
-								'This option allows you to add a test secret key for the Stripe Test Mode.',
-								'sa-hosted-checkout-for-woocommerce'
-							) }
-							placeholder={ __(
-								'Test Secret Key',
-								'sa-hosted-checkout-for-woocommerce'
-							) }
-							type="password"
-							colProps={ {
-								xs: 24,
-								sm: 24,
-								md: 24,
-								lg: 24,
-								xl: 24,
-							} }
-							onChange={ async ( event ) => {
-								setShortTestSecretKey(
-									generatShortkey( event.target.value )
-								);
-								setTestSecretKey( event.target.value );
-							} }
-							extra={
-								<div>
-									{ __(
-										'Test Secret key ending *****',
+						{/* // Modify the key fields sections to be conditional: */}
+    					{apiKeyType === 'standard' && (
+							<>
+								<ProFormText.Password
+									name="sahcfwc_stripe_test_secret_key"
+									label={ __(
+										'Test Secret Key',
 										'sa-hosted-checkout-for-woocommerce'
 									) }
-									{ shortTestSecretKey }
-								</div>
-							}
-							rules={ [
-								{
-									required: testSceretRequired,
-									message: ' ',
-								},
-								{
-									validator: async ( _, value ) => {
-										if ( ! value && testSceretRequired ) {
-											return Promise.reject(
-												__(
-													'Please Enter the Test Secret Key',
-													'sa-hosted-checkout-for-woocommerce'
-												)
-											);
-										}
-										if (
-											value &&
-											! value.includes( 'test' )
-										) {
-											return Promise.reject(
-												__(
-													"The secret key should begin with the country code followed by 'test'.",
-													'sa-hosted-checkout-for-woocommerce'
-												)
-											);
-										}
-										return Promise.resolve();
-									},
-								},
-							] }
-						/>
+									tooltip={ __(
+										'This option allows you to add a test secret key for the Stripe Test Mode.',
+										'sa-hosted-checkout-for-woocommerce'
+									) }
+									placeholder={ __(
+										'Test Secret Key',
+										'sa-hosted-checkout-for-woocommerce'
+									) }
+									type="password"
+									colProps={ {
+										xs: 24,
+										sm: 24,
+										md: 24,
+										lg: 24,
+										xl: 24,
+									} }
+									onChange={ async ( event ) => {
+										setShortTestSecretKey(
+											generatShortkey( event.target.value )
+										);
+										setTestSecretKey( event.target.value );
+									} }
+									extra={
+										<div>
+											{ __(
+												'Test Secret key ending *****',
+												'sa-hosted-checkout-for-woocommerce'
+											) }
+											{ shortTestSecretKey }
+										</div>
+									}
+									rules={ [
+										{
+											required: testSceretRequired,
+											message: ' ',
+										},
+										{
+											validator: async ( _, value ) => {
+												if ( ! value && testSceretRequired ) {
+													return Promise.reject(
+														__(
+															'Please Enter the Test Secret Key',
+															'sa-hosted-checkout-for-woocommerce'
+														)
+													);
+												}
+												if (
+													value &&
+													! value.includes( 'test' )
+												) {
+													return Promise.reject(
+														__(
+															"The secret key should begin with the country code followed by 'test'.",
+															'sa-hosted-checkout-for-woocommerce'
+														)
+													);
+												}
+												return Promise.resolve();
+											},
+										},
+									] }
+								/>
 
-						<ProFormText.Password
-							name="sahcfwc_stripe_live_secret_key"
-							label={ __(
-								'Live Secret Key',
-								'sa-hosted-checkout-for-woocommerce'
-							) }
-							tooltip={ __(
-								'This option allows you to add a secret key for the Stripe Live Mode.',
-								'sa-hosted-checkout-for-woocommerce'
-							) }
-							placeholder={ __(
-								'Live Secret Key',
-								'sa-hosted-checkout-for-woocommerce'
-							) }
-							colProps={ {
-								xs: 24,
-								sm: 24,
-								md: 24,
-								lg: 24,
-								xl: 24,
-							} }
-							onChange={ async ( event ) => {
-								setShortLiveSecretKey(
-									generatShortkey( event.target.value )
-								);
-								setLiveSecretKey( event.target.value );
-							} }
-							extra={
-								<div>
-									{ __(
-										'Live Secret key ending *****',
+								<ProFormText.Password
+									name="sahcfwc_stripe_live_secret_key"
+									label={ __(
+										'Live Secret Key',
 										'sa-hosted-checkout-for-woocommerce'
 									) }
-									{ shortLiveSecretKey }
-								</div>
-							}
-							rules={ [
-								{
-									required: liveSceretRequired,
-									message: ' ',
-								},
-								{
-									validator: async ( _, value ) => {
-										if ( ! value && liveSceretRequired ) {
-											return Promise.reject(
-												__(
-													'Please Enter the Live Secret Key',
-													'sa-hosted-checkout-for-woocommerce'
-												)
-											);
-										}
-										if (
-											value &&
-											! value.includes( 'live' )
-										) {
-											return Promise.reject(
-												__(
-													"The secret key should begin with the country code followed by 'live'.",
-													'sa-hosted-checkout-for-woocommerce'
-												)
-											);
-										}
-										return Promise.resolve();
-									},
-								},
-							] }
-						/>
+									tooltip={ __(
+										'This option allows you to add a secret key for the Stripe Live Mode.',
+										'sa-hosted-checkout-for-woocommerce'
+									) }
+									placeholder={ __(
+										'Live Secret Key',
+										'sa-hosted-checkout-for-woocommerce'
+									) }
+									colProps={ {
+										xs: 24,
+										sm: 24,
+										md: 24,
+										lg: 24,
+										xl: 24,
+									} }
+									onChange={ async ( event ) => {
+										setShortLiveSecretKey(
+											generatShortkey( event.target.value )
+										);
+										setLiveSecretKey( event.target.value );
+									} }
+									extra={
+										<div>
+											{ __(
+												'Live Secret key ending *****',
+												'sa-hosted-checkout-for-woocommerce'
+											) }
+											{ shortLiveSecretKey }
+										</div>
+									}
+									rules={ [
+										{
+											required: liveSceretRequired,
+											message: ' ',
+										},
+										{
+											validator: async ( _, value ) => {
+												if ( ! value && liveSceretRequired ) {
+													return Promise.reject(
+														__(
+															'Please Enter the Live Secret Key',
+															'sa-hosted-checkout-for-woocommerce'
+														)
+													);
+												}
+												if (
+													value &&
+													! value.includes( 'live' )
+												) {
+													return Promise.reject(
+														__(
+															"The secret key should begin with the country code followed by 'live'.",
+															'sa-hosted-checkout-for-woocommerce'
+														)
+													);
+												}
+												return Promise.resolve();
+											},
+										},
+									] }
+								/>
+							</>
+    					)}
+
+						{apiKeyType === 'restricted' && (
+							<>
+								<ProFormText.Password
+									name="sahcfwc_restricted_test_key"
+									label={__(
+										'Restricted Test Key',
+										'sa-hosted-checkout-for-woocommerce'
+									)}
+									tooltip={__(
+										'Enter your restricted test key with limited permissions',
+										'sa-hosted-checkout-for-woocommerce'
+									)}
+									placeholder={__(
+										'Restricted Test Key',
+										'sa-hosted-checkout-for-woocommerce'
+									)}
+									onChange={async (event) => {
+										setShortRestrictedTestKey(generatShortkey(event.target.value));
+										setRestrictedTestKey(event.target.value);
+									}}
+									extra={
+										<div>
+											{__('Restricted Test key ending *****', 'sa-hosted-checkout-for-woocommerce')}
+											{shortRestrictedTestKey}
+										</div>
+									}
+									rules={[
+										{
+											required: testSceretRequired && apiKeyType === 'restricted',
+											message: __('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce'),
+										},
+										{
+											validator: async (_, value) => {
+												if (!value && testSceretRequired && apiKeyType === 'restricted') {
+													return Promise.reject(
+														__('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce')
+													);
+												}
+												if (value && !value.includes('test')) {
+													return Promise.reject(
+														__('The restricted key should begin with "rk_test_"', 'sa-hosted-checkout-for-woocommerce')
+													);
+												}
+												return Promise.resolve();
+											},
+										},
+									]}
+								/>
+
+								<ProFormText.Password
+									name="sahcfwc_restricted_live_key"
+									label={__(
+										'Restricted Live Key',
+										'sa-hosted-checkout-for-woocommerce'
+									)}
+									tooltip={__(
+										'Enter your restricted live key with limited permissions',
+										'sa-hosted-checkout-for-woocommerce'
+									)}
+									placeholder={__(
+										'Restricted Live Key',
+										'sa-hosted-checkout-for-woocommerce'
+									)}
+									onChange={async (event) => {
+										setShortRestrictedLiveKey(generatShortkey(event.target.value));
+										setRestrictedLiveKey(event.target.value);
+									}}
+									extra={
+										<div>
+											{__('Restricted Live key ending *****', 'sa-hosted-checkout-for-woocommerce')}
+											{shortRestrictedLiveKey}
+										</div>
+									}
+									rules={[
+										{
+											required: liveSceretRequired && apiKeyType === 'restricted',
+											message: __('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce'),
+										},
+										{
+											validator: async (_, value) => {
+												if (!value && liveSceretRequired && apiKeyType === 'restricted') {
+													return Promise.reject(
+														__('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce')
+													);
+												}
+												if (value && !value.includes('live')) {
+													return Promise.reject(
+														__('The restricted key should begin with "rk_live_"', 'sa-hosted-checkout-for-woocommerce')
+													);
+												}
+												return Promise.resolve();
+											},
+										},
+									]}
+								/>
+							</>
+    					)}
 						<ProFormText
 							name="sahcfwc_stripe_webhook_url"
 							label={ __(
