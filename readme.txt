@@ -1,17 +1,17 @@
 === SA Hosted Checkout for WooCommerce ===
-Contributors: sleekalgo, freemius
-Tags: stripe hosted checkout, woocommerce, extensive integration, high performance order storage, secure checkout
+Contributors: sleekalgo
+Tags: stripe, stripe checkout, woocommerce, secure checkout, express checkout
 Requires at least: 5.1
-Tested up to: 6.6.1
+Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Replace WooCommerce checkout with Stripe Checkout quickly. Let your customers pay with confidence using highly optimized, Stripe hosted checkout.
 
 == Description ==
-This plugin is the most extensive integration between WooCommerce and Stripe Checkout, developed to improve your online store's revenues by giving more confidence to the customers to checkout on your store. It effortlessly connects your WooCommerce store with Stripe Checkout bypassing the WooCommerce checkout completely. You can customize the Stripe Checkout displayed to your customers by using the settings available in the plugin. All possible options are available the premium version along with some additional features to review the Stripe checkout sessions created on your website. 
+This plugin is the most extensive integration between WooCommerce and Stripe Checkout, developed to improve your online store's revenues by giving more confidence to the customers to checkout on your store. It effortlessly connects your WooCommerce store with Stripe Checkout bypassing the WooCommerce checkout completely. You can customize the Stripe Checkout displayed to your customers by using the settings available in the plugin. All possible options are available in the premium version along with some additional features to review the Stripe checkout sessions created on your website.
 
 === 🗝️ Key FEATURES: ===
 
@@ -25,7 +25,7 @@ This plugin is the most extensive integration between WooCommerce and Stripe Che
 = 🌟 Premium Version - Features: 🎯 =
 * All features in the free version and the following
 * Support WooCommerce Coupon codes and Discounts out of the box
-* Support any or all payment methods from: 
+* Support any or all payment methods from: USD bank transfers, afterpay, iDEAL, Affirm, Pre-authorized debits in Canada, Przelewy 24, Mastercard, SEPA Direct Debit, VISA, Diners Club, Discover,EPS, Giropay, JCBI, Klarna, Links, Cartes Bancaires, American Express, Bancontact, Alipay, WeChat Pay, Union Pay, Cash App Pay
 * Change the language of Stripe checkout displayed to your customers
 * Add custom fields to Stripe Checkout which can be a number field, a text field and a dropdown field
 * Add custom text to be displayed as terms and services text
@@ -40,13 +40,25 @@ Get the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-wooco
 ==👉 Video Tutorial 👈==
 https://www.youtube.com/watch?v=2ktSTBzG95c
 
+== Screenshots ==
+1. How Stripe Checkout will look on your website
+2. Enable SA Hosted Checkout for WooCommerce to replace WooCommerce Checkout with Stripe Checkout
+3. Change Stripe mode between Test and Live
+4. Change configuration for Stripe Checkout
+5. Update cancellation page URL
+6. Enable custom Thank You page
+7. Add custom text to be displayed on Stripe Checkout page
+8. Add custom fields to Stripe Checkout
+9. Select payment methods to enable on Stripe Checkout
+10. View details of all the Stripe Sessions created on your website
+
 = Documentation 📚 =
-Discover how to make the most of Otter Blocks with our detailed and user-friendly [documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide).
+Discover how to make the most of SA Hosted Checkout for WooCommerce with our detailed and user-friendly [documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide).
 
 = 🌐 Translation Ready 🤩 =
 *SA Hosted Checkout for WooCommerce* is compatible with Loco Translate, WPML, Polylang, TranslatePress, Weglot, and more. To contribute, add a new language via translate.wordpress.org.
 
-= ⏩ Use of Third-Party Libraries 🛠️ =  
+= ⏩ Use of Third-Party Libraries 🛠️ =
 The *SA Hosted Checkout for WooCommerce* plugin has been built using the following third-party libraries to enhance functionality and user experience:
 - [Stripe PHP SDK](https://github.com/stripe/stripe-php) – This SDK is integrated to support [Stripe Checkout](https://stripe.com/payments/checkout), allowing secure and seamless payment processing.
 - [React.js](https://react.dev/) – React.js is used to manage the plugin’s admin interface components for a dynamic and responsive user experience.
@@ -63,14 +75,14 @@ The *SA Hosted Checkout for WooCommerce* plugin has been built using the followi
 *SA Hosted Checkout for WooCommerce* is an open-source project, and we welcome contributors to be part of our vibrant community! Help us improve the plugin and make it even better - [GitHub Link](https://github.com/Sleek-Algo/sa-hosted-checkout-for-woocommerce/)
 
 == 🤝 Support 👀 ==
-We offers full support on the WordPress.org [Forum](https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce/). Before starting a new thread, please check available documentation and other support threads. Leave a clear and concise description of your issue, and we will respond as soon as possible.
+We offers full support on the WordPress.org [Forum](https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce/). Before starting a new thread, please check available [documentation](w.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#:~:text=Guide%20Video-,Documents,-Installation%20guide) and other support threads. Leave a clear and concise description of your issue, and we will respond as soon as possible.
 
 ==🐞 BUG REPORTS 📝 ==
 Find a bug in *SA Hosted Checkout for WooCommerce* ? We welcome your bug reports! Please report bugs in the *SA Hosted Checkout for WooCommerce* [repository on GitHub](https://github.com/Sleek-Algo/sa-hosted-checkout-for-woocommerce). Note that GitHub is not a support forum but an efficient platform for addressing and resolving issues efficiently.
 
 == Installation ==
 * In your WordPress dashboard, choose Plugins > Add new.
-* Search for the plugin with the search bar in the top right corner using the keywords "WC Stripe Checkout". A number of results may appear.
+* Search for the plugin with the search bar in the top right corner using the keywords "SA Hosted Checkout". A number of results may appear.
 * After finding the plugin in the results, click Install Now. You can also click the plugin name to view more details about it.
 
 For further details please check our [Installation Guide](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide)
@@ -79,7 +91,7 @@ For further details please check our [Installation Guide](https://www.sleekalgo.
 1. How Stripe Checkout will look on your website
 2. Enable WC Stripe Checkout Plug and Play to replace WooCommerce Checkout with Stripe Checkout
 3. Change Stripe mode between Test and Live
-4. Change configuration for Stripe Checkout 
+4. Change configuration for Stripe Checkout
 5. Update cancellation page URL
 6. Enable custom Thank You page
 7. Add custom text to be displayed on Stripe Checkout page
@@ -98,7 +110,7 @@ Get your Test/Live Stripe keys and webhook keys from the Stripe account, enter t
 In order to provide custom payment methods on your website, please purchase the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) of the plugin.
 
 = I want to customize my Stripe Checkout page =
-The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) of Stripe Checkout Plug and Play provides options to add custom text, number and dropdown fields for better customization.
+The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) of SA Hosted Checkout for WooCommerce provides options to add custom text, number and dropdown fields for better customization.
 
 = How can I check Stripe Checkout sessions which were created on my website but never completed? =
 The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) offers you access to Stripe Sessions for quick and easy viewing of the customer and order details.
