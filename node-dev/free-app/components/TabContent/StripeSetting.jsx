@@ -41,6 +41,7 @@ const StripeSetting = () => {
 	const [restrictedLiveKey, setRestrictedLiveKey] = useState('');
 	const [shortRestrictedTestKey, setShortRestrictedTestKey] = useState('');
 	const [shortRestrictedLiveKey, setShortRestrictedLiveKey] = useState('');
+	const [stripeMode, setStripeMode] = useState('test-mode'); // 'test-mode' or 'live-mode'
 
 	const handleClick = ( formData ) => {
 		/**
@@ -151,6 +152,10 @@ const StripeSetting = () => {
 						path: '/wp/v2/settings/',
 						method: 'GET',
 					} ).then( ( response ) => {
+						// Update all states from response
+						const mode = response?.sahcfwc_stripe_integration_mode || 'test-mode';
+						setStripeMode(mode);
+
 						setStripeCheckoutStatus(
 							response?.sahcfwc_stripe_checkout_status === 'yes'
 								? false
@@ -385,6 +390,7 @@ const StripeSetting = () => {
 								},
 							] }
 							onChange={ ( value ) => {
+								setStripeMode(value);
 								setStripeLiveModeStatus(
 									value === 'live-mode' ? false : true
 								);
@@ -465,7 +471,8 @@ const StripeSetting = () => {
     					{/* {apiKeyType === 'standard' && (
 							<> */}
 							{/* Show only in test mode */}
-							{stripeTestModeStatus && apiKeyType === 'standard' && (
+							{/* {stripeTestModeStatus && apiKeyType === 'standard' && ( */}
+							{stripeMode === 'test-mode' && apiKeyType === 'standard' && (
 								<ProFormText.Password
 									name="sahcfwc_stripe_test_secret_key"
 									label={ __(
@@ -552,7 +559,8 @@ const StripeSetting = () => {
 								/>
 							)}
 							{/* Show only in live mode */}
-							{stripeLiveModeStatus && apiKeyType === 'standard' && (
+							{/* {stripeLiveModeStatus && apiKeyType === 'standard' && ( */}
+							{stripeMode === 'live-mode' && apiKeyType === 'standard' && (
 								<ProFormText.Password
 									name="sahcfwc_stripe_live_secret_key"
 									label={ __(
@@ -643,7 +651,8 @@ const StripeSetting = () => {
 						{/* {apiKeyType === 'restricted' && (
 							<> */}
 							{/* Show restricted test key only in test mode */}
-							{stripeTestModeStatus && apiKeyType === 'restricted' && (
+							{/* {stripeTestModeStatus && apiKeyType === 'restricted' && ( */}
+							{stripeMode === 'test-mode' && apiKeyType === 'restricted' && (
 								<ProFormText.Password
 									name="sahcfwc_restricted_test_key"
 									label={__(
@@ -708,7 +717,8 @@ const StripeSetting = () => {
 								/>
 							)}
 							{/* Show restricted live key only in live mode */}
-							{stripeLiveModeStatus && apiKeyType === 'restricted' && (
+							{/* {stripeLiveModeStatus && apiKeyType === 'restricted' && ( */}
+							{stripeMode === 'live-mode' && apiKeyType === 'restricted' && (
 								<ProFormText.Password
 									name="sahcfwc_restricted_live_key"
 									label={__(
