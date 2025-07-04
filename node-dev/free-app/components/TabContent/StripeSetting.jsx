@@ -36,7 +36,6 @@ const StripeSetting = () => {
 
 	// Change this state to track key type
     const [apiKeyType, setApiKeyType] = useState('standard'); // 'standard' or 'restricted'
-	const [useRestrictedKey, setUseRestrictedKey] = useState(false);
 	const [restrictedTestKey, setRestrictedTestKey] = useState('');
 	const [restrictedLiveKey, setRestrictedLiveKey] = useState('');
 	const [shortRestrictedTestKey, setShortRestrictedTestKey] = useState('');
@@ -285,44 +284,6 @@ const StripeSetting = () => {
 										value === 'yes' ? false : true
 									);
 								} }
-								// rules={ [
-								// 	{
-								// 		validator: async ( _, value ) => {
-								// 			if ( value === 'yes' ) {
-								// 				if (
-								// 					liveSceretRequired ===
-								// 						true &&
-								// 					testSceretRequired === false
-								// 				) {
-								// 					if ( ! liveSecretKey ) {
-								// 						return Promise.reject(
-								// 							__(
-								// 								'Please Enter the Live Secret Key',
-								// 								'sa-hosted-checkout-for-woocommerce'
-								// 							)
-								// 						);
-								// 					}
-								// 				} else if (
-								// 					liveSceretRequired ===
-								// 						false &&
-								// 					testSceretRequired === true
-								// 				) {
-								// 					if ( ! testSecretKey ) {
-								// 						return Promise.reject(
-								// 							__(
-								// 								'Please Enter the Test Secret Key',
-								// 								'sa-hosted-checkout-for-woocommerce'
-								// 							)
-								// 						);
-								// 					}
-								// 				}
-								// 				return Promise.resolve();
-								// 			} else {
-								// 				return Promise.resolve();
-								// 			}
-								// 		},
-								// 	},
-								// ] }
 								rules={[
 									{
 										validator: async (_, value) => {
@@ -362,7 +323,6 @@ const StripeSetting = () => {
 					}
 				>
 					<ProForm.Group>
-
 						<ProFormSegmented
 							label={ __(
 								'Stripe Integration Mode',
@@ -468,322 +428,308 @@ const StripeSetting = () => {
 						/>
 
 						{/* // Modify the key fields sections to be conditional: */}
-    					{/* {apiKeyType === 'standard' && (
-							<> */}
-							{/* Show only in test mode */}
-							{/* {stripeTestModeStatus && apiKeyType === 'standard' && ( */}
-							{stripeMode === 'test-mode' && apiKeyType === 'standard' && (
-								<ProFormText.Password
-									name="sahcfwc_stripe_test_secret_key"
-									label={ __(
-										'Test Secret Key',
-										'sa-hosted-checkout-for-woocommerce'
-									) }
-									tooltip={ __(
-										'This option allows you to add a test secret key for the Stripe Test Mode.',
-										'sa-hosted-checkout-for-woocommerce'
-									) }
-									placeholder={ __(
-										'Test Secret Key',
-										'sa-hosted-checkout-for-woocommerce'
-									) }
-									type="password"
-									colProps={ {
-										xs: 24,
-										sm: 24,
-										md: 24,
-										lg: 24,
-										xl: 24,
-									} }
-									onChange={ async ( event ) => {
-										setShortTestSecretKey(
-											generatShortkey( event.target.value )
-										);
-										setTestSecretKey( event.target.value );
-									} }
-									extra={
-										<div>
-											{ __(
-												'Test Secret key ending *****',
-												'sa-hosted-checkout-for-woocommerce'
-											) }
-											{ shortTestSecretKey }
-										</div>
-									}
-									// rules={ [
-									// 	{
-									// 		required: testSceretRequired,
-									// 		message: ' ',
-									// 	},
-									// 	{
-									// 		validator: async ( _, value ) => {
-									// 			if ( ! value && testSceretRequired ) {
-									// 				return Promise.reject(
-									// 					__(
-									// 						'Please Enter the Test Secret Key',
-									// 						'sa-hosted-checkout-for-woocommerce'
-									// 					)
-									// 				);
-									// 			}
-									// 			if (
-									// 				value &&
-									// 				! value.includes( 'test' )
-									// 			) {
-									// 				return Promise.reject(
-									// 					__(
-									// 						"The secret key should begin with the country code followed by 'test'.",
-									// 						'sa-hosted-checkout-for-woocommerce'
-									// 					)
-									// 				);
-									// 			}
-									// 			return Promise.resolve();
-									// 		},
-									// 	},
-									// ] }
-									rules={[
-										{
-											required: true,
-											message: __('Please enter the test secret key', 'sa-hosted-checkout-for-woocommerce'),
+						{stripeMode === 'test-mode' && apiKeyType === 'standard' && (
+							<ProFormText.Password
+								name="sahcfwc_stripe_test_secret_key"
+								label={ __(
+									'Test Secret Key',
+									'sa-hosted-checkout-for-woocommerce'
+								) }
+								tooltip={ __(
+									'This option allows you to add a test secret key for the Stripe Test Mode.',
+									'sa-hosted-checkout-for-woocommerce'
+								) }
+								placeholder={ __(
+									'Test Secret Key',
+									'sa-hosted-checkout-for-woocommerce'
+								) }
+								type="password"
+								colProps={ {
+									xs: 24,
+									sm: 24,
+									md: 24,
+									lg: 24,
+									xl: 24,
+								} }
+								onChange={ async ( event ) => {
+									setShortTestSecretKey(
+										generatShortkey( event.target.value )
+									);
+									setTestSecretKey( event.target.value );
+								} }
+								extra={
+									<div>
+										{ __(
+											'Test Secret key ending *****',
+											'sa-hosted-checkout-for-woocommerce'
+										) }
+										{ shortTestSecretKey }
+									</div>
+								}
+								// rules={ [
+								// 	{
+								// 		required: testSceretRequired,
+								// 		message: ' ',
+								// 	},
+								// 	{
+								// 		validator: async ( _, value ) => {
+								// 			if ( ! value && testSceretRequired ) {
+								// 				return Promise.reject(
+								// 					__(
+								// 						'Please Enter the Test Secret Key',
+								// 						'sa-hosted-checkout-for-woocommerce'
+								// 					)
+								// 				);
+								// 			}
+								// 			if (
+								// 				value &&
+								// 				! value.includes( 'test' )
+								// 			) {
+								// 				return Promise.reject(
+								// 					__(
+								// 						"The secret key should begin with the country code followed by 'test'.",
+								// 						'sa-hosted-checkout-for-woocommerce'
+								// 					)
+								// 				);
+								// 			}
+								// 			return Promise.resolve();
+								// 		},
+								// 	},
+								// ] }
+								rules={[
+									{
+										required: true,
+										message: __('Please enter the test secret key', 'sa-hosted-checkout-for-woocommerce'),
+									},
+									{
+										validator: async (_, value) => {
+											if (value && !value.includes('test')) {
+												return Promise.reject(
+													__("The secret key should begin with 'sk_test_'", 'sa-hosted-checkout-for-woocommerce')
+												);
+											}
+											return Promise.resolve();
 										},
-										{
-											validator: async (_, value) => {
-												if (value && !value.includes('test')) {
-													return Promise.reject(
-														__("The secret key should begin with 'sk_test_'", 'sa-hosted-checkout-for-woocommerce')
-													);
-												}
-												return Promise.resolve();
-											},
+									},
+								]}
+							/>
+						)}
+						{/* Show only in live mode */}
+						{stripeMode === 'live-mode' && apiKeyType === 'standard' && (
+							<ProFormText.Password
+								name="sahcfwc_stripe_live_secret_key"
+								label={ __(
+									'Live Secret Key',
+									'sa-hosted-checkout-for-woocommerce'
+								) }
+								tooltip={ __(
+									'This option allows you to add a secret key for the Stripe Live Mode.',
+									'sa-hosted-checkout-for-woocommerce'
+								) }
+								placeholder={ __(
+									'Live Secret Key',
+									'sa-hosted-checkout-for-woocommerce'
+								) }
+								colProps={ {
+									xs: 24,
+									sm: 24,
+									md: 24,
+									lg: 24,
+									xl: 24,
+								} }
+								onChange={ async ( event ) => {
+									setShortLiveSecretKey(
+										generatShortkey( event.target.value )
+									);
+									setLiveSecretKey( event.target.value );
+								} }
+								extra={
+									<div>
+										{ __(
+											'Live Secret key ending *****',
+											'sa-hosted-checkout-for-woocommerce'
+										) }
+										{ shortLiveSecretKey }
+									</div>
+								}
+								// rules={ [
+								// 	{
+								// 		required: liveSceretRequired,
+								// 		message: ' ',
+								// 	},
+								// 	{
+								// 		validator: async ( _, value ) => {
+								// 			if ( ! value && liveSceretRequired ) {
+								// 				return Promise.reject(
+								// 					__(
+								// 						'Please Enter the Live Secret Key',
+								// 						'sa-hosted-checkout-for-woocommerce'
+								// 					)
+								// 				);
+								// 			}
+								// 			if (
+								// 				value &&
+								// 				! value.includes( 'live' )
+								// 			) {
+								// 				return Promise.reject(
+								// 					__(
+								// 						"The secret key should begin with the country code followed by 'live'.",
+								// 						'sa-hosted-checkout-for-woocommerce'
+								// 					)
+								// 				);
+								// 			}
+								// 			return Promise.resolve();
+								// 		},
+								// 	},
+								// ] }
+								rules={[
+									{
+										required: true,
+										message: __('Please enter the live secret key', 'sa-hosted-checkout-for-woocommerce'),
+									},
+									{
+										validator: async (_, value) => {
+											if (value && !value.includes('live')) {
+												return Promise.reject(
+													__("The secret key should begin with 'sk_live_'", 'sa-hosted-checkout-for-woocommerce')
+												);
+											}
+											return Promise.resolve();
 										},
-									]}
-								/>
-							)}
-							{/* Show only in live mode */}
-							{/* {stripeLiveModeStatus && apiKeyType === 'standard' && ( */}
-							{stripeMode === 'live-mode' && apiKeyType === 'standard' && (
-								<ProFormText.Password
-									name="sahcfwc_stripe_live_secret_key"
-									label={ __(
-										'Live Secret Key',
-										'sa-hosted-checkout-for-woocommerce'
-									) }
-									tooltip={ __(
-										'This option allows you to add a secret key for the Stripe Live Mode.',
-										'sa-hosted-checkout-for-woocommerce'
-									) }
-									placeholder={ __(
-										'Live Secret Key',
-										'sa-hosted-checkout-for-woocommerce'
-									) }
-									colProps={ {
-										xs: 24,
-										sm: 24,
-										md: 24,
-										lg: 24,
-										xl: 24,
-									} }
-									onChange={ async ( event ) => {
-										setShortLiveSecretKey(
-											generatShortkey( event.target.value )
-										);
-										setLiveSecretKey( event.target.value );
-									} }
-									extra={
-										<div>
-											{ __(
-												'Live Secret key ending *****',
-												'sa-hosted-checkout-for-woocommerce'
-											) }
-											{ shortLiveSecretKey }
-										</div>
-									}
-									// rules={ [
-									// 	{
-									// 		required: liveSceretRequired,
-									// 		message: ' ',
-									// 	},
-									// 	{
-									// 		validator: async ( _, value ) => {
-									// 			if ( ! value && liveSceretRequired ) {
-									// 				return Promise.reject(
-									// 					__(
-									// 						'Please Enter the Live Secret Key',
-									// 						'sa-hosted-checkout-for-woocommerce'
-									// 					)
-									// 				);
-									// 			}
-									// 			if (
-									// 				value &&
-									// 				! value.includes( 'live' )
-									// 			) {
-									// 				return Promise.reject(
-									// 					__(
-									// 						"The secret key should begin with the country code followed by 'live'.",
-									// 						'sa-hosted-checkout-for-woocommerce'
-									// 					)
-									// 				);
-									// 			}
-									// 			return Promise.resolve();
-									// 		},
-									// 	},
-									// ] }
-									rules={[
-										{
-											required: true,
-											message: __('Please enter the live secret key', 'sa-hosted-checkout-for-woocommerce'),
+									},
+								]}
+							/>
+						)}
+						{/* Show restricted test key only in test mode */}
+						{stripeMode === 'test-mode' && apiKeyType === 'restricted' && (
+							<ProFormText.Password
+								name="sahcfwc_restricted_test_key"
+								label={__(
+									'Restricted Test Key',
+									'sa-hosted-checkout-for-woocommerce'
+								)}
+								tooltip={__(
+									'Enter your restricted test key with limited permissions',
+									'sa-hosted-checkout-for-woocommerce'
+								)}
+								placeholder={__(
+									'Restricted Test Key',
+									'sa-hosted-checkout-for-woocommerce'
+								)}
+								onChange={async (event) => {
+									setShortRestrictedTestKey(generatShortkey(event.target.value));
+									setRestrictedTestKey(event.target.value);
+								}}
+								extra={
+									<div>
+										{__('Restricted Test key ending *****', 'sa-hosted-checkout-for-woocommerce')}
+										{shortRestrictedTestKey}
+									</div>
+								}
+								// rules={[
+								// 	{
+								// 		required: testSceretRequired && apiKeyType === 'restricted',
+								// 		message: __('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce'),
+								// 	},
+								// 	{
+								// 		validator: async (_, value) => {
+								// 			if (!value && testSceretRequired && apiKeyType === 'restricted') {
+								// 				return Promise.reject(
+								// 					__('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce')
+								// 				);
+								// 			}
+								// 			if (value && !value.includes('test')) {
+								// 				return Promise.reject(
+								// 					__('The restricted key should begin with "rk_test_"', 'sa-hosted-checkout-for-woocommerce')
+								// 				);
+								// 			}
+								// 			return Promise.resolve();
+								// 		},
+								// 	},
+								// ]}
+								rules={[
+									{
+										required: true,
+										message: __('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce'),
+									},
+									{
+										validator: async (_, value) => {
+											if (value && !value.includes('test')) {
+												return Promise.reject(
+													__('The restricted key should begin with "rk_test_"', 'sa-hosted-checkout-for-woocommerce')
+												);
+											}
+											return Promise.resolve();
 										},
-										{
-											validator: async (_, value) => {
-												if (value && !value.includes('live')) {
-													return Promise.reject(
-														__("The secret key should begin with 'sk_live_'", 'sa-hosted-checkout-for-woocommerce')
-													);
-												}
-												return Promise.resolve();
-											},
+									},
+								]}
+							/>
+						)}
+						{/* Show restricted live key only in live mode */}
+						{stripeMode === 'live-mode' && apiKeyType === 'restricted' && (
+							<ProFormText.Password
+								name="sahcfwc_restricted_live_key"
+								label={__(
+									'Restricted Live Key',
+									'sa-hosted-checkout-for-woocommerce'
+								)}
+								tooltip={__(
+									'Enter your restricted live key with limited permissions',
+									'sa-hosted-checkout-for-woocommerce'
+								)}
+								placeholder={__(
+									'Restricted Live Key',
+									'sa-hosted-checkout-for-woocommerce'
+								)}
+								onChange={async (event) => {
+									setShortRestrictedLiveKey(generatShortkey(event.target.value));
+									setRestrictedLiveKey(event.target.value);
+								}}
+								extra={
+									<div>
+										{__('Restricted Live key ending *****', 'sa-hosted-checkout-for-woocommerce')}
+										{shortRestrictedLiveKey}
+									</div>
+								}
+								// rules={[
+								// 	{
+								// 		required: liveSceretRequired && apiKeyType === 'restricted',
+								// 		message: __('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce'),
+								// 	},
+								// 	{
+								// 		validator: async (_, value) => {
+								// 			if (!value && liveSceretRequired && apiKeyType === 'restricted') {
+								// 				return Promise.reject(
+								// 					__('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce')
+								// 				);
+								// 			}
+								// 			if (value && !value.includes('live')) {
+								// 				return Promise.reject(
+								// 					__('The restricted key should begin with "rk_live_"', 'sa-hosted-checkout-for-woocommerce')
+								// 				);
+								// 			}
+								// 			return Promise.resolve();
+								// 		},
+								// 	},
+								// ]}
+								rules={[
+									{
+										required: true,
+										message: __('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce'),
+									},
+									{
+										validator: async (_, value) => {
+											if (value && !value.includes('live')) {
+												return Promise.reject(
+													__('The restricted key should begin with "rk_live_"', 'sa-hosted-checkout-for-woocommerce')
+												);
+											}
+											return Promise.resolve();
 										},
-									]}
-								/>
-							)}
-							{/* </>
-    					)} */}
-
-						{/* {apiKeyType === 'restricted' && (
-							<> */}
-							{/* Show restricted test key only in test mode */}
-							{/* {stripeTestModeStatus && apiKeyType === 'restricted' && ( */}
-							{stripeMode === 'test-mode' && apiKeyType === 'restricted' && (
-								<ProFormText.Password
-									name="sahcfwc_restricted_test_key"
-									label={__(
-										'Restricted Test Key',
-										'sa-hosted-checkout-for-woocommerce'
-									)}
-									tooltip={__(
-										'Enter your restricted test key with limited permissions',
-										'sa-hosted-checkout-for-woocommerce'
-									)}
-									placeholder={__(
-										'Restricted Test Key',
-										'sa-hosted-checkout-for-woocommerce'
-									)}
-									onChange={async (event) => {
-										setShortRestrictedTestKey(generatShortkey(event.target.value));
-										setRestrictedTestKey(event.target.value);
-									}}
-									extra={
-										<div>
-											{__('Restricted Test key ending *****', 'sa-hosted-checkout-for-woocommerce')}
-											{shortRestrictedTestKey}
-										</div>
-									}
-									// rules={[
-									// 	{
-									// 		required: testSceretRequired && apiKeyType === 'restricted',
-									// 		message: __('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce'),
-									// 	},
-									// 	{
-									// 		validator: async (_, value) => {
-									// 			if (!value && testSceretRequired && apiKeyType === 'restricted') {
-									// 				return Promise.reject(
-									// 					__('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce')
-									// 				);
-									// 			}
-									// 			if (value && !value.includes('test')) {
-									// 				return Promise.reject(
-									// 					__('The restricted key should begin with "rk_test_"', 'sa-hosted-checkout-for-woocommerce')
-									// 				);
-									// 			}
-									// 			return Promise.resolve();
-									// 		},
-									// 	},
-									// ]}
-									rules={[
-										{
-											required: true,
-											message: __('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce'),
-										},
-										{
-											validator: async (_, value) => {
-												if (value && !value.includes('test')) {
-													return Promise.reject(
-														__('The restricted key should begin with "rk_test_"', 'sa-hosted-checkout-for-woocommerce')
-													);
-												}
-												return Promise.resolve();
-											},
-										},
-									]}
-								/>
-							)}
-							{/* Show restricted live key only in live mode */}
-							{/* {stripeLiveModeStatus && apiKeyType === 'restricted' && ( */}
-							{stripeMode === 'live-mode' && apiKeyType === 'restricted' && (
-								<ProFormText.Password
-									name="sahcfwc_restricted_live_key"
-									label={__(
-										'Restricted Live Key',
-										'sa-hosted-checkout-for-woocommerce'
-									)}
-									tooltip={__(
-										'Enter your restricted live key with limited permissions',
-										'sa-hosted-checkout-for-woocommerce'
-									)}
-									placeholder={__(
-										'Restricted Live Key',
-										'sa-hosted-checkout-for-woocommerce'
-									)}
-									onChange={async (event) => {
-										setShortRestrictedLiveKey(generatShortkey(event.target.value));
-										setRestrictedLiveKey(event.target.value);
-									}}
-									extra={
-										<div>
-											{__('Restricted Live key ending *****', 'sa-hosted-checkout-for-woocommerce')}
-											{shortRestrictedLiveKey}
-										</div>
-									}
-									// rules={[
-									// 	{
-									// 		required: liveSceretRequired && apiKeyType === 'restricted',
-									// 		message: __('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce'),
-									// 	},
-									// 	{
-									// 		validator: async (_, value) => {
-									// 			if (!value && liveSceretRequired && apiKeyType === 'restricted') {
-									// 				return Promise.reject(
-									// 					__('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce')
-									// 				);
-									// 			}
-									// 			if (value && !value.includes('live')) {
-									// 				return Promise.reject(
-									// 					__('The restricted key should begin with "rk_live_"', 'sa-hosted-checkout-for-woocommerce')
-									// 				);
-									// 			}
-									// 			return Promise.resolve();
-									// 		},
-									// 	},
-									// ]}
-									rules={[
-										{
-											required: true,
-											message: __('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce'),
-										},
-										{
-											validator: async (_, value) => {
-												if (value && !value.includes('live')) {
-													return Promise.reject(
-														__('The restricted key should begin with "rk_live_"', 'sa-hosted-checkout-for-woocommerce')
-													);
-												}
-												return Promise.resolve();
-											},
-										},
-									]}
-								/>
-							)}
-							{/* </>
-    					)} */}
+									},
+								]}
+							/>
+						)}
 						<ProFormText
 							name="sahcfwc_stripe_webhook_url"
 							label={ __(
