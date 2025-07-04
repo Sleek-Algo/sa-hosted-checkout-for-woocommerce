@@ -4,13 +4,14 @@
 
 This plugin is the most extensive integration between WooCommerce and Stripe Checkout, developed to improve your online store's revenues by giving more confidence to the customers to checkout on your store. It effortlessly connects your WooCommerce store with Stripe Checkout bypassing the WooCommerce checkout completely. You can customize the Stripe Checkout displayed to your customers by using the settings available in the plugin. All possible options are available the premium version along with some additional features to review the Stripe checkout sessions created on your website. 
 
-## Version 1.0.0
+## Version 1.0.2
 
 **Prerequisites**
 
 - WooCommerce Latest Version
 
 ### 🎉 Free Version - Features
+* Stripe authentication is supported using either a *Standard API Key* or a *Restricted API Key*.
 * Bypass your WooCommerce checkout completely and let your customers pay with confidence on Stripe hosted checkout
 * Enable or Disable Phone Number field on Stripe Checkout
 * Add or remove Terms & Services checkbox from Stripe Checkout

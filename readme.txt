@@ -4,7 +4,7 @@ Tags: stripe, stripe checkout, woocommerce, secure checkout, express checkout
 Requires at least: 5.1
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,7 @@ This plugin is the most extensive integration between WooCommerce and Stripe Che
 === 🗝️ Key FEATURES: ===
 
 =  🎉 Free Version - Features: =
+* Stripe authentication is supported using either a *Standard API Key* or a *Restricted API Key*.
 * Bypass your WooCommerce checkout completely and let your customers pay with confidence on Stripe hosted checkout
 * Enable or Disable Phone Number field on Stripe Checkout
 * Add or remove Terms & Services checkbox from Stripe Checkout
@@ -35,7 +36,7 @@ This plugin is the most extensive integration between WooCommerce and Stripe Che
 * Ability to view all the Stripe Checkout sessions created on the web store with their status of completion and customer information
 * Automatically enable test mode of Stripe payment for administrators of the website
 
-Get the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) now 🚀.
+Get the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium) now 🚀.
 
 ==👉 Video Tutorial 👈==
 https://www.youtube.com/watch?v=2ktSTBzG95c
@@ -107,13 +108,13 @@ For further details please check our [Installation Guide](https://www.sleekalgo.
 Get your Test/Live Stripe keys and webhook keys from the Stripe account, enter those keys in the Stripe Settings tab and Click on the Enable button.
 
 =  I want to add custom payment methods to my Stripe Checkout =
-In order to provide custom payment methods on your website, please purchase the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) of the plugin.
+In order to provide custom payment methods on your website, please purchase the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium) of the plugin.
 
 = I want to customize my Stripe Checkout page =
-The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) of SA Hosted Checkout for WooCommerce provides options to add custom text, number and dropdown fields for better customization.
+The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium) of SA Hosted Checkout for WooCommerce provides options to add custom text, number and dropdown fields for better customization.
 
 = How can I check Stripe Checkout sessions which were created on my website but never completed? =
-The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/) offers you access to Stripe Sessions for quick and easy viewing of the customer and order details.
+The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium) offers you access to Stripe Sessions for quick and easy viewing of the customer and order details.
 
 
 == Changelog ==

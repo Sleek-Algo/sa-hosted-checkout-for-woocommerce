@@ -4,9 +4,10 @@
  * Plugin Name: SA Hosted Checkout for WooCommerce
  * Plugin URI: https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/
  * Description: Increase conversions by using Sleek Checkout on your WooCommerce website. Let your customers pay with confidence using highly optimized, Stripe hosted checkout. Setup in a few minutes. All configuration options are available.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 5.1
  * Requires PHP: 5.6
+ * Requires Plugins: woocommerce
  * Author: Sleek Algo
  * Author URI: https://www.sleekalgo.com/
  * License: GPL v2 or later
@@ -21,20 +22,12 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if ( ! function_exists( 'get_plugin_data' ) ) {
-    /**
-    * load plugins class.
-    */
-    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-}
-
-$plugin_data = get_plugin_data( __FILE__ );
 $wp_upload_dir = wp_get_upload_dir();
 /* Define constants. */
-!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', $plugin_data['Version'] );
+!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.0.2' );
 !defined( 'SAHCFWC_BASE' ) && define( 'SAHCFWC_BASE', basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ) );
-!defined( 'SAHCFWC_TEXT_DOMAIN' ) && define( 'SAHCFWC_TEXT_DOMAIN', $plugin_data['TextDomain'] );
-!defined( 'SAHCFWC_TEXT_DOMAIN_PATH' ) && define( 'SAHCFWC_TEXT_DOMAIN_PATH', dirname( SAHCFWC_BASE ) . $plugin_data['DomainPath'] );
+!defined( 'SAHCFWC_TEXT_DOMAIN' ) && define( 'SAHCFWC_TEXT_DOMAIN', 'sa-hosted-checkout-for-woocommerce' );
+!defined( 'SAHCFWC_TEXT_DOMAIN_PATH' ) && define( 'SAHCFWC_TEXT_DOMAIN_PATH', dirname( SAHCFWC_BASE ) . '/languages' );
 !defined( 'SAHCFWC_FILE' ) && define( 'SAHCFWC_FILE', __FILE__ );
 !defined( 'SAHCFWC_DIR' ) && define( 'SAHCFWC_DIR', plugin_dir_path( SAHCFWC_FILE ) );
 !defined( 'SAHCFWC_URL' ) && define( 'SAHCFWC_URL', plugins_url( '', SAHCFWC_FILE ) );

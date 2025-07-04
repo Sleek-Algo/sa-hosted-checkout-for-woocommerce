@@ -33,7 +33,7 @@
 		"start": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js",
-		"translate": "wp i18n make-pot .. ../languages/sahcfwc.pot",
+		"translate": "wp i18n make-pot .. ../languages/sa-hosted-checkout-for-woocommerce.pot",
 		"wpcs": "cd .. && composer exec phpcs -- --standard=WordPress --extensions=php --ignore=vendor/* includes/",
 		"wpcs:fix": "cd .. && composer exec phpcbf -- --standard=WordPress --extensions=php --ignore=vendor/* includes/",
 		"build:development": "cd .. && composer run setup-development",
