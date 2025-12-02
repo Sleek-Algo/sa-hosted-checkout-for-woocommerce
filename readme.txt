@@ -4,7 +4,7 @@ Tags: stripe, stripe checkout, woocommerce, secure checkout, express checkout
 Requires at least: 5.1
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

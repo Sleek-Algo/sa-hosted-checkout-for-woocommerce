@@ -7,7 +7,6 @@
 
 namespace SAHCFWC\Classes;
 
-use Automattic\WooCommerce\Utilities\OrderUtil;
 if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 	/**
 	 * Load Ajax handler functionality
@@ -360,11 +359,7 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 			}
 			if ( WC()->session->get( 'order_awaiting_payment' ) ) {
 				$order_id = WC()->session->get( 'order_awaiting_payment' );
-				if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
-					$order = wc_get_order( $order_id );
-				} else {
-					$order = get_post( $order_id );
-				}
+				$order = wc_get_order( $order_id );
 			} else {
 				$checkout = WC()->checkout();
 				$order_id = $checkout->create_order( array() );
@@ -374,11 +369,7 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 				// the request will never finish, thus the session data will neved be saved,
 				// and this can lead to duplicate orders if the user submits the order again.
 				WC()->session->save_data();
-				if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
-					$order = wc_get_order( $order_id );
-				} else {
-					$order = get_post( $order_id );
-				}
+				$order = wc_get_order( $order_id );
 			}
 			if ( false === $order || empty( $order ) ) {
 				WC()->session->set( 'order_awaiting_payment', '' );
@@ -386,11 +377,7 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 				$order_id = $checkout->create_order( array() );
 				WC()->session->set( 'order_awaiting_payment', $order_id );
 				WC()->session->save_data();
-				if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
-					$order = wc_get_order( $order_id );
-				} else {
-					$order = get_post( $order_id );
-				}
+				$order = wc_get_order( $order_id );
 			}
 			/**
 			 * Set Payment Gateway
@@ -549,13 +536,9 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 				)
 			);
 			// add order_session_id.
-			if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
-				$order->add_meta_data( 'sahcfwc_stripe_checkout_session_id', ( isset( $checkout_session->id ) ? $checkout_session->id : '' ) );
-				$order->save_meta_data();
-				$order->save();
-			} else {
-				add_post_meta( $order_id, 'sahcfwc_stripe_checkout_session_id', $checkout_session->id );
-			}
+			$order->add_meta_data( 'sahcfwc_stripe_checkout_session_id', ( isset( $checkout_session->id ) ? $checkout_session->id : '' ) );
+			$order->save_meta_data();
+			$order->save();
 			$result = array(
 				'stripe_checkout_session_url' => ( isset( $checkout_session->url ) && ! empty( $checkout_session->url ) ? esc_url( $checkout_session->url ) : esc_url( $url ) ),
 				'status'                      => ( isset( $url ) && ! empty( $url ) ? esc_html( 'failed' ) : esc_html( 'success' ) ),

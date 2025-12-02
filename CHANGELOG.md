@@ -1,3 +1,7 @@
+## 1.0.3 ( July 22, 2025 )
+
+- Bug Fix: The webhook listener PHP fatal error has been fixed.
+
 ## 1.0.2 ( July 04, 2025 )
 
 - Bug Fix: The stripe settings 'integration mode' UI switching issue has been fixed.

@@ -4,7 +4,7 @@
  * Plugin Name: SA Hosted Checkout for WooCommerce
  * Plugin URI: https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/
  * Description: Increase conversions by using Sleek Checkout on your WooCommerce website. Let your customers pay with confidence using highly optimized, Stripe hosted checkout. Setup in a few minutes. All configuration options are available.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Requires at least: 5.1
  * Requires PHP: 5.6
  * Requires Plugins: woocommerce
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 $wp_upload_dir = wp_get_upload_dir();
 /* Define constants. */
-!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.0.2' );
+!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.0.3' );
 !defined( 'SAHCFWC_BASE' ) && define( 'SAHCFWC_BASE', basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ) );
 !defined( 'SAHCFWC_TEXT_DOMAIN' ) && define( 'SAHCFWC_TEXT_DOMAIN', 'sa-hosted-checkout-for-woocommerce' );
 !defined( 'SAHCFWC_TEXT_DOMAIN_PATH' ) && define( 'SAHCFWC_TEXT_DOMAIN_PATH', dirname( SAHCFWC_BASE ) . '/languages' );
