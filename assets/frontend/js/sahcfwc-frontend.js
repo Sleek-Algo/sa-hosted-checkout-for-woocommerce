@@ -51,7 +51,7 @@
                                 $('.content-area').prepend(error_html);
                                 $('.woocommerce-cart-form').siblings('.woocommerce-notices-wrapper').html(error_html);
                             }
-                            $('a[href="'+checkoutURL+'"], .checkout-button, .wp-block-woocommerce-mini-cart-checkout-button-block, .checkout,').each(function() {
+                            $('a[href="'+checkoutURL+'"], .checkout-button, .wp-block-woocommerce-mini-cart-checkout-button-block, .checkout').each(function() {
                                 $(this).addClass('sahcfwc-disabled-checkout-btn');
                                 $(this).attr('href', 'javascript:;');
                             });
@@ -59,7 +59,7 @@
                     }
                 }); 
 
-            }, 10000);
+            }, 1000);
         }
         
         // For legacy shortcode cart
