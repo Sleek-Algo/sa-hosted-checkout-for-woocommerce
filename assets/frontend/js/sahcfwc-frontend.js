@@ -14,7 +14,7 @@
                 $(this).addClass('sahcfwc-disabled-checkout-btn');
             });
             const data = { action: 'stripe_checkout_ajax_handler' }; 
-            setTimeout(function() {
+            
                 $.ajax({
                     type: "POST",
                     data: data,
@@ -59,7 +59,7 @@
                     }
                 }); 
 
-            }, 1000);
+            
         }
         
         // For legacy shortcode cart

@@ -1,3 +1,7 @@
+## 1.0.4 ( February 12, 2026 )
+
+- Bug Fix: The stripe checkout slow redirection issue has been fixed.
+
 ## 1.0.3 ( July 22, 2025 )
 
 - Bug Fix: The webhook listener PHP fatal error has been fixed.
