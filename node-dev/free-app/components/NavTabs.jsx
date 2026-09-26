@@ -21,6 +21,7 @@ const NavTabs = () => {
 	 */
 	const [ disabledTab, setDisabledTab ] = useState( false );
 	const [ warning, setWarning ] = useState( false );
+	const [ missingKeyWarning, setMissingKeyWarning ] = useState( false );
 	const [ activeTab, setActiveTab ] = useState( '1' );
 	const [ stripeSettingSave, setStripeSettingSave ] = useState( '' );
 	const effectRan = useRef( false ); // Track if useEffect has run
@@ -30,17 +31,15 @@ const NavTabs = () => {
 			method: 'Get',
 		} )
 			.then( ( response ) => {
-				setStripeSettingSave( response?.stripe_key );
-				setDisabledTab(
-					response?.is_stripe_wc_country_match === false
-						? true
-						: false
-				);
-				setWarning(
-					response?.is_stripe_wc_country_match === false
-						? true
-						: false
-				);
+				const hasStripeKey = response?.stripe_key === true;
+				const countryMismatch =
+					hasStripeKey &&
+					response?.is_stripe_wc_country_match === false;
+
+				setStripeSettingSave( hasStripeKey );
+				setDisabledTab( countryMismatch );
+				setWarning( countryMismatch );
+				setMissingKeyWarning( ! hasStripeKey );
 			} )
 			.catch( ( error ) => {
 				console.error( 'Error fetching tab status:', error );
@@ -69,10 +68,20 @@ const NavTabs = () => {
 
 	return (
 		<>
+			{ missingKeyWarning && (
+				<Alert
+					description={ __(
+						'Stripe API key has not been entered. Add a key in Stripe Settings to enable checkout.',
+						'sa-hosted-checkout-for-woocommerce'
+					) }
+					type="error"
+					showIcon={ true }
+				/>
+			) }
 			{ stripeSettingSave && warning && (
 				<Alert
 					description={ __(
-						'The Country and Currency on the WooCommerce settings should be same with Stripe settings.',
+						'The WooCommerce store country must match the Stripe account country.',
 						'sa-hosted-checkout-for-woocommerce'
 					) }
 					type="error"
