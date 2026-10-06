@@ -59,7 +59,7 @@ const LocalPaymentMethods = () => {
 				} );
 			} catch ( error ) {
 				console.error( 'Error saving settings:', error );
-				message.error( 'Failed to save settings. Please try again.' );
+				message.error( 'Unable to save payment method settings. Please try again.' );
 			}
 		};
 
@@ -84,7 +84,7 @@ const LocalPaymentMethods = () => {
 			} );
 			message.success(
 				__(
-					'Congratulations! Your settings have been successfully saved.',
+					'Payment method settings saved.',
 					'sa-hosted-checkout-for-woocommerce'
 				)
 			);
@@ -330,7 +330,7 @@ const LocalPaymentMethods = () => {
 																) => {
 																	message.success(
 																		__(
-																			'Congratulations! Your settings have been successfully saved.',
+													'Payment method settings saved.',
 																			'sa-hosted-checkout-for-woocommerce'
 																		)
 																	);

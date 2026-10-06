@@ -7,6 +7,8 @@
 
 namespace SAHCFWC\Classes;
 
+require_once dirname( __DIR__ ) . '/traits/sahcfwc-order-totals.php';
+
 if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 	/**
 	 * Load Ajax handler functionality
@@ -25,6 +27,7 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 		 */
 		use \SAHCFWC\Traits\SAHCFWC_Singleton;
 		use \SAHCFWC\Traits\SAHCFWC_Helpers;
+		use \SAHCFWC\Traits\SAHCFWC_Order_Totals;
 		/**
 		 * Stripe secret key.
 		 *
@@ -300,6 +303,7 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 						'wc_checkout_url' => wc_get_checkout_url(),
 						'wc_cart_url'     => wc_get_cart_url(),
 						'is_wc_cart_page' => ( is_cart() ? 'yes' : 'no' ),
+						'checkout_error'  => esc_html__( 'Unable to start checkout. Please try again.', 'sa-hosted-checkout-for-woocommerce' ),
 					)
 				);
 			}
@@ -319,11 +323,7 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 					403
 				);
 			}
-			$sahcfwc_stripe_checkout_status = get_option( 'sahcfwc_stripe_checkout_status' );
-			if ( 'yes' === $sahcfwc_stripe_checkout_status ) {
-				$stipe_url = $this->sahcfwc_strip_checkout_updated_url_handler();
-			}
-			wp_send_json( $stipe_url );
+			wp_send_json( $this->sahcfwc_strip_checkout_updated_url_handler() );
 		}
 
 		/**
@@ -334,6 +334,9 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 		 * @return array|result The Stripe checkout.
 		 */
 		public function sahcfwc_strip_checkout_updated_url_handler() {
+			if ( 'yes' !== get_option( 'sahcfwc_stripe_checkout_status' ) ) {
+				return array( 'stripe_checkout_session_url' => '', 'status' => 'failed', 'message' => __( 'Stripe Checkout is disabled.', 'sa-hosted-checkout-for-woocommerce' ) );
+			}
 			$user        = ( is_user_logged_in() ? wp_get_current_user() : null );
 			$user_id     = get_current_user_id();
 			$customer_id = ( isset( $user->ID ) ? get_user_meta( $user->ID, 'sahcfwc_stripe_ch_customer_id', true ) : 0 );
@@ -357,75 +360,18 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 			if ( class_exists( '\SAHCFWC\Libraries\Stripe\StripeClient' ) ) {
 				$this->sahcfwc_stripe_client = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
 			}
-			if ( WC()->session->get( 'order_awaiting_payment' ) ) {
-				$order_id = WC()->session->get( 'order_awaiting_payment' );
-				$order = wc_get_order( $order_id );
-			} else {
-				$checkout = WC()->checkout();
-				$order_id = $checkout->create_order( array() );
-				// Store Order ID in session so it can be re-used after payment failure.
-				WC()->session->set( 'order_awaiting_payment', $order_id );
-				// We save the session early because if the payment gateway hangs
-				// the request will never finish, thus the session data will neved be saved,
-				// and this can lead to duplicate orders if the user submits the order again.
-				WC()->session->save_data();
-				$order = wc_get_order( $order_id );
+			$cart->calculate_totals();
+			if ( (float) $cart->get_total( 'edit' ) <= 0 ) {
+				return array( 'stripe_checkout_session_url' => wc_get_checkout_url(), 'status' => 'success', 'message' => '' );
 			}
-			if ( false === $order || empty( $order ) ) {
-				WC()->session->set( 'order_awaiting_payment', '' );
-				$checkout = WC()->checkout();
-				$order_id = $checkout->create_order( array() );
-				WC()->session->set( 'order_awaiting_payment', $order_id );
-				WC()->session->save_data();
-				$order = wc_get_order( $order_id );
+			try {
+				$order = $this->sahcfwc_get_cart_order_snapshot( $cart );
+			} catch ( \Exception $error ) {
+				return array( 'stripe_checkout_session_url' => '', 'status' => 'failed', 'message' => $error->getMessage() );
 			}
-			/**
-			 * Set Payment Gateway
-			 */
-			$order->set_payment_method( 'sahcfwc_stripe_checkout' );
-			do_action( 'sahcfwc_woocommerce_before_calculate_totals', $cart );
-			$lineitems = array();
-			foreach ( $cart->get_cart() as $cart_item_key => $cart_item ) {
-				$item_name                    = $cart_item['data']->get_title();
-				$quantity                     = $cart_item['quantity'];
-				$price                        = $cart_item['data']->get_price();
-				$metadata                     = array();
-				$metadata['cart_item_key']    = $cart_item_key;
-				$metadata['order_id']         = $order_id;
-				$metadata['product_id']       = $cart_item['product_id'];
-				$lineitem                     = array();
-				$lineitem['quantity']         = $quantity;
-				$lineitemdata                 = array();
-				$lineitemdata['currency']     = $currency;
-				$_product                     = wc_get_product( $cart_item['product_id'] );
-				$description                  = wc_get_formatted_cart_item_data( $cart_item, true );
-				$lineitemdata['product_data'] = array(
-					'name'     => $item_name,
-					'metadata' => $metadata,
-				);
-				$images                       = array();
-				if ( $_product->get_image_id() ) {
-					$image    = wp_get_attachment_image_src( $_product->get_image_id() );
-					$images[] = ( isset( $image[0] ) && ! empty( $image[0] ) ? $image[0] : SAHCFWC_URL_ASSETS_FRONTEND_IMAGES . '/sahcfwc-woocommerce-placeholder.png' );
-				} else {
-					$images[] = SAHCFWC_URL_ASSETS_FRONTEND_IMAGES . '/sahcfwc-woocommerce-placeholder.png';
-				}
-				$lineitemdata['product_data']['images'] = $images;
-				if ( $description ) {
-					$lineitemdata['product_data']['description'] = $description;
-				}
-				$lineitemdata['product_data']['metadata'] = $metadata;
-				$price                                    = number_format(
-					(float) $price,
-					2,
-					'.',
-					''
-				);
-				$lineitemdata['unit_amount_decimal']      = preg_replace( '/\\D/', '', $price );
-				$lineitem['price_data']                   = $lineitemdata;
-				$adjustable_quantity                      = array();
-				$lineitems[]                              = $lineitem;
-			}
+			$order_id = $order->get_id();
+			$currency = $order->get_currency();
+			$lineitems = $this->sahcfwc_order_line_items( $order );
 			$checkoutarray = array(
 				'line_items'                 => $lineitems,
 				'mode'                       => 'payment',
@@ -439,32 +385,12 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 					'enabled' => true,
 				);
 			}
-			// create stripe customer.
-			if ( empty( $customer_id ) ) {
-				$customer    = $this->sahcfwc_create_stripe_customer( $order, $user );
-				$customer_id = $customer->id;
-				// saved stripe customer for charging  cards later.
-				update_user_meta( $user_id, 'sahcfwc_stripe_ch_customer_id', $customer_id );
-			}
-			$checkoutarray['customer'] = $customer_id;
+			// Checkout collects customer details without cross-mode customer reuse.
 			if ( ! empty( $this->sahcfwc_stripe_shipping_address_status ) && 'yes' === $this->sahcfwc_stripe_shipping_address_status ) {
-				$wc_customer_shipping_country = WC()->cart->get_customer()->get_shipping_country();
-				$package                      = array(
-					'destination' => array(
-						'country' => $wc_customer_shipping_country,
-					),
+				// The shared builder validates the saved destination and country fallback.
+				$checkoutarray['shipping_address_collection'] = array(
+					'allowed_countries' => array( $order->get_shipping_country() ),
 				);
-				$shipping_zone                = wc_get_shipping_zone( $package );
-				if ( $shipping_zone ) {
-					$zone_locations  = $shipping_zone->get_zone_locations();
-					$countries_array = array();
-					foreach ( $zone_locations as $locations ) {
-						array_push( $countries_array, $locations->code );
-					}
-					$checkoutarray['shipping_address_collection'] = array(
-						'allowed_countries' => $countries_array,
-					);
-				}
 			}
 			if ( ! empty( $this->sahcfwc_stripe_terms_condition_status ) && 'yes' === $this->sahcfwc_stripe_terms_condition_status ) {
 				$checkoutarray['consent_collection'] = array(
@@ -475,35 +401,13 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 			if ( ! is_null( $user ) ) {
 				$checkoutarray['client_reference_id'] = $user->ID;
 			}
-			$sahcfwc_chosen_shipping_method_data = $this->sahcfwc_chosen_shipping_method_data();
-			if ( is_array( $sahcfwc_chosen_shipping_method_data ) && isset( $sahcfwc_chosen_shipping_method_data['label'] ) ) {
-				$wc_cart_shipping_total            = ( '' !== $cart->get_shipping_total() && 0 !== (int) $cart->get_shipping_total() ? $cart->get_shipping_total() : 0 );
-				$checkoutarray['shipping_options'] = array(
-					array(
-						'shipping_rate_data' => array(
-							'display_name' => $sahcfwc_chosen_shipping_method_data['label'],
-							'fixed_amount' => array(
-								'amount'   => $this->sahcfwc_get_stripe_amount( $wc_cart_shipping_total, $currency ),
-								'currency' => $currency,
-							),
-							'type'         => 'fixed_amount',
-						),
-					),
-				);
-			}
-			if ( $order->get_total() > 0 ) {
-				// Mark as processing or on-hold (payment won't be taken until delivery).
-				$check_id = ( isset( $this->sahcfwc_id ) ? '' : '' );
-				$order->update_status( apply_filters( "sahcfwc_woocommerce_{$check_id}_process_payment_order_status", ( $order->has_downloadable_item() ? 'on-hold' : 'pending' ), $order ), esc_html__( 'Payment to be made upon delivery.', 'sa-hosted-checkout-for-woocommerce' ) );
-			} else {
-				$order->payment_complete();
-			}
-			$name                                 = sanitize_text_field( $cart->get_customer()->get_billing_first_name() ) . ' ' . sanitize_text_field( $cart->get_customer()->get_billing_last_name() );
-			$email                                = sanitize_email( $cart->get_customer()->get_billing_email() );
+			// The shared builder uses the saved order for shipping and payment totals.
+			$name                                 = sanitize_text_field( $order->get_billing_first_name() ) . ' ' . sanitize_text_field( $order->get_billing_last_name() );
+			$email                                = sanitize_email( $order->get_billing_email() );
 			$checkoutarray['payment_intent_data'] = array(
 				'description' => wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ) . ' Order #' . $order->get_order_number(),
 				'metadata'    => array(
-					'sahcfwc_order_id'       => $order->get_order_number(),
+					'sahcfwc_order_id'       => $order->get_id(),
 					'sahcfwc_name'           => $name,
 					'sahcfwc_customer_email' => $email,
 					'sahcfwc_order_key'      => $order->get_order_key(),
@@ -512,39 +416,105 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 				),
 			);
 			$num                                  = 0;
-			foreach ( WC()->cart->get_applied_coupons() as $coupon ) {
+			foreach ( $order->get_coupon_codes() as $coupon ) {
 				$checkoutarray['payment_intent_data']['metadata'][ 'coupon_data_' . ( ++$num ) ] = $coupon;
 			}
 			try {
 				if ( class_exists( '\SAHCFWC\Libraries\Stripe\Checkout\Session' ) ) {
-					$checkout_session = \SAHCFWC\Libraries\Stripe\Checkout\Session::create( $checkoutarray, $this->sahcfwc_stripe_secret );
+					$checkout_session = $this->sahcfwc_create_order_checkout_session( $order, $checkoutarray );
 				}
 			} catch ( \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException $e ) {
-				$error = esc_html__( 'Error creating checkout session:', 'sa-hosted-checkout-for-woocommerce' ) . $e->getMessage();
+				$error = esc_html__( 'Unable to start Stripe Checkout. Please try again or contact the store.', 'sa-hosted-checkout-for-woocommerce' );
 				$url   = 'javascript:;';
 			} catch ( \Exception $e ) {
-				$error = esc_html__( 'Error creating checkout session: ', 'sa-hosted-checkout-for-woocommerce' ) . $e->getMessage();
+				$error = esc_html__( 'Unable to start Stripe Checkout. Please try again or contact the store.', 'sa-hosted-checkout-for-woocommerce' );
 				$url   = 'javascript:;';
 			}
-			/**
-			 * Save Stripe Checkout id in to options table to be use latter after payment to complete the order.
-			 */
-			update_option(
-				( 'sahcfwc_stripe_checkout_' . isset( $checkout_session->id ) ? $checkout_session->id : '' ),
-				array(
-					'cart' => $cart->get_cart(),
-				)
-			);
-			// add order_session_id.
-			$order->add_meta_data( 'sahcfwc_stripe_checkout_session_id', ( isset( $checkout_session->id ) ? $checkout_session->id : '' ) );
-			$order->save_meta_data();
-			$order->save();
+			// The shared builder has persisted the session-to-order binding.
 			$result = array(
-				'stripe_checkout_session_url' => ( isset( $checkout_session->url ) && ! empty( $checkout_session->url ) ? esc_url( $checkout_session->url ) : esc_url( $url ) ),
+				'stripe_checkout_session_url' => ( isset( $checkout_session->url ) && ! empty( $checkout_session->url ) ? esc_url( $checkout_session->url ) : esc_url( isset( $url ) ? $url : '' ) ),
 				'status'                      => ( isset( $url ) && ! empty( $url ) ? esc_html( 'failed' ) : esc_html( 'success' ) ),
 				'message'                     => ( isset( $error ) && ! empty( $error ) ? esc_html( $error ) : '' ),
 			);
 			return $result;
+		}
+
+		/**
+		 * Add WooCommerce fees to the Stripe Checkout total.
+		 *
+		 * @param array    $lineitems Stripe Checkout line items.
+		 * @param WC_Order $order WooCommerce order.
+		 * @param string   $currency Order currency.
+		 * @return array
+		 */
+		private function sahcfwc_add_order_fees_line_item( $lineitems, $order, $currency ) {
+			foreach ( $order->get_items( 'fee' ) as $fee ) {
+				$fee_total = (float) $fee->get_total();
+
+				if ( 0 >= $fee_total ) {
+					continue;
+				}
+
+				$lineitems[] = array(
+					'quantity'   => 1,
+					'price_data' => array(
+						'currency'     => $currency,
+						'product_data' => array(
+							'name' => sanitize_text_field( $fee->get_name() ),
+						),
+						'unit_amount'  => $this->sahcfwc_get_stripe_amount( $fee_total, $currency ),
+					),
+				);
+			}
+
+			return $lineitems;
+		}
+
+		/**
+		 * Add WooCommerce tax rates to the Stripe Checkout total.
+		 *
+		 * @param array    $lineitems Stripe Checkout line items.
+		 * @param WC_Order $order WooCommerce order.
+		 * @param string   $currency Order currency.
+		 * @return array
+		 */
+		private function sahcfwc_add_order_tax_line_items( $lineitems, $order, $currency ) {
+			foreach ( $order->get_items( 'tax' ) as $tax ) {
+				$tax_total = (float) $tax->get_tax_total() + (float) $tax->get_shipping_tax_total();
+
+				if ( 0 >= $tax_total ) {
+					continue;
+				}
+
+				$tax_label   = sanitize_text_field( $tax->get_label() );
+				$lineitems[] = array(
+					'quantity'   => 1,
+					'price_data' => array(
+						'currency'     => $currency,
+						'product_data' => array(
+							'name' => $tax_label ? $tax_label : esc_html__( 'Tax', 'sa-hosted-checkout-for-woocommerce' ),
+						),
+						'unit_amount'  => $this->sahcfwc_get_stripe_amount( $tax_total, $currency ),
+					),
+				);
+			}
+
+			return $lineitems;
+		}
+
+		/**
+		 * Convert a WooCommerce unit price to Stripe minor units without losing precision.
+		 *
+		 * @param float  $total Unit price.
+		 * @param string $currency Order currency.
+		 * @return string
+		 */
+		private function sahcfwc_get_stripe_decimal_amount( $total, $currency ) {
+			$multiplier = in_array( strtoupper( $currency ), $this->sahcfwc_zerocurrency(), true ) ? 1 : 100;
+			$amount     = number_format( max( 0, (float) $total ) * $multiplier, 12, '.', '' );
+			$amount     = rtrim( rtrim( $amount, '0' ), '.' );
+
+			return '' === $amount ? '0' : $amount;
 		}
 
 		/**
@@ -557,17 +527,7 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 		 * @return int|total ammount.
 		 */
 		public function sahcfwc_get_stripe_amount( $total, $currency = '' ) {
-			if ( ! $currency ) {
-				$currency = get_woocommerce_currency();
-			}
-			if ( in_array( strtoupper( $currency ), $this->sahcfwc_zerocurrency(), true ) ) {
-				// Zero decimal currencies.
-				$total = absint( $total );
-			} else {
-				$total = round( $total, 2 ) * 100;
-				// In cents.
-			}
-			return $total;
+			return \SAHCFWC\Classes\SAHCFWC_Money::to_minor( $total, $currency ? $currency : get_woocommerce_currency() );
 		}
 
 		/**

@@ -50,12 +50,6 @@ if ( ! class_exists( '\SAHCFWC\Bootstrap\SAHCFWC_App' ) ) {
 			add_action( 'init', array( $this, 'sahcfwc_init_rest_api_end_points' ), 10 );
 			add_action( 'init', array( $this, 'sahcfwc_init_admin_pages' ), 10 );
 			add_filter( 'woocommerce_payment_gateways', array( $this, 'sahcfwc_add_gateways' ), 9999 );
-			add_action(
-				'woocommerce_email',
-				array( $this, 'sahcfwc_disable_emails_new_orders' ),
-				20,
-				1
-			);
 		}
 
 		/**
@@ -67,28 +61,6 @@ if ( ! class_exists( '\SAHCFWC\Bootstrap\SAHCFWC_App' ) ) {
 			load_plugin_textdomain( SAHCFWC_TEXT_DOMAIN, false, SAHCFWC_TEXT_DOMAIN_PATH );
 		}
 
-		/**
-		 * Manage activation plugin
-		 *
-		 * @uses remove_action To perform an email notification dyncamically
-		 *
-		 * @since 1.0.0
-		 * @param  string $email_class The email class instance used to manage email notifications.
-		 * @return void
-		 */
-		public function sahcfwc_disable_emails_new_orders( $email_class ) {
-			remove_action( 'woocommerce_order_status_pending_to_processing_notification', array( $email_class->emails['WC_Email_New_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_pending_to_completed_notification', array( $email_class->emails['WC_Email_New_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_pending_to_on-hold_notification', array( $email_class->emails['WC_Email_New_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_failed_to_processing_notification', array( $email_class->emails['WC_Email_New_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_failed_to_completed_notification', array( $email_class->emails['WC_Email_New_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_failed_to_on-hold_notification', array( $email_class->emails['WC_Email_New_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_cancelled_to_processing_notification', array( $email_class->emails['WC_Email_Customer_Processing_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_failed_to_processing_notification', array( $email_class->emails['WC_Email_Customer_Processing_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_on-hold_to_processing_notification', array( $email_class->emails['WC_Email_Customer_Processing_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_pending_to_processing_notification', array( $email_class->emails['WC_Email_Customer_Processing_Order'], 'trigger' ) );
-			remove_action( 'woocommerce_order_status_completed_notification', array( $email_class->emails['WC_Email_Customer_Completed_Order'], 'trigger' ) );
-		}
 
 		/**
 		 * Inint webhooks.

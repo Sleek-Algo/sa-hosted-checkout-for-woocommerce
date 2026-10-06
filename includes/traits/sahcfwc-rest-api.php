@@ -61,7 +61,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_RestAPI' ) ) {
 		 * @return boolean
 		 */
 		public function sahcfwc_permissions() {
-			return true;
+			return current_user_can( 'manage_options' );
 		}
 
 	}

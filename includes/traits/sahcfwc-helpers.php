@@ -66,17 +66,23 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 			$reslut                  = '';
 			if ( 'live-mode' === $stripe_integration_mode ) {
 				if ('restricted' === $api_key_type) {
-					return sanitize_text_field(get_option('sahcfwc_restricted_live_key', ''));
+					return $this->sahcfwc_validate_stripe_key( get_option( 'sahcfwc_restricted_live_key', '' ), 'rk_live_' );
 				}
-				return sanitize_text_field(get_option('sahcfwc_stripe_live_secret_key', ''));
+				return $this->sahcfwc_validate_stripe_key( get_option( 'sahcfwc_stripe_live_secret_key', '' ), 'sk_live_' );
 			} else {
 				if ('restricted' === $api_key_type) {
-					return sanitize_text_field(get_option('sahcfwc_restricted_test_key', ''));
+					return $this->sahcfwc_validate_stripe_key( get_option( 'sahcfwc_restricted_test_key', '' ), 'rk_test_' );
 				}
-				return sanitize_text_field(get_option('sahcfwc_stripe_test_secret_key', ''));
+				return $this->sahcfwc_validate_stripe_key( get_option( 'sahcfwc_stripe_test_secret_key', '' ), 'sk_test_' );
 			}
 
 			return $reslut;
+		}
+
+		/** Do not let a key from the other mode silently take a real payment. */
+		private function sahcfwc_validate_stripe_key( $key, $prefix ) {
+			$key = trim( sanitize_text_field( $key ) );
+			return 0 === strpos( $key, $prefix ) ? $key : '';
 		}
 
 		/**
@@ -87,6 +93,15 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 		 * @return array|stripe_account_detail return account detail.
 		 */
 		public function sahcfwc_get_stripe_account_detail() {
+			static $account_cache = array();
+			$key = $this->sahcfwc_get_stripe_secret_key();
+			if ( '' === $key ) {
+				return array();
+			}
+			$cache_key = hash( 'sha256', $key );
+			if ( array_key_exists( $cache_key, $account_cache ) ) {
+				return $account_cache[ $cache_key ];
+			}
 			$stripe_account_detail = array();
 			// Retrieve your Stripe account details.
 			if ( ! empty( $this->sahcfwc_get_stripe_secret_key() ) ) {
@@ -101,6 +116,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 				}
 			}
 
+			$account_cache[ $cache_key ] = $stripe_account_detail;
 			return $stripe_account_detail;
 		}
 
@@ -114,7 +130,12 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 		public function sahcfwc_is_match_country_stripe_wc() {
 			$store_raw_country   = sanitize_text_field( get_option( 'woocommerce_default_country' ) );
 			$split_country       = explode( ':', $store_raw_country );
-			$stripe_country_name = ( isset( $this->sahcfwc_get_stripe_account_detail()->country ) ) ? $this->sahcfwc_get_stripe_account_detail()->country : '';
+			$stripe_account      = $this->sahcfwc_get_stripe_account_detail();
+			if ( ! isset( $stripe_account->country ) || ! $stripe_account->country ) {
+				// Missing credentials or a failed API request is not a country mismatch.
+				return null;
+			}
+			$stripe_country_name = $stripe_account->country;
 			if ( $stripe_country_name === $split_country[0] ) {
 				return true;
 			}
@@ -130,9 +151,12 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 		 * @return array shipping method detail.
 		 */
 		public function sahcfwc_chosen_shipping_method_data() {
+			if ( ! WC()->cart || ! WC()->session ) {
+				return null;
+			}
 			// Ensure packages are available by recalculating shipping if needed.
 			WC()->cart->calculate_totals();
-			$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+			$chosen_shipping_methods = (array) WC()->session->get( 'chosen_shipping_methods', array() );
 			$packages                = WC()->shipping()->get_packages();
 			foreach ( $packages as $package_index => $package ) {
 				$available_methods = $package['rates'];
@@ -169,7 +193,7 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 				$order_no = $order->get_order_number();
 				$params   = array(
 					'description' => 'Customer for Order #' . $order_no,
-					'email'       => ( ( WC()->version < '2.7.0' ) ? $order->billing_email : $order->get_billing_email() ),
+					'email'       => $order->get_billing_email(),
 					'address'     => array(
 						'city'        => ( method_exists( $order, 'get_billing_city' ) ) ? $order->get_billing_city() : $order->billing_city,
 						'country'     => ( method_exists( $order, 'get_billing_country' ) ) ? $order->get_billing_country() : $order->billing_country,

@@ -85,11 +85,10 @@ const StripeSessions = () => {
 			hideInForm: true,
 			hideInSearch: true,
 			render: ( dom, record ) => {
-				let formattedValue =
-					record?.meta_data?.amount_total != null
-						? record?.meta_data?.amount_total
-						: '-';
-				formattedValue = ( formattedValue / 100 ).toFixed( 2 );
+				const amount = record?.meta_data?.amount_total ?? record?.amount_total;
+				const formattedValue = amount != null && Number.isFinite( Number( amount ) )
+					? ( Number( amount ) / 100 ).toFixed( 2 )
+					: '-';
 				return <p>{ formattedValue }</p>;
 			},
 		},

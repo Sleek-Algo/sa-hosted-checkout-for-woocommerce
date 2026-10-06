@@ -73,7 +73,7 @@ const StripeSetting = () => {
 			} );
 			message.success(
 				__(
-					'Congratulations! Your settings have been successfully saved.',
+					'Stripe settings saved.',
 					'sa-hosted-checkout-for-woocommerce'
 				)
 			);
@@ -291,23 +291,23 @@ const StripeSetting = () => {
 												if (liveSceretRequired === true && testSceretRequired === false) {
 													if (apiKeyType === 'standard' && !liveSecretKey) {
 														return Promise.reject(
-															__('Please Enter the Live Secret Key', 'sa-hosted-checkout-for-woocommerce')
+													__('Enter the live secret key.', 'sa-hosted-checkout-for-woocommerce')
 														);
 													}
 													if (apiKeyType === 'restricted' && !restrictedLiveKey) {
 														return Promise.reject(
-															__('Please Enter the Restricted Live Key', 'sa-hosted-checkout-for-woocommerce')
+													__('Enter the restricted live key.', 'sa-hosted-checkout-for-woocommerce')
 														);
 													}
 												} else if (liveSceretRequired === false && testSceretRequired === true) {
 													if (apiKeyType === 'standard' && !testSecretKey) {
 														return Promise.reject(
-															__('Please Enter the Test Secret Key', 'sa-hosted-checkout-for-woocommerce')
+													__('Enter the test secret key.', 'sa-hosted-checkout-for-woocommerce')
 														);
 													}
 													if (apiKeyType === 'restricted' && !restrictedTestKey) {
 														return Promise.reject(
-															__('Please Enter the Restricted Test Key', 'sa-hosted-checkout-for-woocommerce')
+													__('Enter the restricted test key.', 'sa-hosted-checkout-for-woocommerce')
 														);
 													}
 												}
@@ -476,7 +476,7 @@ const StripeSetting = () => {
 								// 			if ( ! value && testSceretRequired ) {
 								// 				return Promise.reject(
 								// 					__(
-								// 						'Please Enter the Test Secret Key',
+								// 						'Enter the test secret key.',
 								// 						'sa-hosted-checkout-for-woocommerce'
 								// 					)
 								// 				);
@@ -499,7 +499,7 @@ const StripeSetting = () => {
 								rules={[
 									{
 										required: true,
-										message: __('Please enter the test secret key', 'sa-hosted-checkout-for-woocommerce'),
+										message: __('Enter the test secret key.', 'sa-hosted-checkout-for-woocommerce'),
 									},
 									{
 										validator: async (_, value) => {
@@ -562,7 +562,7 @@ const StripeSetting = () => {
 								// 			if ( ! value && liveSceretRequired ) {
 								// 				return Promise.reject(
 								// 					__(
-								// 						'Please Enter the Live Secret Key',
+								// 						'Enter the live secret key.',
 								// 						'sa-hosted-checkout-for-woocommerce'
 								// 					)
 								// 				);
@@ -585,7 +585,7 @@ const StripeSetting = () => {
 								rules={[
 									{
 										required: true,
-										message: __('Please enter the live secret key', 'sa-hosted-checkout-for-woocommerce'),
+										message: __('Enter the live secret key.', 'sa-hosted-checkout-for-woocommerce'),
 									},
 									{
 										validator: async (_, value) => {
@@ -629,13 +629,13 @@ const StripeSetting = () => {
 								// rules={[
 								// 	{
 								// 		required: testSceretRequired && apiKeyType === 'restricted',
-								// 		message: __('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce'),
+								// 		message: __('Enter the restricted test key.', 'sa-hosted-checkout-for-woocommerce'),
 								// 	},
 								// 	{
 								// 		validator: async (_, value) => {
 								// 			if (!value && testSceretRequired && apiKeyType === 'restricted') {
 								// 				return Promise.reject(
-								// 					__('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce')
+								// 					__('Enter the restricted test key.', 'sa-hosted-checkout-for-woocommerce')
 								// 				);
 								// 			}
 								// 			if (value && !value.includes('test')) {
@@ -650,7 +650,7 @@ const StripeSetting = () => {
 								rules={[
 									{
 										required: true,
-										message: __('Please enter the restricted test key', 'sa-hosted-checkout-for-woocommerce'),
+										message: __('Enter the restricted test key.', 'sa-hosted-checkout-for-woocommerce'),
 									},
 									{
 										validator: async (_, value) => {
@@ -694,13 +694,13 @@ const StripeSetting = () => {
 								// rules={[
 								// 	{
 								// 		required: liveSceretRequired && apiKeyType === 'restricted',
-								// 		message: __('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce'),
+								// 		message: __('Enter the restricted live key.', 'sa-hosted-checkout-for-woocommerce'),
 								// 	},
 								// 	{
 								// 		validator: async (_, value) => {
 								// 			if (!value && liveSceretRequired && apiKeyType === 'restricted') {
 								// 				return Promise.reject(
-								// 					__('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce')
+								// 					__('Enter the restricted live key.', 'sa-hosted-checkout-for-woocommerce')
 								// 				);
 								// 			}
 								// 			if (value && !value.includes('live')) {
@@ -715,7 +715,7 @@ const StripeSetting = () => {
 								rules={[
 									{
 										required: true,
-										message: __('Please enter the restricted live key', 'sa-hosted-checkout-for-woocommerce'),
+										message: __('Enter the restricted live key.', 'sa-hosted-checkout-for-woocommerce'),
 									},
 									{
 										validator: async (_, value) => {
@@ -816,7 +816,7 @@ const StripeSetting = () => {
 								{
 									required: true,
 									message: __(
-										'Please enter the Live Secret Key',
+										'Enter the live secret key.',
 										'sa-hosted-checkout-for-woocommerce'
 									),
 								},

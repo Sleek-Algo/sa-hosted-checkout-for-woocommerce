@@ -77,18 +77,17 @@ if ( ! class_exists( '\SAHCFWC\RestApi\SAHCFWC_Stripe_Country_And_Key_Status' ) 
 		 * @return void
 		 */
 		public function sahcfwc_get_stripe_session() {
-			$test_key         = sanitize_text_field( get_option( 'sahcfwc_stripe_test_secret_key', '' ) );
-			$live_key         = sanitize_text_field( get_option( 'sahcfwc_stripe_live_secret_key', '' ) );
-			$stripe_key       = ! empty( $test_key ) || ! empty( $live_key );
+			$stripe_key       = '' !== trim( (string) $this->sahcfwc_get_stripe_secret_key() );
 			$checkout_enabled = 'yes' === sanitize_text_field( get_option( 'sahcfwc_stripe_checkout_status', 'no' ) );
 			$check_country    = $stripe_key ? $this->sahcfwc_is_match_country_stripe_wc() : null;
 			$data             = array(
 				'is_stripe_wc_country_match' => is_bool( $check_country ) ? $check_country : null,
 				'stripe_key'                 => $stripe_key,
 				'checkout_enabled'            => $checkout_enabled,
+				'stripe_connection_error'     => $stripe_key && null === $check_country,
 			);
 			$data         = ( is_array( $data ) && count( $data ) > 0 ) ? $data : '';
-			wp_send_json( $data );
+			return rest_ensure_response( $data );
 		}
 
 	}

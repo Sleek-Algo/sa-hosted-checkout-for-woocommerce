@@ -2,125 +2,98 @@
     'use strict';
 
     $(document).ready(function () {
-        
-        /**
-         * Custom Function to get Stripe Checkout URLs by Ajax
-        */
-       function sahcfwcGetStripCheckoutUrl(){
-           
-           const  wcCartUrl   = sahcfwc_frontend_localized_data?.wc_cart_url;
-           const  checkoutURL = sahcfwc_frontend_localized_data?.wc_checkout_url;
-            $('a[href="'+checkoutURL+'"], .checkout-button, .wp-block-woocommerce-mini-cart-checkout-button-block, .checkout' ).each(function() {
-                $(this).addClass('sahcfwc-disabled-checkout-btn');
-            });
-            const data = { action: 'stripe_checkout_ajax_handler' }; 
-            
-                $.ajax({
-                    type: "POST",
-                    data: data,
-                    url: sahcfwc_frontend_localized_data?.ajax?.url,
-                    data: $.extend({
-                        action: sahcfwc_frontend_localized_data?.ajax?.action,
-                        security: sahcfwc_frontend_localized_data?.ajax?.security,
-                    },{}),
-                    beforeSend: function( xhr ) {
-                        xhr.setRequestHeader( 'X-WP-Nonce', sahcfwc_frontend_localized_data?.ajax?.security);
-                        $(this).addClass('sahcfwc-disabled-checkout-btn-loading');
-                    },
-                    success: function (response) {
-                        
-                        $(this).removeClass('sahcfwc-disabled-checkout-btn-loading');
-                        
-                        if( response?.status === "success" ){
-                            window.location.replace(response?.stripe_checkout_session_url)
-                            $('a[href="'+checkoutURL+'"], .checkout-button, .wp-block-woocommerce-mini-cart-checkout-button-block, .checkout' ).each(function() {
-                                $(this).removeClass('sahcfwc-disabled-checkout-btn');
-                                $(this).attr('href', response?.stripe_checkout_session_url);
-                            });
-                        }else if ( response?.status === "failed" ){
-                            const currentUrl = window?.location.href;
-                            let error_html = `
-                            <div class="woocommerce">
-                                <ul class="woocommerce-error" role="alert">
-                                    <li>
-                                        `+response?.message+` 
-                                    </li>
-                                </ul>
-                            </div>`;
-                            if (currentUrl === wcCartUrl) {
-                                $('.content-area').prepend(error_html);
-                                $('.woocommerce-cart-form').siblings('.woocommerce-notices-wrapper').html(error_html);
-                            }
-                            $('a[href="'+checkoutURL+'"], .checkout-button, .wp-block-woocommerce-mini-cart-checkout-button-block, .checkout').each(function() {
-                                $(this).addClass('sahcfwc-disabled-checkout-btn');
-                                $(this).attr('href', 'javascript:;');
-                            });
-                        }
-                    }
-                }); 
-
-            
+        const config = w.sahcfwc_frontend_localized_data;
+        if (!config || !config.ajax || !config.wc_checkout_url) {
+            return;
         }
-        
-        // For legacy shortcode cart
-        $(document.body).on('updated_cart_totals', function(event) {
-            $('a[href="'+sahcfwc_frontend_localized_data?.wc_checkout_url+'"], .checkout-button, .wp-block-woocommerce-mini-cart-checkout-button-block, .checkout, .wc-block-cart__submit-button' ).each(function(){
-                $(this).attr('href', 'javascript:;');
-            });
-        });
+        const selector = 'a[href="' + config.wc_checkout_url + '"], a.checkout-button, a.checkout, .wp-block-woocommerce-mini-cart-checkout-button-block, .wc-block-cart__submit-button';
+        let pendingRequest = null;
+        let requesting = false;
 
-        // Use event delegation for the click event
-        $(document.body).on('click', 'a[href="'+sahcfwc_frontend_localized_data?.wc_checkout_url+'"], .checkout-button, .wp-block-woocommerce-mini-cart-checkout-button-block, .checkout, .wc-block-cart__submit-button', function(event) {
-            event.preventDefault();
-            sahcfwcGetStripCheckoutUrl();
-        });
-            
-        // For WooCommerce AJAX fragment updates
-        $(document.body).on('wc_fragment_refresh', function(event) {
-            sahcfwcGetStripCheckoutUrl();
-        });
-
-        // For WooCommerce AJAX fragment updates on Item remove
-        $(document.body).on('removed_from_cart', function(event) {
-            sahcfwcGetStripCheckoutUrl();
-        });
-        
-        // For WC Cart Block on Cart Page
-        if (typeof wp !== 'undefined' && typeof wp.data !== 'undefined' && sahcfwc_frontend_localized_data?.is_wc_cart_page === 'yes') {
-            wp.data.subscribe(function() {
-                const select = wp.data.select('wc/store/cart');
-                if (select && select.hasItems) { // Check if select and select.hasItems are defined
-                    if (select.hasItems()) {
-                        const cart = select.getCartData(); // Adjust the method if getCartData is not available
-                        const cartKey = cart ? cart.key : null;
-                        if (cartKey && cartKey !== window.previousCartKey) {
-                            window.previousCartKey = cartKey;
-                            sahcfwcGetStripCheckoutUrl();
-                        }
-                    }
-                }
-            });
+        function setBusy(busy) {
+            $(selector)
+                .toggleClass('sahcfwc-disabled-checkout-btn', busy)
+                .toggleClass('sahcfwc-disabled-checkout-btn-loading', busy)
+                .attr('aria-disabled', busy ? 'true' : 'false');
         }
 
-        // Function to execute when 'drawer-open' class is added
-        function onDrawerOpen() {
-            sahcfwcGetStripCheckoutUrl();
-        }
-        
-        // Create a MutationObserver to watch for class changes on the body element
-        const observer = new MutationObserver(function(mutationsList) {
-            for (let mutation of mutationsList) {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    const body = mutation.target;
-                    if ($(body).hasClass('drawer-open')) {
-                        onDrawerOpen();
-                    }
-                }
+        function showError(message) {
+            $('.sahcfwc-checkout-error').remove();
+            const notice = $('<ul>', {
+                'class': 'woocommerce-error sahcfwc-checkout-error',
+                'role': 'alert',
+                'tabindex': '-1'
+            }).append($('<li>').text(message || config.checkout_error || 'Unable to start checkout. Please try again.'));
+            let target = $('.woocommerce-notices-wrapper').first();
+            if (!target.length) {
+                target = $('main, .content-area, .site-main').first();
             }
+            if (!target.length) {
+                target = $('body');
+            }
+            target.prepend(notice);
+            notice.trigger('focus');
+        }
+
+        // A cart update or opening the drawer is not consent to start checkout.
+        $(document.body).on('click.sahcfwc', selector, function (event) {
+            event.preventDefault();
+            if (requesting) {
+                return;
+            }
+            requesting = true;
+            setBusy(true);
+            $('.sahcfwc-checkout-error').remove();
+            pendingRequest = $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: config.ajax.url,
+                data: {
+                    action: config.ajax.action,
+                    security: config.ajax.security
+                },
+                success: function (response) {
+                    if (response && response.status === 'success' && response.stripe_checkout_session_url) {
+                        let destination;
+                        try {
+                            destination = new URL(response.stripe_checkout_session_url, w.location.href);
+                        } catch (error) {
+                            showError();
+                            return;
+                        }
+                        // Stripe can return a merchant's custom HTTPS Checkout domain.
+                        // Trust the server-generated URL, but never execute a script URL.
+                        if (destination.origin !== w.location.origin &&
+                            destination.protocol !== 'https:') {
+                            showError();
+                            return;
+                        }
+                        w.location.assign(destination.href);
+                    } else {
+                        showError(response && response.message);
+                    }
+                },
+                error: function (xhr, status) {
+                    if (status !== 'abort') {
+                        showError();
+                    }
+                },
+                complete: function () {
+                    pendingRequest = null;
+                    requesting = false;
+                    setBusy(false);
+                }
+            });
         });
-        // Start observing the body element for attribute changes
-        observer.observe(document.body, { attributes: true });
 
+        // An in-flight request belongs to the old cart. Keep the next click retryable.
+        $(document.body).on('updated_cart_totals.sahcfwc removed_from_cart.sahcfwc wc_fragment_refresh.sahcfwc', function () {
+            if (pendingRequest) {
+                pendingRequest.abort();
+            }
+            pendingRequest = null;
+            requesting = false;
+            setBusy(false);
+        });
     });
-
 })(jQuery, window);

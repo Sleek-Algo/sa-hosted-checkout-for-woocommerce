@@ -22,6 +22,7 @@ const NavTabs = () => {
 	const [ disabledTab, setDisabledTab ] = useState( false );
 	const [ warning, setWarning ] = useState( false );
 	const [ missingKeyWarning, setMissingKeyWarning ] = useState( false );
+	const [ connectionWarning, setConnectionWarning ] = useState( false );
 	const [ activeTab, setActiveTab ] = useState( '1' );
 	const [ stripeSettingSave, setStripeSettingSave ] = useState( '' );
 	const effectRan = useRef( false ); // Track if useEffect has run
@@ -39,7 +40,8 @@ const NavTabs = () => {
 				setStripeSettingSave( hasStripeKey );
 				setDisabledTab( countryMismatch );
 				setWarning( countryMismatch );
-				setMissingKeyWarning( ! hasStripeKey );
+				setMissingKeyWarning( response?.checkout_enabled === true && ! hasStripeKey );
+				setConnectionWarning( response?.checkout_enabled === true && response?.stripe_connection_error === true );
 			} )
 			.catch( ( error ) => {
 				console.error( 'Error fetching tab status:', error );
@@ -71,17 +73,27 @@ const NavTabs = () => {
 			{ missingKeyWarning && (
 				<Alert
 					description={ __(
-						'Stripe API key has not been entered. Add a key in Stripe Settings to enable checkout.',
+						'Stripe API key is required. Enter a key in Stripe Settings to enable checkout.',
 						'sa-hosted-checkout-for-woocommerce'
 					) }
-					type="error"
+					type="warning"
+					showIcon={ true }
+				/>
+			) }
+			{ connectionWarning && (
+				<Alert
+					description={ __(
+						'Unable to verify the Stripe connection. Check the API key for the selected mode and try again.',
+						'sa-hosted-checkout-for-woocommerce'
+					) }
+					type="warning"
 					showIcon={ true }
 				/>
 			) }
 			{ stripeSettingSave && warning && (
 				<Alert
 					description={ __(
-						'The WooCommerce store country must match the Stripe account country.',
+						'The WooCommerce store country must match the country associated with your Stripe account.',
 						'sa-hosted-checkout-for-woocommerce'
 					) }
 					type="error"

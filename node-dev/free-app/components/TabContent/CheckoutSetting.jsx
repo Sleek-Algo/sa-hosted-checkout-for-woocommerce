@@ -63,7 +63,7 @@ const CheckoutSetting = () => {
 			message.config( { top: 100 } );
 			message.success(
 				__(
-					'Congratulations! Your settings have been successfully saved.',
+					'Checkout settings saved.',
 					'sa-hosted-checkout-for-woocommerce'
 				)
 			);
@@ -319,7 +319,7 @@ const CheckoutSetting = () => {
 										} else {
 											return Promise.reject(
 												__(
-													'Please enter a valid URL ',
+											'Enter a valid URL.',
 													'sa-hosted-checkout-for-woocommerce'
 												)
 											);
