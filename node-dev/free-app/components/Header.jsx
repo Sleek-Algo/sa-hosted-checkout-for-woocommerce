@@ -16,7 +16,9 @@ const Header = () => {
 							'SA Hosted Checkout for WooCommerce',
 							'sa-hosted-checkout-for-woocommerce'
 						) }{ ' ' }
-						<span className="sahcfwc-version"> (v1.0.0)</span>
+						<span className="sahcfwc-version">
+							{ ' ' }(v{ sahcfwc_customizations_localized_objects.plugin_version })
+						</span>
 					</h1>
 					<div className="sahcfwc-support">
 						<a

@@ -107,6 +107,7 @@ if ( ! class_exists( '\SAHCFWC\Pages\SAHCFWC_Dashboard' ) ) {
 				$url                                      = get_site_url( null, 'wp-admin/admin.php?page=sahcfwc-dashboard-pricing' );
 				$premium_url                              = 'https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/';
 				$sahcfwc_customizations_localized_objects = array(
+					'plugin_version'       => SAHCFWC_VERSION,
 					'language'             => get_user_locale(),
 					'webhook_URL'          => get_site_url() . '/wp-json/sahcfwc/v1/webhooks/stripe-listener',
 					'language_dir'         => ( is_rtl() ? 'rtl' : 'ltr' ),

@@ -145,12 +145,12 @@ const dataSource = [
 		premium: <CheckOutlined style={ { color: 'green' } } />,
 	},
 	{
-		key: '13',
+		key: '14',
 		feature: __(
-			'Coupon and Discount: The capability to apply coupons and discounts on the Stripe checkout page.',
+			'WooCommerce coupons: Discounts applied in WooCommerce are reflected in Stripe Checkout.',
 			'sa-hosted-checkout-for-woocommerce'
 		),
-		free: <CloseOutlined style={ { color: 'red' } } />,
+		free: <CheckOutlined style={ { color: 'green' } } />,
 		premium: <CheckOutlined style={ { color: 'green' } } />,
 	},
 ];

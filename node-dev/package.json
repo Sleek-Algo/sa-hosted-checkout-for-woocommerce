@@ -1,14 +1,14 @@
 {
 	"name": "sa-hosted-checkout-for-woocommerce",
-	"version": "1.0.0",
-	"description": "This is custom plugin",
+	"version": "1.0.6",
+	"description": "Admin interface for SA Hosted Checkout for WooCommerce",
 	"authors": [
 		{
 			"name": "sleekalgo",
 			"email": "team@sleekalgo.com"
 		}
 	],
-	"license": "ISC",
+	"license": "GPL-2.0-or-later",
 	"devDependencies": {
 		"@wordpress/scripts": "^27.1.0",
 		"cross-env": "^7.0.3",

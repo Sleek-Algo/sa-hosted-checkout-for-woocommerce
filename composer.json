@@ -3,7 +3,7 @@
   "description": "This plugin will implement custom logics.",
   "type": "wordpress-plugin",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "GPL-2.0-or-later",
   "autoload": {
       "classmap": [ 
           "includes" 

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: SA Hosted Checkout for WooCommerce 1.0.4\n"
+"Project-Id-Version: SA Hosted Checkout for WooCommerce 1.0.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-06T19:42:42+00:00\n"
+"POT-Creation-Date: 2026-10-06T21:12:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sa-hosted-checkout-for-woocommerce\n"
@@ -52,15 +52,15 @@ msgstr ""
 msgid "Stripe Checkout is disabled."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:427
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:430
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:426
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:429
 #: includes/classes/class-sahcfwc-payment-gateway.php:492
 msgid "Unable to start Stripe Checkout. Please try again or contact the store."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:495
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:494
 #: includes/classes/class-sahcfwc-payment-gateway.php:563
-#: includes/traits/sahcfwc-order-totals.php:126
+#: includes/traits/sahcfwc-order-totals.php:186
 msgid "Tax"
 msgstr ""
 
@@ -213,7 +213,7 @@ msgstr ""
 msgid "Unable to cancel checkout. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-pre-checkout.php:92
+#: includes/classes/class-sahcfwc-pre-checkout.php:102
 msgid "Please log in before applying the coupon."
 msgstr ""
 
@@ -222,56 +222,60 @@ msgstr ""
 msgid "SA Hosted Checkout"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:62
+#: includes/traits/sahcfwc-order-totals.php:95
 msgid "Unable to create an order. Please try again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:141
+#: includes/traits/sahcfwc-order-totals.php:111
+msgid "Coupons are disabled. Remove the coupon from your cart before continuing."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:201
 msgid "The order could not be found."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:152
+#: includes/traits/sahcfwc-order-totals.php:212
 msgid "This order does not require payment."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:157
+#: includes/traits/sahcfwc-order-totals.php:217
 msgid "Stripe requires a whole-number order total for this currency."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:160
+#: includes/traits/sahcfwc-order-totals.php:220
 msgid "Complete this order through the WooCommerce checkout."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:172
+#: includes/traits/sahcfwc-order-totals.php:232
 msgid "Shipping"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:175
+#: includes/traits/sahcfwc-order-totals.php:235
 msgid "Rounding adjustment"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:193
+#: includes/traits/sahcfwc-order-totals.php:253
 msgid "The order cannot be represented accurately in Stripe Checkout. Please contact the store."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:206
+#: includes/traits/sahcfwc-order-totals.php:266
 msgid "Select a shipping country before starting payment."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:222
+#: includes/traits/sahcfwc-order-totals.php:282
 msgid "Order adjustment"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:237
+#: includes/traits/sahcfwc-order-totals.php:297
 msgid "An active payment session already exists for this order. Return to the cart to start a new checkout."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:240
-#: includes/traits/sahcfwc-order-totals.php:299
+#: includes/traits/sahcfwc-order-totals.php:300
+#: includes/traits/sahcfwc-order-totals.php:359
 msgid "This payment is being processed. Please check your order before trying again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:316
+#: includes/traits/sahcfwc-order-totals.php:376
 msgid "The payment total could not be verified. Please try again or contact the store."
 msgstr ""
 
@@ -560,21 +564,25 @@ msgstr ""
 msgid "Payment confirmation is still being processed. Please retry."
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:75
+#: sa-hosted-checkout-for-woocommerce.php:64
+msgid "SA Hosted Checkout for WooCommerce requires WooCommerce 8.6 or later. Update WooCommerce to enable hosted checkout."
+msgstr ""
+
+#: sa-hosted-checkout-for-woocommerce.php:85
 msgid "Settings"
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:76
-#: node-dev/free-app/components/Header.jsx:54
+#: sa-hosted-checkout-for-woocommerce.php:86
+#: node-dev/free-app/components/Header.jsx:56
 msgid "Documentation"
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:77
-#: node-dev/free-app/components/Header.jsx:43
+#: sa-hosted-checkout-for-woocommerce.php:87
+#: node-dev/free-app/components/Header.jsx:45
 msgid "Support"
 msgstr ""
 
-#: node-dev/free-app/components/Header.jsx:32
+#: node-dev/free-app/components/Header.jsx:34
 #: node-dev/free-app/components/TabContent/Features.jsx:199
 #: node-dev/free-app/components/TabContent/StripeSessions.jsx:374
 msgid "Upgrade to Premium "
@@ -847,7 +855,7 @@ msgid "Custom fields option: Ability to display custom fields on the Stripe chec
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:149
-msgid "Coupon and Discount: The capability to apply coupons and discounts on the Stripe checkout page."
+msgid "WooCommerce coupons: Discounts applied in WooCommerce are reflected in Stripe Checkout."
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:159

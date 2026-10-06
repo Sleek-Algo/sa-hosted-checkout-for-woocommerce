@@ -4,10 +4,12 @@
  * Plugin Name: SA Hosted Checkout for WooCommerce
  * Plugin URI: https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/
  * Description: Increase conversions by using Sleek Checkout on your WooCommerce website. Let your customers pay with confidence using highly optimized, Stripe hosted checkout. Setup in a few minutes. All configuration options are available.
- * Version: 1.0.4
- * Requires at least: 5.1
- * Requires PHP: 5.6
+ * Version: 1.0.6
+ * Requires at least: 6.3
+ * Requires PHP: 7.4
  * Requires Plugins: woocommerce
+ * WC requires at least: 8.6
+ * WC tested up to: 11.1
  * Author: Sleek Algo
  * Author URI: https://www.sleekalgo.com/
  * License: GPL v2 or later
@@ -24,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 $wp_upload_dir = wp_get_upload_dir();
 /* Define constants. */
-!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.0.4' );
+!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.0.6' );
 !defined( 'SAHCFWC_BASE' ) && define( 'SAHCFWC_BASE', basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ) );
 !defined( 'SAHCFWC_TEXT_DOMAIN' ) && define( 'SAHCFWC_TEXT_DOMAIN', 'sa-hosted-checkout-for-woocommerce' );
 !defined( 'SAHCFWC_TEXT_DOMAIN_PATH' ) && define( 'SAHCFWC_TEXT_DOMAIN_PATH', dirname( SAHCFWC_BASE ) . '/languages' );
@@ -56,6 +58,14 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 function sahcfwc_plugin_init() {
     $plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'woocommerce/woocommerce.php';
     if ( in_array( $plugin_path, wp_get_active_and_valid_plugins() ) ) {
+        if ( ! defined( 'WC_VERSION' ) || version_compare( WC_VERSION, '8.6', '<' ) ) {
+            add_action( 'admin_notices', function () {
+                if ( current_user_can( 'manage_woocommerce' ) ) {
+                    echo '<div class="notice notice-error"><p>' . esc_html__( 'SA Hosted Checkout for WooCommerce requires WooCommerce 8.6 or later. Update WooCommerce to enable hosted checkout.', 'sa-hosted-checkout-for-woocommerce' ) . '</p></div>';
+                }
+            } );
+            return;
+        }
         \SAHCFWC\Bootstrap\SAHCFWC_App::get_instance();
         do_action( 'sahcfwc_plugin_loaded' );
     } else {

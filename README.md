@@ -4,22 +4,25 @@
 
 This plugin is the most extensive integration between WooCommerce and Stripe Checkout, developed to improve your online store's revenues by giving more confidence to the customers to checkout on your store. It effortlessly connects your WooCommerce store with Stripe Checkout bypassing the WooCommerce checkout completely. You can customize the Stripe Checkout displayed to your customers by using the settings available in the plugin. All possible options are available the premium version along with some additional features to review the Stripe checkout sessions created on your website. 
 
-## Version 1.0.4
+## Version 1.0.6
 
 **Prerequisites**
 
-- WooCommerce Latest Version
+- WordPress 6.3 or later
+- WooCommerce 8.6 or later
+- PHP 7.4 or later, with the curl, json and mbstring extensions
 
 ### 🎉 Free Version - Features
 * Stripe authentication is supported using either a *Standard API Key* or a *Restricted API Key*.
 * Bypass your WooCommerce checkout completely and let your customers pay with confidence on Stripe hosted checkout
+* WooCommerce coupons and discounts applied in the cart are reflected in Stripe Checkout
+* Include WooCommerce fees, shipping and taxes in the payment total, with separate lines for additional charges
 * Enable or Disable Phone Number field on Stripe Checkout
 * Add or remove Terms & Services checkbox from Stripe Checkout
 * Add a Cancellation URL to redirect the customer to, when the customer cancels Strpe Checkout
 
 ### 🌟 Premium Version - Features: 🎯
 * All features in the free version and the following
-* Support WooCommerce Coupon codes and Discounts out of the box
 * Support any or all payment methods from: 
 * Change the language of Stripe checkout displayed to your customers
 * Add custom fields to Stripe Checkout which can be a number field, a text field and a dropdown field
@@ -37,7 +40,7 @@ https://www.youtube.com/watch?v=2ktSTBzG95c
 
 
 ### Documentation 📚
-Discover how to make the most of Otter Blocks with our detailed and user-friendly [documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide).
+Discover how to make the most of SA Hosted Checkout for WooCommerce with our detailed and user-friendly [documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide).
 
 ### 🌐 Translation Ready 🤩
 *SA Hosted Checkout for WooCommerce* is compatible with Loco Translate, WPML, Polylang, TranslatePress, Weglot, and more. To contribute, add a new language via translate.wordpress.org.
@@ -89,6 +92,8 @@ composer run wpcs:fix
 
 ### Build Setup
 
+Run the following NPM commands from the `node-dev` directory. Readable JavaScript and SCSS source is included in `node-dev/free-app`; `node-dev/webpack.config.js` defines the build into `assets/backend`. WordPress provides the external WordPress and React packages at runtime.
+
 Install NPM dependencies with:
 ```bash
 npm install
@@ -124,10 +129,7 @@ Generate a production version build:
 npm run build:production
 ```
 
-Create a plugin zip file (located in sahcfwc-backups under the wp installation folder, with separate folders for development and production versions):
-```bash
-npm run build:zip
-```
+For releases, package only the plugin runtime files, bundled licenses, readable admin source and build configuration. Exclude local environments, credentials, test artifacts, `.git` and `node_modules`. The legacy `build:zip` task replaces shared backup folders and is not the release packaging workflow for version 1.0.6.
 
 ## Changelog
 

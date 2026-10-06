@@ -360,14 +360,13 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 			if ( class_exists( '\SAHCFWC\Libraries\Stripe\StripeClient' ) ) {
 				$this->sahcfwc_stripe_client = new \SAHCFWC\Libraries\Stripe\StripeClient( $this->sahcfwc_stripe_secret );
 			}
-			$cart->calculate_totals();
-			if ( (float) $cart->get_total( 'edit' ) <= 0 ) {
-				return array( 'stripe_checkout_session_url' => wc_get_checkout_url(), 'status' => 'success', 'message' => '' );
-			}
 			try {
 				$order = $this->sahcfwc_get_cart_order_snapshot( $cart );
 			} catch ( \Exception $error ) {
 				return array( 'stripe_checkout_session_url' => '', 'status' => 'failed', 'message' => $error->getMessage() );
+			}
+			if ( ! $order ) {
+				return array( 'stripe_checkout_session_url' => wc_get_checkout_url(), 'status' => 'success', 'message' => '' );
 			}
 			$order_id = $order->get_id();
 			$currency = $order->get_currency();

@@ -28,23 +28,54 @@ trait SAHCFWC_Order_Totals {
 	/** A cart change must never rewrite an order with an outstanding payment session. */
 	private function sahcfwc_get_cart_order_snapshot( $cart ) {
 		do_action( 'sahcfwc_woocommerce_before_calculate_totals', $cart );
-		$cart->calculate_totals();
+		$awaiting_id = WC()->session->get( 'order_awaiting_payment', 0 );
+		$order = wc_get_order( $awaiting_id );
+		$held_keys = array();
+		$held_user_keys = array();
+		if ( $order && $order->needs_payment() && 'sahcfwc_stripe_checkout' === $order->get_payment_method()
+			&& (int) $order->get_customer_id() === get_current_user_id() ) {
+			$held_keys = (array) $order->get_meta( '_coupon_held_keys' );
+			$held_user_keys = (array) $order->get_meta( '_coupon_held_keys_for_users' );
+		}
+		// Ignore only this order's own reservation while checking for an EXACT
+		// snapshot reuse. No reservation is released and no new order is created
+		// with these temporary limits. All other coupon restrictions still apply.
+		$own_limit = function ( $limit, $coupon ) use ( $held_keys ) {
+			$id = $coupon->get_id();
+			return $limit > 0 && isset( $held_keys[ $id ] )
+				&& preg_match( '/^_coupon_held_([0-9]+)_/', $held_keys[ $id ], $expiry ) && (int) $expiry[1] > time()
+				&& metadata_exists( 'post', $id, $held_keys[ $id ] ) ? $limit + 1 : $limit;
+		};
+		$own_user_limit = function ( $limit, $coupon ) use ( $held_user_keys ) {
+			$id = $coupon->get_id();
+			return $limit > 0 && isset( $held_user_keys[ $id ] )
+				&& preg_match( '/^_maybe_used_by_([0-9]+)_/', $held_user_keys[ $id ], $expiry ) && (int) $expiry[1] > time()
+				&& metadata_exists( 'post', $id, $held_user_keys[ $id ] ) ? $limit + 1 : $limit;
+		};
+		add_filter( 'woocommerce_coupon_get_usage_limit', $own_limit, 9999, 2 );
+		add_filter( 'woocommerce_coupon_get_usage_limit_per_user', $own_user_limit, 9999, 2 );
+		try {
+			$cart->calculate_totals();
+			$this->sahcfwc_validate_cart_coupons( $cart );
+			$fingerprint = $this->sahcfwc_cart_snapshot_fingerprint( $cart );
+			if ( $order && $order->needs_payment() && 'sahcfwc_stripe_checkout' === $order->get_payment_method()
+				&& (int) $order->get_customer_id() === get_current_user_id()
+				&& hash_equals( (string) $order->get_meta( 'sahcfwc_cart_snapshot_hash' ), $fingerprint ) ) {
+				return $order;
+			}
+		} finally {
+			remove_filter( 'woocommerce_coupon_get_usage_limit', $own_limit, 9999 );
+			remove_filter( 'woocommerce_coupon_get_usage_limit_per_user', $own_user_limit, 9999 );
+		}
+		if ( $held_keys || $held_user_keys ) {
+			// A changed cart needs a new reservation. Never bypass the old hold.
+			$cart->calculate_totals();
+			$this->sahcfwc_validate_cart_coupons( $cart );
+			$fingerprint = $this->sahcfwc_cart_snapshot_fingerprint( $cart );
+		}
+		if ( (float) $cart->get_total( 'edit' ) <= 0 ) { return null; }
 		$customer = $cart->get_customer();
 		$addresses = array( 'billing' => $customer->get_billing( 'edit' ), 'shipping' => $customer->get_shipping( 'edit' ) );
-		$fingerprint = hash( 'sha256', wp_json_encode( array(
-			'cart' => $cart->get_cart_hash(),
-			'totals' => $cart->get_totals(),
-			'fees' => $cart->get_fees(),
-			'shipping' => WC()->session->get( 'chosen_shipping_methods', array() ),
-			'coupons' => $cart->get_applied_coupons(),
-			// get_data() excludes pending address changes on an existing customer.
-			'customer' => array_merge( $customer->get_data(), $addresses ),
-			'currency' => get_woocommerce_currency(),
-		) ) );
-		$order = wc_get_order( WC()->session->get( 'order_awaiting_payment', 0 ) );
-		if ( $order && $order->needs_payment() && hash_equals( (string) $order->get_meta( 'sahcfwc_cart_snapshot_hash' ), $fingerprint ) ) {
-			return $order;
-		}
 		// WC_Checkout can reuse an awaiting order itself, so clear that pointer first.
 		WC()->session->set( 'order_awaiting_payment', null );
 		// create_order() only copies addresses supplied in its data array. Use the
@@ -55,10 +86,12 @@ trait SAHCFWC_Order_Totals {
 		}
 		$order_id = WC()->checkout()->create_order( $order_data );
 		if ( is_wp_error( $order_id ) ) {
+			WC()->session->set( 'order_awaiting_payment', $awaiting_id );
 			throw new \RuntimeException( $order_id->get_error_message() );
 		}
 		$order = wc_get_order( $order_id );
 		if ( ! $order ) {
+			WC()->session->set( 'order_awaiting_payment', $awaiting_id );
 			throw new \RuntimeException( __( 'Unable to create an order. Please try again.', 'sa-hosted-checkout-for-woocommerce' ) );
 		}
 		$order->set_payment_method( 'sahcfwc_stripe_checkout' );
@@ -68,6 +101,33 @@ trait SAHCFWC_Order_Totals {
 		WC()->session->set( 'order_awaiting_payment', $order->get_id() );
 		WC()->session->save_data();
 		return $order;
+	}
+
+	/** Fail visibly if an applied coupon becomes ineligible; never charge full price silently. */
+	private function sahcfwc_validate_cart_coupons( $cart ) {
+		$discounts = new \WC_Discounts( $cart );
+		foreach ( $cart->get_applied_coupons() as $code ) {
+			if ( ! wc_coupons_enabled() ) {
+				throw new \RuntimeException( __( 'Coupons are disabled. Remove the coupon from your cart before continuing.', 'sa-hosted-checkout-for-woocommerce' ) );
+			}
+			$valid = $discounts->is_coupon_valid( new \WC_Coupon( $code ) );
+			if ( is_wp_error( $valid ) ) { throw new \RuntimeException( wp_strip_all_tags( $valid->get_error_message() ) ); }
+		}
+	}
+
+	private function sahcfwc_cart_snapshot_fingerprint( $cart ) {
+		$customer = $cart->get_customer();
+		$addresses = array( 'billing' => $customer->get_billing( 'edit' ), 'shipping' => $customer->get_shipping( 'edit' ) );
+		return hash( 'sha256', wp_json_encode( array(
+			'cart' => $cart->get_cart_hash(),
+			'totals' => $cart->get_totals(),
+			'fees' => $cart->get_fees(),
+			'shipping' => WC()->session->get( 'chosen_shipping_methods', array() ),
+			'coupons' => $cart->get_applied_coupons(),
+			// get_data() excludes pending address changes on an existing customer.
+			'customer' => array_merge( $customer->get_data(), $addresses ),
+			'currency' => get_woocommerce_currency(),
+		) ) );
 	}
 
 	/** Product identities, quantities and prices all come from the saved order. */

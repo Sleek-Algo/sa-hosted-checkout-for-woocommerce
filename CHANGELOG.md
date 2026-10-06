@@ -1,3 +1,17 @@
+## 1.0.6 ( October 7, 2026 )
+
+- Added WooCommerce cart coupon support to the free version while preserving the store's coupon setting and eligibility rules.
+- Fixed payment totals to include saved WooCommerce order discounts, fees, shipping and taxes, with separate lines for additional charges.
+- Improved checkout validation, rounding and retry handling to prevent mismatched totals and duplicate checkout sessions.
+- Improved payment confirmation and webhook validation, including protection against repeated order completion.
+- Improved cancellation and expired-session handling while preserving the customer's cart.
+- Replaced unclear setup and payment notices with professional messages, including guidance for missing Stripe keys.
+- Corrected the settings screen version display and updated compatibility requirements to WordPress 6.3, WooCommerce 8.6 and PHP 7.4 or later.
+
+## 1.0.5
+
+- Updated WordPress and PHP compatibility metadata and the release version.
+
 ## 1.0.4 ( February 12, 2026 )
 
 - Bug Fix: The stripe checkout slow redirection issue has been fixed.
