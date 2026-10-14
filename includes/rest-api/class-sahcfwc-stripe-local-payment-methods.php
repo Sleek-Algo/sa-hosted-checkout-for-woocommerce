@@ -79,11 +79,10 @@ if ( ! class_exists( '\SAHCFWC\RestApi\SAHCFWC_Stripe_Local_Payment_Methods' ) )
 		 * @return void
 		 */
 		public function sahcfwc_get_stripe_local_payment_methods_handle() {
-			$store_raw_country            = sanitize_text_field( get_option( 'woocommerce_default_country' ) );
-			$split_country                = explode( ':', $store_raw_country );
-			$stripe_local_payment_methods = $this->sahcfwc_get_stripe_local_payment_methods( strtolower( $split_country[0] ) );
+			// Country alone is not proof that a Stripe account can offer a method.
+			$stripe_local_payment_methods = $this->sahcfwc_get_stripe_local_payment_methods();
 			$sanitized_payment_methods    = $this->sahcfwc_esc_payment_methods( $stripe_local_payment_methods );
-			wp_send_json( $sanitized_payment_methods );
+			return rest_ensure_response( $sanitized_payment_methods );
 		}
 
 		/**
@@ -109,6 +108,7 @@ if ( ! class_exists( '\SAHCFWC\RestApi\SAHCFWC_Stripe_Local_Payment_Methods' ) )
 					'created_at'  => esc_html( $method['created_at'] ),
 					'updated_at'  => esc_html( $method['updated_at'] ),
 					'status'      => esc_html( $method['status'] ),
+					'delayed'     => ! empty( $method['delayed'] ),
 				);
 
 				$sanitized_methods[] = $sanitized_method;

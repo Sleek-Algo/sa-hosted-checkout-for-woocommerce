@@ -126,19 +126,8 @@ const NavTabs = () => {
 					},
 					{
 						key: '3',
-						label: (
-							<span className="disabled-prem">
-								{ __(
-									'Payment Methods',
-									'sa-hosted-checkout-for-woocommerce'
-								) }{ ' ' }
-								<Tooltip title="Premium" placement="top">
-									<i className="sahcfwc-info-icon">i</i>
-								</Tooltip>
-							</span>
-						),
-
-						icon: <DollarOutlined className="disabled-prem" />,
+						label: __( 'Payment Methods', 'sa-hosted-checkout-for-woocommerce' ),
+						icon: <DollarOutlined />,
 						children: <LocalPaymentMethods />,
 					},
 					{

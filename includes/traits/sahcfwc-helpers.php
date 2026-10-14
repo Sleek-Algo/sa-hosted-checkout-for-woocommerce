@@ -23,6 +23,93 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 	trait SAHCFWC_Helpers {
 
 		/**
+		 * Stripe Checkout languages, shared by settings validation and the admin UI.
+		 *
+		 * @return array Supported locale labels and values.
+		 */
+		public function sahcfwc_get_stripe_locale_options() {
+			$locales = array(
+				'auto'  => __( 'Automatic (browser language)', 'sa-hosted-checkout-for-woocommerce' ),
+				'bg'    => __( 'Bulgarian', 'sa-hosted-checkout-for-woocommerce' ),
+				'cs'    => __( 'Czech', 'sa-hosted-checkout-for-woocommerce' ),
+				'da'    => __( 'Danish', 'sa-hosted-checkout-for-woocommerce' ),
+				'de'    => __( 'German', 'sa-hosted-checkout-for-woocommerce' ),
+				'el'    => __( 'Greek', 'sa-hosted-checkout-for-woocommerce' ),
+				'en'    => __( 'English', 'sa-hosted-checkout-for-woocommerce' ),
+				'en-GB' => __( 'English (United Kingdom)', 'sa-hosted-checkout-for-woocommerce' ),
+				'es'    => __( 'Spanish', 'sa-hosted-checkout-for-woocommerce' ),
+				'es-419' => __( 'Spanish (Latin America)', 'sa-hosted-checkout-for-woocommerce' ),
+				'et'    => __( 'Estonian', 'sa-hosted-checkout-for-woocommerce' ),
+				'fi'    => __( 'Finnish', 'sa-hosted-checkout-for-woocommerce' ),
+				'fil'   => __( 'Filipino', 'sa-hosted-checkout-for-woocommerce' ),
+				'fr'    => __( 'French', 'sa-hosted-checkout-for-woocommerce' ),
+				'fr-CA' => __( 'French (Canada)', 'sa-hosted-checkout-for-woocommerce' ),
+				'hr'    => __( 'Croatian', 'sa-hosted-checkout-for-woocommerce' ),
+				'hu'    => __( 'Hungarian', 'sa-hosted-checkout-for-woocommerce' ),
+				'id'    => __( 'Indonesian', 'sa-hosted-checkout-for-woocommerce' ),
+				'it'    => __( 'Italian', 'sa-hosted-checkout-for-woocommerce' ),
+				'ja'    => __( 'Japanese', 'sa-hosted-checkout-for-woocommerce' ),
+				'ko'    => __( 'Korean', 'sa-hosted-checkout-for-woocommerce' ),
+				'lt'    => __( 'Lithuanian', 'sa-hosted-checkout-for-woocommerce' ),
+				'lv'    => __( 'Latvian', 'sa-hosted-checkout-for-woocommerce' ),
+				'ms'    => __( 'Malay', 'sa-hosted-checkout-for-woocommerce' ),
+				'mt'    => __( 'Maltese', 'sa-hosted-checkout-for-woocommerce' ),
+				'nb'    => __( 'Norwegian Bokmal', 'sa-hosted-checkout-for-woocommerce' ),
+				'nl'    => __( 'Dutch', 'sa-hosted-checkout-for-woocommerce' ),
+				'pl'    => __( 'Polish', 'sa-hosted-checkout-for-woocommerce' ),
+				'pt'    => __( 'Portuguese', 'sa-hosted-checkout-for-woocommerce' ),
+				'pt-BR' => __( 'Portuguese (Brazil)', 'sa-hosted-checkout-for-woocommerce' ),
+				'ro'    => __( 'Romanian', 'sa-hosted-checkout-for-woocommerce' ),
+				'ru'    => __( 'Russian', 'sa-hosted-checkout-for-woocommerce' ),
+				'sk'    => __( 'Slovak', 'sa-hosted-checkout-for-woocommerce' ),
+				'sl'    => __( 'Slovenian', 'sa-hosted-checkout-for-woocommerce' ),
+				'sv'    => __( 'Swedish', 'sa-hosted-checkout-for-woocommerce' ),
+				'th'    => __( 'Thai', 'sa-hosted-checkout-for-woocommerce' ),
+				'tr'    => __( 'Turkish', 'sa-hosted-checkout-for-woocommerce' ),
+				'vi'    => __( 'Vietnamese', 'sa-hosted-checkout-for-woocommerce' ),
+				'zh'    => __( 'Chinese (Simplified)', 'sa-hosted-checkout-for-woocommerce' ),
+				'zh-HK' => __( 'Chinese (Hong Kong)', 'sa-hosted-checkout-for-woocommerce' ),
+				'zh-TW' => __( 'Chinese (Traditional)', 'sa-hosted-checkout-for-woocommerce' ),
+			);
+			$options = array();
+			foreach ( $locales as $value => $label ) {
+				$options[] = array( 'label' => $label, 'value' => $value );
+			}
+			return $options;
+		}
+
+		/**
+		 * Reject unsupported or legacy locale values before sending them to Stripe.
+		 *
+		 * @param mixed $input Saved or submitted locale.
+		 * @return string Supported locale, or automatic browser detection.
+		 */
+		public function sahcfwc_sanitize_stripe_locale( $input ) {
+			if ( ! is_string( $input ) ) {
+				return 'auto';
+			}
+			foreach ( $this->sahcfwc_get_stripe_locale_options() as $option ) {
+				if ( $input === $option['value'] ) {
+					return $input;
+				}
+			}
+			return 'auto';
+		}
+
+		/**
+		 * Resolve the language for a new Stripe Checkout Session.
+		 *
+		 * @return string Supported locale.
+		 */
+		public function sahcfwc_get_stripe_checkout_locale() {
+			if ( 'custom' !== get_option( 'sahcfwc_stripe_locale_status', 'default' ) ) {
+				return 'auto';
+			}
+			return $this->sahcfwc_sanitize_stripe_locale( get_option( 'sahcfwc_stripe_locale', 'en' ) );
+		}
+
+
+		/**
 		 * Register integration mode.
 		 *
 		 * @since 1.0.0

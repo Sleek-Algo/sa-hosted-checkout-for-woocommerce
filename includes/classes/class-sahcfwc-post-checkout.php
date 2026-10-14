@@ -73,20 +73,27 @@ class SAHCFWC_Post_Checkout {
 		$result = SAHCFWC_Payment_Completion::complete( $order_id, $session, $client );
 		if ( is_wp_error( $result ) ) {
 			if ( 'sahcfwc_payment_pending' === $result->get_error_code() && 'complete' === SAHCFWC_Payment_Completion::value( $session, 'status' ) ) {
+				$this->clear_order_cart( wc_get_order( $order_id ) );
 				if ( WC()->session ) { wc_add_notice( __( 'Your payment is awaiting confirmation.', 'sa-hosted-checkout-for-woocommerce' ), 'notice' ); }
 				wp_safe_redirect( $order->get_checkout_order_received_url() );
 				exit;
 			}
 			$this->redirect_error( $result );
 		}
+		$this->clear_order_cart( $result );
+		wp_safe_redirect( $result->get_checkout_order_received_url() );
+		exit;
+	}
+
+	/** Clear only the cart that submitted this order, including delayed payments. */
+	private function clear_order_cart( $result ) {
+		if ( ! $result instanceof \WC_Order ) { return; }
 		if ( WC()->cart && $result->get_cart_hash() && hash_equals( $result->get_cart_hash(), WC()->cart->get_cart_hash() ) ) {
 			WC()->cart->empty_cart();
 		}
 		if ( WC()->session && (int) WC()->session->get( 'order_awaiting_payment' ) === $result->get_id() ) {
 			WC()->session->__unset( 'order_awaiting_payment' );
 		}
-		wp_safe_redirect( $result->get_checkout_order_received_url() );
-		exit;
 	}
 
 	public function sahcfwc_stripe_cancel_order_callback() {
@@ -99,7 +106,8 @@ class SAHCFWC_Post_Checkout {
 		$order = wc_get_order( $order_id );
 		$client = $this->sahcfwc_stripe_client ? $this->sahcfwc_stripe_client : SAHCFWC_Payment_Completion::client_for_order( $order );
 		if ( is_wp_error( $client ) ) { $this->redirect_error( $client ); }
-		$result = SAHCFWC_Payment_Completion::with_order_lock( $order_id, function ( $locked_order ) use ( $session_id, $client ) {
+		$submitted_session_id = '';
+		$result = SAHCFWC_Payment_Completion::with_order_lock( $order_id, function ( $locked_order ) use ( $session_id, $client, &$submitted_session_id ) {
 			if ( ! $locked_order ) { return SAHCFWC_Payment_Completion::error( 'sahcfwc_invalid_order', __( 'The checkout link is invalid or has expired.', 'sa-hosted-checkout-for-woocommerce' ) ); }
 			$saved_id = (string) $locked_order->get_meta( 'sahcfwc_stripe_checkout_session_id', true );
 			if ( ! $saved_id || ( $session_id && '{CHECKOUT_SESSION_ID}' !== $session_id && ! hash_equals( $saved_id, $session_id ) ) ) {
@@ -110,7 +118,10 @@ class SAHCFWC_Post_Checkout {
 				$session = $client->checkout->sessions->retrieve( $saved_id, array() );
 				$valid = SAHCFWC_Payment_Completion::validate( $locked_order, $session, $client );
 				if ( is_wp_error( $valid ) ) { return $valid; }
-				if ( 'unpaid' !== SAHCFWC_Payment_Completion::value( $session, 'payment_status' ) || 'complete' === SAHCFWC_Payment_Completion::value( $session, 'status' ) ) { return $locked_order; }
+				if ( 'unpaid' !== SAHCFWC_Payment_Completion::value( $session, 'payment_status' ) || 'complete' === SAHCFWC_Payment_Completion::value( $session, 'status' ) ) {
+					$submitted_session_id = $saved_id;
+					return $locked_order;
+				}
 				if ( 'open' === SAHCFWC_Payment_Completion::value( $session, 'status' ) ) {
 					$session = $client->checkout->sessions->expire( $saved_id, array() );
 				}
@@ -127,7 +138,12 @@ class SAHCFWC_Post_Checkout {
 			}
 		} );
 		if ( is_wp_error( $result ) ) { $this->redirect_error( $result ); }
+		if ( $submitted_session_id ) {
+			// A submitted bank payment cannot be cancelled by visiting an old cancel URL.
+			$this->sahcfwc_stripe_successful_checkout_order( $order_id, $submitted_session_id );
+		}
 		if ( $result->is_paid() ) {
+			$this->clear_order_cart( $result );
 			wp_safe_redirect( $result->get_checkout_order_received_url() );
 		} else {
 			if ( WC()->session && (int) WC()->session->get( 'order_awaiting_payment' ) === $order_id ) { WC()->session->__unset( 'order_awaiting_payment' ); }

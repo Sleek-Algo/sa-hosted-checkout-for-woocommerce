@@ -102,12 +102,17 @@ class SAHCFWC_Stripe_Listener {
 		} else {
 			$result = Completion::complete( $order->get_id(), $session, $client );
 		}
+		if ( is_wp_error( $result ) && 'sahcfwc_order_closed' === $result->get_error_code() && 'checkout.session.completed' === $type ) {
+			$fresh_order = wc_get_order( $order->get_id() );
+			// A late "submitted" event must not resurrect a payment already reported failed.
+			if ( $fresh_order && $saved_id === $fresh_order->get_meta( 'sahcfwc_failed_session_id', true ) ) { return true; }
+		}
 		if ( is_wp_error( $result ) && 'sahcfwc_payment_pending' === $result->get_error_code() ) {
-			if ( 'checkout.session.completed' !== $type ) {
+			if ( 'checkout.session.completed' !== $type || 'complete' !== Completion::value( $session, 'status' ) || 'unpaid' !== Completion::value( $session, 'payment_status' ) ) {
 				return Completion::error( 'sahcfwc_event_pending', __( 'Payment confirmation is still being processed. Please retry.', 'sa-hosted-checkout-for-woocommerce' ), 503 );
 			}
 			// Delayed payment methods remain unpaid until async_payment_succeeded.
-			$this->record_session( $order, $session );
+			$this->record_session( wc_get_order( $order->get_id() ), $session );
 			return true;
 		}
 		if ( ! is_wp_error( $result ) ) { $this->record_session( $result, $session ); }

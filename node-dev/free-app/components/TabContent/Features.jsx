@@ -66,7 +66,7 @@ const dataSource = [
 	{
 		key: '5',
 		feature: __(
-			'Managing Temporary order: Allows your customers to delete all temporary orders.',
+			'Cancelled checkout: Optionally remove the unpaid temporary order when the customer cancels.',
 			'sa-hosted-checkout-for-woocommerce'
 		),
 		free: <CheckOutlined style={ { color: 'green' } } />,
@@ -75,19 +75,19 @@ const dataSource = [
 	{
 		key: '6',
 		feature: __(
-			'Custom payment methods: Support any or all payment methods.',
+			'Payment methods: Choose eligible Stripe payment methods for Checkout.',
 			'sa-hosted-checkout-for-woocommerce'
 		),
-		free: <CloseOutlined style={ { color: 'red' } } />,
+		free: <CheckOutlined style={ { color: 'green' } } />,
 		premium: <CheckOutlined style={ { color: 'green' } } />,
 	},
 	{
 		key: '7',
 		feature: __(
-			'Custom language option: Change the language of Stripe checkout displayed to your customers.',
+			'Checkout language: Use the browser language or choose a supported Stripe language.',
 			'sa-hosted-checkout-for-woocommerce'
 		),
-		free: <CloseOutlined style={ { color: 'red' } } />,
+		free: <CheckOutlined style={ { color: 'green' } } />,
 		premium: <CheckOutlined style={ { color: 'green' } } />,
 	},
 	{
@@ -102,10 +102,10 @@ const dataSource = [
 	{
 		key: '9',
 		feature: __(
-			'Adjustable quantity option: Let your customers adjust the quantity of products on Stripe Checkout.',
+			'Allow quantity changes for eligible products in Stripe Checkout (optional).',
 			'sa-hosted-checkout-for-woocommerce'
 		),
-		free: <CloseOutlined style={ { color: 'red' } } />,
+		free: <CheckOutlined style={ { color: 'green' } } />,
 		premium: <CheckOutlined style={ { color: 'green' } } />,
 	},
 	{

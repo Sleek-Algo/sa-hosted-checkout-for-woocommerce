@@ -3,13 +3,13 @@
 /**
  * Plugin Name: SA Hosted Checkout for WooCommerce
  * Plugin URI: https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/
- * Description: Increase conversions by using Sleek Checkout on your WooCommerce website. Let your customers pay with confidence using highly optimized, Stripe hosted checkout. Setup in a few minutes. All configuration options are available.
- * Version: 1.0.6
+ * Description: Connect WooCommerce to Stripe Checkout with cart coupons, payment-method and language selection, and optional product quantity changes.
+ * Version: 1.0.7
  * Requires at least: 6.3
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
  * WC requires at least: 8.6
- * WC tested up to: 11.1
+ * WC tested up to: 11.2
  * Author: Sleek Algo
  * Author URI: https://www.sleekalgo.com/
  * License: GPL v2 or later
@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 $wp_upload_dir = wp_get_upload_dir();
 /* Define constants. */
-!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.0.6' );
+!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.0.7' );
 !defined( 'SAHCFWC_BASE' ) && define( 'SAHCFWC_BASE', basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ) );
 !defined( 'SAHCFWC_TEXT_DOMAIN' ) && define( 'SAHCFWC_TEXT_DOMAIN', 'sa-hosted-checkout-for-woocommerce' );
 !defined( 'SAHCFWC_TEXT_DOMAIN_PATH' ) && define( 'SAHCFWC_TEXT_DOMAIN_PATH', dirname( SAHCFWC_BASE ) . '/languages' );
@@ -43,6 +43,13 @@ $wp_upload_dir = wp_get_upload_dir();
 !defined( 'SAHCFWC_URL_ASSETS_BACKEND_IMAGES' ) && define( 'SAHCFWC_URL_ASSETS_BACKEND_IMAGES', SAHCFWC_URL_ASSETS_BACKEND . '/images' );
 !defined( 'SAHCFWC_URL_ASSETS_BACKEND_LOCAL_PAYMENT_METHODS_IMAGES' ) && define( 'SAHCFWC_URL_ASSETS_BACKEND_LOCAL_PAYMENT_METHODS_IMAGES', SAHCFWC_URL . '/assets/local-payment-methods' );
 !defined( 'SAHCFWC_PATH' ) && define( 'SAHCFWC_PATH', dirname( SAHCFWC_FILE ) );
+
+// Order reads, writes and stock reservations support both WooCommerce storage modes.
+add_action( 'before_woocommerce_init', function () {
+    if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', SAHCFWC_FILE, true );
+    }
+} );
     
 /**
  * PSR-4 Composer Autoloader

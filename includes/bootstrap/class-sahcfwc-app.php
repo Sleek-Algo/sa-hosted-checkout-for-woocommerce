@@ -43,6 +43,8 @@ if ( ! class_exists( '\SAHCFWC\Bootstrap\SAHCFWC_App' ) ) {
 		 * @access public
 		 */
 		public function __construct() {
+			require_once dirname( __DIR__ ) . '/classes/class-sahcfwc-quantity-inventory.php';
+			\SAHCFWC\Classes\SAHCFWC_Quantity_Inventory::register_hooks();
 			$this->sahcfwc_stripe_checkout_status = get_option( 'sahcfwc_stripe_checkout_status' );
 			add_action( 'sahcfwc_plugin_loaded', array( $this, 'sahcfwc_init_webhooks' ), 9999 );
 			add_action( 'init', array( $this, 'sahcfwc_init_localization' ), 10 );

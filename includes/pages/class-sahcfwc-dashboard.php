@@ -109,6 +109,7 @@ if ( ! class_exists( '\SAHCFWC\Pages\SAHCFWC_Dashboard' ) ) {
 				$sahcfwc_customizations_localized_objects = array(
 					'plugin_version'       => SAHCFWC_VERSION,
 					'language'             => get_user_locale(),
+					'stripe_locale_options' => $this->sahcfwc_get_stripe_locale_options(),
 					'webhook_URL'          => get_site_url() . '/wp-json/sahcfwc/v1/webhooks/stripe-listener',
 					'language_dir'         => ( is_rtl() ? 'rtl' : 'ltr' ),
 					'license_status'       => $license_status,

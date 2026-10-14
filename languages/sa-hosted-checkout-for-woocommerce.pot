@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: SA Hosted Checkout for WooCommerce 1.0.6\n"
+"Project-Id-Version: SA Hosted Checkout for WooCommerce 1.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-06T21:12:35+00:00\n"
+"POT-Creation-Date: 2026-10-08T07:05:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sa-hosted-checkout-for-woocommerce\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sa-hosted-checkout-for-woocommerce.php
-msgid "Increase conversions by using Sleek Checkout on your WooCommerce website. Let your customers pay with confidence using highly optimized, Stripe hosted checkout. Setup in a few minutes. All configuration options are available."
+msgid "Connect WooCommerce to Stripe Checkout with cart coupons, payment-method and language selection, and optional product quantity changes."
 msgstr ""
 
 #. Author of the plugin
@@ -60,86 +60,109 @@ msgstr ""
 
 #: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:494
 #: includes/classes/class-sahcfwc-payment-gateway.php:563
-#: includes/traits/sahcfwc-order-totals.php:186
+#: includes/traits/sahcfwc-order-totals.php:205
 msgid "Tax"
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:59
+#: includes/classes/class-sahcfwc-payment-completion.php:60
 #: includes/classes/class-sahcfwc-post-checkout.php:34
 #: includes/classes/class-sahcfwc-post-checkout.php:42
-#: includes/classes/class-sahcfwc-post-checkout.php:103
+#: includes/classes/class-sahcfwc-post-checkout.php:111
 msgid "The checkout link is invalid or has expired."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:71
+#: includes/classes/class-sahcfwc-payment-completion.php:72
 msgid "Stripe is not configured for this order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:79
+#: includes/classes/class-sahcfwc-payment-completion.php:80
 msgid "This checkout does not match a payable order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:84
+#: includes/classes/class-sahcfwc-payment-completion.php:85
 #: includes/webhooks/class-sahcfwc-stripe-listener.php:77
 msgid "Checkout is still being prepared. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:87
-#: includes/classes/class-sahcfwc-payment-completion.php:94
+#: includes/classes/class-sahcfwc-payment-completion.php:88
+#: includes/classes/class-sahcfwc-payment-completion.php:95
 #: includes/classes/class-sahcfwc-post-checkout.php:64
-#: includes/classes/class-sahcfwc-post-checkout.php:106
+#: includes/classes/class-sahcfwc-post-checkout.php:114
 #: includes/webhooks/class-sahcfwc-stripe-listener.php:80
 msgid "This checkout does not match the order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:101
-#: includes/classes/class-sahcfwc-payment-completion.php:110
+#: includes/classes/class-sahcfwc-payment-completion.php:102
+#: includes/classes/class-sahcfwc-payment-completion.php:111
 msgid "The payment could not be verified for this order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:106
+#: includes/classes/class-sahcfwc-payment-completion.php:107
 #: includes/classes/class-sahcfwc-post-checkout.php:71
 #: includes/webhooks/class-sahcfwc-stripe-listener.php:85
 msgid "Unable to verify the payment. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:119
+#: includes/classes/class-sahcfwc-payment-completion.php:117
+#: includes/classes/class-sahcfwc-payment-completion.php:131
 msgid "The payment amount or currency does not match the order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:124
+#: includes/classes/class-sahcfwc-payment-completion.php:122
 msgid "The payment mode does not match the order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:134
+#: includes/classes/class-sahcfwc-payment-completion.php:142
 msgid "The payment is being processed. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:150
+#: includes/classes/class-sahcfwc-payment-completion.php:159
+msgid "Unable to verify the latest order state. Please try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-completion.php:179
 msgid "This checkout has expired. Return to your cart to try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:154
+#: includes/classes/class-sahcfwc-payment-completion.php:188
 msgid "Payment has not been confirmed yet."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:159
+#: includes/classes/class-sahcfwc-payment-completion.php:193
+#: includes/classes/class-sahcfwc-payment-completion.php:239
 msgid "The payment could not be verified."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:165
+#: includes/classes/class-sahcfwc-payment-completion.php:199
 msgid "The payment does not match the completed order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:170
+#: includes/classes/class-sahcfwc-payment-completion.php:204
 msgid "This order can no longer be completed."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:177
+#: includes/classes/class-sahcfwc-payment-completion.php:213
 msgid "Unable to update the order payment status. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:190
+#: includes/classes/class-sahcfwc-payment-completion.php:231
+msgid "This checkout is not awaiting payment confirmation."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-completion.php:235
+msgid "This order is no longer awaiting payment."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-completion.php:247
+msgid "Stripe payment submitted; awaiting confirmation. Do not fulfill this order yet."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-completion.php:257
+#: includes/webhooks/class-sahcfwc-stripe-listener.php:112
+msgid "Payment confirmation is still being processed. Please retry."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-completion.php:264
 msgid "Stripe reported that the payment failed."
 msgstr ""
 
@@ -197,19 +220,39 @@ msgstr ""
 msgid "This order cannot be paid through Stripe Checkout. Please check the order and payment settings."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-post-checkout.php:76
+#: includes/classes/class-sahcfwc-payment-methods.php:100
+msgid "No configured payment method supports this order currency. Please contact the store."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-methods.php:103
+msgid "Link requires Cards to be enabled in the payment method settings. Please contact the store."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-methods.php:107
+msgid "Bank debit, bank transfer and voucher payments require a configured Stripe webhook. Please contact the store."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-methods.php:122
+msgid "Canadian bank debit payments require a configured mandate type. Please contact the store."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-payment-methods.php:150
+msgid "The bank transfer customer could not be verified."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-post-checkout.php:77
 msgid "Your payment is awaiting confirmation."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-post-checkout.php:118
+#: includes/classes/class-sahcfwc-post-checkout.php:129
 msgid "Checkout could not be cancelled. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-post-checkout.php:121
+#: includes/classes/class-sahcfwc-post-checkout.php:132
 msgid "Stripe Checkout was cancelled."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-post-checkout.php:126
+#: includes/classes/class-sahcfwc-post-checkout.php:137
 msgid "Unable to cancel checkout. Please try again."
 msgstr ""
 
@@ -217,339 +260,606 @@ msgstr ""
 msgid "Please log in before applying the coupon."
 msgstr ""
 
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:23
+msgid "The checkout quantities or amounts could not be verified for this order."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:113
+msgid "The adjustable checkout could not be prepared safely."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:120
+msgid "The checkout quantity limits are invalid."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:137
+msgid "The checkout product does not match the order."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:146
+msgid "This product cannot safely support adjustable quantities."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:151
+msgid "The adjustable checkout total does not match the order."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:228
+msgid "Unable to verify the final checkout quantities. Please try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:280
+msgid "This order has already affected stock or fulfillment. Review it before changing its quantities."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:320
+msgid "Unable to save the verified checkout quantities. Please try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:342
+msgid "Checkout quantities require manual review because the stock reservation is no longer available. Check the Stripe payment and inventory before fulfilling this order."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-adjustment.php:346
+msgid "This payment requires a stock review before the order can be fulfilled. Please contact the store."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:58
+msgid "An item in this order is no longer in stock."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:63
+msgid "The order exceeds an item purchase limit."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:70
+msgid "Stock for an order item could not be verified."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:82
+msgid "Not enough stock is available for this order. Please update your cart."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:117
+msgid "Stock can only be reserved for an unpaid checkout."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:127
+msgid "Stock for this checkout needs verification. Check the existing payment session before trying again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:144
+msgid "Stock could not be reserved for the full checkout period. Please contact the store."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:151
+msgid "The checkout order could not be verified."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:165
+msgid "The checkout expiration time is invalid."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:175
+msgid "This order cannot use adjustable checkout quantities."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:179
+msgid "The checkout order has no purchasable items."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:184
+msgid "Checkout quantity limits are missing."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:188
+msgid "Checkout quantity limits are invalid."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:232
+msgid "Stock reservations are disabled. Enable stock reservations before using adjustable checkout quantities."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-quantity-inventory.php:235
+msgid "WooCommerce stock reservations are unavailable. Update the store database before enabling adjustable quantities."
+msgstr ""
+
 #: includes/pages/class-sahcfwc-dashboard.php:57
 #: includes/pages/class-sahcfwc-dashboard.php:58
 msgid "SA Hosted Checkout"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:95
+#: includes/traits/sahcfwc-helpers.php:32
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:383
+msgid "Automatic (browser language)"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:33
+msgid "Bulgarian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:34
+msgid "Czech"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:35
+msgid "Danish"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:36
+msgid "German"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:37
+msgid "Greek"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:38
+msgid "English"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:39
+msgid "English (United Kingdom)"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:40
+msgid "Spanish"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:41
+msgid "Spanish (Latin America)"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:42
+msgid "Estonian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:43
+msgid "Finnish"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:44
+msgid "Filipino"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:45
+msgid "French"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:46
+msgid "French (Canada)"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:47
+msgid "Croatian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:48
+msgid "Hungarian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:49
+msgid "Indonesian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:50
+msgid "Italian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:51
+msgid "Japanese"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:52
+msgid "Korean"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:53
+msgid "Lithuanian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:54
+msgid "Latvian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:55
+msgid "Malay"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:56
+msgid "Maltese"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:57
+msgid "Norwegian Bokmal"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:58
+msgid "Dutch"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:59
+msgid "Polish"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:60
+msgid "Portuguese"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:61
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:62
+msgid "Romanian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:63
+msgid "Russian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:64
+msgid "Slovak"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:65
+msgid "Slovenian"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:66
+msgid "Swedish"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:67
+msgid "Thai"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:68
+msgid "Turkish"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:69
+msgid "Vietnamese"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:70
+msgid "Chinese (Simplified)"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:71
+msgid "Chinese (Hong Kong)"
+msgstr ""
+
+#: includes/traits/sahcfwc-helpers.php:72
+msgid "Chinese (Traditional)"
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:39
+msgid "Payment for this cart is awaiting confirmation. Check your order before paying again."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:103
 msgid "Unable to create an order. Please try again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:111
+#: includes/traits/sahcfwc-order-totals.php:119
 msgid "Coupons are disabled. Remove the coupon from your cart before continuing."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:201
+#: includes/traits/sahcfwc-order-totals.php:242
 msgid "The order could not be found."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:212
+#: includes/traits/sahcfwc-order-totals.php:253
 msgid "This order does not require payment."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:217
+#: includes/traits/sahcfwc-order-totals.php:258
 msgid "Stripe requires a whole-number order total for this currency."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:220
+#: includes/traits/sahcfwc-order-totals.php:261
 msgid "Complete this order through the WooCommerce checkout."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:232
-msgid "Shipping"
+#: includes/traits/sahcfwc-order-totals.php:276
+msgid "This checkout is about to expire. Please wait a moment before trying again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:235
-msgid "Rounding adjustment"
-msgstr ""
-
-#: includes/traits/sahcfwc-order-totals.php:253
-msgid "The order cannot be represented accurately in Stripe Checkout. Please contact the store."
-msgstr ""
-
-#: includes/traits/sahcfwc-order-totals.php:266
-msgid "Select a shipping country before starting payment."
-msgstr ""
-
-#: includes/traits/sahcfwc-order-totals.php:282
-msgid "Order adjustment"
-msgstr ""
-
-#: includes/traits/sahcfwc-order-totals.php:297
-msgid "An active payment session already exists for this order. Return to the cart to start a new checkout."
-msgstr ""
-
-#: includes/traits/sahcfwc-order-totals.php:300
-#: includes/traits/sahcfwc-order-totals.php:359
+#: includes/traits/sahcfwc-order-totals.php:279
+#: includes/traits/sahcfwc-order-totals.php:451
+#: includes/traits/sahcfwc-order-totals.php:537
 msgid "This payment is being processed. Please check your order before trying again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:376
+#: includes/traits/sahcfwc-order-totals.php:298
+msgid "This order changed while checkout was being prepared. Verify the existing payment before trying again."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:301
+#: includes/traits/sahcfwc-order-totals.php:438
+msgid "Stripe credentials changed while checkout was being prepared. Restore the original credentials and verify this order before retrying."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:322
+msgid "Quantity changes require a configured Stripe webhook. Please contact the store."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:341
+msgid "Shipping"
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:344
+msgid "Rounding adjustment"
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:362
+msgid "The order cannot be represented accurately in Stripe Checkout. Please contact the store."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:392
+msgid "Select a shipping country before starting payment."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:409
+msgid "Order adjustment"
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:431
+msgid "Checkout settings changed while payment was being prepared. Restore the previous settings and verify the existing payment before trying again."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:448
+msgid "An active payment session already exists for this order. Return to the cart to start a new checkout."
+msgstr ""
+
+#: includes/traits/sahcfwc-order-totals.php:554
 msgid "The payment total could not be verified. Please try again or contact the store."
 msgstr ""
 
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:25
+msgid "Cards"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:25
+msgid "Includes eligible Visa, Mastercard, American Express, Discover, Diners Club, JCB, UnionPay and other card networks. Card brands are not separate payment methods."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:26
+msgid "USD bank transfer"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:26
+msgid "Customers send USD to bank details provided by Stripe. This is a bank transfer, not an ACH debit."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:27
+msgid "ACH Direct Debit"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:27
+msgid "Debit a US bank account in USD after customer authorization."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:28
+msgid "iDEAL | Wero"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:28
+msgid "Bank payments for customers in the Netherlands, in EUR."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:29
+msgid "Affirm"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:29
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:30
+msgid "Buy now, pay later in supported markets and currencies."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:30
+msgid "Afterpay / Clearpay"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:31
+msgid "PayNow"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:31
+msgid "Singapore payments in SGD."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:32
+msgid "PayPal"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:32
+msgid "PayPal wallet payments, where supported by the Stripe account."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:33
+msgid "OXXO"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:33
+msgid "Cash voucher payments in Mexico, in MXN."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:34
+msgid "Canadian pre-authorized debit"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:34
+msgid "Debit a Canadian bank account in CAD or USD after customer authorization."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:35
+msgid "Konbini"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:35
+msgid "Convenience-store payments in Japan, in JPY."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:36
+msgid "PromptPay"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:36
+msgid "Thailand payments in THB."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:37
+msgid "Przelewy24"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:37
+msgid "Polish bank payments in EUR or PLN."
+msgstr ""
+
 #: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:38
-msgid "USD bank transfers"
+msgid "SEPA Direct Debit"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:38
+msgid "Debit a SEPA bank account in EUR after customer authorization."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:39
+msgid "EPS"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:39
+msgid "Austrian online-bank payments in EUR."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:40
+msgid "FPX"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:40
+msgid "Malaysian bank payments in MYR."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:41
+msgid "GrabPay"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:41
+msgid "Wallet payments in MYR or SGD."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:42
+msgid "Klarna"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:42
+msgid "Klarna payment options depend on the customer, currency and order."
 msgstr ""
 
 #: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:43
-msgid "United States"
+msgid "Link"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:43
+msgid "Faster checkout using payment details saved with Link. Cards must also be selected."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:44
+msgid "Boleto"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:44
+msgid "Brazilian voucher payments in BRL."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:45
+msgid "BLIK"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:45
+msgid "Polish payments in PLN."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:46
+msgid "BECS Direct Debit"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:46
+msgid "Debit an Australian bank account in AUD after customer authorization."
 msgstr ""
 
 #: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:47
-msgid "Keep transaction cost low with credit transfers—ideal for large, one-off transactions like B2B payments."
+msgid "Bacs Direct Debit"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:47
+msgid "Debit a UK bank account in GBP after customer authorization."
 msgstr ""
 
 #: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:48
-msgid "For large transactions, Stripe makes it possible to accept credit transfers or wires with automated reconciliation, lowering the chance of payment failure without adding operational complexity."
+msgid "Bancontact"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:48
+msgid "Belgian payments in EUR."
 msgstr ""
 
 #: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:49
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:122
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:223
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:259
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:278
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:693
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:746
-msgid "This payment method requires you to have a legal entity registered in the country where you are offering the payment method."
+msgid "Alipay"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:49
+msgid "Alipay wallet payments in supported currencies."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:50
+msgid "WeChat Pay"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:50
+msgid "WeChat wallet payments in supported currencies."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:51
+msgid "Zip"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:51
+msgid "Buy now, pay later in AUD, or USD where Stripe has granted access."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:52
+msgid "Cash App Pay"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:52
+msgid "Cash App wallet payments in USD."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:53
+msgid "Revolut Pay"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:53
+msgid "Revolut wallet payments in supported European currencies."
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:54
+msgid "MobilePay"
+msgstr ""
+
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:54
+msgid "Mobile wallet payments for eligible Nordic customers."
 msgstr ""
 
 #: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:55
-msgid "iDEAL"
+msgid "Swish"
 msgstr ""
 
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:102
-msgid "Increase conversion with Dutch customers by enabling iDEAL—the most popular payment method in the Netherlands, with 57% share of online payments."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:103
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:333
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:617
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:673
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:692
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1046
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1137
-msgid "Increase conversion by offering customers a more convenient and secure way to pay from their bank account. By authorizing payment using the customer’s online banking credentials, bank redirects are the preferred method of paying online in many countries."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:120
-msgid "Let US and CA customers pay in 4 interest-free payments every 2 weeks or monthly installments up to 36 months depending on location. Affirm has over 31 million addressable customers in the US and CA. "
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:121
-msgid "Offer flexible buy now, pay later payment options that increase your customers purchasing power, leading to higher conversion and order value."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:141
-msgid "Let your customers break their payment into 3 or 4 interest-free installments using Afterpay (also known as Clearpay), with 20 million active global customers"
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:142
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:808
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1300
-msgid "Offer flexible buy now, pay later payment options that increase your customers’ purchasing power, leading to higher conversion and order value."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:143
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:809
-msgid "This payment method requires you to have a legal entity registered in the country (or in the European Union) where you are offering the payment method"
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:158
-msgid "Offer customers the option to pay using PayNow, Singapore’s national payment scheme and the fastest growing major payment method in the country"
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:159
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:277
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1424
-msgid "Enable your customers to pay almost instantly, 24/7 directly from their bank accounts, wallets, or other funding source, which helps increase speed and conversion—all at a low cost to your business."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:160
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:242
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:711
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:999
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1047
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1065
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1082
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1301
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1318
-msgid "This payment method requires you to have a legal entity registered in the country where you are offering the payment method"
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:204
-msgid "Offer a trusted and familiar payment method available to customers in over 200 markets to help millions of active global PayPal users speed through checkout."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:205
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:710
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:860
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1192
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1230
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1317
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1335
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1381
-msgid "Enable your customers to check out faster with wallet payment methods that digitally store credit and debit cards. Wallets eliminate the need for customers to manually enter their card and billing information, offering a quick and convenient way to pay."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:206
-msgid "This payment method requires you have a legal entity registered in European Union, UK or Switzerland."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:221
-msgid "Let your Mexican customers pay with OXXO—a voucher-based payment method that represents more than 30% of transactions in Mexico."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:222
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:258
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:998
-msgid "Allow customers to pay bills and online purchases in-store with cash."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:240
-msgid "Let your customers pay with pre-authorized debits (PADs), a popular direct debit payment method in Canada."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:241
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:455
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1064
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1081
-msgid "Minimize involuntary churn and lower transaction costs by accepting direct debits for subscription or recurring charges."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:257
-msgid "Offer customers the option to pay at over 34,000 convenience stores in Japan through a unified Stripe integration."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:276
-msgid "Let customers in Thailand pay using PromptPay, the national payment scheme supported by the Thai government."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:332
-msgid "Let your Polish customers pay with P24—a popular bank transfer method in Poland."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:399
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:520
-msgid "Accept the dominant payment method globally with one of the largest card networks in the world."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:400
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:521
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:541
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:561
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:727
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:745
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:765
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:917
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:981
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1282
-msgid "Accept all major debit and credit cards from customers in every country."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:454
-msgid "Minimize involuntary churn for subscriptions or recurring payments by debiting your customers’ bank accounts in 36 European countries."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:540
-msgid "Accept the popular credit card supported in over 185 countries."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:560
-msgid "Accept a popular US card with high authorization rates."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:616
-msgid "Let your Austrian customers pay with EPS—an online transfer payment method with over 18% market share in Austria."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:672
-msgid "Let German customer’s pay with Giropay—a popular bank transfer method that accounts for over 16% of online checkouts in Germany."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:691
-msgid "Let your Malaysian customers pay with FPX, one of the most popular payment methods in Malaysia, using their bank credentials."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:709
-msgid "Let your Singapore and Malaysia customers pay with GrabPay wallets in Singapore and Malaysia respectively."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:726
-msgid "Accept the dominant payment method globally with Canada’s leading debit card."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:744
-msgid "Support nearly 140 million cardholders worldwide with the most widely accepted Japanese credit card in Japan."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:764
-msgid "Support 140 million cardholders shopping worldwide with JCBI, the one and only international payment brand from Japan."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:807
-msgid "Offer flexible payment options that give customers more freedom to choose when and how to pay for a purchase, with 150 million consumers across 27 markets."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:859
-msgid "Deliver a frictionless and seamless checkout experience with Link, a 1-click checkout that autofills your customer’s payment and shipping details."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:916
-msgid "Expand your reach and increase conversions with France’s largest card network."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:980
-msgid "Accept the dominant payment method globally with a popular credit card used in more than 130 countries."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:997
-msgid "Let your Brazilian customers pay with Boleto—a voucher-based payment method that represents more than 20% of transactions in Brazil."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1045
-msgid "Increase your reach and conversion with one of Poland’s fastest growing bank-based methods."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1063
-msgid "Accept Bulk Electronic Clearing System (BECS) Direct Debit payments from customers with an Australian bank account."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1080
-msgid "Let your UK customers set up one-off or recurring payments through Bacs Direct Debit."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1136
-msgid "Let your Belgian customers pay with Bancontact—Belgium’s most popular payment method offered by over 80% of online businesses."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1191
-msgid "Allow customers to pay with Alipay in 11 major currencies to reach consumers in China and overseas Chinese consumers and travelers."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1229
-msgid "Let your customers pay with WeChat Pay—the wallet inside the popular messaging app WeChat that has more than 900 million active monthly users."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1281
-msgid "Support nearly 9 billion UnionPay cards in circulation worldwide when you integrate with Stripe."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1299
-msgid "Give Australian customers a more flexible way to pay. Zip is a familiar payment method used by 3.2 million customers and 43,200 retailers in Australia and New Zealand."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1316
-msgid "Accept payments with Cash App Pay, allowing customers to pay using their Cash App balance or linked debit card."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1334
-msgid "Offer your customers the convenience of Revolut Pay, allowing them to pay directly through their Revolut account or to check out as a guest."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1336
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1382
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1425
-msgid "This payment method requires you to have a legal entity registered in the country (or in the European Union) where you are offering the payment method."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1380
-msgid "Offer customers the option to pay using MobilePay, a single-use card wallet payment method used in Denmark and Finland."
-msgstr ""
-
-#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:1423
-msgid "Let your Swedish customers pay with Swish, enabling them purchase using the Swish mobile app and the Swedish BankID mobile app."
+#: includes/traits/stripe-sahcfwc-local-payment-methods-list.php:55
+msgid "Swedish mobile payments in SEK."
 msgstr ""
 
 #: includes/webhooks/class-sahcfwc-stripe-listener.php:87
@@ -560,24 +870,20 @@ msgstr ""
 msgid "The payment does not match the order."
 msgstr ""
 
-#: includes/webhooks/class-sahcfwc-stripe-listener.php:107
-msgid "Payment confirmation is still being processed. Please retry."
-msgstr ""
-
-#: sa-hosted-checkout-for-woocommerce.php:64
+#: sa-hosted-checkout-for-woocommerce.php:71
 msgid "SA Hosted Checkout for WooCommerce requires WooCommerce 8.6 or later. Update WooCommerce to enable hosted checkout."
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:85
+#: sa-hosted-checkout-for-woocommerce.php:92
 msgid "Settings"
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:86
+#: sa-hosted-checkout-for-woocommerce.php:93
 #: node-dev/free-app/components/Header.jsx:56
 msgid "Documentation"
 msgstr ""
 
-#: sa-hosted-checkout-for-woocommerce.php:87
+#: sa-hosted-checkout-for-woocommerce.php:94
 #: node-dev/free-app/components/Header.jsx:45
 msgid "Support"
 msgstr ""
@@ -606,199 +912,236 @@ msgid "Stripe Settings"
 msgstr ""
 
 #: node-dev/free-app/components/NavTabs.jsx:120
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:152
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:163
 msgid "Checkout Settings"
 msgstr ""
 
-#: node-dev/free-app/components/NavTabs.jsx:131
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:167
+#: node-dev/free-app/components/NavTabs.jsx:129
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:104
 msgid "Payment Methods"
 msgstr ""
 
-#: node-dev/free-app/components/NavTabs.jsx:148
+#: node-dev/free-app/components/NavTabs.jsx:137
 msgid "Stripe Sessions"
 msgstr ""
 
-#: node-dev/free-app/components/NavTabs.jsx:164
+#: node-dev/free-app/components/NavTabs.jsx:153
 msgid "Features"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:65
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:69
 msgid "Checkout settings saved."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:97
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:74
+msgid "Unable to save checkout settings. Please try again."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:104
 #: node-dev/free-app/components/TabContent/StripeSetting.jsx:130
 msgid "reset"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:101
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:108
 #: node-dev/free-app/components/TabContent/StripeSetting.jsx:134
 msgid "Submit"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:159
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:170
 msgid "Checkout Setting"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:166
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:177
 msgid "Enable Stripe Shipping Address"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:171
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:182
 msgid "This option allows the display of the shipping address field on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:177
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:215
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:246
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:274
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:434
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:598
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:188
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:210
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:244
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:272
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:412
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:576
 #: node-dev/free-app/components/TabContent/StripeSetting.jsx:268
 #: node-dev/free-app/components/TabContent/StripeSetting.jsx:414
 msgid "Enable"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:184
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:222
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:253
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:281
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:441
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:605
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:195
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:211
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:251
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:279
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:419
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:583
 #: node-dev/free-app/components/TabContent/StripeSetting.jsx:275
 #: node-dev/free-app/components/TabContent/StripeSetting.jsx:421
 msgid "Disable"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:198
-msgid "Adjustable Quantity Status"
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:206
+msgid "Allow quantity changes in Stripe Checkout"
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:208
-msgid "This option allows to adjust the quantity of products on the Stripe checkout page."
+msgid "Let customers change quantities for eligible products before submitting Stripe Checkout."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:235
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:217
+msgid "WooCommerce discount amounts, shipping charges, fees and taxes stay fixed when quantities change in Stripe Checkout. Coupon rules and other cart pricing rules are not recalculated. Enable only if these fixed charges are appropriate for your store."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:219
+msgid "Final purchased quantities and totals are synced to WooCommerce after checkout is submitted."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:220
+msgid "Requires a working Stripe webhook so orders sync even if the customer does not return to your store."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:225
+msgid "Maximum quantity per product"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:228
+msgid "Caps each eligible product at this quantity. A higher quantity already in the cart is preserved. Available stock may lower the limit. For stock-managed products, the allowed maximum is reserved while checkout is open."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:230
+msgid "Enter a whole number from 1 to 999999."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:233
 msgid "Enable Stripe Terms & Services"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:240
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:238
 msgid "This option allows the display of the terms and services checkbox on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:263
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:261
 msgid "Enable Stripe Phone Number"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:268
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:266
 msgid "This option allows the display of  the phone number field on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:293
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:291
 msgid "Stripe Cancel URL"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:298
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:296
 msgid "This option allows you to be redirected to a new specified URL after canceling an order on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:321
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:316
 msgid "Enter a valid URL."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:335
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:330
 msgid "Text copied successfully!"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:348
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:343
 msgid "WooCommerce Custom ThankYou Page"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:358
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:353
 msgid "This option allows the display of a custom thank-you page after placing an order on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:365
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:403
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:194
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:360
 msgid "Default"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:372
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:410
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:201
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:367
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:384
 msgid "Custom"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:386
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:379
 msgid "Stripe Checkout Language"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:396
-msgid "This option allows you to choose the language as either custom or default on the Stripe checkout page."
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:381
+msgid "Use the customer's browser language or select a language for Stripe Checkout."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:423
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:392
+msgid "Language"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:395
+msgid "Select a language"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:396
+msgid "Select a language."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:401
 msgid "Delete Temporary Order"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:428
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:406
 msgid "This option allows you to delete a temporary order when you return back to the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:456
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:434
 msgid "Custom Text Messages"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:467
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:445
 msgid "Add message after Shipping address"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:477
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:455
 msgid "This option allows the display of customized text after the shipping address field on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:481
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:508
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:535
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:562
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:459
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:486
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:513
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:540
 msgid "Enter text"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:494
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:472
 msgid "Add message after submit"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:504
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:482
 msgid "This option allows the display of customized text after the submit button on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:521
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:499
 msgid "Add message before submit"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:531
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:509
 msgid "This option allows the display of customized text before the submit button on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:548
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:526
 msgid "Customize terms and service text"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:558
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:536
 msgid "This option allows the display of customized terms and service text on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:572
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:550
 msgid "Stripe Custom Field Options"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:582
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:560
 msgid "Stripe Custom field options"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:592
+#: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:570
 msgid "This option allows the display of the custom field on the Stripe checkout page."
 msgstr ""
 
@@ -819,15 +1162,15 @@ msgid "Custom Cancel URL: Let your customer redirect to a specified URL after ca
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:68
-msgid "Managing Temporary order: Allows your customers to delete all temporary orders."
+msgid "Cancelled checkout: Optionally remove the unpaid temporary order when the customer cancels."
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:77
-msgid "Custom payment methods: Support any or all payment methods."
+msgid "Payment methods: Choose eligible Stripe payment methods for Checkout."
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:86
-msgid "Custom language option: Change the language of Stripe checkout displayed to your customers."
+msgid "Checkout language: Use the browser language or choose a supported Stripe language."
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:95
@@ -835,7 +1178,7 @@ msgid "Custom text before & after submit button: Add custom text to be displayed
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:104
-msgid "Adjustable quantity option: Let your customers adjust the quantity of products on Stripe Checkout."
+msgid "Allow quantity changes for eligible products in Stripe Checkout (optional)."
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:113
@@ -870,29 +1213,93 @@ msgstr ""
 msgid "Premium"
 msgstr ""
 
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:59
+msgid "Select at least one payment method, or choose Cards only."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:63
+msgid "Link requires Cards. Select Cards or turn off Link."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:69
+msgid "Select a Canadian debit mandate type before saving."
+msgstr ""
+
 #: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:86
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:332
 msgid "Payment method settings saved."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:177
-msgid "Custom Payment Method"
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:88
+msgid "Unable to save payment method settings. Please try again."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:182
-msgid "This option allows you to choose the payment method as either default or custom on the Stripe checkout page."
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:95
+msgid "Loading payment methods..."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:219
-msgid "Stripe default payment method is set. To add a custom payment method, select the custom option."
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:98
+msgid "Unable to load payment methods. Refresh this page to try again."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:257
-msgid "enable"
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:107
+msgid "Enable the payment methods in your Stripe Dashboard first. Availability at checkout depends on your Stripe account, order currency and amount, customer location, and Stripe eligibility rules."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:261
-msgid "disable"
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:109
+msgid "Open Stripe payment method settings"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:116
+msgid "Payment method selection"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:118
+msgid "Cards only (default)"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:119
+msgid "Choose payment methods"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:122
+msgid "Your saved selection includes outdated payment method entries. Review and save to update it."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:125
+msgid "Checkout accepts eligible card networks. Apple Pay and Google Pay can also appear when Stripe supports them for the customer and account. Other payment methods are not enabled automatically."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:128
+msgid "Select at least one method. Card brands such as Visa and Mastercard are included under Cards and cannot be enabled separately here. Methods that do not support the order currency are omitted at checkout."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:141
+msgid "Delayed payment confirmation"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:150
+msgid "Delayed payment methods require a working Stripe webhook and a saved webhook signing secret in Stripe Settings. Enable checkout.session.completed, checkout.session.async_payment_succeeded, and checkout.session.async_payment_failed. Orders remain unpaid until Stripe confirms payment; do not fulfill them while payment is pending."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:153
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:159
+msgid "Canadian debit mandate type"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:154
+msgid "Stripe requires a mandate type for Canadian pre-authorized debits. Choose the type appropriate for your customers and purchases."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:161
+msgid "Personal (purchases by individuals)"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:162
+msgid "Business (business purchases)"
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/LocalPaymentMethods.jsx:168
+msgid "Save payment methods"
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/StripeSessions.jsx:30

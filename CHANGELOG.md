@@ -1,3 +1,15 @@
+## 1.0.7 ( October 8, 2026 )
+
+- Made Stripe payment-method selection and checkout language selection available in the free version, while preserving the default card-only and automatic-language behavior.
+- Added validation for method currency eligibility, Link's Cards requirement and Canadian debit mandate settings, with webhook requirements for delayed payments.
+- Added optional quantity changes for eligible products, configurable maximum quantities and stock reservations while checkout is open.
+- Added verification and WooCommerce order synchronization for final Stripe quantities and totals, including delayed-payment handling. Existing discounts, fees, shipping and taxes remain fixed when quantities change.
+- Reloaded persisted order state under the payment lock to prevent overlapping callbacks from repeating completion emails or reopening refunded orders.
+- Restored coupon usage after failed delayed payments on older supported WooCommerce versions, without double-counting retries.
+- Declared compatibility with WooCommerce High-Performance Order Storage after testing both order-storage modes.
+- Improved settings save validation and error recovery; an empty optional cancellation URL no longer prevents saving Checkout Settings.
+- Updated free and premium feature descriptions and documented payment-method, webhook and quantity-adjustment limits.
+
 ## 1.0.6 ( October 7, 2026 )
 
 - Added WooCommerce cart coupon support to the free version while preserving the store's coupon setting and eligibility rules.

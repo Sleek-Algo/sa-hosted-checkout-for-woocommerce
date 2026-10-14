@@ -47,6 +47,54 @@ if ( ! class_exists( '\SAHCFWC\Settings\SAHCFWC_Stripe_Checkout' ) ) {
 		public function sahcfwc_stripe_checkout_register_settings() {
 			register_setting(
 				'sahcfwc_stripe_checkout_settings',
+				'sahcfwc_stripe_adjustment_quantity',
+				array(
+					'default'           => 'no',
+					'show_in_rest'      => true,
+					'type'              => 'string',
+					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_adjustment_quantity' ),
+				)
+			);
+			register_setting(
+				'sahcfwc_stripe_checkout_settings',
+				'sahcfwc_stripe_quantity_maximum',
+				array(
+					'default'           => 10,
+					'type'              => 'integer',
+					'show_in_rest'      => array(
+						'schema' => array(
+							'type'    => 'integer',
+							'minimum' => 1,
+							'maximum' => 999999,
+						),
+					),
+					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_quantity_maximum' ),
+				)
+			);
+			require_once dirname( __DIR__ ) . '/classes/class-sahcfwc-payment-methods.php';
+			\SAHCFWC\Classes\SAHCFWC_Payment_Methods::register_settings();
+			register_setting(
+				'sahcfwc_stripe_checkout_settings',
+				'sahcfwc_stripe_locale_status',
+				array(
+					'default'           => 'default',
+					'show_in_rest'      => true,
+					'type'              => 'string',
+					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_locale_status' ),
+				)
+			);
+			register_setting(
+				'sahcfwc_stripe_checkout_settings',
+				'sahcfwc_stripe_locale',
+				array(
+					'default'           => 'en',
+					'show_in_rest'      => true,
+					'type'              => 'string',
+					'sanitize_callback' => array( $this, 'sahcfwc_sanitize_stripe_locale' ),
+				)
+			);
+			register_setting(
+				'sahcfwc_stripe_checkout_settings',
 				'sahcfwc_stripe_integration_mode',
 				array(
 					'default'           => 'test-mode',
@@ -201,6 +249,41 @@ if ( ! class_exists( '\SAHCFWC\Settings\SAHCFWC_Stripe_Checkout' ) ) {
 			// Allow only 'test-mode' or 'live-mode' as valid inputs.
 			return ( 'test-mode' === $input || 'live-mode' === $input ? $input : 'test-mode' );
 		}
+
+		/**
+		 * Sanitize the checkout language selection mode.
+		 *
+		 * @param mixed $input Submitted mode.
+		 * @return string Custom language or automatic browser detection.
+		 */
+		public function sahcfwc_sanitize_locale_status( $input ) {
+			return 'custom' === $input ? 'custom' : 'default';
+		}
+
+		/**
+		 * Sanitize the optional Stripe quantity adjustment setting.
+		 *
+		 * @param mixed $input Submitted setting.
+		 * @return string Enabled only for the explicit yes value.
+		 */
+		public function sahcfwc_sanitize_adjustment_quantity( $input ) {
+			return 'yes' === $input ? 'yes' : 'no';
+		}
+
+		/**
+		 * Sanitize the maximum adjustable quantity per product.
+		 *
+		 * @param mixed $input Submitted maximum.
+		 * @return int Bounded maximum, or the safe default for invalid input.
+		 */
+		public function sahcfwc_sanitize_quantity_maximum( $input ) {
+			if ( ! is_int( $input ) && ! is_string( $input ) ) {
+				return 10;
+			}
+			$maximum = filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => array( 'min_range' => 1, 'max_range' => 999999 ) ) );
+			return false === $maximum ? 10 : $maximum;
+		}
+
 
 		/**
 		 * Define a sanitization function for the Stripe test secret key.

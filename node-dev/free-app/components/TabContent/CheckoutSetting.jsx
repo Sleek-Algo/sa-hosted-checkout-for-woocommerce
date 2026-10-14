@@ -18,11 +18,15 @@ import {
 	ProFormSegmented,
 	ProFormText,
 	ProFormSelect,
+	ProFormDigit,
 	ProFormTextArea,
 	ProFormRadio,
 	ProFormList,
 } from '@ant-design/pro-components';
 const { Title, Paragraph, Text } = Typography;
+const localeOptions = sahcfwc_customizations_localized_objects?.stripe_locale_options || [];
+const normalizeLocale = ( value ) => localeOptions.some( ( option ) => option.value === value ) ? value : 'auto';
+const normalizeQuantityMaximum = ( value ) => Number.isInteger( Number( value ) ) && Number( value ) >= 1 && Number( value ) <= 999999 ? Number( value ) : 10;
 
 const CheckoutSetting = () => {
 	const [ isApiProcessing, setIsApiProcessing ] = useState( false );
@@ -30,6 +34,8 @@ const CheckoutSetting = () => {
 	const [ deleteTempOrderStatus, setDeleteTempOrderStatus ] =
 		useState( false );
 	const [ showSuccess, setShowSuccess ] = useState( false );
+	const [ localeStatus, setLocaleStatus ] = useState( false );
+	const [ quantityEnabled, setQuantityEnabled ] = useState( false );
 
 	const copyText = () => {
 		const textToCopy = document.querySelector(
@@ -50,38 +56,39 @@ const CheckoutSetting = () => {
 		}
 	};
 
-	const handleClick = ( formData ) => {
-		/**
-		 * Set API Processing State
-		 */
+	const handleClick = async ( formData ) => {
 		setIsApiProcessing( true );
-		apiFetch( {
-			path: '/wp/v2/settings/',
-			method: 'POST',
-			data: formData,
-		} ).then( ( response ) => {
-			message.config( { top: 100 } );
+		message.config( { top: 100 } );
+		try {
+			await apiFetch( {
+				path: '/wp/v2/settings/',
+				method: 'POST',
+				data: formData,
+			} );
 			message.success(
-				__(
-					'Checkout settings saved.',
-					'sa-hosted-checkout-for-woocommerce'
-				)
+				__( 'Checkout settings saved.', 'sa-hosted-checkout-for-woocommerce' )
 			);
-
-			/**
-			 * Set API Processing State
-			 */
+			return true;
+		} catch ( error ) {
+			message.error(
+				__( 'Unable to save checkout settings. Please try again.', 'sa-hosted-checkout-for-woocommerce' )
+			);
+			return false;
+		} finally {
 			setIsApiProcessing( false );
-		} );
+		}
 	};
 
 	const formInitialValues = {
 		sahcfwc_stripe_shipping_address_status: '',
 		sahcfwc_stripe_terms_condition_status: '',
 		sahcfwc_stripe_phone_num_status: '',
-		sahcfwc_stripe_payment_method_status: '',
+		sahcfwc_stripe_adjustment_quantity: 'no',
+		sahcfwc_stripe_quantity_maximum: 10,
 		sahcfwc_stripe_delete_temp_order_status: '',
 		sahcfwc_stripe_cancel_url: '',
+		sahcfwc_stripe_locale_status: 'default',
+		sahcfwc_stripe_locale: 'en',
 	};
 
 	return (
@@ -111,13 +118,15 @@ const CheckoutSetting = () => {
 					submitButtonProps: {},
 				} }
 				onFinish={ async ( values ) => {
-					handleClick( values );
+					return await handleClick( values );
 				} }
 				request={ async ( params = {} ) => {
 					return await apiFetch( {
 						path: '/wp/v2/settings/',
 						method: 'GET',
 					} ).then( ( response ) => {
+						setLocaleStatus( response?.sahcfwc_stripe_locale_status === 'custom' );
+						setQuantityEnabled( response?.sahcfwc_stripe_adjustment_quantity === 'yes' );
 						setPaymentMethodStatus(
 							response?.sahcfwc_stripe_payment_method_status ===
 								'manual'
@@ -138,12 +147,14 @@ const CheckoutSetting = () => {
 								response?.sahcfwc_stripe_terms_condition_status,
 							sahcfwc_stripe_phone_num_status:
 								response?.sahcfwc_stripe_phone_num_status,
-							sahcfwc_stripe_payment_method_status:
-								response?.sahcfwc_stripe_payment_method_status,
+							sahcfwc_stripe_adjustment_quantity: response?.sahcfwc_stripe_adjustment_quantity === 'yes' ? 'yes' : 'no',
+							sahcfwc_stripe_quantity_maximum: normalizeQuantityMaximum( response?.sahcfwc_stripe_quantity_maximum ),
 							sahcfwc_stripe_delete_temp_order_status:
 								response?.sahcfwc_stripe_delete_temp_order_status,
 							sahcfwc_stripe_cancel_url:
 								response?.sahcfwc_stripe_cancel_url,
+							sahcfwc_stripe_locale_status: response?.sahcfwc_stripe_locale_status === 'custom' ? 'custom' : 'default',
+							sahcfwc_stripe_locale: normalizeLocale( response?.sahcfwc_stripe_locale ?? 'en' ),
 						};
 					} );
 				} }
@@ -192,45 +203,32 @@ const CheckoutSetting = () => {
 					/>
 					<Badge />
 					<ProFormSegmented
-						// label={ __( 'Adjustable Quantity Status', 'sa-hosted-checkout-for-woocommerce' ) }
-						label={
-							<span className="disabled-prem">
-								{ __(
-									'Adjustable Quantity Status',
-									'sa-hosted-checkout-for-woocommerce'
-								) }{ ' ' }
-								<Tooltip title="Premium" placement="top">
-									<i className="sahcfwc-info-icon">i</i>
-								</Tooltip>
-							</span>
-						}
+						label={ __( 'Allow quantity changes in Stripe Checkout', 'sa-hosted-checkout-for-woocommerce' ) }
 						name="sahcfwc_stripe_adjustment_quantity"
-						tooltip={ __(
-							'This option allows to adjust the quantity of products on the Stripe checkout page.',
-							'sa-hosted-checkout-for-woocommerce'
-						) }
-						disabled="true"
+						tooltip={ __( 'Let customers change quantities for eligible products before submitting Stripe Checkout.', 'sa-hosted-checkout-for-woocommerce' ) }
 						request={ async () => [
-							{
-								label: __(
-									'Enable',
-									'sa-hosted-checkout-for-woocommerce'
-								),
-								value: 'yes',
-							},
-							{
-								label: __(
-									'Disable',
-									'sa-hosted-checkout-for-woocommerce'
-								),
-								value: 'no',
-							},
+							{ label: __( 'Enable', 'sa-hosted-checkout-for-woocommerce' ), value: 'yes' },
+							{ label: __( 'Disable', 'sa-hosted-checkout-for-woocommerce' ), value: 'no' },
 						] }
-						onChange={ ( value ) => {} }
-						fieldProps={ {
-							className: 'disabled-prem',
-						} }
+						onChange={ ( value ) => setQuantityEnabled( value === 'yes' ) }
+						extra={ <Alert
+							type="warning"
+							showIcon
+							message={ __( 'WooCommerce discount amounts, shipping charges, fees and taxes stay fixed when quantities change in Stripe Checkout. Coupon rules and other cart pricing rules are not recalculated. Enable only if these fixed charges are appropriate for your store.', 'sa-hosted-checkout-for-woocommerce' ) }
+							description={ <>
+								<p>{ __( 'Final purchased quantities and totals are synced to WooCommerce after checkout is submitted.', 'sa-hosted-checkout-for-woocommerce' ) }</p>
+								<p>{ __( 'Requires a working Stripe webhook so orders sync even if the customer does not return to your store.', 'sa-hosted-checkout-for-woocommerce' ) }</p>
+							</> }
+						/> }
 					/>
+					{ quantityEnabled && <ProFormDigit
+						label={ __( 'Maximum quantity per product', 'sa-hosted-checkout-for-woocommerce' ) }
+						name="sahcfwc_stripe_quantity_maximum"
+						width="md"
+						tooltip={ __( 'Caps each eligible product at this quantity. A higher quantity already in the cart is preserved. Available stock may lower the limit. For stock-managed products, the allowed maximum is reserved while checkout is open.', 'sa-hosted-checkout-for-woocommerce' ) }
+						fieldProps={ { min: 1, max: 999999, precision: 0, step: 1 } }
+						rules={ [ { required: true, type: 'number', min: 1, max: 999999, message: __( 'Enter a whole number from 1 to 999999.', 'sa-hosted-checkout-for-woocommerce' ) } ] }
+					/> }
 					<ProFormSegmented
 						label={ __(
 							'Enable Stripe Terms & Services',
@@ -301,9 +299,6 @@ const CheckoutSetting = () => {
 						) }
 						placeholder={ window.location.hostname + '/page-name' }
 						rules={ [
-							{
-								required: true,
-							},
 							{
 								validator: async ( _, value ) => {
 									if ( value ) {
@@ -381,43 +376,26 @@ const CheckoutSetting = () => {
 						} }
 					/>
 					<ProFormSegmented
-						label={
-							<span className="disabled-prem">
-								{ __(
-									'Stripe Checkout Language',
-									'sa-hosted-checkout-for-woocommerce'
-								) }{ ' ' }
-								<Tooltip title="Premium" placement="top">
-									<i className="sahcfwc-info-icon">i</i>
-								</Tooltip>
-							</span>
-						}
+						label={ __( 'Stripe Checkout Language', 'sa-hosted-checkout-for-woocommerce' ) }
 						name="sahcfwc_stripe_locale_status"
-						tooltip={ __(
-							'This option allows you to choose the language as either custom or default on the Stripe checkout page.',
-							'sa-hosted-checkout-for-woocommerce'
-						) }
-						disabled="true"
+						tooltip={ __( 'Use the customer\'s browser language or select a language for Stripe Checkout.', 'sa-hosted-checkout-for-woocommerce' ) }
 						request={ async () => [
-							{
-								label: __(
-									'Default',
-									'sa-hosted-checkout-for-woocommerce'
-								),
-								value: 'default',
-							},
-							{
-								label: __(
-									'Custom',
-									'sa-hosted-checkout-for-woocommerce'
-								),
-								value: 'customo',
-							},
+							{ label: __( 'Automatic (browser language)', 'sa-hosted-checkout-for-woocommerce' ), value: 'default' },
+							{ label: __( 'Custom', 'sa-hosted-checkout-for-woocommerce' ), value: 'custom' },
 						] }
-						fieldProps={ {
-							className: 'disabled-prem',
-						} }
+						onChange={ ( value ) => setLocaleStatus( value === 'custom' ) }
 					/>
+					{ localeStatus && (
+						<ProFormSelect
+							width="md"
+							name="sahcfwc_stripe_locale"
+							label={ __( 'Language', 'sa-hosted-checkout-for-woocommerce' ) }
+							options={ localeOptions }
+							fieldProps={ { allowClear: false, showSearch: true, optionFilterProp: 'label' } }
+							placeholder={ __( 'Select a language', 'sa-hosted-checkout-for-woocommerce' ) }
+							rules={ [ { required: true, message: __( 'Select a language.', 'sa-hosted-checkout-for-woocommerce' ) } ] }
+						/>
+					) }
 
 					<ProFormSegmented
 						label={ __(
