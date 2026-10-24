@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Billing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class AlertService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -14,12 +15,12 @@ class AlertService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * Reactivates this alert, allowing it to trigger again.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Billing\Alert
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function activate($id, $params = null, $opts = null)
     {
@@ -29,12 +30,12 @@ class AlertService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
     /**
      * Lists billing active and inactive alerts.
      *
-     * @param null|array $params
+     * @param null|array{alert_type?: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Billing\Alert>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -46,12 +47,12 @@ class AlertService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * non-reversible.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Billing\Alert
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function archive($id, $params = null, $opts = null)
     {
@@ -61,12 +62,12 @@ class AlertService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
     /**
      * Creates a billing alert.
      *
-     * @param null|array $params
+     * @param null|array{alert_type: string, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Billing\Alert
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -77,12 +78,12 @@ class AlertService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * Deactivates this alert, preventing it from triggering.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Billing\Alert
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function deactivate($id, $params = null, $opts = null)
     {
@@ -93,12 +94,12 @@ class AlertService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * Retrieves a billing alert given an ID.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Billing\Alert
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

@@ -22,6 +22,27 @@ interface BaseStripeClientInterface
     public function getClientId();
 
     /**
+     * Gets the SAHCFWC\Libraries\Stripe account ID used by the client to send requests.
+     *
+     * @return null|string the SAHCFWC\Libraries\Stripe account ID used by the client to send requests
+     */
+    public function getStripeAccount();
+
+    /**
+     * Gets the SAHCFWC\Libraries\Stripe Context ID used by the client to send requests.
+     *
+     * @return null|string the SAHCFWC\Libraries\Stripe Context ID used by the client to send requests
+     */
+    public function getStripeContext();
+
+    /**
+     * Gets the SAHCFWC\Libraries\Stripe Version used by the client to send requests.
+     *
+     * @return null|string the SAHCFWC\Libraries\Stripe Context ID used by the client to send requests
+     */
+    public function getStripeVersion();
+
+    /**
      * Gets the base URL for Stripe's API.
      *
      * @return string the base URL for Stripe's API

@@ -34,12 +34,12 @@ class EarlyFraudWarning extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Returns a list of early fraud warnings.
      *
-     * @param null|array $params
+     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<EarlyFraudWarning> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Radar\EarlyFraudWarning> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -58,9 +58,9 @@ class EarlyFraudWarning extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return EarlyFraudWarning
      *
-     * @return \SAHCFWC\Libraries\Stripe\Radar\EarlyFraudWarning
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

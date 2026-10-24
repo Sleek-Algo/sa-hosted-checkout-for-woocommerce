@@ -137,7 +137,8 @@ class SAHCFWC_Payment_Completion {
 	public static function with_order_lock( $order_id, $callback ) {
 		global $wpdb;
 		$order_id = absint( $order_id );
-		$name = 'sahcfwc_' . md5( $wpdb->prefix . ':' . get_current_blog_id() . ':' . $order_id );
+		// MySQL advisory locks are server-wide, including across separate databases.
+		$name = 'sahcfwc_' . md5( $wpdb->dbname . ':' . $wpdb->prefix . ':' . get_current_blog_id() . ':' . $order_id );
 		if ( '1' !== (string) $wpdb->get_var( $wpdb->prepare( 'SELECT GET_LOCK(%s, 0)', $name ) ) ) {
 			return self::error( 'sahcfwc_order_busy', __( 'The payment is being processed. Please try again.', 'sa-hosted-checkout-for-woocommerce' ), 503 );
 		}

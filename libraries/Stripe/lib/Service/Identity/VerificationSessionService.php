@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Identity;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class VerificationSessionService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -13,12 +14,12 @@ class VerificationSessionService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
     /**
      * Returns a list of VerificationSessions.
      *
-     * @param null|array $params
+     * @param null|array{client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Identity\VerificationSession>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -34,12 +35,12 @@ class VerificationSessionService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
      * <a href="/docs/identity/verification-sessions#cancel">Learn more</a>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Identity\VerificationSession
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -59,12 +60,12 @@ class VerificationSessionService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
      * Related guide: <a href="/docs/identity/verify-identity-documents">Verify your
      * users’ identity documents</a>
      *
-     * @param null|array $params
+     * @param null|array{client_reference_id?: string, expand?: string[], metadata?: array<string, string>, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, related_person?: array{account: string, person: string}, return_url?: string, type?: string, verification_flow?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Identity\VerificationSession
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -97,12 +98,12 @@ class VerificationSessionService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
      * <a href="/docs/identity/verification-sessions#redact">Learn more</a>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Identity\VerificationSession
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function redact($id, $params = null, $opts = null)
     {
@@ -117,12 +118,12 @@ class VerificationSessionService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
      * re-submission.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Identity\VerificationSession
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -136,12 +137,12 @@ class VerificationSessionService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
      * to update the verification check and options.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: array<string, string>, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, type?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Identity\VerificationSession
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

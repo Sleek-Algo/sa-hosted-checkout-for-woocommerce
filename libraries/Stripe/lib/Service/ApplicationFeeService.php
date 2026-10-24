@@ -6,20 +6,21 @@ namespace SAHCFWC\Libraries\Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
-class ApplicationFeeService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
+class ApplicationFeeService extends AbstractService
 {
     /**
      * Returns a list of application fees you’ve previously collected. The application
      * fees are returned in sorted order, with the most recent fees appearing first.
      *
-     * @param null|array $params
+     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\ApplicationFee>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -34,12 +35,12 @@ class ApplicationFeeService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSe
      * page through additional refunds.
      *
      * @param string $parentId
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\ApplicationFeeRefund>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function allRefunds($parentId, $params = null, $opts = null)
     {
@@ -59,12 +60,12 @@ class ApplicationFeeService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSe
      * trying to refund more money than is left on an application fee.
      *
      * @param string $parentId
-     * @param null|array $params
+     * @param null|array{amount?: int, expand?: string[], metadata?: array<string, string>} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\ApplicationFeeRefund
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function createRefund($parentId, $params = null, $opts = null)
     {
@@ -76,12 +77,12 @@ class ApplicationFeeService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSe
      * same information is returned when refunding the application fee.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\ApplicationFee
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -95,12 +96,12 @@ class ApplicationFeeService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSe
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\ApplicationFeeRefund
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieveRefund($parentId, $id, $params = null, $opts = null)
     {
@@ -115,12 +116,12 @@ class ApplicationFeeService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSe
      *
      * @param string $parentId
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: null|array<string, string>} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\ApplicationFeeRefund
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function updateRefund($parentId, $id, $params = null, $opts = null)
     {

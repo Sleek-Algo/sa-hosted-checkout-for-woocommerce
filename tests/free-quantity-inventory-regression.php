@@ -12,12 +12,12 @@ if ( ! defined( 'WP_CLI' ) || ! WP_CLI || ! function_exists( 'WC' ) || function_
 	|| ! defined( 'WP_HTTP_BLOCK_EXTERNAL' ) || ! WP_HTTP_BLOCK_EXTERNAL ) {
 	throw new RuntimeException( 'Requires the disposable LOCAL free WordPress site with HTTP blocked at bootstrap.' );
 }
-require_once dirname( __DIR__ ) . '/includes/classes/class-sahcfwc-quantity-inventory.php';
+require_once SAHCFWC_DIR . '/includes/classes/class-sahcfwc-quantity-inventory.php';
 add_filter( 'pre_http_request', function () { return new WP_Error( 'qai_offline', 'External HTTP is disabled in this regression.' ); }, PHP_INT_MAX );
 add_filter( 'pre_wp_mail', '__return_true', PHP_INT_MAX );
 
 class QAI_Stripe_Blocker implements \SAHCFWC\Libraries\Stripe\HttpClient\ClientInterface {
-	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1' ) {
+	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1', $max_network_retries = null ) {
 		throw new RuntimeException( 'Inventory regression must not call Stripe.' );
 	}
 }

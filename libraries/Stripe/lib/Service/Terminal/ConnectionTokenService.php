@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Terminal;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class ConnectionTokenService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -15,12 +16,12 @@ class ConnectionTokenService extends \SAHCFWC\Libraries\Stripe\Service\AbstractS
      * connection token from Stripe, proxied through your server. On your backend, add
      * an endpoint that creates and returns a connection token.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], location?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Terminal\ConnectionToken
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {

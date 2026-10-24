@@ -11,7 +11,7 @@ if ( ! isset( $qa_url['host'], $qa_url['port'] ) || '127.0.0.1' !== $qa_url['hos
 	|| function_exists( 'sahcfwc_fs' ) || 'test-mode' !== get_option( 'sahcfwc_stripe_integration_mode' ) ) {
 	throw new RuntimeException( 'The local FREE test-mode site is required.' );
 }
-require_once dirname( __DIR__ ) . '/includes/classes/class-sahcfwc-payment-completion.php';
+require_once SAHCFWC_DIR . '/includes/classes/class-sahcfwc-payment-completion.php';
 use SAHCFWC\Classes\SAHCFWC_Payment_Completion as QA_Q_Completion;
 use SAHCFWC\Classes\SAHCFWC_Quantity_Adjustment as QA_Q_Adjustment;
 use SAHCFWC\Classes\SAHCFWC_Quantity_Inventory as QA_Q_Inventory;
@@ -19,7 +19,7 @@ use SAHCFWC\Classes\SAHCFWC_Money as QA_Q_Money;
 
 class SAHCFWC_Test_Quantity_HTTP implements \SAHCFWC\Libraries\Stripe\HttpClient\ClientInterface {
 	public $lines = array(); public $page_size = 100; public $calls = 0; public $unavailable = false;
-	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1' ) {
+	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1', $max_network_retries = null ) {
 		++$this->calls;
 		if ( $this->unavailable ) { throw new RuntimeException( 'Offline simulated outage.' ); }
 		if ( 'get' !== strtolower( $method ) || ! preg_match( '#/checkout/sessions/cs_test_quantity_[0-9]+/line_items$#', wp_parse_url( $url, PHP_URL_PATH ) ) ) {
@@ -248,7 +248,7 @@ $qa_cases = array( 'open', 'increase', 'decrease', 'unchanged', 'pagination', 'p
 if ( ! empty( $args[0] ) ) { if ( ! in_array( $args[0], $qa_cases, true ) ) { throw new RuntimeException( 'Unknown test case.' ); } $qa_cases = array( $args[0] ); }
 $qa_report = array( 'suite' => 'free-quantity-reconciliation', 'network' => 'mocked and blocked', 'results' => array(), 'pass' => false );
 $qa_sources = array( 'includes/classes/class-sahcfwc-quantity-adjustment.php', 'includes/classes/class-sahcfwc-payment-completion.php', 'includes/classes/class-sahcfwc-quantity-inventory.php' );
-foreach ( $qa_sources as $qa_source ) { $qa_report['source_hashes'][ $qa_source ] = hash_file( 'sha256', dirname( __DIR__ ) . '/' . $qa_source ); }
+foreach ( $qa_sources as $qa_source ) { $qa_report['source_hashes'][ $qa_source ] = hash_file( 'sha256', SAHCFWC_DIR . '/' . $qa_source ); }
 global $wpdb; $qa_active = false;
 register_shutdown_function( function () use ( $wpdb, &$qa_active ) { if ( $qa_active ) { $wpdb->query( 'ROLLBACK' ); } } );
 try {
@@ -283,7 +283,7 @@ finally {
 		$qa_report['rollback_rows']['reservations'] += (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}wc_reserved_stock WHERE order_id=%d", $id ) );
 	}
 	$qa_report['source_stable'] = true;
-	foreach ( $qa_sources as $qa_source ) { if ( $qa_report['source_hashes'][ $qa_source ] !== hash_file( 'sha256', dirname( __DIR__ ) . '/' . $qa_source ) ) { $qa_report['source_stable'] = false; } }
+	foreach ( $qa_sources as $qa_source ) { if ( $qa_report['source_hashes'][ $qa_source ] !== hash_file( 'sha256', SAHCFWC_DIR . '/' . $qa_source ) ) { $qa_report['source_stable'] = false; } }
 	$qa_report['rollback_clean'] = 0 === array_sum( $qa_report['rollback_rows'] );
 	$qa_report['pass'] = $qa_report['pass'] && $qa_report['rollback_clean'] && $qa_report['source_stable'];
 	echo wp_json_encode( $qa_report, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) . PHP_EOL;

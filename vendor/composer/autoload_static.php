@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
 {
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'S' =>
         array (
             'SAHCFWC\\Libraries\\Stripe\\' => 25,
             'SAHCFWC\\' => 8,
@@ -15,11 +15,11 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
     );
 
     public static $prefixDirsPsr4 = array (
-        'SAHCFWC\\Libraries\\Stripe\\' => 
+        'SAHCFWC\\Libraries\\Stripe\\' =>
         array (
             0 => __DIR__ . '/../..' . '/libraries/Stripe/lib',
         ),
-        'SAHCFWC\\' => 
+        'SAHCFWC\\' =>
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),
@@ -29,10 +29,16 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'SAHCFWC\\Bootstrap\\SAHCFWC_App' => __DIR__ . '/../..' . '/includes/bootstrap/class-sahcfwc-app.php',
         'SAHCFWC\\Classes\\SAHCFWC_Checkout_Button_Url_Ajax' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-checkout-button-url-ajax.php',
+        'SAHCFWC\\Classes\\SAHCFWC_Checkout_Experience' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-checkout-experience.php',
         'SAHCFWC\\Classes\\SAHCFWC_Meta_Table_Session' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-meta-table-session.php',
+        'SAHCFWC\\Classes\\SAHCFWC_Money' => __DIR__ . '/../..' . '/includes/traits/sahcfwc-order-totals.php',
+        'SAHCFWC\\Classes\\SAHCFWC_Payment_Completion' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-payment-completion.php',
         'SAHCFWC\\Classes\\SAHCFWC_Payment_Gateway' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-payment-gateway.php',
+        'SAHCFWC\\Classes\\SAHCFWC_Payment_Methods' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-payment-methods.php',
         'SAHCFWC\\Classes\\SAHCFWC_Post_Checkout' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-post-checkout.php',
         'SAHCFWC\\Classes\\SAHCFWC_Pre_Checkout' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-pre-checkout.php',
+        'SAHCFWC\\Classes\\SAHCFWC_Quantity_Adjustment' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-quantity-adjustment.php',
+        'SAHCFWC\\Classes\\SAHCFWC_Quantity_Inventory' => __DIR__ . '/../..' . '/includes/classes/class-sahcfwc-quantity-inventory.php',
         'SAHCFWC\\Libraries\\Stripe\\Account' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Account.php',
         'SAHCFWC\\Libraries\\Stripe\\AccountLink' => __DIR__ . '/../..' . '/libraries/Stripe/lib/AccountLink.php',
         'SAHCFWC\\Libraries\\Stripe\\AccountSession' => __DIR__ . '/../..' . '/libraries/Stripe/lib/AccountSession.php',
@@ -42,7 +48,6 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\ApiOperations\\NestedResource' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ApiOperations/NestedResource.php',
         'SAHCFWC\\Libraries\\Stripe\\ApiOperations\\Request' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ApiOperations/Request.php',
         'SAHCFWC\\Libraries\\Stripe\\ApiOperations\\Retrieve' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ApiOperations/Retrieve.php',
-        'SAHCFWC\\Libraries\\Stripe\\ApiOperations\\Search' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ApiOperations/Search.php',
         'SAHCFWC\\Libraries\\Stripe\\ApiOperations\\SingletonRetrieve' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ApiOperations/SingletonRetrieve.php',
         'SAHCFWC\\Libraries\\Stripe\\ApiOperations\\Update' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ApiOperations/Update.php',
         'SAHCFWC\\Libraries\\Stripe\\ApiRequestor' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ApiRequestor.php',
@@ -54,6 +59,7 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\ApplicationFeeRefund' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ApplicationFeeRefund.php',
         'SAHCFWC\\Libraries\\Stripe\\Apps\\Secret' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Apps/Secret.php',
         'SAHCFWC\\Libraries\\Stripe\\Balance' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Balance.php',
+        'SAHCFWC\\Libraries\\Stripe\\BalanceSettings' => __DIR__ . '/../..' . '/libraries/Stripe/lib/BalanceSettings.php',
         'SAHCFWC\\Libraries\\Stripe\\BalanceTransaction' => __DIR__ . '/../..' . '/libraries/Stripe/lib/BalanceTransaction.php',
         'SAHCFWC\\Libraries\\Stripe\\BankAccount' => __DIR__ . '/../..' . '/libraries/Stripe/lib/BankAccount.php',
         'SAHCFWC\\Libraries\\Stripe\\BaseStripeClient' => __DIR__ . '/../..' . '/libraries/Stripe/lib/BaseStripeClient.php',
@@ -98,8 +104,13 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\Event' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Event.php',
         'SAHCFWC\\Libraries\\Stripe\\EventData\\V1BillingMeterErrorReportTriggeredEventData' => __DIR__ . '/../..' . '/libraries/Stripe/lib/EventData/V1BillingMeterErrorReportTriggeredEventData.php',
         'SAHCFWC\\Libraries\\Stripe\\EventData\\V1BillingMeterNoMeterFoundEventData' => __DIR__ . '/../..' . '/libraries/Stripe/lib/EventData/V1BillingMeterNoMeterFoundEventData.php',
+        'SAHCFWC\\Libraries\\Stripe\\Events\\UnknownEventNotification' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Events/UnknownEventNotification.php',
         'SAHCFWC\\Libraries\\Stripe\\Events\\V1BillingMeterErrorReportTriggeredEvent' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Events/V1BillingMeterErrorReportTriggeredEvent.php',
+        'SAHCFWC\\Libraries\\Stripe\\Events\\V1BillingMeterErrorReportTriggeredEventNotification' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Events/V1BillingMeterErrorReportTriggeredEventNotification.php',
         'SAHCFWC\\Libraries\\Stripe\\Events\\V1BillingMeterNoMeterFoundEvent' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Events/V1BillingMeterNoMeterFoundEvent.php',
+        'SAHCFWC\\Libraries\\Stripe\\Events\\V1BillingMeterNoMeterFoundEventNotification' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Events/V1BillingMeterNoMeterFoundEventNotification.php',
+        'SAHCFWC\\Libraries\\Stripe\\Events\\V2CoreEventDestinationPingEvent' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Events/V2CoreEventDestinationPingEvent.php',
+        'SAHCFWC\\Libraries\\Stripe\\Events\\V2CoreEventDestinationPingEventNotification' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Events/V2CoreEventDestinationPingEventNotification.php',
         'SAHCFWC\\Libraries\\Stripe\\Exception\\ApiConnectionException' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Exception/ApiConnectionException.php',
         'SAHCFWC\\Libraries\\Stripe\\Exception\\ApiErrorException' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Exception/ApiErrorException.php',
         'SAHCFWC\\Libraries\\Stripe\\Exception\\AuthenticationException' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Exception/AuthenticationException.php',
@@ -142,6 +153,7 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\Invoice' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Invoice.php',
         'SAHCFWC\\Libraries\\Stripe\\InvoiceItem' => __DIR__ . '/../..' . '/libraries/Stripe/lib/InvoiceItem.php',
         'SAHCFWC\\Libraries\\Stripe\\InvoiceLineItem' => __DIR__ . '/../..' . '/libraries/Stripe/lib/InvoiceLineItem.php',
+        'SAHCFWC\\Libraries\\Stripe\\InvoicePayment' => __DIR__ . '/../..' . '/libraries/Stripe/lib/InvoicePayment.php',
         'SAHCFWC\\Libraries\\Stripe\\InvoiceRenderingTemplate' => __DIR__ . '/../..' . '/libraries/Stripe/lib/InvoiceRenderingTemplate.php',
         'SAHCFWC\\Libraries\\Stripe\\Issuing\\Authorization' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Issuing/Authorization.php',
         'SAHCFWC\\Libraries\\Stripe\\Issuing\\Card' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Issuing/Card.php',
@@ -193,6 +205,7 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\Service\\Apps\\AppsServiceFactory' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/Apps/AppsServiceFactory.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\Apps\\SecretService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/Apps/SecretService.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\BalanceService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/BalanceService.php',
+        'SAHCFWC\\Libraries\\Stripe\\Service\\BalanceSettingsService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/BalanceSettingsService.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\BalanceTransactionService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/BalanceTransactionService.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\BillingPortal\\BillingPortalServiceFactory' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/BillingPortal/BillingPortalServiceFactory.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\BillingPortal\\ConfigurationService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/BillingPortal/ConfigurationService.php',
@@ -238,6 +251,7 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\Service\\Identity\\VerificationReportService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/Identity/VerificationReportService.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\Identity\\VerificationSessionService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/Identity/VerificationSessionService.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\InvoiceItemService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/InvoiceItemService.php',
+        'SAHCFWC\\Libraries\\Stripe\\Service\\InvoicePaymentService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/InvoicePaymentService.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\InvoiceRenderingTemplateService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/InvoiceRenderingTemplateService.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\InvoiceService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/InvoiceService.php',
         'SAHCFWC\\Libraries\\Stripe\\Service\\Issuing\\AuthorizationService' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Service/Issuing/AuthorizationService.php',
@@ -347,6 +361,7 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\Stripe' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Stripe.php',
         'SAHCFWC\\Libraries\\Stripe\\StripeClient' => __DIR__ . '/../..' . '/libraries/Stripe/lib/StripeClient.php',
         'SAHCFWC\\Libraries\\Stripe\\StripeClientInterface' => __DIR__ . '/../..' . '/libraries/Stripe/lib/StripeClientInterface.php',
+        'SAHCFWC\\Libraries\\Stripe\\StripeContext' => __DIR__ . '/../..' . '/libraries/Stripe/lib/StripeContext.php',
         'SAHCFWC\\Libraries\\Stripe\\StripeObject' => __DIR__ . '/../..' . '/libraries/Stripe/lib/StripeObject.php',
         'SAHCFWC\\Libraries\\Stripe\\StripeStreamingClientInterface' => __DIR__ . '/../..' . '/libraries/Stripe/lib/StripeStreamingClientInterface.php',
         'SAHCFWC\\Libraries\\Stripe\\Subscription' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Subscription.php',
@@ -367,7 +382,6 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\Terminal\\Location' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Terminal/Location.php',
         'SAHCFWC\\Libraries\\Stripe\\Terminal\\Reader' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Terminal/Reader.php',
         'SAHCFWC\\Libraries\\Stripe\\TestHelpers\\TestClock' => __DIR__ . '/../..' . '/libraries/Stripe/lib/TestHelpers/TestClock.php',
-        'SAHCFWC\\Libraries\\Stripe\\ThinEvent' => __DIR__ . '/../..' . '/libraries/Stripe/lib/ThinEvent.php',
         'SAHCFWC\\Libraries\\Stripe\\Token' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Token.php',
         'SAHCFWC\\Libraries\\Stripe\\Topup' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Topup.php',
         'SAHCFWC\\Libraries\\Stripe\\Transfer' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Transfer.php',
@@ -383,11 +397,10 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\Treasury\\ReceivedDebit' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Treasury/ReceivedDebit.php',
         'SAHCFWC\\Libraries\\Stripe\\Treasury\\Transaction' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Treasury/Transaction.php',
         'SAHCFWC\\Libraries\\Stripe\\Treasury\\TransactionEntry' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Treasury/TransactionEntry.php',
-        'SAHCFWC\\Libraries\\Stripe\\UsageRecord' => __DIR__ . '/../..' . '/libraries/Stripe/lib/UsageRecord.php',
-        'SAHCFWC\\Libraries\\Stripe\\UsageRecordSummary' => __DIR__ . '/../..' . '/libraries/Stripe/lib/UsageRecordSummary.php',
         'SAHCFWC\\Libraries\\Stripe\\Util\\ApiVersion' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Util/ApiVersion.php',
         'SAHCFWC\\Libraries\\Stripe\\Util\\CaseInsensitiveArray' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Util/CaseInsensitiveArray.php',
         'SAHCFWC\\Libraries\\Stripe\\Util\\DefaultLogger' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Util/DefaultLogger.php',
+        'SAHCFWC\\Libraries\\Stripe\\Util\\EventNotificationTypes' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Util/EventNotificationTypes.php',
         'SAHCFWC\\Libraries\\Stripe\\Util\\EventTypes' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Util/EventTypes.php',
         'SAHCFWC\\Libraries\\Stripe\\Util\\LoggerInterface' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Util/LoggerInterface.php',
         'SAHCFWC\\Libraries\\Stripe\\Util\\ObjectTypes' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Util/ObjectTypes.php',
@@ -399,8 +412,10 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\Libraries\\Stripe\\V2\\Billing\\MeterEventAdjustment' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/Billing/MeterEventAdjustment.php',
         'SAHCFWC\\Libraries\\Stripe\\V2\\Billing\\MeterEventSession' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/Billing/MeterEventSession.php',
         'SAHCFWC\\Libraries\\Stripe\\V2\\Collection' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/Collection.php',
-        'SAHCFWC\\Libraries\\Stripe\\V2\\Event' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/Event.php',
-        'SAHCFWC\\Libraries\\Stripe\\V2\\EventDestination' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/EventDestination.php',
+        'SAHCFWC\\Libraries\\Stripe\\V2\\Core\\Event' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/Core/Event.php',
+        'SAHCFWC\\Libraries\\Stripe\\V2\\Core\\EventDestination' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/Core/EventDestination.php',
+        'SAHCFWC\\Libraries\\Stripe\\V2\\Core\\EventNotification' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/Core/EventNotification.php',
+        'SAHCFWC\\Libraries\\Stripe\\V2\\DeletedObject' => __DIR__ . '/../..' . '/libraries/Stripe/lib/V2/DeletedObject.php',
         'SAHCFWC\\Libraries\\Stripe\\Webhook' => __DIR__ . '/../..' . '/libraries/Stripe/lib/Webhook.php',
         'SAHCFWC\\Libraries\\Stripe\\WebhookEndpoint' => __DIR__ . '/../..' . '/libraries/Stripe/lib/WebhookEndpoint.php',
         'SAHCFWC\\Libraries\\Stripe\\WebhookSignature' => __DIR__ . '/../..' . '/libraries/Stripe/lib/WebhookSignature.php',
@@ -409,6 +424,7 @@ class ComposerStaticInit0fff5a54f9c45cc690600d3b83441303
         'SAHCFWC\\RestApi\\SAHCFWC_Stripe_Local_Payment_Methods' => __DIR__ . '/../..' . '/includes/rest-api/class-sahcfwc-stripe-local-payment-methods.php',
         'SAHCFWC\\Settings\\SAHCFWC_Stripe_Checkout' => __DIR__ . '/../..' . '/includes/settings/class-sahcfwc-stripe-checkout.php',
         'SAHCFWC\\Traits\\SAHCFWC_Helpers' => __DIR__ . '/../..' . '/includes/traits/sahcfwc-helpers.php',
+        'SAHCFWC\\Traits\\SAHCFWC_Order_Totals' => __DIR__ . '/../..' . '/includes/traits/sahcfwc-order-totals.php',
         'SAHCFWC\\Traits\\SAHCFWC_RestAPI' => __DIR__ . '/../..' . '/includes/traits/sahcfwc-rest-api.php',
         'SAHCFWC\\Traits\\SAHCFWC_Singleton' => __DIR__ . '/../..' . '/includes/traits/sahcfwc-singleton.php',
         'SAHCFWC\\Traits\\SAHCFWC_Stripe_Local_Payment_Methods_List' => __DIR__ . '/../..' . '/includes/traits/stripe-sahcfwc-local-payment-methods-list.php',

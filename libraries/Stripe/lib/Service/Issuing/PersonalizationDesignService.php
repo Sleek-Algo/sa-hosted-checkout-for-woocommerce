@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Issuing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class PersonalizationDesignService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -15,12 +16,12 @@ class PersonalizationDesignService extends \SAHCFWC\Libraries\Stripe\Service\Abs
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, lookup_keys?: string[], preferences?: array{is_default?: bool, is_platform_default?: bool}, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Issuing\PersonalizationDesign>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -30,12 +31,12 @@ class PersonalizationDesignService extends \SAHCFWC\Libraries\Stripe\Service\Abs
     /**
      * Creates a personalization design object.
      *
-     * @param null|array $params
+     * @param null|array{card_logo?: string, carrier_text?: array{footer_body?: null|string, footer_title?: null|string, header_body?: null|string, header_title?: null|string}, expand?: string[], lookup_key?: string, metadata?: array<string, string>, name?: string, physical_bundle: string, preferences?: array{is_default: bool}, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Issuing\PersonalizationDesign
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -46,12 +47,12 @@ class PersonalizationDesignService extends \SAHCFWC\Libraries\Stripe\Service\Abs
      * Retrieves a personalization design object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Issuing\PersonalizationDesign
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -62,12 +63,12 @@ class PersonalizationDesignService extends \SAHCFWC\Libraries\Stripe\Service\Abs
      * Updates a card personalization object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{card_logo?: null|string, carrier_text?: null|array{footer_body?: null|string, footer_title?: null|string, header_body?: null|string, header_title?: null|string}, expand?: string[], lookup_key?: null|string, metadata?: array<string, string>, name?: null|string, physical_bundle?: string, preferences?: array{is_default: bool}, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Issuing\PersonalizationDesign
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

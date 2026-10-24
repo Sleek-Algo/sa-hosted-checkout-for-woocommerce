@@ -11,7 +11,7 @@ namespace SAHCFWC\Libraries\Stripe\Climate;
  * @property string $object String representing the object’s type. Objects of the same type share the same value.
  * @property string $info_url Link to a webpage to learn more about the supplier.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \SAHCFWC\Libraries\Stripe\StripeObject[] $locations The locations in which this supplier operates.
+ * @property ((object{city: null|string, country: string, latitude: null|float, longitude: null|float, region: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject))[] $locations The locations in which this supplier operates.
  * @property string $name Name of this carbon removal supplier.
  * @property string $removal_pathway The scientific pathway used for carbon removal.
  */
@@ -26,12 +26,12 @@ class Supplier extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Lists all available Climate supplier objects.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<Supplier> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Climate\Supplier> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -46,9 +46,9 @@ class Supplier extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Supplier
      *
-     * @return \SAHCFWC\Libraries\Stripe\Climate\Supplier
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

@@ -6,19 +6,20 @@ namespace SAHCFWC\Libraries\Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
-class PaymentMethodDomainService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
+class PaymentMethodDomainService extends AbstractService
 {
     /**
      * Lists the details of existing payment method domains.
      *
-     * @param null|array $params
+     * @param null|array{domain_name?: string, enabled?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\PaymentMethodDomain>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -28,12 +29,12 @@ class PaymentMethodDomainService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
     /**
      * Creates a payment method domain.
      *
-     * @param null|array $params
+     * @param null|array{domain_name: string, enabled?: bool, expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\PaymentMethodDomain
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -44,12 +45,12 @@ class PaymentMethodDomainService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
      * Retrieves the details of an existing payment method domain.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\PaymentMethodDomain
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -60,12 +61,12 @@ class PaymentMethodDomainService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
      * Updates an existing payment method domain.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{enabled?: bool, expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\PaymentMethodDomain
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -73,26 +74,26 @@ class PaymentMethodDomainService extends \SAHCFWC\Libraries\Stripe\Service\Abstr
     }
 
     /**
-     * Some payment methods such as Apple Pay require additional steps to verify a
-     * domain. If the requirements weren’t satisfied when the domain was created, the
-     * payment method will be inactive on the domain. The payment method doesn’t appear
-     * in Elements for this domain until it is active.
+     * Some payment methods might require additional steps to register a domain. If the
+     * requirements weren’t satisfied when the domain was created, the payment method
+     * will be inactive on the domain. The payment method doesn’t appear in Elements or
+     * Embedded Checkout for this domain until it is active.
      *
      * To activate a payment method on an existing payment method domain, complete the
-     * required validation steps specific to the payment method, and then validate the
-     * payment method domain with this endpoint.
+     * required registration steps specific to the payment method, and then validate
+     * the payment method domain with this endpoint.
      *
      * Related guides: <a
      * href="/docs/payments/payment-methods/pmd-registration">Payment method
      * domains</a>.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\PaymentMethodDomain
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function validate($id, $params = null, $opts = null)
     {

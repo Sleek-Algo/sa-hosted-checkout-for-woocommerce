@@ -493,16 +493,13 @@ if ( ! class_exists( '\SAHCFWC\Classes\SAHCFWC_Payment_Gateway' ) ) {
 							return array( 'result' => 'failure' );
 						}
 					}
-					// The shared builder has persisted the session-to-order binding.
-					if ( isset( $checkout_session->url ) && ! empty( $checkout_session->url ) ) {
-						return array(
-							'result'   => 'success',
-							'redirect' => $checkout_session->url,
-						);
-					} else {
-						return array(
-							'result' => 'failure',
-						);
+					// Preserve WooCommerce's redirect contract for all entry points.
+					try {
+						$response = SAHCFWC_Checkout_Experience::response_for_session( $order, $checkout_session );
+						return array_merge( $response, array( 'result' => 'success', 'redirect' => $response['stripe_checkout_session_url'] ) );
+					} catch ( \Exception $error ) {
+						wc_add_notice( __( 'Unable to load Stripe Checkout. Please try again or contact the store.', 'sa-hosted-checkout-for-woocommerce' ), 'error' );
+						return array( 'result' => 'failure' );
 					}
 				}
 			}

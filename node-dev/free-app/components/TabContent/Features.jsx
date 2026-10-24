@@ -28,6 +28,18 @@ import { generatShortkey } from '../Helpers';
 import '../../styles/featurelist.scss';
 const dataSource = [
 	{
+		key: 'embedded-checkout',
+		feature: __( 'Checkout experiences: Hosted Stripe page, embedded payment page or embedded popup.', 'sa-hosted-checkout-for-woocommerce' ),
+		free: <CheckOutlined style={ { color: 'green' } } />,
+		premium: <CheckOutlined style={ { color: 'green' } } />,
+	},
+	{
+		key: 'checkout-branding',
+		feature: __( 'Branding controls: Customize the checkout display name, colors, font and corner shape. Add a logo override for hosted checkout, or keep your Stripe Dashboard branding.', 'sa-hosted-checkout-for-woocommerce' ),
+		free: <CheckOutlined style={ { color: 'green' } } />,
+		premium: <CheckOutlined style={ { color: 'green' } } />,
+	},
+	{
 		key: '1',
 		feature: __(
 			'Stripe Integration mode: Provides two modes of integration "Live mode" & "Test mode".',

@@ -3,8 +3,8 @@
 /**
  * Plugin Name: SA Hosted Checkout for WooCommerce
  * Plugin URI: https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/
- * Description: Connect WooCommerce to Stripe Checkout with cart coupons, payment-method and language selection, and optional product quantity changes.
- * Version: 1.0.7
+ * Description: Offer hosted, embedded page or popup Stripe Checkout with branding controls, WooCommerce coupons, payment-method selection and quantity options.
+ * Version: 1.1.1
  * Requires at least: 6.3
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 $wp_upload_dir = wp_get_upload_dir();
 /* Define constants. */
-!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.0.7' );
+!defined( 'SAHCFWC_VERSION' ) && define( 'SAHCFWC_VERSION', '1.1.1' );
 !defined( 'SAHCFWC_BASE' ) && define( 'SAHCFWC_BASE', basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ) );
 !defined( 'SAHCFWC_TEXT_DOMAIN' ) && define( 'SAHCFWC_TEXT_DOMAIN', 'sa-hosted-checkout-for-woocommerce' );
 !defined( 'SAHCFWC_TEXT_DOMAIN_PATH' ) && define( 'SAHCFWC_TEXT_DOMAIN_PATH', dirname( SAHCFWC_BASE ) . '/languages' );
@@ -68,7 +68,7 @@ function sahcfwc_plugin_init() {
         if ( ! defined( 'WC_VERSION' ) || version_compare( WC_VERSION, '8.6', '<' ) ) {
             add_action( 'admin_notices', function () {
                 if ( current_user_can( 'manage_woocommerce' ) ) {
-                    echo '<div class="notice notice-error"><p>' . esc_html__( 'SA Hosted Checkout for WooCommerce requires WooCommerce 8.6 or later. Update WooCommerce to enable hosted checkout.', 'sa-hosted-checkout-for-woocommerce' ) . '</p></div>';
+                    echo '<div class="notice notice-error"><p>' . esc_html__( 'SA Hosted Checkout for WooCommerce requires WooCommerce 8.6 or later. Update WooCommerce to enable Stripe Checkout.', 'sa-hosted-checkout-for-woocommerce' ) . '</p></div>';
                 }
             } );
             return;

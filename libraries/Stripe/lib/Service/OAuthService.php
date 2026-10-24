@@ -2,7 +2,7 @@
 
 namespace SAHCFWC\Libraries\Stripe\Service;
 
-class OAuthService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
+class OAuthService extends AbstractService
 {
     /**
      * Sends a request to Stripe's Connect API.
@@ -53,9 +53,9 @@ class OAuthService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|array $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\OAuth\OAuthErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\StripeObject object containing the response from the API
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\OAuth\OAuthErrorException if the request fails
      */
     public function token($params = null, $opts = null)
     {
@@ -71,9 +71,9 @@ class OAuthService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|array $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\OAuth\OAuthErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\StripeObject object containing the response from the API
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\OAuth\OAuthErrorException if the request fails
      */
     public function deauthorize($params = null, $opts = null)
     {
@@ -118,9 +118,9 @@ class OAuthService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
     /**
      * @param array|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts the special modifiers of the request
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\InvalidArgumentException
-     *
      * @return \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\InvalidArgumentException
      */
     private function _parseOpts($opts)
     {
@@ -143,8 +143,8 @@ class OAuthService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      */
     private function _getBase($opts)
     {
-        return isset($opts->apiBase) ?
-          $opts->apiBase :
-          $this->client->getConnectBase();
+        return isset($opts->apiBase)
+          ? $opts->apiBase
+          : $this->client->getConnectBase();
     }
 }

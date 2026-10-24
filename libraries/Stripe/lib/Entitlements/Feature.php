@@ -25,12 +25,12 @@ class Feature extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Creates a feature.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], lookup_key: string, metadata?: array<string, string>, name: string} $params
      * @param null|array|string $options
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Feature the created resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Entitlements\Feature the created resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -47,12 +47,12 @@ class Feature extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Retrieve a list of features.
      *
-     * @param null|array $params
+     * @param null|array{archived?: bool, ending_before?: string, expand?: string[], limit?: int, lookup_key?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<Feature> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Entitlements\Feature> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -67,9 +67,9 @@ class Feature extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Feature
      *
-     * @return \SAHCFWC\Libraries\Stripe\Entitlements\Feature
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -84,12 +84,12 @@ class Feature extends \SAHCFWC\Libraries\Stripe\ApiResource
      * Update a feature’s metadata or permanently deactivate it.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{active?: bool, expand?: string[], metadata?: null|array<string, string>, name?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Feature the updated resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Entitlements\Feature the updated resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

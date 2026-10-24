@@ -21,15 +21,15 @@ namespace SAHCFWC\Libraries\Stripe\Identity;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $client_reference_id A string to reference this user. This can be a customer ID, a session ID, or similar, and can be used to reconcile this verification with your internal systems.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $document Result from a document check
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $email Result from a email check
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $id_number Result from an id_number check
+ * @property null|(object{address: null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject), dob?: null|(object{day: null|int, month: null|int, year: null|int}&\SAHCFWC\Libraries\Stripe\StripeObject), error: null|(object{code: null|string, reason: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject), expiration_date?: null|(object{day: null|int, month: null|int, year: null|int}&\SAHCFWC\Libraries\Stripe\StripeObject), files: null|string[], first_name: null|string, issued_date: null|(object{day: null|int, month: null|int, year: null|int}&\SAHCFWC\Libraries\Stripe\StripeObject), issuing_country: null|string, last_name: null|string, number?: null|string, sex?: null|string, status: string, type: null|string, unparsed_place_of_birth?: null|string, unparsed_sex?: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject) $document Result from a document check
+ * @property null|(object{email: null|string, error: null|(object{code: null|string, reason: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject), status: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $email Result from a email check
+ * @property null|(object{dob?: null|(object{day: null|int, month: null|int, year: null|int}&\SAHCFWC\Libraries\Stripe\StripeObject), error: null|(object{code: null|string, reason: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject), first_name: null|string, id_number?: null|string, id_number_type: null|string, last_name: null|string, status: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $id_number Result from an id_number check
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $options
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $phone Result from a phone check
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $selfie Result from a selfie check
+ * @property null|(object{document?: (object{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}&\SAHCFWC\Libraries\Stripe\StripeObject), id_number?: (object{}&\SAHCFWC\Libraries\Stripe\StripeObject)}&\SAHCFWC\Libraries\Stripe\StripeObject) $options
+ * @property null|(object{error: null|(object{code: null|string, reason: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject), phone: null|string, status: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $phone Result from a phone check
+ * @property null|(object{document: null|string, error: null|(object{code: null|string, reason: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject), selfie: null|string, status: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $selfie Result from a selfie check
  * @property string $type Type of report.
- * @property null|string $verification_flow The configuration token of a Verification Flow from the dashboard.
+ * @property null|string $verification_flow The configuration token of a verification flow from the dashboard.
  * @property null|string $verification_session ID of the VerificationSession that created this report.
  */
 class VerificationReport extends \SAHCFWC\Libraries\Stripe\ApiResource
@@ -43,12 +43,12 @@ class VerificationReport extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * List all verification reports.
      *
-     * @param null|array $params
+     * @param null|array{client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, verification_session?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<VerificationReport> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Identity\VerificationReport> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -63,9 +63,9 @@ class VerificationReport extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return VerificationReport
      *
-     * @return \SAHCFWC\Libraries\Stripe\Identity\VerificationReport
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

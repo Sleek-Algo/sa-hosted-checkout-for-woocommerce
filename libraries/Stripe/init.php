@@ -5,6 +5,9 @@ require __DIR__ . '/lib/Util/ApiVersion.php';
 // SAHCFWC\Libraries\Stripe singleton
 require __DIR__ . '/lib/Stripe.php';
 
+// SAHCFWC\Libraries\Stripe Context
+require __DIR__ . '/lib/StripeContext.php';
+
 // Utilities
 require __DIR__ . '/lib/Util/CaseInsensitiveArray.php';
 require __DIR__ . '/lib/Util/LoggerInterface.php';
@@ -14,6 +17,7 @@ require __DIR__ . '/lib/Util/RequestOptions.php';
 require __DIR__ . '/lib/Util/Set.php';
 require __DIR__ . '/lib/Util/Util.php';
 require __DIR__ . '/lib/Util/EventTypes.php';
+require __DIR__ . '/lib/Util/EventNotificationTypes.php';
 require __DIR__ . '/lib/Util/ObjectTypes.php';
 
 // HttpClient
@@ -55,7 +59,6 @@ require __DIR__ . '/lib/ApiOperations/Delete.php';
 require __DIR__ . '/lib/ApiOperations/NestedResource.php';
 require __DIR__ . '/lib/ApiOperations/Request.php';
 require __DIR__ . '/lib/ApiOperations/Retrieve.php';
-require __DIR__ . '/lib/ApiOperations/Search.php';
 require __DIR__ . '/lib/ApiOperations/SingletonRetrieve.php';
 require __DIR__ . '/lib/ApiOperations/Update.php';
 
@@ -69,8 +72,9 @@ require __DIR__ . '/lib/SingletonApiResource.php';
 require __DIR__ . '/lib/Service/ServiceNavigatorTrait.php';
 require __DIR__ . '/lib/Service/AbstractService.php';
 require __DIR__ . '/lib/Service/AbstractServiceFactory.php';
-require __DIR__ . '/lib/V2/Event.php';
-require __DIR__ . '/lib/ThinEvent.php';
+require __DIR__ . '/lib/V2/Core/Event.php';
+require __DIR__ . '/lib/V2/Core/EventNotification.php';
+require __DIR__ . '/lib/Events/UnknownEventNotification.php';
 require __DIR__ . '/lib/Reason.php';
 require __DIR__ . '/lib/RelatedObject.php';
 require __DIR__ . '/lib/Collection.php';
@@ -96,6 +100,7 @@ require __DIR__ . '/lib/ApplicationFee.php';
 require __DIR__ . '/lib/ApplicationFeeRefund.php';
 require __DIR__ . '/lib/Apps/Secret.php';
 require __DIR__ . '/lib/Balance.php';
+require __DIR__ . '/lib/BalanceSettings.php';
 require __DIR__ . '/lib/BalanceTransaction.php';
 require __DIR__ . '/lib/BankAccount.php';
 require __DIR__ . '/lib/Billing/Alert.php';
@@ -137,7 +142,11 @@ require __DIR__ . '/lib/Event.php';
 require __DIR__ . '/lib/EventData/V1BillingMeterErrorReportTriggeredEventData.php';
 require __DIR__ . '/lib/EventData/V1BillingMeterNoMeterFoundEventData.php';
 require __DIR__ . '/lib/Events/V1BillingMeterErrorReportTriggeredEvent.php';
+require __DIR__ . '/lib/Events/V1BillingMeterErrorReportTriggeredEventNotification.php';
 require __DIR__ . '/lib/Events/V1BillingMeterNoMeterFoundEvent.php';
+require __DIR__ . '/lib/Events/V1BillingMeterNoMeterFoundEventNotification.php';
+require __DIR__ . '/lib/Events/V2CoreEventDestinationPingEvent.php';
+require __DIR__ . '/lib/Events/V2CoreEventDestinationPingEventNotification.php';
 require __DIR__ . '/lib/Exception/TemporarySessionExpiredException.php';
 require __DIR__ . '/lib/ExchangeRate.php';
 require __DIR__ . '/lib/File.php';
@@ -154,6 +163,7 @@ require __DIR__ . '/lib/Identity/VerificationSession.php';
 require __DIR__ . '/lib/Invoice.php';
 require __DIR__ . '/lib/InvoiceItem.php';
 require __DIR__ . '/lib/InvoiceLineItem.php';
+require __DIR__ . '/lib/InvoicePayment.php';
 require __DIR__ . '/lib/InvoiceRenderingTemplate.php';
 require __DIR__ . '/lib/Issuing/Authorization.php';
 require __DIR__ . '/lib/Issuing/Card.php';
@@ -195,6 +205,7 @@ require __DIR__ . '/lib/Service/ApplicationFeeService.php';
 require __DIR__ . '/lib/Service/Apps/AppsServiceFactory.php';
 require __DIR__ . '/lib/Service/Apps/SecretService.php';
 require __DIR__ . '/lib/Service/BalanceService.php';
+require __DIR__ . '/lib/Service/BalanceSettingsService.php';
 require __DIR__ . '/lib/Service/BalanceTransactionService.php';
 require __DIR__ . '/lib/Service/Billing/AlertService.php';
 require __DIR__ . '/lib/Service/Billing/BillingServiceFactory.php';
@@ -240,6 +251,7 @@ require __DIR__ . '/lib/Service/Identity/IdentityServiceFactory.php';
 require __DIR__ . '/lib/Service/Identity/VerificationReportService.php';
 require __DIR__ . '/lib/Service/Identity/VerificationSessionService.php';
 require __DIR__ . '/lib/Service/InvoiceItemService.php';
+require __DIR__ . '/lib/Service/InvoicePaymentService.php';
 require __DIR__ . '/lib/Service/InvoiceRenderingTemplateService.php';
 require __DIR__ . '/lib/Service/InvoiceService.php';
 require __DIR__ . '/lib/Service/Issuing/AuthorizationService.php';
@@ -376,12 +388,11 @@ require __DIR__ . '/lib/Treasury/ReceivedCredit.php';
 require __DIR__ . '/lib/Treasury/ReceivedDebit.php';
 require __DIR__ . '/lib/Treasury/Transaction.php';
 require __DIR__ . '/lib/Treasury/TransactionEntry.php';
-require __DIR__ . '/lib/UsageRecord.php';
-require __DIR__ . '/lib/UsageRecordSummary.php';
 require __DIR__ . '/lib/V2/Billing/MeterEvent.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventAdjustment.php';
 require __DIR__ . '/lib/V2/Billing/MeterEventSession.php';
-require __DIR__ . '/lib/V2/EventDestination.php';
+require __DIR__ . '/lib/V2/Core/EventDestination.php';
+require __DIR__ . '/lib/V2/DeletedObject.php';
 require __DIR__ . '/lib/WebhookEndpoint.php';
 
 // The end of the section generated from our OpenAPI spec

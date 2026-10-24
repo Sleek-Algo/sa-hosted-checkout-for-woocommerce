@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\TestHelpers\Treasury;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class InboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -16,12 +17,12 @@ class InboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\AbstractS
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], failure_details?: array{code?: string}} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\InboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function fail($id, $params = null, $opts = null)
     {
@@ -34,12 +35,12 @@ class InboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\AbstractS
      * <code>succeeded</code> state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\InboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function returnInboundTransfer($id, $params = null, $opts = null)
     {
@@ -52,12 +53,12 @@ class InboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\AbstractS
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\InboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function succeed($id, $params = null, $opts = null)
     {

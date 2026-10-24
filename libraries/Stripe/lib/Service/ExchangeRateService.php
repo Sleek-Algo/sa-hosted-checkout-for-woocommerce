@@ -6,20 +6,28 @@ namespace SAHCFWC\Libraries\Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
-class ExchangeRateService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
+class ExchangeRateService extends AbstractService
 {
     /**
+     * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the
+     * <a
+     * href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX
+     * Quotes API</a> instead.
+     *
      * Returns a list of objects that contain the rates at which foreign currencies are
      * converted to one another. Only shows the currencies for which SAHCFWC\Libraries\Stripe supports.
      *
-     * @param null|array $params
+     * @deprecated  this method is deprecated, please refer to the description for details
+     *
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\ExchangeRate>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -27,16 +35,23 @@ class ExchangeRateService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServ
     }
 
     /**
+     * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the
+     * <a
+     * href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX
+     * Quotes API</a> instead.
+     *
      * Retrieves the exchange rates from the given currency to every supported
      * currency.
      *
+     * @deprecated  this method is deprecated, please refer to the description for details
+     *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\ExchangeRate
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Tax;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class CalculationService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -15,12 +16,12 @@ class CalculationService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
      * calculation hasn’t expired.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Tax\CalculationLineItem>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -31,12 +32,12 @@ class CalculationService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
      * Calculates tax based on the input and returns a Tax <code>Calculation</code>
      * object.
      *
-     * @param null|array $params
+     * @param null|array{currency: string, customer?: string, customer_details?: array{address?: array{city?: null|string, country: string, line1?: null|string, line2?: null|string, postal_code?: null|string, state?: null|string}, address_source?: string, ip_address?: string, tax_ids?: array{type: string, value: string}[], taxability_override?: string}, expand?: string[], line_items: array{amount: int, metadata?: array<string, string>, product?: string, quantity?: int, reference?: string, tax_behavior?: string, tax_code?: string}[], ship_from_details?: array{address: array{city?: null|string, country: string, line1?: null|string, line2?: null|string, postal_code?: null|string, state?: null|string}}, shipping_cost?: array{amount?: int, shipping_rate?: string, tax_behavior?: string, tax_code?: string}, tax_date?: int} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Tax\Calculation
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -48,12 +49,12 @@ class CalculationService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
      * expired.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Tax\Calculation
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

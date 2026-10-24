@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Treasury;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class ReceivedDebitService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -13,12 +14,12 @@ class ReceivedDebitService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSer
     /**
      * Returns a list of ReceivedDebits.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Treasury\ReceivedDebit>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -30,12 +31,12 @@ class ReceivedDebitService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSer
      * ReceivedDebit ID from the ReceivedDebit list.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\ReceivedDebit
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

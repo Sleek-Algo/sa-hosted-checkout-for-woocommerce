@@ -22,12 +22,12 @@ class ConnectionToken extends \SAHCFWC\Libraries\Stripe\ApiResource
      * connection token from Stripe, proxied through your server. On your backend, add
      * an endpoint that creates and returns a connection token.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], location?: string} $params
      * @param null|array|string $options
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return ConnectionToken the created resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Terminal\ConnectionToken the created resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {

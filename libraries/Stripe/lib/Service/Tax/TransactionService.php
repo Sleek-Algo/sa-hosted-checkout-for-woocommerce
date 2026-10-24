@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Tax;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class TransactionService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -14,12 +15,12 @@ class TransactionService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
      * Retrieves the line items of a committed standalone transaction as a collection.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Tax\TransactionLineItem>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -30,12 +31,12 @@ class TransactionService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
      * Creates a Tax Transaction from a calculation, if that calculation hasn’t
      * expired. Calculations expire after 90 days.
      *
-     * @param null|array $params
+     * @param null|array{calculation: string, expand?: string[], metadata?: array<string, string>, posted_at?: int, reference: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Tax\Transaction
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function createFromCalculation($params = null, $opts = null)
     {
@@ -45,12 +46,12 @@ class TransactionService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
     /**
      * Partially or fully reverses a previously created <code>Transaction</code>.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], flat_amount?: int, line_items?: array{amount: int, amount_tax: int, metadata?: array<string, string>, original_line_item: string, quantity?: int, reference: string}[], metadata?: array<string, string>, mode: string, original_transaction: string, reference: string, shipping_cost?: array{amount: int, amount_tax: int}} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Tax\Transaction
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function createReversal($params = null, $opts = null)
     {
@@ -61,12 +62,12 @@ class TransactionService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
      * Retrieves a Tax <code>Transaction</code> object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Tax\Transaction
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

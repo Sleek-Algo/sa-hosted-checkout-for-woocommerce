@@ -5,6 +5,8 @@
 namespace SAHCFWC\Libraries\Stripe;
 
 /**
+ * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the <a href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX Quotes API</a> instead.
+ *
  * <code>ExchangeRate</code> objects allow you to determine the rates that SAHCFWC\Libraries\Stripe is currently
  * using to convert from one currency to another. Since this number is variable
  * throughout the day, there are various reasons why you might want to know the current
@@ -34,44 +36,58 @@ namespace SAHCFWC\Libraries\Stripe;
  *
  * @property string $id Unique identifier for the object. Represented as the three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> in lowercase.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \SAHCFWC\Libraries\Stripe\StripeObject $rates Hash where the keys are supported currencies and the values are the exchange rate at which the base id currency converts to the key currency.
+ * @property StripeObject $rates Hash where the keys are supported currencies and the values are the exchange rate at which the base id currency converts to the key currency.
  */
 class ExchangeRate extends ApiResource
 {
     const OBJECT_NAME = 'exchange_rate';
 
     /**
+     * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the
+     * <a
+     * href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX
+     * Quotes API</a> instead.
+     *
      * Returns a list of objects that contain the rates at which foreign currencies are
      * converted to one another. Only shows the currencies for which SAHCFWC\Libraries\Stripe supports.
      *
-     * @param null|array $params
+     * @deprecated  this method is deprecated, please refer to the description for details
+     *
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Collection<ExchangeRate> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\ExchangeRate> of ApiResources
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
         $url = static::classUrl();
 
-        return static::_requestPage($url, \SAHCFWC\Libraries\Stripe\Collection::class, $params, $opts);
+        return static::_requestPage($url, Collection::class, $params, $opts);
     }
 
     /**
+     * [Deprecated] The <code>ExchangeRate</code> APIs are deprecated. Please use the
+     * <a
+     * href="https://docs.stripe.com/payments/currencies/localize-prices/fx-quotes-api">FX
+     * Quotes API</a> instead.
+     *
      * Retrieves the exchange rates from the given currency to every supported
      * currency.
+     *
+     * @deprecated  this method is deprecated, please refer to the description for details
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return ExchangeRate
      *
-     * @return \SAHCFWC\Libraries\Stripe\ExchangeRate
+     * @throws Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
-        $opts = \SAHCFWC\Libraries\Stripe\Util\RequestOptions::parse($opts);
+        $opts = Util\RequestOptions::parse($opts);
         $instance = new static($id, $opts);
         $instance->refresh();
 

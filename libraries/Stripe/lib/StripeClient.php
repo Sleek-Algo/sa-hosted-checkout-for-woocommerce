@@ -5,83 +5,85 @@ namespace SAHCFWC\Libraries\Stripe;
 /**
  * Client used to send requests to Stripe's API.
  *
- * @property \SAHCFWC\Libraries\Stripe\Service\OAuthService $oauth
+ * @property Service\OAuthService $oauth
  * // The beginning of the section generated from our OpenAPI spec
- * @property \SAHCFWC\Libraries\Stripe\Service\AccountLinkService $accountLinks
- * @property \SAHCFWC\Libraries\Stripe\Service\AccountService $accounts
- * @property \SAHCFWC\Libraries\Stripe\Service\AccountSessionService $accountSessions
- * @property \SAHCFWC\Libraries\Stripe\Service\ApplePayDomainService $applePayDomains
- * @property \SAHCFWC\Libraries\Stripe\Service\ApplicationFeeService $applicationFees
- * @property \SAHCFWC\Libraries\Stripe\Service\Apps\AppsServiceFactory $apps
- * @property \SAHCFWC\Libraries\Stripe\Service\BalanceService $balance
- * @property \SAHCFWC\Libraries\Stripe\Service\BalanceTransactionService $balanceTransactions
- * @property \SAHCFWC\Libraries\Stripe\Service\Billing\BillingServiceFactory $billing
- * @property \SAHCFWC\Libraries\Stripe\Service\BillingPortal\BillingPortalServiceFactory $billingPortal
- * @property \SAHCFWC\Libraries\Stripe\Service\ChargeService $charges
- * @property \SAHCFWC\Libraries\Stripe\Service\Checkout\CheckoutServiceFactory $checkout
- * @property \SAHCFWC\Libraries\Stripe\Service\Climate\ClimateServiceFactory $climate
- * @property \SAHCFWC\Libraries\Stripe\Service\ConfirmationTokenService $confirmationTokens
- * @property \SAHCFWC\Libraries\Stripe\Service\CountrySpecService $countrySpecs
- * @property \SAHCFWC\Libraries\Stripe\Service\CouponService $coupons
- * @property \SAHCFWC\Libraries\Stripe\Service\CreditNoteService $creditNotes
- * @property \SAHCFWC\Libraries\Stripe\Service\CustomerService $customers
- * @property \SAHCFWC\Libraries\Stripe\Service\CustomerSessionService $customerSessions
- * @property \SAHCFWC\Libraries\Stripe\Service\DisputeService $disputes
- * @property \SAHCFWC\Libraries\Stripe\Service\Entitlements\EntitlementsServiceFactory $entitlements
- * @property \SAHCFWC\Libraries\Stripe\Service\EphemeralKeyService $ephemeralKeys
- * @property \SAHCFWC\Libraries\Stripe\Service\EventService $events
- * @property \SAHCFWC\Libraries\Stripe\Service\ExchangeRateService $exchangeRates
- * @property \SAHCFWC\Libraries\Stripe\Service\FileLinkService $fileLinks
- * @property \SAHCFWC\Libraries\Stripe\Service\FileService $files
- * @property \SAHCFWC\Libraries\Stripe\Service\FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
- * @property \SAHCFWC\Libraries\Stripe\Service\Forwarding\ForwardingServiceFactory $forwarding
- * @property \SAHCFWC\Libraries\Stripe\Service\Identity\IdentityServiceFactory $identity
- * @property \SAHCFWC\Libraries\Stripe\Service\InvoiceItemService $invoiceItems
- * @property \SAHCFWC\Libraries\Stripe\Service\InvoiceRenderingTemplateService $invoiceRenderingTemplates
- * @property \SAHCFWC\Libraries\Stripe\Service\InvoiceService $invoices
- * @property \SAHCFWC\Libraries\Stripe\Service\Issuing\IssuingServiceFactory $issuing
- * @property \SAHCFWC\Libraries\Stripe\Service\MandateService $mandates
- * @property \SAHCFWC\Libraries\Stripe\Service\PaymentIntentService $paymentIntents
- * @property \SAHCFWC\Libraries\Stripe\Service\PaymentLinkService $paymentLinks
- * @property \SAHCFWC\Libraries\Stripe\Service\PaymentMethodConfigurationService $paymentMethodConfigurations
- * @property \SAHCFWC\Libraries\Stripe\Service\PaymentMethodDomainService $paymentMethodDomains
- * @property \SAHCFWC\Libraries\Stripe\Service\PaymentMethodService $paymentMethods
- * @property \SAHCFWC\Libraries\Stripe\Service\PayoutService $payouts
- * @property \SAHCFWC\Libraries\Stripe\Service\PlanService $plans
- * @property \SAHCFWC\Libraries\Stripe\Service\PriceService $prices
- * @property \SAHCFWC\Libraries\Stripe\Service\ProductService $products
- * @property \SAHCFWC\Libraries\Stripe\Service\PromotionCodeService $promotionCodes
- * @property \SAHCFWC\Libraries\Stripe\Service\QuoteService $quotes
- * @property \SAHCFWC\Libraries\Stripe\Service\Radar\RadarServiceFactory $radar
- * @property \SAHCFWC\Libraries\Stripe\Service\RefundService $refunds
- * @property \SAHCFWC\Libraries\Stripe\Service\Reporting\ReportingServiceFactory $reporting
- * @property \SAHCFWC\Libraries\Stripe\Service\ReviewService $reviews
- * @property \SAHCFWC\Libraries\Stripe\Service\SetupAttemptService $setupAttempts
- * @property \SAHCFWC\Libraries\Stripe\Service\SetupIntentService $setupIntents
- * @property \SAHCFWC\Libraries\Stripe\Service\ShippingRateService $shippingRates
- * @property \SAHCFWC\Libraries\Stripe\Service\Sigma\SigmaServiceFactory $sigma
- * @property \SAHCFWC\Libraries\Stripe\Service\SourceService $sources
- * @property \SAHCFWC\Libraries\Stripe\Service\SubscriptionItemService $subscriptionItems
- * @property \SAHCFWC\Libraries\Stripe\Service\SubscriptionService $subscriptions
- * @property \SAHCFWC\Libraries\Stripe\Service\SubscriptionScheduleService $subscriptionSchedules
- * @property \SAHCFWC\Libraries\Stripe\Service\Tax\TaxServiceFactory $tax
- * @property \SAHCFWC\Libraries\Stripe\Service\TaxCodeService $taxCodes
- * @property \SAHCFWC\Libraries\Stripe\Service\TaxIdService $taxIds
- * @property \SAHCFWC\Libraries\Stripe\Service\TaxRateService $taxRates
- * @property \SAHCFWC\Libraries\Stripe\Service\Terminal\TerminalServiceFactory $terminal
- * @property \SAHCFWC\Libraries\Stripe\Service\TestHelpers\TestHelpersServiceFactory $testHelpers
- * @property \SAHCFWC\Libraries\Stripe\Service\TokenService $tokens
- * @property \SAHCFWC\Libraries\Stripe\Service\TopupService $topups
- * @property \SAHCFWC\Libraries\Stripe\Service\TransferService $transfers
- * @property \SAHCFWC\Libraries\Stripe\Service\Treasury\TreasuryServiceFactory $treasury
- * @property \SAHCFWC\Libraries\Stripe\Service\V2\V2ServiceFactory $v2
- * @property \SAHCFWC\Libraries\Stripe\Service\WebhookEndpointService $webhookEndpoints
+ * @property Service\AccountLinkService $accountLinks
+ * @property Service\AccountService $accounts
+ * @property Service\AccountSessionService $accountSessions
+ * @property Service\ApplePayDomainService $applePayDomains
+ * @property Service\ApplicationFeeService $applicationFees
+ * @property Service\Apps\AppsServiceFactory $apps
+ * @property Service\BalanceService $balance
+ * @property Service\BalanceSettingsService $balanceSettings
+ * @property Service\BalanceTransactionService $balanceTransactions
+ * @property Service\Billing\BillingServiceFactory $billing
+ * @property Service\BillingPortal\BillingPortalServiceFactory $billingPortal
+ * @property Service\ChargeService $charges
+ * @property Service\Checkout\CheckoutServiceFactory $checkout
+ * @property Service\Climate\ClimateServiceFactory $climate
+ * @property Service\ConfirmationTokenService $confirmationTokens
+ * @property Service\CountrySpecService $countrySpecs
+ * @property Service\CouponService $coupons
+ * @property Service\CreditNoteService $creditNotes
+ * @property Service\CustomerService $customers
+ * @property Service\CustomerSessionService $customerSessions
+ * @property Service\DisputeService $disputes
+ * @property Service\Entitlements\EntitlementsServiceFactory $entitlements
+ * @property Service\EphemeralKeyService $ephemeralKeys
+ * @property Service\EventService $events
+ * @property Service\ExchangeRateService $exchangeRates
+ * @property Service\FileLinkService $fileLinks
+ * @property Service\FileService $files
+ * @property Service\FinancialConnections\FinancialConnectionsServiceFactory $financialConnections
+ * @property Service\Forwarding\ForwardingServiceFactory $forwarding
+ * @property Service\Identity\IdentityServiceFactory $identity
+ * @property Service\InvoiceItemService $invoiceItems
+ * @property Service\InvoicePaymentService $invoicePayments
+ * @property Service\InvoiceRenderingTemplateService $invoiceRenderingTemplates
+ * @property Service\InvoiceService $invoices
+ * @property Service\Issuing\IssuingServiceFactory $issuing
+ * @property Service\MandateService $mandates
+ * @property Service\PaymentIntentService $paymentIntents
+ * @property Service\PaymentLinkService $paymentLinks
+ * @property Service\PaymentMethodConfigurationService $paymentMethodConfigurations
+ * @property Service\PaymentMethodDomainService $paymentMethodDomains
+ * @property Service\PaymentMethodService $paymentMethods
+ * @property Service\PayoutService $payouts
+ * @property Service\PlanService $plans
+ * @property Service\PriceService $prices
+ * @property Service\ProductService $products
+ * @property Service\PromotionCodeService $promotionCodes
+ * @property Service\QuoteService $quotes
+ * @property Service\Radar\RadarServiceFactory $radar
+ * @property Service\RefundService $refunds
+ * @property Service\Reporting\ReportingServiceFactory $reporting
+ * @property Service\ReviewService $reviews
+ * @property Service\SetupAttemptService $setupAttempts
+ * @property Service\SetupIntentService $setupIntents
+ * @property Service\ShippingRateService $shippingRates
+ * @property Service\Sigma\SigmaServiceFactory $sigma
+ * @property Service\SourceService $sources
+ * @property Service\SubscriptionItemService $subscriptionItems
+ * @property Service\SubscriptionService $subscriptions
+ * @property Service\SubscriptionScheduleService $subscriptionSchedules
+ * @property Service\Tax\TaxServiceFactory $tax
+ * @property Service\TaxCodeService $taxCodes
+ * @property Service\TaxIdService $taxIds
+ * @property Service\TaxRateService $taxRates
+ * @property Service\Terminal\TerminalServiceFactory $terminal
+ * @property Service\TestHelpers\TestHelpersServiceFactory $testHelpers
+ * @property Service\TokenService $tokens
+ * @property Service\TopupService $topups
+ * @property Service\TransferService $transfers
+ * @property Service\Treasury\TreasuryServiceFactory $treasury
+ * @property Service\V2\V2ServiceFactory $v2
+ * @property Service\WebhookEndpointService $webhookEndpoints
  * // The end of the section generated from our OpenAPI spec
  */
 class StripeClient extends BaseStripeClient
 {
     /**
-     * @var \SAHCFWC\Libraries\Stripe\Service\CoreServiceFactory
+     * @var Service\CoreServiceFactory
      */
     private $coreServiceFactory;
 
@@ -93,7 +95,7 @@ class StripeClient extends BaseStripeClient
     public function getService($name)
     {
         if (null === $this->coreServiceFactory) {
-            $this->coreServiceFactory = new \SAHCFWC\Libraries\Stripe\Service\CoreServiceFactory($this);
+            $this->coreServiceFactory = new Service\CoreServiceFactory($this);
         }
 
         return $this->coreServiceFactory->getService($name);

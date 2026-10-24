@@ -6,9 +6,10 @@ namespace SAHCFWC\Libraries\Stripe\Service;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
-class EventService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
+class EventService extends AbstractService
 {
     /**
      * List events, going back up to 30 days. Each event data is rendered according to
@@ -17,12 +18,12 @@ class EventService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * <code>api_version</code> attribute (not according to your current SAHCFWC\Libraries\Stripe API
      * version or <code>Stripe-Version</code> header).
      *
-     * @param null|array $params
+     * @param null|array{created?: array|int, delivery_success?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, types?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Event>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -34,12 +35,12 @@ class EventService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * the unique identifier of the event, which you might have received in a webhook.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Event
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

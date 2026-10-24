@@ -200,8 +200,9 @@ if ( create_zip === 'yes' ) {
 	);
 }
 
-module.exports = {
+const backendConfig = {
 	...defaultConfig,
+	name: 'configBackend',
 	...{
 		mode: NODE_ENV,
 		entry: {
@@ -214,3 +215,15 @@ module.exports = {
 		plugins: plugins,
 	},
 };
+
+const frontendConfig = {
+	...defaultConfig,
+	name: 'configFrontend',
+	mode: NODE_ENV,
+	entry: { 'checkout/sahcfwc-checkout': './frontend/checkout/index.js' },
+	output: { path: path.resolve( __dirname, '../assets/frontend' ), filename: '[name].js', clean: false },
+	// Preserve plugin-owned static images and compatibility assets.
+	plugins: defaultConfig.plugins.filter( ( plugin ) => plugin.constructor.name !== 'CleanWebpackPlugin' ),
+};
+
+module.exports = [ backendConfig, frontendConfig ];

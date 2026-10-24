@@ -23,7 +23,7 @@ namespace SAHCFWC\Libraries\Stripe\Apps;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $name A name for the secret that's unique within the scope.
  * @property null|string $payload The plaintext secret value to be stored.
- * @property \SAHCFWC\Libraries\Stripe\StripeObject $scope
+ * @property (object{type: string, user?: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $scope
  */
 class Secret extends \SAHCFWC\Libraries\Stripe\ApiResource
 {
@@ -32,12 +32,12 @@ class Secret extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Create or replace a secret in the secret store.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], expires_at?: int, name: string, payload: string, scope: array{type: string, user?: string}} $params
      * @param null|array|string $options
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Secret the created resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Apps\Secret the created resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -54,12 +54,12 @@ class Secret extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * List all secrets stored on the given scope.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, scope: array{type: string, user?: string}, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<Secret> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Apps\Secret> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -72,9 +72,9 @@ class Secret extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Secret the deleted secret
      *
-     * @return \SAHCFWC\Libraries\Stripe\Apps\Secret the deleted secret
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function deleteWhere($params = null, $opts = null)
     {
@@ -90,9 +90,9 @@ class Secret extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Secret the finded secret
      *
-     * @return \SAHCFWC\Libraries\Stripe\Apps\Secret the finded secret
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function find($params = null, $opts = null)
     {

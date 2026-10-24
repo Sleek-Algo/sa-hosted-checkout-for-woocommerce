@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Treasury;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class ReceivedCreditService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -13,12 +14,12 @@ class ReceivedCreditService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSe
     /**
      * Returns a list of ReceivedCredits.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, linked_flows?: array{source_flow_type: string}, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Treasury\ReceivedCredit>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -30,12 +31,12 @@ class ReceivedCreditService extends \SAHCFWC\Libraries\Stripe\Service\AbstractSe
      * ReceivedCredit ID from the ReceivedCredit list.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\ReceivedCredit
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

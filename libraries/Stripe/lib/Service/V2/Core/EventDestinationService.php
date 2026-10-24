@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\V2\Core;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -13,12 +14,12 @@ class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
     /**
      * Lists all event destinations.
      *
-     * @param null|array $params
+     * @param null|array{include?: string[], limit?: int} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Collection<\SAHCFWC\Libraries\Stripe\V2\Core\EventDestination>
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\Collection<\SAHCFWC\Libraries\Stripe\V2\EventDestination>
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -28,12 +29,12 @@ class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
     /**
      * Create a new event destination.
      *
-     * @param null|array $params
+     * @param null|array{description?: string, enabled_events: string[], event_payload: string, events_from?: string[], include?: string[], metadata?: array<string, string>, name: string, snapshot_api_version?: string, type: string, amazon_eventbridge?: array{aws_account_id: string, aws_region: string}, webhook_endpoint?: array{url: string}} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Core\EventDestination
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\EventDestination
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -47,9 +48,9 @@ class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * @param null|array $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\DeletedObject
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\EventDestination
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -63,9 +64,9 @@ class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * @param null|array $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Core\EventDestination
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\EventDestination
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function disable($id, $params = null, $opts = null)
     {
@@ -79,9 +80,9 @@ class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * @param null|array $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Core\EventDestination
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\EventDestination
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function enable($id, $params = null, $opts = null)
     {
@@ -95,9 +96,9 @@ class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * @param null|array $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Core\Event
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\Event
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function ping($id, $params = null, $opts = null)
     {
@@ -108,12 +109,12 @@ class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * Retrieves the details of an event destination.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{include?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Core\EventDestination
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\EventDestination
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -124,12 +125,12 @@ class EventDestinationService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * Update the details of an event destination.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{description?: string, enabled_events?: string[], include?: string[], metadata?: array<string, null|string>, name?: string, webhook_endpoint?: array{url: string}} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Core\EventDestination
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\EventDestination
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

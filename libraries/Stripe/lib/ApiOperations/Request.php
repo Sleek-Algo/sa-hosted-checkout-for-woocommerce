@@ -34,9 +34,9 @@ trait Request
      * @param string[] $usage names of tracked behaviors associated with this request
      * @param 'v1'|'v2' $apiMode
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return array tuple containing (the JSON response, $options)
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     protected function _request($method, $url, $params = [], $options = null, $usage = [], $apiMode = 'v1')
     {
@@ -49,14 +49,14 @@ trait Request
 
     /**
      * @param string $url URL for the request
-     * @param class-string< \SAHCFWC\Libraries\Stripe\SearchResult|\SAHCFWC\Libraries\Stripe\Collection > $resultClass indicating what type of paginated result is returned
+     * @param class-string< \SAHCFWC\Libraries\Stripe\Collection|\SAHCFWC\Libraries\Stripe\SearchResult > $resultClass indicating what type of paginated result is returned
      * @param null|array $params list of parameters for the request
      * @param null|array|string $options
      * @param string[] $usage names of tracked behaviors associated with this request
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection|\SAHCFWC\Libraries\Stripe\SearchResult
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     protected static function _requestPage($url, $resultClass, $params = null, $options = null, $usage = [])
     {
@@ -64,7 +64,7 @@ trait Request
 
         list($response, $opts) = static::_staticRequest('get', $url, $params, $options, $usage);
         $obj = \SAHCFWC\Libraries\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
-        if (!($obj instanceof $resultClass)) {
+        if (!$obj instanceof $resultClass) {
             throw new \SAHCFWC\Libraries\Stripe\Exception\UnexpectedValueException(
                 'Expected type ' . $resultClass . ', got "' . \get_class($obj) . '" instead.'
             );
@@ -99,9 +99,9 @@ trait Request
      * @param string[] $usage names of tracked behaviors associated with this request
      * @param 'v1'|'v2' $apiMode
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return array tuple containing (the JSON response, $options)
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     protected static function _staticRequest($method, $url, $params, $options, $usage = [], $apiMode = 'v1')
     {

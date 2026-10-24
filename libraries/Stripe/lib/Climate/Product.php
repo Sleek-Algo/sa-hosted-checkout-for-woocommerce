@@ -16,7 +16,7 @@ namespace SAHCFWC\Libraries\Stripe\Climate;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $metric_tons_available The quantity of metric tons available for reservation.
  * @property string $name The Climate product's name.
- * @property \SAHCFWC\Libraries\Stripe\Climate\Supplier[] $suppliers The carbon removal suppliers that fulfill orders for this Climate product.
+ * @property Supplier[] $suppliers The carbon removal suppliers that fulfill orders for this Climate product.
  */
 class Product extends \SAHCFWC\Libraries\Stripe\ApiResource
 {
@@ -25,12 +25,12 @@ class Product extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Lists all available Climate product objects.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<Product> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Climate\Product> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -45,9 +45,9 @@ class Product extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Product
      *
-     * @return \SAHCFWC\Libraries\Stripe\Climate\Product
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

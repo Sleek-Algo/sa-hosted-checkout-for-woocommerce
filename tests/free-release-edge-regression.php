@@ -7,14 +7,14 @@
 if ( ! defined( 'WP_CLI' ) || ! WP_CLI || ! defined( 'WP_HTTP_BLOCK_EXTERNAL' ) || ! WP_HTTP_BLOCK_EXTERNAL
 	|| function_exists( 'sahcfwc_fs' ) || 'http://127.0.0.1:8888' !== rtrim( home_url(), '/' )
 	|| 'test-mode' !== get_option( 'sahcfwc_stripe_integration_mode' ) ) { throw new RuntimeException( 'The disposable FREE local test-mode site is required.' ); }
-require_once dirname( __DIR__ ) . '/includes/classes/class-sahcfwc-payment-completion.php';
+require_once SAHCFWC_DIR . '/includes/classes/class-sahcfwc-payment-completion.php';
 use SAHCFWC\Classes\SAHCFWC_Payment_Completion as QECompletion;
 use SAHCFWC\Classes\SAHCFWC_Quantity_Adjustment as QEAdjustment;
 use SAHCFWC\Classes\SAHCFWC_Quantity_Inventory as QEInventory;
 
 class SAHCFWC_Release_Edge_HTTP implements SAHCFWC\Libraries\Stripe\HttpClient\ClientInterface {
 	public $lines = array();
-	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1' ) {
+	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1', $max_network_retries = null ) {
 		if ( 'get' !== strtolower( $method ) || ! preg_match( '#/checkout/sessions/cs_test_release_edge_[0-9]+/line_items$#', wp_parse_url( $url, PHP_URL_PATH ) ) ) { throw new RuntimeException( 'Unexpected Stripe transport blocked.' ); }
 		return array( wp_json_encode( array( 'object' => 'list', 'data' => $this->lines, 'has_more' => false ) ), 200, array() );
 	}
@@ -85,7 +85,7 @@ class SAHCFWC_Release_Edge {
 		}
 		if ( 'lock_canonical_id' === $case ) {
 			global $wpdb; $fixture = self::fixture(); $other = new wpdb( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST );
-			$name = 'sahcfwc_' . md5( $wpdb->prefix . ':' . get_current_blog_id() . ':' . $fixture['order'] ); $called = false;
+			$name = 'sahcfwc_' . md5( $wpdb->dbname . ':' . $wpdb->prefix . ':' . get_current_blog_id() . ':' . $fixture['order'] ); $called = false;
 			try { self::check( 'second_connection_holds_canonical_lock', '1' === (string) $other->get_var( $other->prepare( 'SELECT GET_LOCK(%s,0)', $name ) ) );
 				$result = QECompletion::with_order_lock( '000' . $fixture['order'], function () use ( &$called ) { $called = true; } );
 				self::check( 'numeric_alias_cannot_bypass_order_lock', ! $called && is_wp_error( $result ) && 'sahcfwc_order_busy' === $result->get_error_code() );
@@ -133,7 +133,7 @@ $qe_cases = array( 'cached_paid_replay', 'cached_refunded_replay', 'shared_paid'
 if ( ! empty( $args[0] ) ) { if ( ! in_array( $args[0], $qe_cases, true ) ) { throw new RuntimeException( 'Unknown edge case.' ); } $qe_cases = array( $args[0] ); }
 $qe_report = array( 'suite' => 'free-release-edge', 'network' => 'mocked SDK; HTTP and email blocked', 'results' => array(), 'pass' => false );
 $qe_sources = array( 'includes/classes/class-sahcfwc-payment-completion.php', 'includes/classes/class-sahcfwc-quantity-adjustment.php', 'includes/classes/class-sahcfwc-quantity-inventory.php', 'includes/traits/sahcfwc-order-totals.php' );
-foreach ( $qe_sources as $file ) { $qe_report['source_hashes'][ $file ] = hash_file( 'sha256', dirname( __DIR__ ) . '/' . $file ); }
+foreach ( $qe_sources as $file ) { $qe_report['source_hashes'][ $file ] = hash_file( 'sha256', SAHCFWC_DIR . '/' . $file ); }
 global $wpdb; $qe_active = false;
 register_shutdown_function( function () use ( &$qe_active, $wpdb ) { if ( $qe_active ) { $wpdb->query( 'ROLLBACK' ); } } );
 try {
@@ -161,7 +161,7 @@ finally {
 	foreach ( array_merge( SAHCFWC_Release_Edge::$posts, SAHCFWC_Release_Edge::$orders ) as $id ) { $remaining += (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->posts} WHERE ID=%d", $id ) ); }
 	foreach ( SAHCFWC_Release_Edge::$orders as $id ) { foreach ( array( 'wc_orders' => 'id', 'wc_reserved_stock' => 'order_id', 'woocommerce_order_items' => 'order_id' ) as $table => $key ) { $remaining += (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}{$table} WHERE {$key}=%d", $id ) ); } }
 	$qe_report['rollback_rows'] = $remaining; $qe_report['source_stable'] = true;
-	foreach ( $qe_sources as $file ) { if ( $qe_report['source_hashes'][ $file ] !== hash_file( 'sha256', dirname( __DIR__ ) . '/' . $file ) ) { $qe_report['source_stable'] = false; } }
+	foreach ( $qe_sources as $file ) { if ( $qe_report['source_hashes'][ $file ] !== hash_file( 'sha256', SAHCFWC_DIR . '/' . $file ) ) { $qe_report['source_stable'] = false; } }
 	$qe_report['pass'] = $qe_report['pass'] && 0 === $remaining && $qe_report['source_stable'];
 }
 echo wp_json_encode( $qe_report, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) . PHP_EOL;

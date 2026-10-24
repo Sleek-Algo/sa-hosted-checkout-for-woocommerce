@@ -1,0 +1,24 @@
+.sahcfwc-checkout-busy { opacity: .65; cursor: progress; }
+.sahcfwc-embedded-checkout { width: 100%; margin: 1.5rem auto; }
+.sahcfwc-embedded-mount { width: 100%; min-height: 1px; }
+.sahcfwc-embedded-status { margin: 1rem 0; padding: 1rem; line-height: 1.5; }
+.sahcfwc-embedded-status[role="alert"] { background: #fff1f0; color: #8a1f17; border-inline-start: 4px solid #b42318; }
+.sahcfwc-embedded-status[hidden], .sahcfwc-checkout-recovery[hidden], .sahcfwc-checkout-retry[hidden] { display: none !important; }
+body.sahcfwc-checkout-modal-open { overflow: hidden; }
+.sahcfwc-checkout-backdrop { position: fixed; inset: 0; z-index: 99999; background: #0009; }
+.sahcfwc-checkout-backdrop[hidden] { display: none; }
+.sahcfwc-checkout-dialog { position: fixed; top: 50%; left: 50%; z-index: 100000; transform: translate(-50%, -50%); margin: 0; overflow: auto; overscroll-behavior: contain; padding: 0; border: 0; border-radius: 12px; width: min(1100px, calc(100vw - 32px)); max-width: 1100px; max-height: calc(100dvh - 32px); color: #202124; background: #fff; box-shadow: 0 12px 60px #0005; }
+.sahcfwc-checkout-dialog:not([open]) { display: none; }
+.sahcfwc-checkout-dialog-header { position: sticky; z-index: 1; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 16px 20px; border-bottom: 1px solid #ddd; background: #fff; }
+.sahcfwc-checkout-dialog-header h2 { margin: 0; font: 600 20px/1.4 system-ui, sans-serif; color: inherit; }
+.sahcfwc-checkout-close { flex: 0 0 auto; padding: 8px 14px; min-height: 44px; border: 1px solid #777; border-radius: 6px; cursor: pointer; background: #fff; color: #222; font: 500 16px/1.5 system-ui, sans-serif; }
+.sahcfwc-checkout-close:hover { background: #f0f0f0; color: #111; }
+.sahcfwc-checkout-close:focus-visible, .sahcfwc-checkout-retry:focus-visible, .sahcfwc-checkout-recovery:focus-visible { outline: 3px solid #176bfa; outline-offset: 3px; }
+.sahcfwc-checkout-dialog-content { padding: 16px; }
+.sahcfwc-checkout-recovery { display: inline-block; margin: 1rem; text-decoration: underline; }
+@media (max-width: 600px) {
+	.sahcfwc-checkout-dialog { top: 0; left: 0; transform: none; width: 100%; max-width: 100%; max-height: 100dvh; height: 100dvh; margin: 0; border-radius: 0; }
+	.sahcfwc-checkout-dialog-header { padding: 12px; }
+	.sahcfwc-checkout-dialog-content { padding: 0; }
+}
+

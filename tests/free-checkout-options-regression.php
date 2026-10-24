@@ -46,7 +46,7 @@ class SAO_Stripe_Transport implements \SAHCFWC\Libraries\Stripe\HttpClient\Clien
 	public $customer_mode_override = null;
 	public $invalid_customer_id = false;
 	public $omit_customer_mode = false;
-	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1' ) {
+	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1', $max_network_retries = null ) {
 		$method = strtolower( $method ); $path = wp_parse_url( $url, PHP_URL_PATH ); $idempotency = ''; $live = false;
 		foreach ( $headers as $name => $value ) {
 			$header = is_string( $name ) ? $name . ': ' . $value : $value;
@@ -297,12 +297,20 @@ try {
 		$result = ( new Gateway() )->process_payment( sao_order()->get_id() );
 		sao_expect( 'failure' === $result['result'] && empty( $sao_transport->sessions ), 'Ineligible method exposed a payment session.' );
 	} );
-	sao_case( 'native_language_change_does_not_reuse_old_session', function () {
+	sao_case( 'native_language_change_preserves_verified_open_session', function () {
 		global $sao_options, $sao_transport; $order = sao_order(); $gateway = new Gateway();
-		sao_expect( 'success' === $gateway->process_payment( $order->get_id() )['result'], 'Initial native session failed.' );
+		$first = $gateway->process_payment( $order->get_id() );
+		sao_expect( 'success' === $first['result'], 'Initial native session failed.' );
+		$saved_id = wc_get_order( $order->get_id() )->get_meta( 'sahcfwc_stripe_checkout_session_id' );
+		$original_payload = sao_last_session_payload();
 		$sao_options['sahcfwc_stripe_locale_status'] = 'custom'; $sao_options['sahcfwc_stripe_locale'] = 'fr';
 		$result = $gateway->process_payment( $order->get_id() );
-		sao_expect( 'failure' === $result['result'] && 1 === count( $sao_transport->sessions ), 'Changed locale silently reused or duplicated an active session.' );
+		// New Embedded safety contract: settings apply to new payment attempts;
+		// a verified open Session remains frozen and cannot gain a second payable peer.
+		sao_expect( 'success' === $result['result'] && $first['redirect'] === $result['redirect'] && 'hosted' === $result['checkout_mode'], 'Settings change did not preserve the actual Hosted Session.' );
+		sao_expect( $saved_id === wc_get_order( $order->get_id() )->get_meta( 'sahcfwc_stripe_checkout_session_id' ) && 1 === count( $sao_transport->sessions ), 'Settings change replaced the saved Session.' );
+		sao_expect( 1 === count( $sao_transport->matching( 'post', '/v1/checkout/sessions' ) ) && $original_payload === sao_last_session_payload() && ! isset( $original_payload['locale'] ), 'Retry changed the original locale/payload or issued another creation request.' );
+		sao_assert_binding( $original_payload, $order );
 	} );
 	sao_case( 'bank_transfer_payload_customer_and_repeat_session', function () {
 		global $sao_options, $sao_transport;

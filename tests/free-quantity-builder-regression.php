@@ -4,7 +4,7 @@ if ( ! defined( 'WP_CLI' ) || ! WP_CLI || ! defined( 'WP_HTTP_BLOCK_EXTERNAL' ) 
 	|| function_exists( 'sahcfwc_fs' ) || 'http://127.0.0.1:8888' !== rtrim( home_url(), '/' ) ) {
 	throw new RuntimeException( 'Requires the disposable local FREE site with external HTTP blocked.' );
 }
-require_once dirname( __DIR__ ) . '/includes/classes/class-sahcfwc-payment-completion.php';
+require_once SAHCFWC_DIR . '/includes/classes/class-sahcfwc-payment-completion.php';
 use SAHCFWC\Classes\SAHCFWC_Payment_Completion as SQB_Completion;
 use SAHCFWC\Libraries\Stripe\ApiRequestor;
 use SAHCFWC\Libraries\Stripe\StripeClient;
@@ -23,7 +23,7 @@ class SQB_Builder {
 class SQB_HTTP implements SAHCFWC\Libraries\Stripe\HttpClient\ClientInterface {
 	public $sessions = array(); public $lines = array(); public $coupons = array(); public $cache = array(); public $requests = array();
 	public $lose_response = false;
-	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1' ) {
+	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1', $max_network_retries = null ) {
 		$method = strtolower( $method ); $path = wp_parse_url( $url, PHP_URL_PATH ); $key = '';
 		foreach ( $headers as $name => $value ) {
 			$header = is_string( $name ) ? $name . ': ' . $value : $value;

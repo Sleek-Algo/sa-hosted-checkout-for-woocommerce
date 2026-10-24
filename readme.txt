@@ -1,121 +1,135 @@
 === SA Hosted Checkout for WooCommerce ===
 Contributors: sleekalgo
-Tags: stripe, stripe checkout, woocommerce, secure checkout, express checkout
+Tags: stripe, stripe checkout, woocommerce, payment gateway, embedded checkout
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.7
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Accept WooCommerce payments on Stripe Checkout, with cart discounts, fees, shipping, taxes and configurable payment methods.
+Take customers from WooCommerce cart to Stripe Checkout with hosted, embedded or popup checkout, free branding and WooCommerce coupon support.
 
 == Description ==
 
-SA Hosted Checkout for WooCommerce connects your store to Stripe's hosted payment page. Customers review their cart in WooCommerce and pay through Stripe Checkout. The plugin carries the saved order's discounts, fees, shipping and taxes into the payment total and verifies Stripe payment confirmations before marking an order paid.
+SA Hosted Checkout for WooCommerce replaces the standard WooCommerce checkout form with Stripe Checkout for carts requiring payment. Customers can continue from supported cart and mini-cart buttons or visit the store's checkout page directly, without filling in two checkout forms. They review products and apply WooCommerce coupon codes in the cart, then enter their payment details through Stripe.
 
-The free version includes WooCommerce cart coupons, payment-method selection, checkout language selection and optional quantity changes for eligible products. Premium adds checkout custom fields and text, a session-management screen and administrator-only test mode.
+Choose a Stripe-hosted payment page, Embedded Checkout on a page in your store, or Embedded Checkout in a popup. All three checkout experiences are free, together with branding controls, WooCommerce cart discounts, payment-method selection, checkout language selection and optional quantity changes for eligible products.
 
-=== 🗝️ Key FEATURES: ===
+The plugin creates a WooCommerce order from the cart and uses its saved totals for Stripe Checkout. Payment confirmations are verified before the order is marked paid. See the FAQ for supported checkout paths, payment-method eligibility and the calculation limits that apply when customers change quantities or addresses.
 
-=  🎉 Free Version - Features: =
+= Free features =
 
-* Stripe authentication is supported using either a *Standard API Key* or a *Restricted API Key*.
-* Send customers from the WooCommerce cart to Stripe's hosted checkout
-* WooCommerce coupons and discounts applied in the cart are reflected in Stripe Checkout
-* Include WooCommerce fees, shipping and taxes in the payment total, with separate lines for additional charges
-* Choose eligible Stripe payment methods, including Cards and supported local payment methods
-* Use the customer's browser language or choose a supported Stripe Checkout language
-* Allow quantity changes for eligible products in Stripe Checkout (optional, disabled by default)
-* Enable or Disable Phone Number field on Stripe Checkout
-* Add or remove Terms & Services checkbox from Stripe Checkout
-* Set an optional cancellation URL, or return customers to the cart
+* Hosted, embedded page and popup checkout: choose how customers use Stripe Checkout.
+* Cart-to-Stripe checkout: bypass the standard checkout form from supported cart and mini-cart buttons and ordinary checkout-page visits, including WooCommerce Cart, Mini-Cart and Checkout blocks and the classic Checkout shortcode.
+* Branding controls: set the display name, background and button colors, font and corner shape, or inherit Stripe Dashboard branding. Custom logo overrides are available for Hosted Checkout.
+* Dedicated payment page: create one automatically or select a published page containing the [sahcfwc_checkout] shortcode.
+* WooCommerce coupons and discounts: include eligible discounts already applied in the cart.
+* Order totals: include WooCommerce shipping, fees and taxes, with separate lines for additional charges.
+* Payment-method selection: choose Cards and eligible local payment methods supported by the plugin and your Stripe account.
+* Checkout language: use the customer's browser language or choose a supported Stripe language.
+* Optional quantity changes: let customers adjust eligible product quantities within configured limits. Disabled by default.
+* Checkout fields: enable phone-number collection and the terms of service checkbox.
+* Hosted cancellation URL: choose a return page or send customers back to the cart.
+* Stripe connection: use a standard secret API key or a restricted API key with the required permissions, in test or live mode.
+* WooCommerce High-Performance Order Storage (HPOS) compatibility.
 
-Payment-method availability depends on your Stripe account, enabled methods, business and customer countries, currency and order. Quantity changes have fixed-charge and stock-reservation limits explained in the FAQ below.
+Payment-method availability depends on your Stripe account, enabled methods, business and customer countries, currency and order. WooCommerce calculates discounts, shipping, fees and taxes before Stripe Checkout opens. These amounts are not recalculated in Stripe when a customer changes an address or product quantity. See the FAQ before enabling quantity changes.
 
+= Premium features =
 
-= 🌟 Premium Version - Features: 🎯 =
+The separate premium edition adds:
 
-* All features in the free version and the following
-* Add custom fields to Stripe Checkout which can be a number field, a text field and a dropdown field
-* Add custom text to be displayed as terms and services text
-* Add custom text to be displayed before and after submit button of Stripe Checkout
-* Add custom text to be displayed after shipping address fields of Stripe Checkout
-* View Stripe Checkout sessions created by the plugin, with their status and customer information
-* Automatically enable test mode of Stripe payment for administrators of the website
+* Custom text, number and dropdown fields.
+* Custom terms of service text and text before or after the payment button.
+* Custom text alongside shipping-address collection.
+* A session-management screen for checkout sessions created by the plugin.
+* Administrator-only test mode.
 
-Get the [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium) now 🚀.
+Compare editions on the [plugin website](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium). Hosted, embedded page and popup checkout, basic branding, cart coupons, payment-method selection, language selection and optional quantity changes do not require premium.
 
-==👉 Video Tutorial 👈==
+= Setup tutorial =
 
-https://www.youtube.com/watch?v=2ktSTBzG95c
+https://www.youtube.com/watch?v=HabYcVLdrkI
 
-= Documentation 📚 =
+For current setup instructions and checkout options, see the [installation guide](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide).
 
-Discover how to make the most of SA Hosted Checkout for WooCommerce with our detailed and user-friendly [documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide).
-
-= 🌐 Translation Ready 🤩 =
+= Translations =
 
 The plugin includes translatable interface strings. Contribute translations through [WordPress.org](https://translate.wordpress.org/projects/wp-plugins/sa-hosted-checkout-for-woocommerce/). The Stripe Checkout language is configured separately in the plugin's Checkout Settings.
 
-= ⏩ Use of Third-Party Libraries 🛠️ =
-
-The *SA Hosted Checkout for WooCommerce* plugin has been built using the following third-party libraries to enhance functionality and user experience:
-
-- [Stripe PHP SDK](https://github.com/stripe/stripe-php) – This SDK is integrated to support [Stripe Checkout](https://stripe.com/payments/checkout), allowing secure and seamless payment processing.
-- [React.js](https://react.dev/) – React.js is used to manage the plugin’s admin interface components for a dynamic and responsive user experience.
-- [Ant Design](https://ant.design/) – We used Ant Design and [Ant Design ProComponents](https://procomponents.ant.design/en-US) to create a polished and intuitive UI for the plugin's admin interfaces.
-- [WordPress Scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) – WordPress Scripts manage the plugin’s build system, as the admin interface is developed in React’s JSX syntax, with builds generated via WordPress's robust tooling.
-
-= 😍 Useful Links 📌 =
-
-* [Documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide)
-* [Support Forum](https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce/)
-* [Github](https://github.com/Sleek-Algo/sa-hosted-checkout-for-woocommerce/)
-* [Translations](https://translate.wordpress.org/projects/wp-plugins/sa-hosted-checkout-for-woocommerce/)
-
-= Become a Contributor 👨🏻‍💻 =
-
-*SA Hosted Checkout for WooCommerce* is an open-source project, and we welcome contributors to be part of our vibrant community! Help us improve the plugin and make it even better - [GitHub Link](https://github.com/Sleek-Algo/sa-hosted-checkout-for-woocommerce/)
-
-== 🤝 Support 👀 ==
+= Support and contributions =
 
 For help, use the WordPress.org [Support Forum](https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce/). Before starting a new thread, check the [documentation](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide) and existing support threads. Describe the issue and include your WordPress, WooCommerce and plugin versions. Do not post API keys or customer payment details.
 
-==🐞 BUG REPORTS 📝 ==
-
-Find a bug in *SA Hosted Checkout for WooCommerce* ? We welcome your bug reports! Please report bugs in the *SA Hosted Checkout for WooCommerce* [repository on GitHub](https://github.com/Sleek-Algo/sa-hosted-checkout-for-woocommerce). Note that GitHub is not a support forum but an efficient platform for addressing and resolving issues efficiently.
+Report reproducible bugs or contribute code through [GitHub](https://github.com/Sleek-Algo/sa-hosted-checkout-for-woocommerce/). Source files, build instructions and third-party license notices are included with the plugin.
 
 == Installation ==
 
 Requires WordPress 6.3 or later, WooCommerce 8.6 or later, and PHP 7.4 or later with the curl, json and mbstring extensions.
 
-* In your WordPress dashboard, choose Plugins > Add new.
-* Search for the plugin with the search bar in the top right corner using the keywords "SA Hosted Checkout". A number of results may appear.
-* After finding the plugin in the results, click Install Now. You can also click the plugin name to view more details about it.
-* Activate the plugin, then configure your Stripe API credentials and webhook signing secret in Stripe Settings. Start in test mode.
-* Select your checkout preferences and test your store's products, coupons, shipping, taxes and payment methods before enabling live payments.
+1. Install and activate WooCommerce. In Plugins > Add New Plugin, search for "SA Hosted Checkout for WooCommerce", then install and activate it.
+2. Open the plugin's Stripe Settings. Select test mode and enter your Stripe secret or restricted API key. Embedded Checkout also requires the publishable key from the same Stripe account and mode.
+3. Copy the webhook endpoint URL shown in Stripe Settings. In the matching Stripe test environment, add this HTTPS endpoint and subscribe to checkout.session.completed, checkout.session.async_payment_succeeded and checkout.session.async_payment_failed. Save the endpoint's signing secret in the plugin. See the webhook FAQ below.
+4. Enable checkout and choose Hosted Checkout, Embedded payment page or Embedded popup. Hosted remains the default for existing installations.
+5. For either Embedded mode, use Automatic to create a dedicated payment page when settings are saved, or select a published page containing [sahcfwc_checkout]. Do not use the WooCommerce Cart, Checkout or My Account page. Keep this payment page and its query-string URLs out of page caches.
+6. Optionally enable Checkout branding. Leave individual fields empty to inherit Stripe Dashboard settings. Custom logos apply to Hosted Checkout only and require a publicly accessible HTTPS PNG, JPEG or SVG image URL.
+7. Configure Checkout Settings and Payment Methods, then save. Enable coupons in WooCommerce settings if you want customers to apply them in the cart. Review the fixed-charge limits before enabling quantity changes.
+8. Verify test payments, order updates and webhook delivery with your products, coupons, shipping, taxes and selected payment methods. Before accepting live payments, switch to matching live API keys and a live webhook endpoint's signing secret. Use HTTPS in production.
 
-For further details please check our [Installation Guide](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide)
+See the [installation guide](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#installation-guide) for illustrated setup instructions.
 
 == Screenshots ==
 
-1. How Stripe Checkout will look on your website
-2. Enable SA Hosted Checkout for WooCommerce
-3. Change Stripe mode between Test and Live
-4. Change configuration for Stripe Checkout
-5. Update cancellation page URL
-6. Enable a custom Thank You page (premium)
-7. Add custom text to Stripe Checkout (premium)
-8. Add custom fields to Stripe Checkout (premium)
-9. Select eligible payment methods for Stripe Checkout (free)
-10. View Stripe Checkout session details (premium)
+1. Stripe Checkout illustration for desktop and mobile.
+2. Embedded Checkout on a payment page within your store.
+3. Embedded Checkout in a popup over the WooCommerce cart.
+4. Connect Stripe and configure the webhook, with credentials hidden.
+5. Choose Hosted Checkout, Embedded payment page or Embedded popup.
+6. Customize checkout branding, including colors, font and corner shape.
+7. Configure checkout fields and optional product quantity limits.
+8. Set the checkout language and Hosted Checkout cancellation URL.
+9. Select eligible Stripe payment methods for your store.
 
 == Frequently Asked Questions ==
 
-= Are fees, shipping and taxes included in Stripe Checkout? =
+= Does this plugin bypass the WooCommerce checkout form? =
 
-Yes. Stripe Checkout starts with the saved WooCommerce order total, including eligible discounts, fees, shipping and taxes. Positive fees and taxes are shown as separate lines, with shipping shown as a separate charge. WooCommerce calculates these amounts before Stripe Checkout opens; changing an address on Stripe Checkout does not recalculate WooCommerce shipping or taxes. Optional quantity changes affect eligible product amounts, but leave these charges and existing discount amounts fixed.
+Yes. When the plugin is enabled and configured and the cart requires payment, supported cart and mini-cart buttons take customers to the selected Stripe Checkout experience. Direct visits to the ordinary checkout page also open Stripe Checkout instead of displaying the standard WooCommerce form. Both classic Checkout shortcode pages and WooCommerce Checkout block pages are supported by this replacement flow.
+
+Customers do not need to fill in two checkout forms. The plugin replaces the standard form rather than adding a payment-method choice inside the WooCommerce Checkout block. JavaScript must be enabled. Empty carts, orders with no payment due, order-payment links, receipt pages and API requests are not taken over by the ordinary checkout-page replacement. The separate classic gateway remains available for supported existing-order payment flows.
+
+Custom checkout buttons, themes and checkout extensions require compatibility testing. In popup mode, intercepted cart-button clicks do not emit WooCommerce's cart_proceed_to_checkout event, so extensions that depend on this event need separate testing.
+
+= Is Embedded Checkout included in the free version? =
+
+Yes. In Stripe Settings, choose Hosted Checkout, Embedded payment page, or Embedded popup. Hosted redirects to Stripe and remains the default for existing installations. Embedded page and popup display Stripe's payment interface within your website. Some payment methods still redirect customers to their bank or payment provider for authorization.
+
+Embedded Checkout needs a publishable key from the same Stripe account and mode as the configured secret or restricted key. Use HTTPS in production. Apple Pay and Google Pay also depend on Stripe payment-method domain registration, an eligible account, browser and device.
+
+= How do I choose the Embedded payment page? =
+
+Use Automatic to create a dedicated payment page when you save Stripe Settings. Alternatively, publish a page containing the [sahcfwc_checkout] shortcode and select it. The page must not be password protected or assigned as the WooCommerce Cart, Checkout or My Account page. Customers reach it through a private order-payment link; adding the shortcode alone does not create a payable order.
+
+Popup checkout uses the same payment page for existing-order payment links and returns from payment providers. Closing the popup does not cancel the order or create another payment session; customers can reopen it while the session remains payable. Exclude the payment page and its query-string URLs from page caching.
+
+After an administrator changes the checkout mode, an existing popup session may continue on the dedicated payment page instead of being replaced.
+
+If payment has already been verified for the shopper's unchanged cart, reopening checkout returns the existing order receipt. If the paid cart cannot be matched safely, checkout stops with a review notice instead of starting another payment.
+
+= Are checkout branding controls free? =
+
+Yes. Enable Checkout branding in Stripe Settings to set the checkout display name, background and button colors, font and corner shape. Leave individual fields empty, or disable the override, to use Stripe Dashboard branding.
+
+Custom logo overrides apply to Hosted Checkout only. Stripe's Embedded Checkout does not accept per-session logo or icon overrides, so those images are not sent in Embedded page or popup mode. A Hosted logo must be a publicly accessible HTTPS image with a URL path ending in .png, .jpg, .jpeg, .jfif, .pjpeg, .pjp or .svg. Query strings are allowed. WebP, localhost, private-network and password-protected images cannot be used.
+
+Branding changes apply to new checkout sessions and do not change your Stripe account settings, receipts or invoices. An already-open session retains its existing settings. Stripe controls the payment interface, so arbitrary WordPress CSS cannot style the inside of its protected payment frame.
+
+= How are discounts, fees, shipping and taxes calculated? =
+
+WooCommerce calculates the cart before Stripe Checkout opens. The plugin creates an order and uses that saved total, including eligible discounts, fees, shipping and taxes, for payment. Positive fees and taxes are shown as separate lines, with shipping shown as a separate charge.
+
+Changing an address on Stripe Checkout does not recalculate WooCommerce shipping or taxes. Optional quantity changes affect eligible product amounts, but leave these charges and existing discount amounts fixed. Stores with address-dependent shipping, tax or discount rules should test their calculation and checkout paths before going live.
 
 = Can I use WooCommerce coupons in the free version? =
 
@@ -123,11 +137,7 @@ Yes. To use coupons, enable "Enable the use of coupon codes" under WooCommerce >
 
 Coupons limited to one use per customer require login. For higher per-customer limits, guests must have a valid billing email available before applying the coupon; otherwise, they must log in.
 
-= How does it bypass WooCommerce default checkout? =
-
-When enabled and configured, the plugin can send customers from the WooCommerce cart to Stripe Checkout, including Cart and Mini-Cart block buttons. It also provides a gateway for the classic WooCommerce checkout. Direct payment-method integration with the WooCommerce Checkout block is not supported; use the classic Checkout shortcode for the native gateway. Custom checkout buttons, themes and other checkout extensions may behave differently; test your store's checkout paths before going live. Orders with no payment due use WooCommerce checkout.
-
-= I have installed the plugin but my plugin appears disabled =
+= Why is checkout unavailable after installation? =
 
 Enter the appropriate Stripe API credentials and webhook signing secret in Stripe Settings, select the matching test or live mode, and enable checkout. Start in test mode and check any setup notice if checkout remains unavailable.
 
@@ -153,32 +163,58 @@ Verified final quantities and totals are synced to WooCommerce after checkout is
 
 = Which webhook events should I configure? =
 
-Copy the webhook endpoint URL shown in Stripe Settings and configure it in the matching Stripe test or live environment. Subscribe to checkout.session.completed, checkout.session.async_payment_succeeded and checkout.session.async_payment_failed, then save that endpoint's signing secret in the plugin. The plugin also accepts payment_intent.succeeded and charge.succeeded as payment-confirmation events. You do not need to select every Stripe event.
+Copy the webhook endpoint URL shown in Stripe Settings and configure it in the matching Stripe test or live environment. In Stripe Workbench > Webhooks, create an event destination for Your account, use the Snapshot payload format, and choose Webhook endpoint as the destination type. The route is /wp-json/sahcfwc/v1/webhooks/stripe-listener on your site's URL; copy the plugin's displayed Webhook URL rather than the WordPress admin address or a guessed URL, particularly if WordPress is installed in a subdirectory.
+
+Subscribe to checkout.session.completed, checkout.session.async_payment_succeeded and checkout.session.async_payment_failed, then save that endpoint's signing secret in the plugin. A webhook signing secret is separate from an API key. Test and live endpoints have separate signing secrets. The plugin also accepts payment_intent.succeeded and charge.succeeded as payment-confirmation events. You do not need to select every Stripe event.
 
 Use a publicly reachable HTTPS endpoint and verify successful delivery in Stripe. Webhooks allow order updates when the customer does not return to your store. They are required for delayed-payment methods and quantity adjustment; keep them working for ordinary card payments as well.
 
-= I want to customize my Stripe Checkout page =
+= Which checkout customizations require premium? =
 
-The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium) of SA Hosted Checkout for WooCommerce provides options to add custom text, number and dropdown fields for better customization.
+Basic checkout branding is free, including the display name, colors, font and corner shape, plus a custom logo for Hosted Checkout. The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium) provides additional custom text and text, number and dropdown fields.
 
-= How can I check Stripe Checkout sessions which were created on my website but never completed? =
+= Can I view incomplete checkout sessions? =
 
-The [premium version](https://www.sleekalgo.com/sa-hosted-checkout-for-woocommerce/#buy_premium) offers you access to Stripe Sessions for quick and easy viewing of the customer and order details.
+The premium edition includes a session-management screen for sessions created by this plugin, with customer, order and payment-status details. In either edition, you can also review payment activity in your Stripe Dashboard.
 
 
 == External services ==
 
 This plugin uses Stripe Checkout to process payments and requires a Stripe account. After you configure Stripe API credentials, the plugin contacts Stripe to verify the account connection and create, retrieve or expire checkout sessions and verify their payment status.
 
-Requests include order and item references, verification metadata, product names and public image URLs when available, quantities, totals, discounts, fees, shipping, taxes, currency, store return URLs and the billing email when available. USD bank transfers also require a Stripe customer record associated with the order. Customers enter payment details directly on Stripe's hosted page. Stripe may also collect their name, billing address, shipping address and phone number according to the checkout settings. The plugin receives payment status, customer details and, when quantity adjustment is enabled, final line-item quantities and amounts from Stripe to update the WooCommerce order.
+Requests include order and item references, verification metadata, product names and public image URLs when available, quantities, totals, discounts, fees, shipping, taxes, currency, store return URLs and the billing email when available. Enabled branding overrides also send the selected display name, colors, font and corner shape to Stripe; Hosted Checkout can also receive a public logo URL. Stripe retrieves the logo image; WordPress does not download it through this feature. USD bank transfers also require a Stripe customer record associated with the order.
+
+The storefront loads Stripe.js directly from js.stripe.com when checkout is enabled or an existing payment page is opened. This connects the customer's browser to Stripe to provide its payment interface and payment security services. Customers enter payment details directly into Stripe's hosted page or Stripe-controlled embedded interface, not a WordPress payment-card form. Stripe may also collect their name, billing address, shipping address and phone number according to the checkout settings. The plugin receives payment status, customer details and, when quantity adjustment is enabled, final line-item quantities and amounts from Stripe to update the WooCommerce order.
 
 See the [Stripe Privacy Policy](https://stripe.com/privacy) and [Stripe Services Agreement](https://stripe.com/legal/ssa).
 
 == Source code and licenses ==
 
-Readable admin JavaScript and SCSS source is included in node-dev/free-app. The package includes node-dev/package.json, node-dev/webpack.config.js and build instructions in README.md. Run npm install followed by npm run build from node-dev to build assets/backend. Third-party license notices are included in THIRD-PARTY-NOTICES.txt and the bundled libraries' license files. The plugin is licensed under GPLv2 or later; see LICENSE.
+Readable admin JavaScript and SCSS source is included in node-dev/free-app and node-dev/shared. The storefront checkout controller and styles are in node-dev/frontend/checkout. The package includes node-dev/package.json, node-dev/webpack.config.js and build instructions in README.md. From node-dev, run npm install, then npx cross-env NODE_ENV=production CREATE_ZIP=no npm run build to generate assets/backend and assets/frontend/checkout. Stripe.js is loaded directly from Stripe, not bundled or self-hosted. Third-party license notices are included in THIRD-PARTY-NOTICES.txt and the bundled libraries' license files. The plugin is licensed under GPLv2 or later; see LICENSE.
 
 == Changelog ==
+
+= 1.1.1 =
+
+* Replaced the standard WooCommerce checkout form on ordinary checkout-page visits with the selected Stripe Checkout experience for carts requiring payment, including classic shortcode and Checkout block pages.
+* Added automatic checkout launch with clear retry and return-to-cart controls, while preserving empty-cart, zero-total, existing-order payment and receipt flows.
+* Prevented hidden or prerendered pages from starting a checkout session and required POST requests for checkout creation.
+* Updated the plugin description, free and premium feature lists, installation instructions and FAQs, including webhook setup and checkout calculation limits.
+
+= 1.1.0 =
+
+* Added free Embedded Checkout on a dedicated store page or in a popup, while preserving Hosted Checkout as the default for existing installations.
+* Added free checkout branding controls for the display name, background and button colors, font and corner shape, plus a Hosted Checkout logo override, with Stripe Dashboard inheritance for empty fields.
+* Added automatic payment-page creation and support for a custom published page containing [sahcfwc_checkout].
+* Added mode-matched publishable-key validation and private, non-cached access to embedded payment sessions.
+* Reused saved WooCommerce order totals and verified payment handling across all three checkout experiences, including existing-order payment links and payment-provider returns.
+* Added popup close/reopen handling and retry safeguards without creating parallel payment sessions for an order.
+* Fixed WooCommerce Cart block checkout buttons remaining in a loading state after closing Embedded Checkout.
+* Kept Stripe quantity and payment-authentication dialogs accessible above the checkout popup.
+* Added receipt recovery when an unchanged cart's payment has already been verified, without rechecking consumed stock or coupon uses. An unverifiable paid cart is blocked from starting another payment.
+* Fixed unnecessary payment-processing conflicts between stores using separate databases on the same database server.
+* Updated the bundled Stripe PHP SDK to 18.0.0 with Stripe API version 2025-09-30.clover.
+* Updated setup instructions, free-feature descriptions, Stripe.js service disclosure and readable storefront source/build information.
 
 = 1.0.7 =
 
@@ -230,6 +266,14 @@ Readable admin JavaScript and SCSS source is included in node-dev/free-app. The 
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+
+Fixes ordinary checkout-page visits showing the WooCommerce form before Stripe Checkout. Paid carts now use the selected Hosted, Embedded Page or Embedded Popup experience directly. Existing checkout settings are preserved. Back up your site and test custom checkout extensions, order-payment links and webhook delivery after updating.
+
+= 1.1.0 =
+
+Embedded page, popup checkout and branding controls are now free. Existing installations retain Hosted Checkout. Embedded modes need a matching Stripe publishable key and a dedicated payment page; use HTTPS in production. Existing WooCommerce discounts, shipping, fees and taxes keep their current calculation rules. Back up your site and test checkout and webhook delivery before enabling the new modes.
 
 = 1.0.7 =
 

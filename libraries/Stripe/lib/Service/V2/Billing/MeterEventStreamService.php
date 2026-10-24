@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\V2\Billing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class MeterEventStreamService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -15,12 +16,12 @@ class MeterEventStreamService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * Requires a meter event session for authentication. Supports up to 10,000
      * requests per second in livemode. For even higher rate-limits, contact sales.
      *
-     * @param null|array $params
+     * @param null|array{events: array{event_name: string, identifier?: string, payload: array<string, string>, timestamp?: string}[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\TemporarySessionExpiredException
-     *
      * @return void
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\TemporarySessionExpiredException
      */
     public function create($params = null, $opts = null)
     {

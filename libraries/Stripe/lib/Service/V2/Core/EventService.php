@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\V2\Core;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class EventService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -13,12 +14,12 @@ class EventService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
     /**
      * List events, going back up to 30 days.
      *
-     * @param null|array $params
+     * @param null|array{limit?: int, object_id: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Collection<\SAHCFWC\Libraries\Stripe\V2\Core\Event>
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\Collection<\SAHCFWC\Libraries\Stripe\V2\Event>
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -32,9 +33,9 @@ class EventService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\V2\Core\Event
      *
-     * @return \SAHCFWC\Libraries\Stripe\V2\Event
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

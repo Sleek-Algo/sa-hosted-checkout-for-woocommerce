@@ -2,6 +2,10 @@ THIRD-PARTY NOTICES
 
 The admin frontend bundles code from the packages listed below. License and copyright notices are preserved from the installed packages used by the production build. Where npm omitted a license file, the upstream notice and its source are included. WordPress-provided externals are not part of this bundle. Stripe PHP and Composer notices remain in their respective runtime directories.
 
+Stripe PHP SDK 18.0.0 (MIT) is bundled under libraries/Stripe with the namespace prefix SAHCFWC\Libraries\. Its original license is preserved at libraries/Stripe/LICENSE. Upstream source: https://github.com/stripe/stripe-php/tree/v18.0.0 (commit 70d6c286f0eca002b60ccd62afa7140c43c14bbb). The bundled SDK defaults to Stripe API version 2025-09-30.clover.
+
+Stripe.js is loaded remotely from https://js.stripe.com/clover/stripe.js and is not distributed in this package. Stripe's service terms and privacy policy apply: https://stripe.com/legal/ssa and https://stripe.com/privacy. The storefront controller in node-dev/frontend/checkout is plugin source code; its WordPress dependencies are provided by WordPress.
+
 ========================================================================
 @ant-design/colors 7.2.1
 Declared license: MIT

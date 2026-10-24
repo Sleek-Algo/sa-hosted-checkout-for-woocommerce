@@ -9,7 +9,7 @@ namespace SAHCFWC\Libraries\Stripe\Entitlements;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string|\SAHCFWC\Libraries\Stripe\Entitlements\Feature $feature The <a href="https://stripe.com/docs/api/entitlements/feature">Feature</a> that the customer is entitled to.
+ * @property Feature|string $feature The <a href="https://stripe.com/docs/api/entitlements/feature">Feature</a> that the customer is entitled to.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $lookup_key A unique key you provide as your own system identifier. This may be up to 80 characters.
  */
@@ -20,12 +20,12 @@ class ActiveEntitlement extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Retrieve a list of active entitlements for a customer.
      *
-     * @param null|array $params
+     * @param null|array{customer: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<ActiveEntitlement> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Entitlements\ActiveEntitlement> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -40,9 +40,9 @@ class ActiveEntitlement extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return ActiveEntitlement
      *
-     * @return \SAHCFWC\Libraries\Stripe\Entitlements\ActiveEntitlement
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

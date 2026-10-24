@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\TestHelpers\Treasury;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -16,12 +17,12 @@ class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function fail($id, $params = null, $opts = null)
     {
@@ -34,12 +35,12 @@ class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function post($id, $params = null, $opts = null)
     {
@@ -52,12 +53,12 @@ class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * state.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], returned_details?: array{code?: string}} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function returnOutboundTransfer($id, $params = null, $opts = null)
     {
@@ -70,12 +71,12 @@ class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * <code>canceled</code> or <code>failed</code> states.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[], tracking_details: array{ach?: array{trace_id: string}, type: string, us_domestic_wire?: array{chips?: string, imad?: string, omad?: string}}} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

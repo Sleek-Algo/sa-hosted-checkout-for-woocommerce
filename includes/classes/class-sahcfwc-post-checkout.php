@@ -19,6 +19,7 @@ class SAHCFWC_Post_Checkout {
 		$this->sahcfwc_stripe_cancel_url = get_option( 'sahcfwc_stripe_cancel_url', '' );
 		add_action( 'wc_ajax_sahcfwc_stripe_checkout_order', array( $this, 'sahcfwc_stripe_checkout_order_callback' ) );
 		add_action( 'wc_ajax_sahcfwc_stripe_cancel_order', array( $this, 'sahcfwc_stripe_cancel_order_callback' ) );
+		add_action( 'wc_ajax_sahcfwc_stripe_embedded_checkout_return', array( $this, 'sahcfwc_stripe_embedded_checkout_return_handler' ) );
 
 	}
 
@@ -150,6 +151,31 @@ class SAHCFWC_Post_Checkout {
 			wp_safe_redirect( $this->sahcfwc_stripe_cancel_url ? $this->sahcfwc_stripe_cancel_url : wc_get_cart_url() );
 		}
 		exit;
+	}
+
+	/** A canceled bank redirect remounts the same Session, never cancels the order. */
+	public function sahcfwc_stripe_embedded_checkout_return_handler() {
+		$order = $this->request_order( true );
+		if ( is_wp_error( $order ) ) { $this->redirect_error( $order ); }
+		$client = $this->sahcfwc_stripe_client ? $this->sahcfwc_stripe_client : SAHCFWC_Payment_Completion::client_for_order( $order );
+		if ( is_wp_error( $client ) ) { $this->redirect_error( $client ); }
+		$session_id = $this->request_session_id();
+		if ( ! $session_id || ! hash_equals( (string) $order->get_meta( 'sahcfwc_stripe_checkout_session_id', true ), $session_id ) ) {
+			$this->redirect_error( SAHCFWC_Payment_Completion::error( 'sahcfwc_session_mismatch', __( 'This checkout does not match the order.', 'sa-hosted-checkout-for-woocommerce' ) ) );
+		}
+		try { $session = $client->checkout->sessions->retrieve( $session_id, array() ); }
+		catch ( \Exception $e ) { $this->redirect_error( SAHCFWC_Payment_Completion::error( 'sahcfwc_stripe_unavailable', __( 'Unable to verify checkout. Please try again.', 'sa-hosted-checkout-for-woocommerce' ), 503 ) ); }
+		if ( 'open' === SAHCFWC_Payment_Completion::value( $session, 'status' ) ) {
+			$authorized = $this->request_order();
+			if ( is_wp_error( $authorized ) ) { $this->redirect_error( $authorized ); }
+			$valid = SAHCFWC_Payment_Completion::validate( $order, $session, $client );
+			if ( is_wp_error( $valid ) ) { $this->redirect_error( $valid ); }
+			try { $url = SAHCFWC_Checkout_Experience::payment_page_url( $order ); }
+			catch ( \Exception $e ) { $this->redirect_error( SAHCFWC_Payment_Completion::error( 'sahcfwc_payment_page_unavailable', __( 'Return to your cart or order to continue payment.', 'sa-hosted-checkout-for-woocommerce' ) ) ); }
+			wp_safe_redirect( $url );
+			exit;
+		}
+		$this->sahcfwc_stripe_successful_checkout_order( $order->get_id(), $session_id );
 	}
 
 	/** Kept for integrations that update order metadata through this helper. */

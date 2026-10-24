@@ -20,6 +20,7 @@ final class SAHCFWC_Money {
 namespace SAHCFWC\Traits;
 
 require_once dirname( __DIR__ ) . '/classes/class-sahcfwc-payment-methods.php';
+require_once dirname( __DIR__ ) . '/classes/class-sahcfwc-checkout-experience.php';
 
 trait SAHCFWC_Order_Totals {
 	/** Convert a finalized amount to the integer minor units used by Stripe. */
@@ -27,8 +28,25 @@ trait SAHCFWC_Order_Totals {
 		return \SAHCFWC\Classes\SAHCFWC_Money::to_minor( $amount, $currency );
 	}
 
+	/** Recover a webhook-completed checkout before consumed stock/coupons are revalidated. */
+	private function sahcfwc_get_paid_cart_order_snapshot( $cart ) {
+		$order = wc_get_order( WC()->session->get( 'order_awaiting_payment', 0 ) );
+		if ( ! $order || ! $order->is_paid() || 'sahcfwc_stripe_checkout' !== $order->get_payment_method()
+			|| (int) $order->get_customer_id() !== get_current_user_id()
+			|| ! $order->get_cart_hash() || ! hash_equals( $order->get_cart_hash(), $cart->get_cart_hash() ) ) { return null; }
+		$saved_session = (string) $order->get_meta( 'sahcfwc_stripe_checkout_session_id', true );
+		$completed_session = (string) $order->get_meta( 'sahcfwc_completed_session_id', true );
+		$saved_snapshot = (string) $order->get_meta( 'sahcfwc_cart_snapshot_hash', true );
+		if ( $saved_session && $completed_session && hash_equals( $saved_session, $completed_session )
+			&& $saved_snapshot && hash_equals( $saved_snapshot, $this->sahcfwc_cart_snapshot_fingerprint( $cart ) ) ) { return $order; }
+		// A matching paid cart must never silently become a second payable order.
+		throw new \RuntimeException( __( 'Payment for this cart has already been received. Review your order before starting another checkout.', 'sa-hosted-checkout-for-woocommerce' ) );
+	}
+
 	/** A cart change must never rewrite an order with an outstanding payment session. */
 	private function sahcfwc_get_cart_order_snapshot( $cart ) {
+		$paid_order = $this->sahcfwc_get_paid_cart_order_snapshot( $cart );
+		if ( $paid_order ) { return $paid_order; }
 		do_action( 'sahcfwc_woocommerce_before_calculate_totals', $cart );
 		$awaiting_id = WC()->session->get( 'order_awaiting_payment', 0 );
 		$order = wc_get_order( $awaiting_id );
@@ -263,9 +281,10 @@ trait SAHCFWC_Order_Totals {
 		$saved_contract = $order->get_meta( 'sahcfwc_quantity_contract', true );
 		$saved_contract = is_array( $saved_contract ) && 1 === ( $saved_contract['version'] ?? 0 ) ? $saved_contract : array();
 		$saved_session_id = (string) $order->get_meta( 'sahcfwc_stripe_checkout_session_id' );
-		if ( $saved_contract && $saved_session_id ) {
-			// A customer may already have edited this hosted Session. Its contract,
-			// not the current admin settings or the starting amount, is authoritative.
+		if ( $saved_session_id ) {
+			// A valid outstanding Session remains authoritative across settings/UI
+			// changes. Never create a parallel payable Session to change presentation.
+			// Quantity-enabled Sessions may also contain a customer's edited basket.
 			$existing_client = \SAHCFWC\Classes\SAHCFWC_Payment_Completion::client_for_order( $order );
 			if ( is_wp_error( $existing_client ) ) { throw new \RuntimeException( $existing_client->get_error_message() ); }
 			$existing_session = $existing_client->checkout->sessions->retrieve( $saved_session_id, array() );
@@ -284,6 +303,7 @@ trait SAHCFWC_Order_Totals {
 			// Even a same-second replacement must have a distinct immutable request
 			// key; otherwise Stripe replays the checkout we just proved expired.
 			$order->update_meta_data( 'sahcfwc_quantity_generation', (int) $order->get_meta( 'sahcfwc_quantity_generation' ) + 1 );
+			$order->update_meta_data( 'sahcfwc_checkout_generation', (int) $order->get_meta( 'sahcfwc_checkout_generation' ) + 1 );
 			$order->save();
 			$saved_contract = array();
 		}
@@ -394,6 +414,7 @@ trait SAHCFWC_Order_Totals {
 			// Zone locations can be states, postcodes or continents, which Stripe rejects.
 			$params['shipping_address_collection'] = array( 'allowed_countries' => array( $destination ) );
 		}
+		$params = \SAHCFWC\Classes\SAHCFWC_Checkout_Experience::configure_session_params( $params, $order, $this->sahcfwc_stripe_secret );
 		foreach ( array( 'success_url', 'cancel_url', 'return_url' ) as $url_key ) {
 			if ( isset( $params[ $url_key ] ) ) {
 				$action = 'cancel_url' === $url_key ? 'sahcfwc_stripe_cancel_order' : ( 'return_url' === $url_key ? 'sahcfwc_stripe_embedded_checkout_return' : 'sahcfwc_stripe_checkout_order' );
@@ -473,8 +494,14 @@ trait SAHCFWC_Order_Totals {
 		$order->update_meta_data( 'sahcfwc_checkout_mode', $mode );
 		$order->update_meta_data( 'sahcfwc_checkout_payload_hash', $fingerprint );
 		$order->update_meta_data( 'sahcfwc_checkout_expires_at', $expires );
+		if ( ! $replay_contract ) {
+			$order->update_meta_data( 'sahcfwc_checkout_experience', isset( $params['ui_mode'] ) && 'embedded' === $params['ui_mode'] ? \SAHCFWC\Classes\SAHCFWC_Checkout_Experience::mode() : 'hosted' );
+		}
 		$order->save();
-		$idempotency = 'sahcfwc-' . hash( 'sha256', $order->get_order_key() . $fingerprint . $expires );
+		$generation = (int) $order->get_meta( 'sahcfwc_checkout_generation' );
+		// Keep pre-upgrade uncertain requests unchanged; explicit terminal replacement
+		// adds a generation so a same-second retry cannot replay an expired Session.
+		$idempotency = 'sahcfwc-' . hash( 'sha256', $order->get_order_key() . $fingerprint . $expires . ( $generation ? '-generation-' . $generation : '' ) );
 		$params = \SAHCFWC\Classes\SAHCFWC_Payment_Methods::prepare_customer( $params, $order, $client, $this->sahcfwc_stripe_secret );
 		try {
 			if ( $discount > 0 ) {

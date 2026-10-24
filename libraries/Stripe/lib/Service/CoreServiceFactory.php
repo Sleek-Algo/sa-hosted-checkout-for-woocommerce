@@ -14,6 +14,7 @@ namespace SAHCFWC\Libraries\Stripe\Service;
  * @property ApplicationFeeService $applicationFees
  * @property Apps\AppsServiceFactory $apps
  * @property BalanceService $balance
+ * @property BalanceSettingsService $balanceSettings
  * @property BalanceTransactionService $balanceTransactions
  * @property Billing\BillingServiceFactory $billing
  * @property BillingPortal\BillingPortalServiceFactory $billingPortal
@@ -37,6 +38,7 @@ namespace SAHCFWC\Libraries\Stripe\Service;
  * @property Forwarding\ForwardingServiceFactory $forwarding
  * @property Identity\IdentityServiceFactory $identity
  * @property InvoiceItemService $invoiceItems
+ * @property InvoicePaymentService $invoicePayments
  * @property InvoiceRenderingTemplateService $invoiceRenderingTemplates
  * @property InvoiceService $invoices
  * @property Issuing\IssuingServiceFactory $issuing
@@ -78,7 +80,7 @@ namespace SAHCFWC\Libraries\Stripe\Service;
  * @property WebhookEndpointService $webhookEndpoints
  * // Doc: The end of the section generated from our OpenAPI spec
  */
-class CoreServiceFactory extends \SAHCFWC\Libraries\Stripe\Service\AbstractServiceFactory
+class CoreServiceFactory extends AbstractServiceFactory
 {
     /**
      * @var array<string, string>
@@ -93,6 +95,7 @@ class CoreServiceFactory extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
         'applicationFees' => ApplicationFeeService::class,
         'apps' => Apps\AppsServiceFactory::class,
         'balance' => BalanceService::class,
+        'balanceSettings' => BalanceSettingsService::class,
         'balanceTransactions' => BalanceTransactionService::class,
         'billing' => Billing\BillingServiceFactory::class,
         'billingPortal' => BillingPortal\BillingPortalServiceFactory::class,
@@ -116,6 +119,7 @@ class CoreServiceFactory extends \SAHCFWC\Libraries\Stripe\Service\AbstractServi
         'forwarding' => Forwarding\ForwardingServiceFactory::class,
         'identity' => Identity\IdentityServiceFactory::class,
         'invoiceItems' => InvoiceItemService::class,
+        'invoicePayments' => InvoicePaymentService::class,
         'invoiceRenderingTemplates' => InvoiceRenderingTemplateService::class,
         'invoices' => InvoiceService::class,
         'issuing' => Issuing\IssuingServiceFactory::class,

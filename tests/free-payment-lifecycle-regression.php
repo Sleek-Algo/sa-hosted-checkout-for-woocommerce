@@ -23,7 +23,7 @@ if ( ! isset( $qa_host['host'], $qa_host['port'] ) || '127.0.0.1' !== $qa_host['
 	|| ! defined( 'WP_HTTP_BLOCK_EXTERNAL' ) || ! WP_HTTP_BLOCK_EXTERNAL ) {
 	throw new RuntimeException( 'Requires the FREE local 127.0.0.1:8888 site in Stripe test mode with HTTP blocked at bootstrap.' );
 }
-require_once dirname( __DIR__ ) . '/includes/classes/class-sahcfwc-payment-completion.php';
+require_once SAHCFWC_DIR . '/includes/classes/class-sahcfwc-payment-completion.php';
 
 use SAHCFWC\Classes\SAHCFWC_Payment_Completion as QA_Completion;
 use SAHCFWC\Classes\SAHCFWC_Money as QA_Money;
@@ -43,7 +43,7 @@ class SAHCFWC_Test_Lifecycle_HTTP implements \SAHCFWC\Libraries\Stripe\HttpClien
 	public $session = array();
 	public $calls = 0;
 	public $unavailable = false;
-	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1' ) {
+	public function request( $method, $url, $headers, $params, $has_file, $api_mode = 'v1', $max_network_retries = null ) {
 		++$this->calls;
 		if ( $this->unavailable ) { throw new RuntimeException( 'Simulated offline transport failure.' ); }
 		$path = wp_parse_url( $url, PHP_URL_PATH );
@@ -64,6 +64,7 @@ class SAHCFWC_Test_Lifecycle {
 	public static $payment_events = 0;
 	public static $fixture_ids = array( 'products' => array(), 'coupons' => array(), 'orders' => array(), 'users' => array() );
 	public static $checks = array();
+	public static $payment_error_code = '';
 	public static $options = array(
 		'woocommerce_manage_stock' => 'yes', 'woocommerce_hold_stock_minutes' => '60',
 		'woocommerce_calc_taxes' => 'no', 'woocommerce_currency' => 'USD',
@@ -128,7 +129,9 @@ class SAHCFWC_Test_Lifecycle {
 		);
 	}
 	public static function pending( $fixture ) {
-		return QA_Completion::pending( $fixture['order'], self::$transport->session, self::$client );
+		$result = QA_Completion::pending( $fixture['order'], self::$transport->session, self::$client );
+		self::$payment_error_code = is_wp_error( $result ) ? sanitize_key( $result->get_error_code() ) : '';
+		return $result;
 	}
 	public static function complete( $fixture ) {
 		return QA_Completion::complete( $fixture['order'], self::$transport->session, self::$client );
@@ -326,7 +329,7 @@ class SAHCFWC_Test_Lifecycle {
 		} elseif ( 'lock_contention' === $case ) {
 			global $wpdb;
 			$other = new wpdb( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST );
-			$name = 'sahcfwc_' . md5( $wpdb->prefix . ':' . get_current_blog_id() . ':' . $fixture['order'] );
+			$name = 'sahcfwc_' . md5( $wpdb->dbname . ':' . $wpdb->prefix . ':' . get_current_blog_id() . ':' . $fixture['order'] );
 			try {
 				self::check( 'separate_connection_lock_acquired', '1' === (string) $other->get_var( $other->prepare( 'SELECT GET_LOCK(%s,0)', $name ) ) );
 				$result = self::pending( $fixture );
@@ -372,7 +375,7 @@ if ( ! empty( $args[0] ) ) {
 $qa_report = array( 'suite' => 'free-delayed-payment-lifecycle', 'network' => 'SDK mocked; WordPress HTTP and mail blocked', 'php' => PHP_VERSION,
 	'woocommerce' => WC_VERSION, 'results' => array(), 'pass' => false );
 $qa_sources = array( 'includes/classes/class-sahcfwc-payment-completion.php', 'includes/classes/class-sahcfwc-post-checkout.php', 'includes/webhooks/class-sahcfwc-stripe-listener.php', 'includes/traits/sahcfwc-order-totals.php' );
-foreach ( $qa_sources as $qa_source ) { $qa_report['source_hashes'][ $qa_source ] = hash_file( 'sha256', dirname( __DIR__ ) . '/' . $qa_source ); }
+foreach ( $qa_sources as $qa_source ) { $qa_report['source_hashes'][ $qa_source ] = hash_file( 'sha256', SAHCFWC_DIR . '/' . $qa_source ); }
 global $wpdb;
 $qa_active = false;
 register_shutdown_function( function () use ( $wpdb, &$qa_active ) { if ( $qa_active ) { $wpdb->query( 'ROLLBACK' ); } } );
@@ -395,6 +398,7 @@ try {
 	wp_set_current_user( 0 ); WC()->cart = null; WC()->customer = null; WC()->session = null; WC()->mailer();
 	foreach ( $qa_cases as $qa_case ) {
 		SAHCFWC_Test_Lifecycle::$checks = array();
+		SAHCFWC_Test_Lifecycle::$payment_error_code = '';
 		try {
 			$qa_result = SAHCFWC_Test_Lifecycle::run( $qa_case );
 			$qa_result['pass'] = true;
@@ -402,6 +406,7 @@ try {
 			// Do not print transport/credentials or arbitrary exception data.
 			$qa_result = array( 'pass' => false, 'error_type' => get_class( $qa_error ), 'line' => $qa_error->getLine(),
 				'assertion' => 0 === strpos( $qa_error->getMessage(), 'Assertion failed:' ) ? $qa_error->getMessage() : 'Fixture or implementation error; inspect the reported file and line.', 'file' => basename( $qa_error->getFile() ) );
+			$qa_result['payment_error_code'] = SAHCFWC_Test_Lifecycle::$payment_error_code;
 		}
 		$qa_result['checks'] = SAHCFWC_Test_Lifecycle::$checks;
 		$qa_report['results'][ $qa_case ] = $qa_result;
@@ -428,7 +433,7 @@ try {
 	$qa_report['rollback_clean'] = 0 === array_sum( $qa_report['rollback_rows'] );
 	$qa_report['source_stable'] = true;
 	foreach ( $qa_sources as $qa_source ) {
-		if ( $qa_report['source_hashes'][ $qa_source ] !== hash_file( 'sha256', dirname( __DIR__ ) . '/' . $qa_source ) ) { $qa_report['source_stable'] = false; }
+		if ( $qa_report['source_hashes'][ $qa_source ] !== hash_file( 'sha256', SAHCFWC_DIR . '/' . $qa_source ) ) { $qa_report['source_stable'] = false; }
 	}
 	$qa_report['pass'] = $qa_report['pass'] && $qa_report['rollback_clean'] && $qa_report['source_stable'];
 	echo wp_json_encode( $qa_report, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) . PHP_EOL;

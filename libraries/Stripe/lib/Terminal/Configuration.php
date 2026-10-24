@@ -6,18 +6,21 @@ namespace SAHCFWC\Libraries\Stripe\Terminal;
 
 /**
  * A Configurations object represents how features should be configured for terminal readers.
+ * For information about how to use it, see the <a href="https://docs.stripe.com/terminal/fleet/configurations-overview">Terminal configurations documentation</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $bbpos_wisepos_e
+ * @property null|(object{splashscreen?: string|\SAHCFWC\Libraries\Stripe\File}&\SAHCFWC\Libraries\Stripe\StripeObject) $bbpos_wisepad3
+ * @property null|(object{splashscreen?: string|\SAHCFWC\Libraries\Stripe\File}&\SAHCFWC\Libraries\Stripe\StripeObject) $bbpos_wisepos_e
  * @property null|bool $is_account_default Whether this Configuration is the default for your account
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $name String indicating the name of the Configuration object, set by the user
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $offline
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $reboot_window
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $stripe_s700
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $tipping
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $verifone_p400
+ * @property null|(object{enabled: null|bool}&\SAHCFWC\Libraries\Stripe\StripeObject) $offline
+ * @property null|(object{end_hour: int, start_hour: int}&\SAHCFWC\Libraries\Stripe\StripeObject) $reboot_window
+ * @property null|(object{splashscreen?: string|\SAHCFWC\Libraries\Stripe\File}&\SAHCFWC\Libraries\Stripe\StripeObject) $stripe_s700
+ * @property null|(object{aed?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), aud?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), bgn?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), cad?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), chf?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), czk?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), dkk?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), eur?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), gbp?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), hkd?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), huf?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), jpy?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), mxn?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), myr?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), nok?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), nzd?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), pln?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), ron?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), sek?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), sgd?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject), usd?: (object{fixed_amounts?: null|int[], percentages?: null|int[], smart_tip_threshold?: int}&\SAHCFWC\Libraries\Stripe\StripeObject)}&\SAHCFWC\Libraries\Stripe\StripeObject) $tipping
+ * @property null|(object{splashscreen?: string|\SAHCFWC\Libraries\Stripe\File}&\SAHCFWC\Libraries\Stripe\StripeObject) $verifone_p400
+ * @property null|(object{enterprise_eap_peap?: (object{ca_certificate_file?: string, password: string, ssid: string, username: string}&\SAHCFWC\Libraries\Stripe\StripeObject), enterprise_eap_tls?: (object{ca_certificate_file?: string, client_certificate_file: string, private_key_file: string, private_key_file_password?: string, ssid: string}&\SAHCFWC\Libraries\Stripe\StripeObject), personal_psk?: (object{password: string, ssid: string}&\SAHCFWC\Libraries\Stripe\StripeObject), type: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $wifi
  */
 class Configuration extends \SAHCFWC\Libraries\Stripe\ApiResource
 {
@@ -28,12 +31,12 @@ class Configuration extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Creates a new <code>Configuration</code> object.
      *
-     * @param null|array $params
+     * @param null|array{bbpos_wisepad3?: array{splashscreen?: null|string}, bbpos_wisepos_e?: array{splashscreen?: null|string}, expand?: string[], name?: string, offline?: null|array{enabled: bool}, reboot_window?: array{end_hour: int, start_hour: int}, stripe_s700?: array{splashscreen?: null|string}, tipping?: null|array{aed?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, aud?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, bgn?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, cad?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, chf?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, czk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, dkk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, eur?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, gbp?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, hkd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, huf?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, jpy?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, mxn?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, myr?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nok?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nzd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, pln?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, ron?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sek?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sgd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, usd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}}, verifone_p400?: array{splashscreen?: null|string}, wifi?: null|array{enterprise_eap_peap?: array{ca_certificate_file?: string, password: string, ssid: string, username: string}, enterprise_eap_tls?: array{ca_certificate_file?: string, client_certificate_file: string, private_key_file: string, private_key_file_password?: string, ssid: string}, personal_psk?: array{password: string, ssid: string}, type: string}} $params
      * @param null|array|string $options
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Configuration the created resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Terminal\Configuration the created resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -53,9 +56,9 @@ class Configuration extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Configuration the deleted resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Terminal\Configuration the deleted resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -71,12 +74,12 @@ class Configuration extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Returns a list of <code>Configuration</code> objects.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], is_account_default?: bool, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<Configuration> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Terminal\Configuration> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -91,9 +94,9 @@ class Configuration extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Configuration
      *
-     * @return \SAHCFWC\Libraries\Stripe\Terminal\Configuration
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -108,12 +111,12 @@ class Configuration extends \SAHCFWC\Libraries\Stripe\ApiResource
      * Updates a new <code>Configuration</code> object.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{bbpos_wisepad3?: null|array{splashscreen?: null|string}, bbpos_wisepos_e?: null|array{splashscreen?: null|string}, expand?: string[], name?: string, offline?: null|array{enabled: bool}, reboot_window?: null|array{end_hour: int, start_hour: int}, stripe_s700?: null|array{splashscreen?: null|string}, tipping?: null|array{aed?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, aud?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, bgn?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, cad?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, chf?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, czk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, dkk?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, eur?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, gbp?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, hkd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, huf?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, jpy?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, mxn?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, myr?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nok?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, nzd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, pln?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, ron?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sek?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, sgd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}, usd?: array{fixed_amounts?: int[], percentages?: int[], smart_tip_threshold?: int}}, verifone_p400?: null|array{splashscreen?: null|string}, wifi?: null|array{enterprise_eap_peap?: array{ca_certificate_file?: string, password: string, ssid: string, username: string}, enterprise_eap_tls?: array{ca_certificate_file?: string, client_certificate_file: string, private_key_file: string, private_key_file_password?: string, ssid: string}, personal_psk?: array{password: string, ssid: string}, type: string}} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Configuration the updated resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Terminal\Configuration the updated resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

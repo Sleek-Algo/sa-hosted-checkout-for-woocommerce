@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Issuing;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class CardholderService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -15,12 +16,12 @@ class CardholderService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServic
      * sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
-     * @param null|array $params
+     * @param null|array{created?: array|int, email?: string, ending_before?: string, expand?: string[], limit?: int, phone_number?: string, starting_after?: string, status?: string, type?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Issuing\Cardholder>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -30,12 +31,12 @@ class CardholderService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServic
     /**
      * Creates a new Issuing <code>Cardholder</code> object that can be issued cards.
      *
-     * @param null|array $params
+     * @param null|array{billing: array{address: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state?: string}}, company?: array{tax_id?: string}, email?: string, expand?: string[], individual?: array{card_issuing?: array{user_terms_acceptance?: array{date?: int, ip?: string, user_agent?: null|string}}, dob?: array{day: int, month: int, year: int}, first_name?: string, last_name?: string, verification?: array{document?: array{back?: string, front?: string}}}, metadata?: array<string, string>, name: string, phone_number?: string, preferred_locales?: string[], spending_controls?: array{allowed_categories?: string[], allowed_merchant_countries?: string[], blocked_categories?: string[], blocked_merchant_countries?: string[], spending_limits?: array{amount: int, categories?: string[], interval: string}[], spending_limits_currency?: string}, status?: string, type?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Issuing\Cardholder
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -46,12 +47,12 @@ class CardholderService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServic
      * Retrieves an Issuing <code>Cardholder</code> object.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Issuing\Cardholder
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -64,12 +65,12 @@ class CardholderService extends \SAHCFWC\Libraries\Stripe\Service\AbstractServic
      * unchanged.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{billing?: array{address: array{city: string, country: string, line1: string, line2?: string, postal_code: string, state?: string}}, company?: array{tax_id?: string}, email?: string, expand?: string[], individual?: array{card_issuing?: array{user_terms_acceptance?: array{date?: int, ip?: string, user_agent?: null|string}}, dob?: array{day: int, month: int, year: int}, first_name?: string, last_name?: string, verification?: array{document?: array{back?: string, front?: string}}}, metadata?: array<string, string>, phone_number?: string, preferred_locales?: string[], spending_controls?: array{allowed_categories?: string[], allowed_merchant_countries?: string[], blocked_categories?: string[], blocked_merchant_countries?: string[], spending_limits?: array{amount: int, categories?: string[], interval: string}[], spending_limits_currency?: string}, status?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Issuing\Cardholder
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function update($id, $params = null, $opts = null)
     {

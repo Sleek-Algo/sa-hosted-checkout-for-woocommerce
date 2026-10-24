@@ -2,6 +2,4 @@
 
 namespace SAHCFWC\Libraries\Stripe\Exception;
 
-class UnexpectedValueException extends \UnexpectedValueException implements ExceptionInterface
-{
-}
+class UnexpectedValueException extends \UnexpectedValueException implements ExceptionInterface {}

@@ -13,7 +13,7 @@ namespace SAHCFWC\Libraries\Stripe\Billing;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $status Status of the alert. This can be active, inactive or archived.
  * @property string $title Title of the alert.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $usage_threshold Encapsulates configuration of the alert to monitor usage on a specific <a href="https://stripe.com/docs/api/billing/meter">Billing Meter</a>.
+ * @property null|(object{filters: null|((object{customer: null|string|\SAHCFWC\Libraries\Stripe\Customer, type: string}&\SAHCFWC\Libraries\Stripe\StripeObject))[], gte: int, meter: Meter|string, recurrence: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $usage_threshold Encapsulates configuration of the alert to monitor usage on a specific <a href="https://stripe.com/docs/api/billing/meter">Billing Meter</a>.
  */
 class Alert extends \SAHCFWC\Libraries\Stripe\ApiResource
 {
@@ -26,12 +26,12 @@ class Alert extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Creates a billing alert.
      *
-     * @param null|array $params
+     * @param null|array{alert_type: string, expand?: string[], title: string, usage_threshold?: array{filters?: array{customer?: string, type: string}[], gte: int, meter: string, recurrence: string}} $params
      * @param null|array|string $options
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert the created resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Billing\Alert the created resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -48,12 +48,12 @@ class Alert extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Lists billing active and inactive alerts.
      *
-     * @param null|array $params
+     * @param null|array{alert_type?: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<Alert> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Billing\Alert> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -68,9 +68,9 @@ class Alert extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert
      *
-     * @return \SAHCFWC\Libraries\Stripe\Billing\Alert
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -85,9 +85,9 @@ class Alert extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert the activated alert
      *
-     * @return \SAHCFWC\Libraries\Stripe\Billing\Alert the activated alert
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function activate($params = null, $opts = null)
     {
@@ -102,9 +102,9 @@ class Alert extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert the archived alert
      *
-     * @return \SAHCFWC\Libraries\Stripe\Billing\Alert the archived alert
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function archive($params = null, $opts = null)
     {
@@ -119,9 +119,9 @@ class Alert extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return Alert the deactivated alert
      *
-     * @return \SAHCFWC\Libraries\Stripe\Billing\Alert the deactivated alert
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function deactivate($params = null, $opts = null)
     {

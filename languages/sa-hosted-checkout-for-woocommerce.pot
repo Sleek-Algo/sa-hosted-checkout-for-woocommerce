@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: SA Hosted Checkout for WooCommerce 1.0.7\n"
+"Project-Id-Version: SA Hosted Checkout for WooCommerce 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sa-hosted-checkout-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-08T07:05:03+00:00\n"
+"POT-Creation-Date: 2026-10-16T22:34:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sa-hosted-checkout-for-woocommerce\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #. Description of the plugin
 #: sa-hosted-checkout-for-woocommerce.php
-msgid "Connect WooCommerce to Stripe Checkout with cart coupons, payment-method and language selection, and optional product quantity changes."
+msgid "Offer hosted, embedded page or popup Stripe Checkout with branding controls, WooCommerce coupons, payment-method selection and quantity options."
 msgstr ""
 
 #. Author of the plugin
@@ -40,35 +40,118 @@ msgstr ""
 msgid "https://www.sleekalgo.com/"
 msgstr ""
 
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:306
-msgid "Unable to start checkout. Please try again."
-msgstr ""
-
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:321
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:289
 msgid "A security error has occurred. Please refresh the page and try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:338
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:306
 msgid "Stripe Checkout is disabled."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:426
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:429
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:325
+#: includes/traits/sahcfwc-order-totals.php:43
+msgid "Payment for this cart has already been received. Review your order before starting another checkout."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:409
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:412
 #: includes/classes/class-sahcfwc-payment-gateway.php:492
 msgid "Unable to start Stripe Checkout. Please try again or contact the store."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:494
-#: includes/classes/class-sahcfwc-payment-gateway.php:563
-#: includes/traits/sahcfwc-order-totals.php:205
+#: includes/classes/class-sahcfwc-checkout-button-url-ajax.php:477
+#: includes/classes/class-sahcfwc-payment-gateway.php:560
+#: includes/traits/sahcfwc-order-totals.php:223
 msgid "Tax"
 msgstr ""
 
+#: includes/classes/class-sahcfwc-checkout-experience.php:97
+msgid "Use a public HTTPS image URL ending in .png, .jpg, .jpeg, .jfif, .pjpeg, .pjp, or .svg for the Hosted Checkout logo."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:127
+msgid "Choose a published page containing [sahcfwc_checkout], or use the automatic payment page."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:162
+msgid "Secure payment"
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:174
+msgid "The payment page is unavailable. Ask the store to save its checkout settings and try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:191
+msgid "Embedded Checkout requires a valid Stripe publishable key for the selected payment mode."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:231
+#: includes/traits/sahcfwc-order-totals.php:260
+msgid "The order could not be found."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:236
+#: includes/classes/class-sahcfwc-payment-completion.php:88
+#: includes/classes/class-sahcfwc-payment-completion.php:95
+#: includes/classes/class-sahcfwc-post-checkout.php:65
+#: includes/classes/class-sahcfwc-post-checkout.php:115
+#: includes/classes/class-sahcfwc-post-checkout.php:164
+#: includes/webhooks/class-sahcfwc-stripe-listener.php:80
+msgid "This checkout does not match the order."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:239
+msgid "Checkout is unavailable. Please try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:244
+msgid "Embedded Checkout requires a valid Stripe publishable key. Please contact the store."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:250
+msgid "The payment session could not be loaded. Please try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:262
 #: includes/classes/class-sahcfwc-payment-completion.php:60
-#: includes/classes/class-sahcfwc-post-checkout.php:34
-#: includes/classes/class-sahcfwc-post-checkout.php:42
-#: includes/classes/class-sahcfwc-post-checkout.php:111
+#: includes/classes/class-sahcfwc-post-checkout.php:35
+#: includes/classes/class-sahcfwc-post-checkout.php:43
+#: includes/classes/class-sahcfwc-post-checkout.php:112
 msgid "The checkout link is invalid or has expired."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:295
+msgid "Start checkout from your cart or order to open secure payment."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:303
+msgid "Loading secure payment..."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:309
+msgid "Use a valid checkout link to continue."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:314
+msgid "Your checkout link has expired. Refresh the page and try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:321
+#: includes/classes/class-sahcfwc-payment-completion.php:85
+#: includes/webhooks/class-sahcfwc-stripe-listener.php:77
+msgid "Checkout is still being prepared. Please try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:329
+msgid "This payment session has ended. Return to your cart or order to start checkout again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:334
+msgid "Unable to load secure payment. Refresh the page or return to your cart and try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:352
+msgid "Unable to start checkout. Please try again."
 msgstr ""
 
 #: includes/classes/class-sahcfwc-payment-completion.php:72
@@ -79,26 +162,13 @@ msgstr ""
 msgid "This checkout does not match a payable order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:85
-#: includes/webhooks/class-sahcfwc-stripe-listener.php:77
-msgid "Checkout is still being prepared. Please try again."
-msgstr ""
-
-#: includes/classes/class-sahcfwc-payment-completion.php:88
-#: includes/classes/class-sahcfwc-payment-completion.php:95
-#: includes/classes/class-sahcfwc-post-checkout.php:64
-#: includes/classes/class-sahcfwc-post-checkout.php:114
-#: includes/webhooks/class-sahcfwc-stripe-listener.php:80
-msgid "This checkout does not match the order."
-msgstr ""
-
 #: includes/classes/class-sahcfwc-payment-completion.php:102
 #: includes/classes/class-sahcfwc-payment-completion.php:111
 msgid "The payment could not be verified for this order."
 msgstr ""
 
 #: includes/classes/class-sahcfwc-payment-completion.php:107
-#: includes/classes/class-sahcfwc-post-checkout.php:71
+#: includes/classes/class-sahcfwc-post-checkout.php:72
 #: includes/webhooks/class-sahcfwc-stripe-listener.php:85
 msgid "Unable to verify the payment. Please try again."
 msgstr ""
@@ -112,57 +182,57 @@ msgstr ""
 msgid "The payment mode does not match the order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:142
+#: includes/classes/class-sahcfwc-payment-completion.php:143
 msgid "The payment is being processed. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:159
+#: includes/classes/class-sahcfwc-payment-completion.php:160
 msgid "Unable to verify the latest order state. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:179
+#: includes/classes/class-sahcfwc-payment-completion.php:180
 msgid "This checkout has expired. Return to your cart to try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:188
+#: includes/classes/class-sahcfwc-payment-completion.php:189
 msgid "Payment has not been confirmed yet."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:193
-#: includes/classes/class-sahcfwc-payment-completion.php:239
+#: includes/classes/class-sahcfwc-payment-completion.php:194
+#: includes/classes/class-sahcfwc-payment-completion.php:240
 msgid "The payment could not be verified."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:199
+#: includes/classes/class-sahcfwc-payment-completion.php:200
 msgid "The payment does not match the completed order."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:204
+#: includes/classes/class-sahcfwc-payment-completion.php:205
 msgid "This order can no longer be completed."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:213
+#: includes/classes/class-sahcfwc-payment-completion.php:214
 msgid "Unable to update the order payment status. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:231
+#: includes/classes/class-sahcfwc-payment-completion.php:232
 msgid "This checkout is not awaiting payment confirmation."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:235
+#: includes/classes/class-sahcfwc-payment-completion.php:236
 msgid "This order is no longer awaiting payment."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:247
+#: includes/classes/class-sahcfwc-payment-completion.php:248
 msgid "Stripe payment submitted; awaiting confirmation. Do not fulfill this order yet."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:257
+#: includes/classes/class-sahcfwc-payment-completion.php:258
 #: includes/webhooks/class-sahcfwc-stripe-listener.php:112
 msgid "Payment confirmation is still being processed. Please retry."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-payment-completion.php:264
+#: includes/classes/class-sahcfwc-payment-completion.php:265
 msgid "Stripe reported that the payment failed."
 msgstr ""
 
@@ -180,7 +250,7 @@ msgid "Enable/Disable"
 msgstr ""
 
 #: includes/classes/class-sahcfwc-payment-gateway.php:273
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:252
+#: node-dev/shared/StripeSettings.jsx:198
 msgid "Enable Stripe Checkout"
 msgstr ""
 
@@ -220,6 +290,10 @@ msgstr ""
 msgid "This order cannot be paid through Stripe Checkout. Please check the order and payment settings."
 msgstr ""
 
+#: includes/classes/class-sahcfwc-payment-gateway.php:501
+msgid "Unable to load Stripe Checkout. Please try again or contact the store."
+msgstr ""
+
 #: includes/classes/class-sahcfwc-payment-methods.php:100
 msgid "No configured payment method supports this order currency. Please contact the store."
 msgstr ""
@@ -240,20 +314,28 @@ msgstr ""
 msgid "The bank transfer customer could not be verified."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-post-checkout.php:77
+#: includes/classes/class-sahcfwc-post-checkout.php:78
 msgid "Your payment is awaiting confirmation."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-post-checkout.php:129
+#: includes/classes/class-sahcfwc-post-checkout.php:130
 msgid "Checkout could not be cancelled. Please try again."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-post-checkout.php:132
+#: includes/classes/class-sahcfwc-post-checkout.php:133
 msgid "Stripe Checkout was cancelled."
 msgstr ""
 
-#: includes/classes/class-sahcfwc-post-checkout.php:137
+#: includes/classes/class-sahcfwc-post-checkout.php:138
 msgid "Unable to cancel checkout. Please try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-post-checkout.php:167
+msgid "Unable to verify checkout. Please try again."
+msgstr ""
+
+#: includes/classes/class-sahcfwc-post-checkout.php:174
+msgid "Return to your cart or order to continue payment."
 msgstr ""
 
 #: includes/classes/class-sahcfwc-pre-checkout.php:102
@@ -534,86 +616,82 @@ msgstr ""
 msgid "Chinese (Traditional)"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:39
+#: includes/traits/sahcfwc-order-totals.php:57
 msgid "Payment for this cart is awaiting confirmation. Check your order before paying again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:103
+#: includes/traits/sahcfwc-order-totals.php:121
 msgid "Unable to create an order. Please try again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:119
+#: includes/traits/sahcfwc-order-totals.php:137
 msgid "Coupons are disabled. Remove the coupon from your cart before continuing."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:242
-msgid "The order could not be found."
-msgstr ""
-
-#: includes/traits/sahcfwc-order-totals.php:253
+#: includes/traits/sahcfwc-order-totals.php:271
 msgid "This order does not require payment."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:258
+#: includes/traits/sahcfwc-order-totals.php:276
 msgid "Stripe requires a whole-number order total for this currency."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:261
+#: includes/traits/sahcfwc-order-totals.php:279
 msgid "Complete this order through the WooCommerce checkout."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:276
+#: includes/traits/sahcfwc-order-totals.php:295
 msgid "This checkout is about to expire. Please wait a moment before trying again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:279
-#: includes/traits/sahcfwc-order-totals.php:451
-#: includes/traits/sahcfwc-order-totals.php:537
+#: includes/traits/sahcfwc-order-totals.php:298
+#: includes/traits/sahcfwc-order-totals.php:472
+#: includes/traits/sahcfwc-order-totals.php:564
 msgid "This payment is being processed. Please check your order before trying again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:298
+#: includes/traits/sahcfwc-order-totals.php:318
 msgid "This order changed while checkout was being prepared. Verify the existing payment before trying again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:301
-#: includes/traits/sahcfwc-order-totals.php:438
+#: includes/traits/sahcfwc-order-totals.php:321
+#: includes/traits/sahcfwc-order-totals.php:459
 msgid "Stripe credentials changed while checkout was being prepared. Restore the original credentials and verify this order before retrying."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:322
+#: includes/traits/sahcfwc-order-totals.php:342
 msgid "Quantity changes require a configured Stripe webhook. Please contact the store."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:341
+#: includes/traits/sahcfwc-order-totals.php:361
 msgid "Shipping"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:344
+#: includes/traits/sahcfwc-order-totals.php:364
 msgid "Rounding adjustment"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:362
+#: includes/traits/sahcfwc-order-totals.php:382
 msgid "The order cannot be represented accurately in Stripe Checkout. Please contact the store."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:392
+#: includes/traits/sahcfwc-order-totals.php:412
 msgid "Select a shipping country before starting payment."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:409
+#: includes/traits/sahcfwc-order-totals.php:430
 msgid "Order adjustment"
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:431
+#: includes/traits/sahcfwc-order-totals.php:452
 msgid "Checkout settings changed while payment was being prepared. Restore the previous settings and verify the existing payment before trying again."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:448
+#: includes/traits/sahcfwc-order-totals.php:469
 msgid "An active payment session already exists for this order. Return to the cart to start a new checkout."
 msgstr ""
 
-#: includes/traits/sahcfwc-order-totals.php:554
+#: includes/traits/sahcfwc-order-totals.php:581
 msgid "The payment total could not be verified. Please try again or contact the store."
 msgstr ""
 
@@ -871,7 +949,7 @@ msgid "The payment does not match the order."
 msgstr ""
 
 #: sa-hosted-checkout-for-woocommerce.php:71
-msgid "SA Hosted Checkout for WooCommerce requires WooCommerce 8.6 or later. Update WooCommerce to enable hosted checkout."
+msgid "SA Hosted Checkout for WooCommerce requires WooCommerce 8.6 or later. Update WooCommerce to enable Stripe Checkout."
 msgstr ""
 
 #: sa-hosted-checkout-for-woocommerce.php:92
@@ -889,7 +967,7 @@ msgid "Support"
 msgstr ""
 
 #: node-dev/free-app/components/Header.jsx:34
-#: node-dev/free-app/components/TabContent/Features.jsx:199
+#: node-dev/free-app/components/TabContent/Features.jsx:211
 #: node-dev/free-app/components/TabContent/StripeSessions.jsx:374
 msgid "Upgrade to Premium "
 msgstr ""
@@ -907,7 +985,6 @@ msgid "The WooCommerce store country must match the country associated with your
 msgstr ""
 
 #: node-dev/free-app/components/NavTabs.jsx:111
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:244
 msgid "Stripe Settings"
 msgstr ""
 
@@ -938,12 +1015,10 @@ msgid "Unable to save checkout settings. Please try again."
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:104
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:130
 msgid "reset"
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:108
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:134
 msgid "Submit"
 msgstr ""
 
@@ -965,8 +1040,7 @@ msgstr ""
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:272
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:412
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:576
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:268
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:414
+#: node-dev/shared/StripeSettings.jsx:67
 msgid "Enable"
 msgstr ""
 
@@ -976,8 +1050,7 @@ msgstr ""
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:279
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:419
 #: node-dev/free-app/components/TabContent/CheckoutSetting.jsx:583
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:275
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:421
+#: node-dev/shared/StripeSettings.jsx:68
 msgid "Disable"
 msgstr ""
 
@@ -1146,70 +1219,78 @@ msgid "This option allows the display of the custom field on the Stripe checkout
 msgstr ""
 
 #: node-dev/free-app/components/TabContent/Features.jsx:32
+msgid "Checkout experiences: Hosted Stripe page, embedded payment page or embedded popup."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/Features.jsx:38
+msgid "Branding controls: Customize the checkout display name, colors, font and corner shape. Add a logo override for hosted checkout, or keep your Stripe Dashboard branding."
+msgstr ""
+
+#: node-dev/free-app/components/TabContent/Features.jsx:44
 msgid "Stripe Integration mode: Provides two modes of integration \"Live mode\" & \"Test mode\"."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:41
+#: node-dev/free-app/components/TabContent/Features.jsx:53
 msgid "Shipping Address option: Add shipping address to be displayed on checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:50
+#: node-dev/free-app/components/TabContent/Features.jsx:62
 msgid "Custom Phone number option: Add Phone number field to be displayed on checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:59
+#: node-dev/free-app/components/TabContent/Features.jsx:71
 msgid "Custom Cancel URL: Let your customer redirect to a specified URL after cancelling an order."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:68
+#: node-dev/free-app/components/TabContent/Features.jsx:80
 msgid "Cancelled checkout: Optionally remove the unpaid temporary order when the customer cancels."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:77
+#: node-dev/free-app/components/TabContent/Features.jsx:89
 msgid "Payment methods: Choose eligible Stripe payment methods for Checkout."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:86
+#: node-dev/free-app/components/TabContent/Features.jsx:98
 msgid "Checkout language: Use the browser language or choose a supported Stripe language."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:95
+#: node-dev/free-app/components/TabContent/Features.jsx:107
 msgid "Custom text before & after submit button: Add custom text to be displayed before and after submit button of Stripe Checkout."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:104
+#: node-dev/free-app/components/TabContent/Features.jsx:116
 msgid "Allow quantity changes for eligible products in Stripe Checkout (optional)."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:113
+#: node-dev/free-app/components/TabContent/Features.jsx:125
 msgid "Stripe Checkout Sessions Information: Ability to view all the Stripe Checkout sessions created on the web store with their status of completion and customer information."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:122
+#: node-dev/free-app/components/TabContent/Features.jsx:134
 msgid "Admin test mode: This option automatically enables test mode of payment for administrators of the website."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:131
+#: node-dev/free-app/components/TabContent/Features.jsx:143
 msgid "Custom Thank You page: Redirect your customers to a tailored thankyou page as per your choice."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:140
+#: node-dev/free-app/components/TabContent/Features.jsx:152
 msgid "Custom fields option: Ability to display custom fields on the Stripe checkout page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:149
+#: node-dev/free-app/components/TabContent/Features.jsx:161
 msgid "WooCommerce coupons: Discounts applied in WooCommerce are reflected in Stripe Checkout."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:159
+#: node-dev/free-app/components/TabContent/Features.jsx:171
 msgid "Feature List"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:165
+#: node-dev/free-app/components/TabContent/Features.jsx:177
 msgid "Free"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/Features.jsx:171
+#: node-dev/free-app/components/TabContent/Features.jsx:183
 msgid "Premium"
 msgstr ""
 
@@ -1374,171 +1455,294 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:52
-msgid "yes"
+#: node-dev/frontend/checkout/index.js:4
+msgid "Unable to load secure checkout. Please try again."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:53
-msgid "no"
+#: node-dev/frontend/checkout/index.js:135
+#: node-dev/frontend/checkout/index.js:497
+#: includes/classes/class-sahcfwc-checkout-experience.php:323
+msgid "Loading secure checkout…"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:75
+#: node-dev/frontend/checkout/index.js:202
+msgid "Secure checkout"
+msgstr ""
+
+#: node-dev/frontend/checkout/index.js:204
+msgid "Close"
+msgstr ""
+
+#: node-dev/frontend/checkout/index.js:206
+msgid "Close checkout and return to your cart"
+msgstr ""
+
+#: node-dev/frontend/checkout/index.js:212
+msgid "Continue on the payment page"
+msgstr ""
+
+#: node-dev/frontend/checkout/index.js:416
+msgid "Your cart is updating. Please wait and try again."
+msgstr ""
+
+#: node-dev/frontend/checkout/index.js:425
+msgid "Your cart changed. Please review it and start checkout again."
+msgstr ""
+
+#: node-dev/frontend/checkout/index.js:486
+#: node-dev/frontend/checkout/index.js:511
+msgid "Open secure checkout"
+msgstr ""
+
+#: node-dev/frontend/checkout/index.js:486
+#: node-dev/frontend/checkout/index.js:512
+#: node-dev/shared/StripeSettings.jsx:185
+#: includes/classes/class-sahcfwc-checkout-experience.php:325
+msgid "Try again"
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:327
+msgid "Return to cart"
+msgstr ""
+
+#: includes/classes/class-sahcfwc-checkout-experience.php:328
+msgid "Enable JavaScript to continue to secure checkout."
+msgstr ""
+
+#: node-dev/frontend/checkout/index.js:514
+msgid "Your secure checkout opens in a popup. You can reopen it below."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:70
+msgid "Use Stripe Dashboard setting"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:122
+msgid "The selected payment page could not be used. Choose a published, unprotected page containing [sahcfwc_checkout], not your cart, checkout or account page."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:125
+msgid "Some settings could not be saved. Check your Stripe keys and selected payment page."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:127
+msgid "Some branding settings were not accepted. Check the public logo URL and supported color, font and shape values."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:129
 msgid "Stripe settings saved."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:92
-msgid "test-mode"
+#: node-dev/shared/StripeSettings.jsx:133
+msgid "Unable to save Stripe settings. Check the values and try again."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:113
-msgid "Please note: The Stripe checkout functionality will only work if the Enable Stripe Checkout option is enabled."
+#. translators: %s is the required Stripe API key prefix.
+#: node-dev/shared/StripeSettings.jsx:144
+#, js-format
+msgid "Enter a key beginning with %s."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:257
-msgid "This option allows you to activate  Stripe Checkout functionality on your website."
+#. translators: %s is the required Stripe API key prefix.
+#: node-dev/shared/StripeSettings.jsx:148
+#, js-format
+msgid "This field only accepts a key beginning with %s."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:294
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:588
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:818
-msgid "Enter the live secret key."
+#: node-dev/shared/StripeSettings.jsx:156
+msgid "Test"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:299
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:718
-msgid "Enter the restricted live key."
+#: node-dev/shared/StripeSettings.jsx:156
+msgid "Live"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:305
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:502
-msgid "Enter the test secret key."
+#. translators: %s is Test or Live, the Stripe environment.
+#: node-dev/shared/StripeSettings.jsx:165
+#, js-format
+msgid "%s restricted key"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:310
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:653
-msgid "Enter the restricted test key."
+#. translators: %s is Test or Live, the Stripe environment.
+#: node-dev/shared/StripeSettings.jsx:167
+#, js-format
+msgid "%s secret key"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:327
-msgid "Stripe Integration Mode"
+#. translators: %s is Test or Live, the Stripe environment.
+#: node-dev/shared/StripeSettings.jsx:174
+#, js-format
+msgid "%s publishable key"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:332
-msgid "This option allows you to choose Stripe Integration Mode,  either live or test, on the Stripe checkout page."
+#: node-dev/shared/StripeSettings.jsx:176
+msgid "Required for embedded page and popup checkout. Use the publishable key from the same Stripe account and mode as your secret or restricted key."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:338
-msgid "Test Mode"
+#: node-dev/shared/StripeSettings.jsx:184
+msgid "Unable to load Stripe settings."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:345
-msgid "Live Mode"
+#: node-dev/shared/StripeSettings.jsx:197
+msgid "Stripe settings"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:373
-msgid "API Key Type"
+#: node-dev/shared/StripeSettings.jsx:201
+msgid "Stripe mode"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:375
-msgid "Choose between Standard or Restricted API Keys"
+#: node-dev/shared/StripeSettings.jsx:203
+msgid "Test mode"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:378
-msgid "Standard API Key"
+#: node-dev/shared/StripeSettings.jsx:204
+msgid "Live mode"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:382
-msgid "Restricted API Key"
+#: node-dev/shared/StripeSettings.jsx:207
+msgid "API key type"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:394
-msgid "Admin Test Mode"
+#: node-dev/shared/StripeSettings.jsx:209
+msgid "Secret key"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:404
-msgid "This option allows you to  activate admin test mode on the Stripe checkout page."
+#: node-dev/shared/StripeSettings.jsx:210
+msgid "Restricted key"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:434
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:442
-msgid "Test Secret Key"
+#: node-dev/shared/StripeSettings.jsx:214
+msgid "Administrator-only test mode"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:438
-msgid "This option allows you to add a test secret key for the Stripe Test Mode."
+#: node-dev/shared/StripeSettings.jsx:215
+msgid "Administrators use test credentials while customers continue using the selected Stripe mode."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:462
-msgid "Test Secret key ending *****"
+#: node-dev/shared/StripeSettings.jsx:218
+msgid "Checkout experience"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:508
-msgid "The secret key should begin with 'sk_test_'"
+#: node-dev/shared/StripeSettings.jsx:220
+msgid "Hosted — redirect to Stripe"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:521
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:529
-msgid "Live Secret Key"
+#: node-dev/shared/StripeSettings.jsx:221
+msgid "Embedded — payment page"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:525
-msgid "This option allows you to add a secret key for the Stripe Live Mode."
+#: node-dev/shared/StripeSettings.jsx:222
+msgid "Embedded — popup"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:548
-msgid "Live Secret key ending *****"
+#: node-dev/shared/StripeSettings.jsx:226
+msgid "Embedded payment page"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:594
-msgid "The secret key should begin with 'sk_live_'"
+#: node-dev/shared/StripeSettings.jsx:227
+msgid "Use a dedicated page containing [sahcfwc_checkout]. Automatic creates one when you save. Popup checkout also uses this page for order-payment links and redirects."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:607
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:615
-msgid "Restricted Test Key"
+#: node-dev/shared/StripeSettings.jsx:229
+msgid "Automatic — create a payment page"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:611
-msgid "Enter your restricted test key with limited permissions"
+#: node-dev/shared/StripeSettings.jsx:233
+msgid "The page list could not be loaded. Use Automatic or reload settings to select an existing page."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:625
-msgid "Restricted Test key ending *****"
+#: node-dev/shared/StripeSettings.jsx:235
+msgid "Embedded Checkout requires HTTPS in production. Some payment methods still redirect customers for authorization. Apple Pay and Google Pay also require Stripe domain registration and an eligible browser or device."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:659
-msgid "The restricted key should begin with \"rk_test_\""
-msgstr ""
-
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:672
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:680
-msgid "Restricted Live Key"
-msgstr ""
-
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:676
-msgid "Enter your restricted live key with limited permissions"
-msgstr ""
-
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:690
-msgid "Restricted Live key ending *****"
-msgstr ""
-
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:724
-msgid "The restricted key should begin with \"rk_live_\""
-msgstr ""
-
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:735
+#: node-dev/shared/StripeSettings.jsx:239
 msgid "Webhook URL"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:786
-msgid "Webhook Signing Secret Key"
+#: node-dev/shared/StripeSettings.jsx:242
+msgid "Copy this URL into your Stripe webhook destination."
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:790
-msgid "Webhook Key"
+#: node-dev/shared/StripeSettings.jsx:245
+msgid "Webhook signing secret"
 msgstr ""
 
-#: node-dev/free-app/components/TabContent/StripeSetting.jsx:808
-msgid "Webhook Signing Secret key ending *****"
+#: node-dev/shared/StripeSettings.jsx:248
+msgid "Enter the webhook signing secret."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:251
+msgid "The webhook signing secret must begin with whsec_."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:256
+msgid "Checkout branding"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:257
+msgid "Customize checkout branding"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:258
+msgid "Available in both free and premium. Overrides apply only to new checkout sessions and do not change your Stripe account settings."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:263
+msgid "Leave any field empty to use your Stripe Dashboard branding. Receipts and invoices retain Stripe account branding. Checkout appearance is limited to the controls supported by Stripe."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:264
+msgid "Checkout display name"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:267
+msgid "Hosted checkout logo URL"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:268
+msgid "Logo overrides apply to hosted checkout only. Embedded page and popup checkout do not support this logo override. Enter a public HTTPS PNG, JPEG or SVG image URL; WebP, localhost, private network and password-protected images are not supported. Your saved hosted logo is kept when switching checkout modes."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:278
+msgid "Enter a public HTTPS PNG, JPEG or SVG image URL. WebP and other image formats are not supported."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:282
+msgid "Background color"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:282
+msgid "Button color"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:284
+msgid "Use a six-digit hex color, or leave empty to inherit."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:285
+msgid "Enter a color such as #176BFA."
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:289
+msgid "Font"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:292
+msgid "Corner shape"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:294
+msgid "Rounded"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:295
+msgid "Rectangular"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:296
+msgid "Pill"
+msgstr ""
+
+#: node-dev/shared/StripeSettings.jsx:302
+msgid "Save Stripe settings"
 msgstr ""

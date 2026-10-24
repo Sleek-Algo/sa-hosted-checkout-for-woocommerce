@@ -19,8 +19,8 @@ namespace SAHCFWC\Libraries\Stripe\Treasury;
  * @property string $network The rails used to reverse the funds.
  * @property string $received_credit The ReceivedCredit being reversed.
  * @property string $status Status of the CreditReversal
- * @property \SAHCFWC\Libraries\Stripe\StripeObject $status_transitions
- * @property null|string|\SAHCFWC\Libraries\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property (object{posted_at: null|int}&\SAHCFWC\Libraries\Stripe\StripeObject) $status_transitions
+ * @property null|string|Transaction $transaction The Transaction associated with this object.
  */
 class CreditReversal extends \SAHCFWC\Libraries\Stripe\ApiResource
 {
@@ -36,12 +36,12 @@ class CreditReversal extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Reverses a ReceivedCredit and creates a CreditReversal object.
      *
-     * @param null|array $params
+     * @param null|array{expand?: string[], metadata?: array<string, string>, received_credit: string} $params
      * @param null|array|string $options
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditReversal the created resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Treasury\CreditReversal the created resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -58,12 +58,12 @@ class CreditReversal extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Returns a list of CreditReversals.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, received_credit?: string, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<CreditReversal> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Treasury\CreditReversal> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -80,9 +80,9 @@ class CreditReversal extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return CreditReversal
      *
-     * @return \SAHCFWC\Libraries\Stripe\Treasury\CreditReversal
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

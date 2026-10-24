@@ -2,12 +2,14 @@
 
 // File generated from our OpenAPI spec
 
-namespace SAHCFWC\Libraries\Stripe\V2;
+namespace SAHCFWC\Libraries\Stripe\V2\Core;
 
 /**
+ * Set up an event destination to receive events from SAHCFWC\Libraries\Stripe across multiple destination types, including <a href="https://docs.stripe.com/webhooks">webhook endpoints</a> and <a href="https://docs.stripe.com/event-destinations/eventbridge">Amazon EventBridge</a>. Event destinations support receiving <a href="https://docs.stripe.com/api/v2/events">thin events</a> and <a href="https://docs.stripe.com/api/events">snapshot events</a>.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $amazon_eventbridge Amazon EventBridge configuration.
+ * @property null|(object{aws_account_id: string, aws_event_source_arn: string, aws_event_source_status: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $amazon_eventbridge Amazon EventBridge configuration.
  * @property int $created Time at which the object was created.
  * @property string $description An optional description of what the event destination is used for.
  * @property string[] $enabled_events The list of events to enable for this endpoint.
@@ -18,10 +20,10 @@ namespace SAHCFWC\Libraries\Stripe\V2;
  * @property string $name Event destination name.
  * @property null|string $snapshot_api_version If using the snapshot event payload, the API version events are rendered as.
  * @property string $status Status. It can be set to either enabled or disabled.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $status_details Additional information about event destination status.
+ * @property null|(object{disabled?: (object{reason: string}&\SAHCFWC\Libraries\Stripe\StripeObject)}&\SAHCFWC\Libraries\Stripe\StripeObject) $status_details Additional information about event destination status.
  * @property string $type Event destination type.
  * @property int $updated Time at which the object was last updated.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $webhook_endpoint Webhook endpoint configuration.
+ * @property null|(object{signing_secret?: string, url?: string}&\SAHCFWC\Libraries\Stripe\StripeObject) $webhook_endpoint Webhook endpoint configuration.
  */
 class EventDestination extends \SAHCFWC\Libraries\Stripe\ApiResource
 {

@@ -43,6 +43,7 @@ if ( ! class_exists( '\SAHCFWC\Bootstrap\SAHCFWC_App' ) ) {
 		 * @access public
 		 */
 		public function __construct() {
+			require_once dirname( __DIR__ ) . '/classes/class-sahcfwc-checkout-experience.php';
 			require_once dirname( __DIR__ ) . '/classes/class-sahcfwc-quantity-inventory.php';
 			\SAHCFWC\Classes\SAHCFWC_Quantity_Inventory::register_hooks();
 			$this->sahcfwc_stripe_checkout_status = get_option( 'sahcfwc_stripe_checkout_status' );
@@ -83,6 +84,7 @@ if ( ! class_exists( '\SAHCFWC\Bootstrap\SAHCFWC_App' ) ) {
 		 * @return void.
 		 */
 		public function sahcfwc_init_classes() {
+			\SAHCFWC\Classes\SAHCFWC_Checkout_Experience::get_instance();
 			\SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax::get_instance();
 			\SAHCFWC\Classes\SAHCFWC_Pre_Checkout::get_instance();
 			\SAHCFWC\Classes\SAHCFWC_Post_Checkout::get_instance();

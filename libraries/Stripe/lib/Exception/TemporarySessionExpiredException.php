@@ -4,6 +4,4 @@
 
 namespace SAHCFWC\Libraries\Stripe\Exception;
 
-class TemporarySessionExpiredException extends ApiErrorException
-{
-}
+class TemporarySessionExpiredException extends ApiErrorException {}

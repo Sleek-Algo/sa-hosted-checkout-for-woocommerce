@@ -16,13 +16,13 @@ namespace SAHCFWC\Libraries\Stripe\Treasury;
  * @property null|string $failure_code Reason for the failure. A ReceivedDebit might fail because the FinancialAccount doesn't have sufficient funds, is closed, or is frozen.
  * @property null|string $financial_account The FinancialAccount that funds were pulled from.
  * @property null|string $hosted_regulatory_receipt_url A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $initiating_payment_method_details
- * @property \SAHCFWC\Libraries\Stripe\StripeObject $linked_flows
+ * @property null|(object{balance?: string, billing_details: (object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject), email: null|string, name: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject), financial_account?: (object{id: string, network: string}&\SAHCFWC\Libraries\Stripe\StripeObject), issuing_card?: string, type: string, us_bank_account?: (object{bank_name: null|string, last4: null|string, routing_number: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject)}&\SAHCFWC\Libraries\Stripe\StripeObject) $initiating_payment_method_details
+ * @property (object{debit_reversal: null|string, inbound_transfer: null|string, issuing_authorization: null|string, issuing_transaction: null|string, payout: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject) $linked_flows
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $network The network used for the ReceivedDebit.
- * @property null|\SAHCFWC\Libraries\Stripe\StripeObject $reversal_details Details describing when a ReceivedDebit might be reversed.
+ * @property null|(object{deadline: null|int, restricted_reason: null|string}&\SAHCFWC\Libraries\Stripe\StripeObject) $reversal_details Details describing when a ReceivedDebit might be reversed.
  * @property string $status Status of the ReceivedDebit. ReceivedDebits are created with a status of either <code>succeeded</code> (approved) or <code>failed</code> (declined). The failure reason can be found under the <code>failure_code</code>.
- * @property null|string|\SAHCFWC\Libraries\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property null|string|Transaction $transaction The Transaction associated with this object.
  */
 class ReceivedDebit extends \SAHCFWC\Libraries\Stripe\ApiResource
 {
@@ -44,12 +44,12 @@ class ReceivedDebit extends \SAHCFWC\Libraries\Stripe\ApiResource
     /**
      * Returns a list of ReceivedDebits.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<ReceivedDebit> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Treasury\ReceivedDebit> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -65,9 +65,9 @@ class ReceivedDebit extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return ReceivedDebit
      *
-     * @return \SAHCFWC\Libraries\Stripe\Treasury\ReceivedDebit
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {

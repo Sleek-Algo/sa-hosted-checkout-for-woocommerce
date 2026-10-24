@@ -172,6 +172,13 @@ if ( ! trait_exists( '\SAHCFWC\Traits\SAHCFWC_Helpers' ) ) {
 			return 0 === strpos( $key, $prefix ) ? $key : '';
 		}
 
+		/** Only a mode-matched publishable key may reach the browser. */
+		public function sahcfwc_get_stripe_public_key() {
+			require_once dirname( __DIR__ ) . '/classes/class-sahcfwc-checkout-experience.php';
+			$mode = 'live-mode' === $this->sahcfwc_get_stripe_integration_mode() ? 'live' : 'test';
+			return \SAHCFWC\Classes\SAHCFWC_Checkout_Experience::public_key( $mode );
+		}
+
 		/**
 		 * Get stripe account detail.
 		 *

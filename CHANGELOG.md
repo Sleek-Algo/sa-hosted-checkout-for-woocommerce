@@ -1,3 +1,25 @@
+## 1.1.1 (2026-10-18)
+
+- Replaced the standard WooCommerce checkout form on ordinary checkout-page visits with the selected Stripe Checkout experience for carts requiring payment, including classic shortcode and Checkout block pages.
+- Added automatic checkout launch with clear retry and return-to-cart controls, while preserving empty-cart, zero-total, existing-order payment and receipt flows.
+- Prevented hidden or prerendered pages from starting a checkout session and required POST requests for checkout creation.
+- Updated the plugin description, free and premium feature lists, installation instructions and FAQs, including webhook setup and checkout calculation limits.
+
+## 1.1.0 (2026-10-17)
+
+- Added free Embedded Checkout on a dedicated store page or in a popup, while preserving Hosted Checkout as the default for existing installations.
+- Added free checkout branding controls for the display name, background and button colors, font and corner shape, plus a Hosted Checkout logo override, with Stripe Dashboard inheritance for empty fields.
+- Added automatic payment-page creation and support for a custom published page containing `[sahcfwc_checkout]`.
+- Added mode-matched publishable-key validation and private, non-cached access to embedded payment sessions.
+- Reused saved WooCommerce order totals and verified payment handling across all three checkout experiences, including existing-order payment links and payment-provider returns.
+- Added popup close/reopen handling and retry safeguards without creating parallel payment sessions for an order.
+- Fixed WooCommerce Cart block checkout buttons remaining in a loading state after closing Embedded Checkout.
+- Kept Stripe quantity and payment-authentication dialogs accessible above the checkout popup.
+- Added receipt recovery when an unchanged cart's payment has already been verified, without rechecking consumed stock or coupon uses. An unverifiable paid cart is blocked from starting another payment.
+- Fixed unnecessary payment-processing conflicts between stores using separate databases on the same database server.
+- Updated the bundled Stripe PHP SDK to 18.0.0 with Stripe API version 2025-09-30.clover.
+- Updated setup instructions, free-feature descriptions, Stripe.js service disclosure and readable storefront source/build information.
+
 ## 1.0.7 ( October 8, 2026 )
 
 - Made Stripe payment-method selection and checkout language selection available in the free version, while preserving the default card-only and automatic-language behavior.

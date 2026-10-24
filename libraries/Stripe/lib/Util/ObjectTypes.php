@@ -7,8 +7,8 @@ class ObjectTypes
     /**
      * @var array Mapping from object types to resource classes
      */
-    const mapping =
-        [
+    const mapping
+        = [
             \SAHCFWC\Libraries\Stripe\Collection::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Collection::class,
             \SAHCFWC\Libraries\Stripe\Issuing\CardDetails::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Issuing\CardDetails::class,
             \SAHCFWC\Libraries\Stripe\SearchResult::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\SearchResult::class,
@@ -23,6 +23,7 @@ class ObjectTypes
             \SAHCFWC\Libraries\Stripe\ApplicationFeeRefund::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\ApplicationFeeRefund::class,
             \SAHCFWC\Libraries\Stripe\Apps\Secret::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Apps\Secret::class,
             \SAHCFWC\Libraries\Stripe\Balance::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Balance::class,
+            \SAHCFWC\Libraries\Stripe\BalanceSettings::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\BalanceSettings::class,
             \SAHCFWC\Libraries\Stripe\BalanceTransaction::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\BalanceTransaction::class,
             \SAHCFWC\Libraries\Stripe\BankAccount::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\BankAccount::class,
             \SAHCFWC\Libraries\Stripe\Billing\Alert::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Billing\Alert::class,
@@ -76,6 +77,7 @@ class ObjectTypes
             \SAHCFWC\Libraries\Stripe\Invoice::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Invoice::class,
             \SAHCFWC\Libraries\Stripe\InvoiceItem::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\InvoiceItem::class,
             \SAHCFWC\Libraries\Stripe\InvoiceLineItem::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\InvoiceLineItem::class,
+            \SAHCFWC\Libraries\Stripe\InvoicePayment::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\InvoicePayment::class,
             \SAHCFWC\Libraries\Stripe\InvoiceRenderingTemplate::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\InvoiceRenderingTemplate::class,
             \SAHCFWC\Libraries\Stripe\Issuing\Authorization::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Issuing\Authorization::class,
             \SAHCFWC\Libraries\Stripe\Issuing\Card::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Issuing\Card::class,
@@ -149,8 +151,6 @@ class ObjectTypes
             \SAHCFWC\Libraries\Stripe\Treasury\ReceivedDebit::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Treasury\ReceivedDebit::class,
             \SAHCFWC\Libraries\Stripe\Treasury\Transaction::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Treasury\Transaction::class,
             \SAHCFWC\Libraries\Stripe\Treasury\TransactionEntry::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\Treasury\TransactionEntry::class,
-            \SAHCFWC\Libraries\Stripe\UsageRecord::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\UsageRecord::class,
-            \SAHCFWC\Libraries\Stripe\UsageRecordSummary::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\UsageRecordSummary::class,
             \SAHCFWC\Libraries\Stripe\WebhookEndpoint::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\WebhookEndpoint::class,
             // object classes: The end of the section generated from our OpenAPI spec
         ];
@@ -163,8 +163,8 @@ class ObjectTypes
         \SAHCFWC\Libraries\Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\V2\Billing\MeterEvent::class,
         \SAHCFWC\Libraries\Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\V2\Billing\MeterEventAdjustment::class,
         \SAHCFWC\Libraries\Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\V2\Billing\MeterEventSession::class,
-        \SAHCFWC\Libraries\Stripe\V2\Event::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\V2\Event::class,
-        \SAHCFWC\Libraries\Stripe\V2\EventDestination::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\V2\EventDestination::class,
+        \SAHCFWC\Libraries\Stripe\V2\Core\Event::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\V2\Core\Event::class,
+        \SAHCFWC\Libraries\Stripe\V2\Core\EventDestination::OBJECT_NAME => \SAHCFWC\Libraries\Stripe\V2\Core\EventDestination::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

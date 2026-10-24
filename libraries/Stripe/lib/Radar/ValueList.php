@@ -14,8 +14,8 @@ namespace SAHCFWC\Libraries\Stripe\Radar;
  * @property string $alias The name of the value list for use in rules.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_by The name or email address of the user who created this value list.
- * @property string $item_type The type of items in the value list. One of <code>card_fingerprint</code>, <code>us_bank_account_fingerprint</code>, <code>sepa_debit_fingerprint</code>, <code>card_bin</code>, <code>email</code>, <code>ip_address</code>, <code>country</code>, <code>string</code>, <code>case_sensitive_string</code>, or <code>customer_id</code>.
- * @property \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Radar\ValueListItem> $list_items List of items contained within this value list.
+ * @property string $item_type The type of items in the value list. One of <code>card_fingerprint</code>, <code>card_bin</code>, <code>email</code>, <code>ip_address</code>, <code>country</code>, <code>string</code>, <code>case_sensitive_string</code>, <code>customer_id</code>, <code>sepa_debit_fingerprint</code>, or <code>us_bank_account_fingerprint</code>.
+ * @property \SAHCFWC\Libraries\Stripe\Collection<ValueListItem> $list_items List of items contained within this value list.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \SAHCFWC\Libraries\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The name of the value list.
@@ -41,12 +41,12 @@ class ValueList extends \SAHCFWC\Libraries\Stripe\ApiResource
      * Creates a new <code>ValueList</code> object, which can then be referenced in
      * rules.
      *
-     * @param null|array $params
+     * @param null|array{alias: string, expand?: string[], item_type?: string, metadata?: array<string, string>, name: string} $params
      * @param null|array|string $options
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return ValueList the created resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Radar\ValueList the created resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function create($params = null, $options = null)
     {
@@ -68,9 +68,9 @@ class ValueList extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return ValueList the deleted resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Radar\ValueList the deleted resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function delete($params = null, $opts = null)
     {
@@ -88,12 +88,12 @@ class ValueList extends \SAHCFWC\Libraries\Stripe\ApiResource
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|array $params
+     * @param null|array{alias?: string, contains?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return \SAHCFWC\Libraries\Stripe\Collection<ValueList> of ApiResources
      *
-     * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Radar\ValueList> of ApiResources
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function all($params = null, $opts = null)
     {
@@ -108,9 +108,9 @@ class ValueList extends \SAHCFWC\Libraries\Stripe\ApiResource
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return ValueList
      *
-     * @return \SAHCFWC\Libraries\Stripe\Radar\ValueList
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function retrieve($id, $opts = null)
     {
@@ -127,12 +127,12 @@ class ValueList extends \SAHCFWC\Libraries\Stripe\ApiResource
      * <code>item_type</code> is immutable.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array $params
+     * @param null|array{alias?: string, expand?: string[], metadata?: array<string, string>, name?: string} $params
      * @param null|array|string $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
+     * @return ValueList the updated resource
      *
-     * @return \SAHCFWC\Libraries\Stripe\Radar\ValueList the updated resource
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public static function update($id, $params = null, $opts = null)
     {

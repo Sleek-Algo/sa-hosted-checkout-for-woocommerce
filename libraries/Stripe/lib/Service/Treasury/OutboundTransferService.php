@@ -6,6 +6,7 @@ namespace SAHCFWC\Libraries\Stripe\Service\Treasury;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
+ *
  * @psalm-import-type RequestOptionsArray from \SAHCFWC\Libraries\Stripe\Util\RequestOptions
  */
 class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\AbstractService
@@ -13,12 +14,12 @@ class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
     /**
      * Returns a list of OutboundTransfers sent from the specified FinancialAccount.
      *
-     * @param null|array $params
+     * @param null|array{ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Collection<\SAHCFWC\Libraries\Stripe\Treasury\OutboundTransfer>
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($params = null, $opts = null)
     {
@@ -29,12 +30,12 @@ class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * An OutboundTransfer can be canceled if the funds have not yet been paid out.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -44,12 +45,12 @@ class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
     /**
      * Creates an OutboundTransfer.
      *
-     * @param null|array $params
+     * @param null|array{amount: int, currency: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{financial_account?: string, type: string}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, expand?: string[], financial_account: string, metadata?: array<string, string>, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function create($params = null, $opts = null)
     {
@@ -62,12 +63,12 @@ class OutboundTransferService extends \SAHCFWC\Libraries\Stripe\Service\Abstract
      * OutboundTransfer list.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\SAHCFWC\Libraries\Stripe\Util\RequestOptions $opts
      *
-     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
-     *
      * @return \SAHCFWC\Libraries\Stripe\Treasury\OutboundTransfer
+     *
+     * @throws \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($id, $params = null, $opts = null)
     {

@@ -45,6 +45,8 @@ if ( ! class_exists( '\SAHCFWC\Settings\SAHCFWC_Stripe_Checkout' ) ) {
 		 * @return void
 		 */
 		public function sahcfwc_stripe_checkout_register_settings() {
+			require_once dirname( __DIR__ ) . '/classes/class-sahcfwc-checkout-experience.php';
+			\SAHCFWC\Classes\SAHCFWC_Checkout_Experience::register_settings();
 			register_setting(
 				'sahcfwc_stripe_checkout_settings',
 				'sahcfwc_stripe_adjustment_quantity',

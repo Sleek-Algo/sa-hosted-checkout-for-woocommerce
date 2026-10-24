@@ -264,7 +264,6 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 		public function __construct() {
 			$this->sahcfwc_id = 'sahcfwc_stripe_checkout';
 			$this->sahcfwc_set_stripe_secret();
-			add_action( 'wp_enqueue_scripts', array( $this, 'sahcfwc_scripts_handler' ), 100 );
 			add_action( 'wp_ajax_sahcfwc_get_stripe_checkout_url', array( $this, 'sahcfwc_get_stripe_checkout_url_handler' ) );
 			add_action( 'wp_ajax_nopriv_sahcfwc_get_stripe_checkout_url', array( $this, 'sahcfwc_get_stripe_checkout_url_handler' ) );
 		}
@@ -275,46 +274,18 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 		 * @return void
 		 */
 		public function sahcfwc_scripts_handler() {
-			$sahcfwc_stripe_checkout_status = get_option( 'sahcfwc_stripe_checkout_status' );
-			if ( 'yes' === $sahcfwc_stripe_checkout_status ) {
-				wp_enqueue_style(
-					'sahcfwc_frontend_style',
-					SAHCFWC_URL_ASSETS_FRONTEND_CSS . '/sahcfwc-frontend-style.css',
-					array(),
-					SAHCFWC_VERSION,
-					'all'
-				);
-				wp_enqueue_script(
-					'sahcfwc_frontend_script',
-					SAHCFWC_URL_ASSETS_FRONTEND_JS . '/sahcfwc-frontend.js',
-					array( 'jquery' ),
-					SAHCFWC_VERSION,
-					true
-				);
-				wp_localize_script(
-					'sahcfwc_frontend_script',
-					'sahcfwc_frontend_localized_data',
-					array(
-						'ajax'            => array(
-							'url'      => admin_url( 'admin-ajax.php' ),
-							'action'   => 'sahcfwc_get_stripe_checkout_url',
-							'security' => wp_create_nonce( 'sahcfwc-get-stripe-checkout-url-ajax-nonce' ),
-						),
-						'wc_checkout_url' => wc_get_checkout_url(),
-						'wc_cart_url'     => wc_get_cart_url(),
-						'is_wc_cart_page' => ( is_cart() ? 'yes' : 'no' ),
-						'checkout_error'  => esc_html__( 'Unable to start checkout. Please try again.', 'sa-hosted-checkout-for-woocommerce' ),
-					)
-				);
-			}
+			// One shared controller handles Hosted, Embedded Page and Embedded Popup.
+			SAHCFWC_Checkout_Experience::enqueue_scripts();
 		}
-
 		/**
 		 * Handle stripecheckout URL
 		 *
 		 * @return void
 		 */
 		public function sahcfwc_get_stripe_checkout_url_handler() {
+			if ( 'POST' !== ( $_SERVER['REQUEST_METHOD'] ?? '' ) ) {
+				wp_send_json( array( 'status' => 'failed', 'message' => __( 'Use a valid checkout link to continue.', 'sa-hosted-checkout-for-woocommerce' ) ), 405 );
+			}
 			if ( ! check_ajax_referer( 'sahcfwc-get-stripe-checkout-url-ajax-nonce', 'security' ) ) {
 				wp_send_json(
 					array(
@@ -347,6 +318,20 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 			 */
 			if ( $cart->is_empty() ) {
 				return '';
+			}
+			try {
+				$paid_order = $this->sahcfwc_get_paid_cart_order_snapshot( $cart );
+				if ( $paid_order ) {
+					$receipt = $paid_order->get_checkout_order_received_url();
+					foreach ( array( PHP_URL_SCHEME, PHP_URL_HOST, PHP_URL_PORT ) as $component ) {
+						if ( wp_parse_url( $receipt, $component ) !== wp_parse_url( home_url( '/' ), $component ) ) {
+							throw new \RuntimeException( __( 'Payment for this cart has already been received. Review your order before starting another checkout.', 'sa-hosted-checkout-for-woocommerce' ) );
+						}
+					}
+					return array( 'stripe_checkout_session_url' => $receipt, 'checkout_mode' => 'hosted', 'status' => 'success', 'message' => '' );
+				}
+			} catch ( \Exception $error ) {
+				return array( 'stripe_checkout_session_url' => '', 'status' => 'failed', 'message' => $error->getMessage() );
 			}
 			/**
 			 * Skip if Stripe Secreet key is not set in plugin settings
@@ -422,6 +407,7 @@ if ( ! class_exists( ' \SAHCFWC\Classes\SAHCFWC_Checkout_Button_Url_Ajax' ) ) {
 				if ( class_exists( '\SAHCFWC\Libraries\Stripe\Checkout\Session' ) ) {
 					$checkout_session = $this->sahcfwc_create_order_checkout_session( $order, $checkoutarray );
 				}
+				return SAHCFWC_Checkout_Experience::response_for_session( $order, $checkout_session );
 			} catch ( \SAHCFWC\Libraries\Stripe\Exception\ApiErrorException $e ) {
 				$error = esc_html__( 'Unable to start Stripe Checkout. Please try again or contact the store.', 'sa-hosted-checkout-for-woocommerce' );
 				$url   = 'javascript:;';
